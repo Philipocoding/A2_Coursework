@@ -32,7 +32,6 @@
             txtbCustomerID = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            listBox1 = new ListBox();
             btnCarpets = new Button();
             button5 = new Button();
             btnDusting = new Button();
@@ -67,6 +66,7 @@
             label11 = new Label();
             btnSubmit = new Button();
             DTPicker = new DateTimePicker();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // btnWindows
@@ -106,15 +106,6 @@
             label2.Size = new Size(31, 15);
             label2.TabIndex = 6;
             label2.Text = "Date";
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(0, 0);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(120, 94);
-            listBox1.TabIndex = 7;
             // 
             // btnCarpets
             // 
@@ -469,11 +460,19 @@
             DTPicker.Size = new Size(200, 47);
             DTPicker.TabIndex = 47;
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(637, 84);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(389, 472);
+            panel1.TabIndex = 48;
+            // 
             // NewBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 672);
+            Controls.Add(panel1);
             Controls.Add(DTPicker);
             Controls.Add(btnSubmit);
             Controls.Add(label9);
@@ -508,7 +507,6 @@
             Controls.Add(btnDusting);
             Controls.Add(button5);
             Controls.Add(btnCarpets);
-            Controls.Add(listBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtbCustomerID);
@@ -525,7 +523,6 @@
         private TextBox txtbCustomerID;
         private Label label1;
         private Label label2;
-        private ListBox listBox1;
         private Button button3;
         private Button btnCarpets;
         private Button button5;
@@ -562,5 +559,6 @@
         private Label label11;
         private Button btnSubmit;
         private DateTimePicker DTPicker;
+        private Panel panel1;
     }
 }

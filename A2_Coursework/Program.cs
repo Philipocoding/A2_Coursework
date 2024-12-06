@@ -11,7 +11,14 @@ namespace A2_Coursework
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            SetupDataDirectoryPath();
             Application.Run(new MainMenu());
+        }
+        private static void SetupDataDirectoryPath()
+        {
+            string debugPath = System.IO.Path.GetDirectoryName(Environment.CurrentDirectory);
+            string dataDirectoryPath = System.IO.Path.GetDirectoryName(debugPath);
+            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectoryPath);
         }
     }
 }
