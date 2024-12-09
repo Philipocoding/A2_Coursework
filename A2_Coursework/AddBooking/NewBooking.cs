@@ -72,7 +72,7 @@ namespace A2_Coursework
             else
             {
                 btnDoors.Font = new Font(btnDoors.Font, FontStyle.Bold);
-                Doors= false;
+                Doors = false;
             }
         }
 
@@ -100,7 +100,7 @@ namespace A2_Coursework
             else
             {
                 btnBathrooms.Font = new Font(btnBathrooms.Font, FontStyle.Bold);
-                Bathroom= false;
+                Bathroom = false;
             }
         }
 
@@ -116,7 +116,7 @@ namespace A2_Coursework
             else
             {
                 btnCarpets.Font = new Font(btnCarpets.Font, FontStyle.Bold);
-                Carpet= false;
+                Carpet = false;
             }
         }
 
@@ -148,18 +148,19 @@ namespace A2_Coursework
             }
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click_1(object sender, EventArgs e)
         {
+            services.Clear();
             if (windows) { services.Add(1); }
-            if (Floors) {  services.Add(2); }
-            if(Doors) { services.Add(3); }
-            if(Dusting) { services.Add(4); }
-            if(Bathroom) { services.Add(5); }
-            if(Carpet) { services.Add(6); }
-            if(Curtains) { services.Add(7); }
-            if(Vacuum) { services.Add(8); }
+            if (Floors) { services.Add(2); }
+            if (Doors) { services.Add(3); }
+            if (Dusting) { services.Add(4); }
+            if (Bathroom) { services.Add(5); }
+            if (Carpet) { services.Add(6); }
+            if (Curtains) { services.Add(7); }
+            if (Vacuum) { services.Add(8); }
 
-            string customerID = txtbCustomerID.Text;
+            int customerID = Convert.ToInt32(txtbCustomerID.Text);
             string theDate = DTPicker.Value.ToShortDateString();
             ProjectDAL.NewBooking(customerID, theDate, services);
         }

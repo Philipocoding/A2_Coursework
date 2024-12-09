@@ -64,9 +64,9 @@
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
-            btnSubmit = new Button();
             DTPicker = new DateTimePicker();
             panel1 = new Panel();
+            btnSubmit = new Button();
             SuspendLayout();
             // 
             // btnWindows
@@ -441,16 +441,6 @@
             label11.TabIndex = 43;
             label11.Text = "+";
             // 
-            // btnSubmit
-            // 
-            btnSubmit.Location = new Point(830, 562);
-            btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(75, 23);
-            btnSubmit.TabIndex = 46;
-            btnSubmit.Text = "Submit";
-            btnSubmit.UseVisualStyleBackColor = true;
-            btnSubmit.Click += btnSubmit_Click;
-            // 
             // DTPicker
             // 
             DTPicker.CalendarFont = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -467,14 +457,24 @@
             panel1.Size = new Size(389, 472);
             panel1.TabIndex = 48;
             // 
+            // btnSubmit
+            // 
+            btnSubmit.Location = new Point(650, 574);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(75, 23);
+            btnSubmit.TabIndex = 0;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click_1;
+            // 
             // NewBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 672);
+            Controls.Add(btnSubmit);
             Controls.Add(panel1);
             Controls.Add(DTPicker);
-            Controls.Add(btnSubmit);
             Controls.Add(label9);
             Controls.Add(label10);
             Controls.Add(label11);
@@ -557,8 +557,8 @@
         private Label label9;
         private Label label10;
         private Label label11;
-        private Button btnSubmit;
         private DateTimePicker DTPicker;
         private Panel panel1;
+        private Button btnSubmit;
     }
 }
