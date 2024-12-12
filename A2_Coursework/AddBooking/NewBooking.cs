@@ -27,23 +27,17 @@ namespace A2_Coursework
         bool Curtains = false;
         bool Vacuum = false;
 
-
-
-        public void ButtonSelect()
-        {
-
-        }
         private void btnWindows_Click(object sender, EventArgs e)
         {
             if (btnWindows.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnWindows.Font = new Font(btnWindows.Font.FontFamily, btnWindows.Font.Size, FontStyle.Regular);
-                windows = true;
+                windows = false;
             }
             else
             {
                 btnWindows.Font = new Font(btnWindows.Font, FontStyle.Bold);
-                windows = false;
+                windows = true;
             }
 
         }
@@ -53,12 +47,12 @@ namespace A2_Coursework
             if (btnFloors.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnFloors.Font = new Font(btnFloors.Font.FontFamily, btnFloors.Font.Size, FontStyle.Regular);
-                Floors = true;
+                Floors = false;
             }
             else
             {
                 btnFloors.Font = new Font(btnFloors.Font, FontStyle.Bold);
-                Floors = false;
+                Floors = true;
             }
         }
 
@@ -67,12 +61,12 @@ namespace A2_Coursework
             if (btnDoors.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnDoors.Font = new Font(btnDoors.Font.FontFamily, btnDoors.Font.Size, FontStyle.Regular);
-                Doors = true;
+                Doors = false;
             }
             else
             {
                 btnDoors.Font = new Font(btnDoors.Font, FontStyle.Bold);
-                Doors = false;
+                Doors = true;
             }
         }
 
@@ -81,12 +75,12 @@ namespace A2_Coursework
             if (btnDusting.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnDusting.Font = new Font(btnDusting.Font.FontFamily, btnDusting.Font.Size, FontStyle.Regular);
-                Dusting = true;
+                Dusting = false;
             }
             else
             {
                 btnDusting.Font = new Font(btnDusting.Font, FontStyle.Bold);
-                Dusting = false;
+                Dusting = true;
             }
         }
 
@@ -95,12 +89,14 @@ namespace A2_Coursework
             if (btnBathrooms.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnBathrooms.Font = new Font(btnBathrooms.Font.FontFamily, btnBathrooms.Font.Size, FontStyle.Regular);
-                Bathroom = true;
+                Bathroom = false;
+
             }
             else
             {
                 btnBathrooms.Font = new Font(btnBathrooms.Font, FontStyle.Bold);
-                Bathroom = false;
+                Bathroom = true;
+
             }
         }
 
@@ -111,12 +107,14 @@ namespace A2_Coursework
             if (btnCarpets.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnCarpets.Font = new Font(btnCarpets.Font.FontFamily, btnCarpets.Font.Size, FontStyle.Regular);
-                Carpet = true;
+                Carpet = false;
+
             }
             else
             {
                 btnCarpets.Font = new Font(btnCarpets.Font, FontStyle.Bold);
-                Carpet = false;
+                Carpet = true;
+
             }
         }
 
@@ -125,12 +123,14 @@ namespace A2_Coursework
             if (btnCurtains.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnCurtains.Font = new Font(btnCurtains.Font.FontFamily, btnCarpets.Font.Size, FontStyle.Regular);
-                Curtains = true;
+                Curtains = false;
+
             }
             else
             {
                 btnCurtains.Font = new Font(btnCurtains.Font, FontStyle.Bold);
-                Curtains = false;
+                Curtains = true;
+
             }
         }
 
@@ -139,12 +139,15 @@ namespace A2_Coursework
             if (btnRoomVacuum.Font.Style.HasFlag(FontStyle.Bold))
             {
                 btnRoomVacuum.Font = new Font(btnRoomVacuum.Font.FontFamily, btnRoomVacuum.Font.Size, FontStyle.Regular);
-                Vacuum = true;
+                Vacuum = false;
+
+
             }
             else
             {
                 btnRoomVacuum.Font = new Font(btnRoomVacuum.Font, FontStyle.Bold);
-                Vacuum = false;
+                Vacuum = true;
+
             }
         }
 
@@ -163,6 +166,19 @@ namespace A2_Coursework
             int customerID = Convert.ToInt32(txtbCustomerID.Text);
             string theDate = DTPicker.Value.ToShortDateString();
             ProjectDAL.NewBooking(customerID, theDate, services);
+        }
+
+        private void NewBooking_Load(object sender, EventArgs e)
+        {
+            services.Clear();
+            windows = false;
+            Floors = false;
+            Doors = false;
+            Dusting = false;
+            Bathroom = false;
+            Carpet = false;
+            Curtains = false;
+            Vacuum = false;
         }
     }
 }

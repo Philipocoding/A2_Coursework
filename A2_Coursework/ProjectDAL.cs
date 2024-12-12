@@ -7,6 +7,8 @@ using System.Data;
 using System.Data.SqlClient;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Xml.Linq;
+using System.Transactions;
+using System.Data.Common;
 
 namespace A2_Coursework
 {
@@ -14,46 +16,10 @@ namespace A2_Coursework
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-        public static void Booking_Request(List<int> ServiceID)
-        {
-            int bookingID = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    string sqlQuery = "SELECT TOP 1 BookingID FROM Booking ORDER BY BookingID DESC";
-
-                    SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
-                    GetBookingID.Connection = connection;
-                    bookingID = GetBookingID.ExecuteNonQuery();
-
-                    SqlCommand NewBookingRequests = new SqlCommand();
-                    NewBookingRequests.Connection = connection;
-
-                    NewBookingRequests.CommandType = System.Data.CommandType.StoredProcedure;
-                    NewBookingRequests.CommandText = "NewBookingRequests";
-
-                    for (int i = 0; i < ServiceID.Count; i++)
-                    {
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", 1));
-                    }
-
-                    connection.Close();
-
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-        }
+        
         public static int  NewBooking(int CustomerID, string Date, List<int> ServiceID)
         {
             int rowsaffected = 0;
-            Booking_Request(ServiceID);
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -69,6 +35,25 @@ namespace A2_Coursework
                     AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
                     rowsaffected = AddBooking.ExecuteNonQuery();
 
+
+                    string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
+                    SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
+                    int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
+
+
+                    SqlCommand NewBookingRequests = new SqlCommand();
+                    NewBookingRequests.Connection = connection;
+
+                    NewBookingRequests.CommandType = System.Data.CommandType.StoredProcedure;
+                    NewBookingRequests.CommandText = "NewBookingRequests";
+                    for (int i = 0; i < ServiceID.Count; i++)
+                    {
+                        NewBookingRequests.Parameters.Clear();
+                        NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+                        NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
+                        NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", 1));
+                        NewBookingRequests.ExecuteNonQuery();
+                    }
                     connection.Close();
                    
                 }
@@ -117,41 +102,6 @@ namespace A2_Coursework
             }
         }
 
-        public static void Booking_Rquest(List<int> ServiceID)
-        {
-            int bookingID = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    string sqlQuery = "SELECT TOP 1 BookingID FROM Booking ORDER BY BookingID DESC";
-
-                    SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
-                    GetBookingID.Connection = connection;
-                    bookingID = GetBookingID.ExecuteNonQuery();
-
-                    SqlCommand NewBookingRequests = new SqlCommand();
-                    NewBookingRequests.Connection = connection;
-
-                    NewBookingRequests.CommandType = System.Data.CommandType.StoredProcedure;
-                    NewBookingRequests.CommandText = "NewBookingRequests";
-
-                    for (int i = 0; i < ServiceID.Count; i++)
-                    {
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", 1));
-                    }
-
-                    connection.Close();
-
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-        }
+        
     }
 }

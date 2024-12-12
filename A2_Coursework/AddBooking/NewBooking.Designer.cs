@@ -513,6 +513,7 @@
             Controls.Add(btnWindows);
             Name = "NewBooking";
             Text = "NewBooking";
+            Load += NewBooking_Load;
             ResumeLayout(false);
             PerformLayout();
         }
