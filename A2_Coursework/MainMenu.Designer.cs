@@ -36,8 +36,8 @@
             btnMenu = new Button();
             pnlMediaSubMenu = new Panel();
             button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
+            btnCustomer = new Button();
+            btnAddStaff = new Button();
             btnBooking = new Button();
             btnMedia = new Button();
             pnlLogo = new Panel();
@@ -144,8 +144,8 @@
             // 
             pnlMediaSubMenu.BackColor = SystemColors.ControlLight;
             pnlMediaSubMenu.Controls.Add(button4);
-            pnlMediaSubMenu.Controls.Add(button3);
-            pnlMediaSubMenu.Controls.Add(button2);
+            pnlMediaSubMenu.Controls.Add(btnCustomer);
+            pnlMediaSubMenu.Controls.Add(btnAddStaff);
             pnlMediaSubMenu.Controls.Add(btnBooking);
             pnlMediaSubMenu.Dock = DockStyle.Top;
             pnlMediaSubMenu.ForeColor = Color.Black;
@@ -169,35 +169,37 @@
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnCustomer
             // 
-            button3.BackColor = SystemColors.ControlLight;
-            button3.Dock = DockStyle.Top;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(0, 90);
-            button3.Name = "button3";
-            button3.Padding = new Padding(25, 0, 0, 0);
-            button3.Size = new Size(200, 45);
-            button3.TabIndex = 4;
-            button3.Text = "button3";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
+            btnCustomer.BackColor = SystemColors.ControlLight;
+            btnCustomer.Dock = DockStyle.Top;
+            btnCustomer.FlatAppearance.BorderSize = 0;
+            btnCustomer.FlatStyle = FlatStyle.Flat;
+            btnCustomer.Location = new Point(0, 90);
+            btnCustomer.Name = "btnCustomer";
+            btnCustomer.Padding = new Padding(25, 0, 0, 0);
+            btnCustomer.Size = new Size(200, 45);
+            btnCustomer.TabIndex = 4;
+            btnCustomer.Text = "New customer";
+            btnCustomer.TextAlign = ContentAlignment.MiddleLeft;
+            btnCustomer.UseVisualStyleBackColor = false;
+            btnCustomer.Click += btnCustomer_Click;
             // 
-            // button2
+            // btnAddStaff
             // 
-            button2.BackColor = SystemColors.ControlLight;
-            button2.Dock = DockStyle.Top;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(0, 45);
-            button2.Name = "button2";
-            button2.Padding = new Padding(25, 0, 0, 0);
-            button2.Size = new Size(200, 45);
-            button2.TabIndex = 3;
-            button2.Text = "button2";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
+            btnAddStaff.BackColor = SystemColors.ControlLight;
+            btnAddStaff.Dock = DockStyle.Top;
+            btnAddStaff.FlatAppearance.BorderSize = 0;
+            btnAddStaff.FlatStyle = FlatStyle.Flat;
+            btnAddStaff.Location = new Point(0, 45);
+            btnAddStaff.Name = "btnAddStaff";
+            btnAddStaff.Padding = new Padding(25, 0, 0, 0);
+            btnAddStaff.Size = new Size(200, 45);
+            btnAddStaff.TabIndex = 3;
+            btnAddStaff.Text = "Add staff";
+            btnAddStaff.TextAlign = ContentAlignment.MiddleLeft;
+            btnAddStaff.UseVisualStyleBackColor = false;
+            btnAddStaff.Click += btnAddStaff_Click;
             // 
             // btnBooking
             // 
@@ -274,8 +276,8 @@
         private Panel pnlMediaSubMenu;
         private Button btnMenu;
         private Button button4;
-        private Button button3;
-        private Button button2;
+        private Button btnCustomer;
+        private Button btnAddStaff;
         private Button btnBooking;
         private Panel pnlMenuSubMenu;
         private Button button6;

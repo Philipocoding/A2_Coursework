@@ -81,5 +81,17 @@ namespace A2_Coursework
             //code
             HideSubMenu();
         }
+
+        private void btnAddStaff_Click(object sender, EventArgs e)
+        {
+            openChildForm(new AddStaff());
+            HideSubMenu();
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            openChildForm(new NewCustomer());
+            HideSubMenu();
+        }
     }
 }

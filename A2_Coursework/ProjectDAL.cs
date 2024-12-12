@@ -17,6 +17,35 @@ namespace A2_Coursework
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
         
+        public static void NewStaffMember(string firstname, string surname, string gender, int age, float hourlyRate, int teamNo)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand NewStaff = new SqlCommand();
+                    NewStaff.Connection = connection;
+
+                    NewStaff.CommandType = System.Data.CommandType.StoredProcedure;
+                    NewStaff.CommandText = "NewStaffMember";
+                    NewStaff.Parameters.Add(new SqlParameter("@Firstname", firstname));
+                    NewStaff.Parameters.Add(new SqlParameter("@Surname", surname));
+                    NewStaff.Parameters.Add(new SqlParameter("@Gender", gender));
+                    NewStaff.Parameters.Add(new SqlParameter("@Age", age));
+                    NewStaff.Parameters.Add(new SqlParameter("@HourlyRate", hourlyRate));
+                    NewStaff.Parameters.Add(new SqlParameter("@TeamNo", teamNo));
+
+                    NewStaff.ExecuteNonQuery();
+
+                }
+                catch (Exception e) 
+                {
+
+                }
+            }
+        }
         public static int  NewBooking(int CustomerID, string Date, List<int> ServiceID)
         {
             int rowsaffected = 0;
@@ -65,8 +94,8 @@ namespace A2_Coursework
             }
         }
 
-        public static int NewCustomer(int CustomerID, string DOB, string fname, string sname, 
-            string gender, string addressOne, string addressTwo, string email)
+        public static int NewCustomer(string fname, string sname, string DOB, 
+            string gender, int age, string addressOne, string addressTwo, string email)
         {
             int rowsaffected = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
