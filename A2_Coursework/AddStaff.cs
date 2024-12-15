@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using A2_Coursework.Classes;
 
 namespace A2_Coursework
 {

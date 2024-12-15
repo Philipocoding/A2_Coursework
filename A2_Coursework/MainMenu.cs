@@ -93,5 +93,11 @@ namespace A2_Coursework
             openChildForm(new NewCustomer());
             HideSubMenu();
         }
+
+        private void btnViewBOokings_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewBookings());
+            HideSubMenu();
+        }
     }
 }

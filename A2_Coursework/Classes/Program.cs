@@ -1,4 +1,4 @@
-namespace A2_Coursework
+namespace A2_Coursework.Classes
 {
     internal static class Program
     {
@@ -16,8 +16,8 @@ namespace A2_Coursework
         }
         private static void SetupDataDirectoryPath()
         {
-            string debugPath = System.IO.Path.GetDirectoryName(Environment.CurrentDirectory);
-            string dataDirectoryPath = System.IO.Path.GetDirectoryName(debugPath);
+            string debugPath = Path.GetDirectoryName(Environment.CurrentDirectory);
+            string dataDirectoryPath = Path.GetDirectoryName(debugPath);
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectoryPath);
         }
     }

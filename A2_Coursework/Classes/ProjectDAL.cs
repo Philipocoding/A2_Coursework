@@ -9,14 +9,69 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Xml.Linq;
 using System.Transactions;
 using System.Data.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace A2_Coursework
+namespace A2_Coursework.Classes
 {
     public class ProjectDAL
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-        
+        public static List<Booking> GetBookings()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand GetBookings = new SqlCommand();
+                    GetBookings.Connection = connection;
+
+                    GetBookings.CommandType = CommandType.StoredProcedure;
+                    GetBookings.CommandText = "RetrieveBookings";
+
+
+                    List<Booking> Empty = new(GetBookings.ExecuteNonQuery());
+                    return Empty;
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            List<Booking> allBookings = new();
+            return allBookings;
+
+        }
+
+        public static void DeleteBooking(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand Delete = new SqlCommand();
+                    Delete.Connection = connection;
+
+                    Delete.CommandType = CommandType.StoredProcedure;
+                    Delete.CommandText = "DeleteBooking";
+                    Delete.Parameters.Add(new SqlParameter("@BookingID", id));
+
+
+                    Delete.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+        }
         public static void NewStaffMember(string firstname, string surname, string gender, int age, float hourlyRate, int teamNo)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -28,7 +83,7 @@ namespace A2_Coursework
                     SqlCommand NewStaff = new SqlCommand();
                     NewStaff.Connection = connection;
 
-                    NewStaff.CommandType = System.Data.CommandType.StoredProcedure;
+                    NewStaff.CommandType = CommandType.StoredProcedure;
                     NewStaff.CommandText = "NewStaffMember";
                     NewStaff.Parameters.Add(new SqlParameter("@Firstname", firstname));
                     NewStaff.Parameters.Add(new SqlParameter("@Surname", surname));
@@ -40,13 +95,13 @@ namespace A2_Coursework
                     NewStaff.ExecuteNonQuery();
 
                 }
-                catch (Exception e) 
+                catch (Exception e)
                 {
 
                 }
             }
         }
-        public static int  NewBooking(int CustomerID, string Date, List<int> ServiceID)
+        public static int NewBooking(int CustomerID, string Date, List<int> ServiceID)
         {
             int rowsaffected = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -58,7 +113,7 @@ namespace A2_Coursework
                     SqlCommand AddBooking = new SqlCommand();
                     AddBooking.Connection = connection;
 
-                    AddBooking.CommandType = System.Data.CommandType.StoredProcedure;
+                    AddBooking.CommandType = CommandType.StoredProcedure;
                     AddBooking.CommandText = "NewBooking";
                     AddBooking.Parameters.Add(new SqlParameter("@BookingDate", Date));
                     AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
@@ -73,7 +128,7 @@ namespace A2_Coursework
                     SqlCommand NewBookingRequests = new SqlCommand();
                     NewBookingRequests.Connection = connection;
 
-                    NewBookingRequests.CommandType = System.Data.CommandType.StoredProcedure;
+                    NewBookingRequests.CommandType = CommandType.StoredProcedure;
                     NewBookingRequests.CommandText = "NewBookingRequests";
                     for (int i = 0; i < ServiceID.Count; i++)
                     {
@@ -84,7 +139,7 @@ namespace A2_Coursework
                         NewBookingRequests.ExecuteNonQuery();
                     }
                     connection.Close();
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -94,8 +149,8 @@ namespace A2_Coursework
             }
         }
 
-        public static int NewCustomer(string fname, string sname, string DOB, 
-            string gender, int age, string addressOne, string addressTwo, string email)
+        public static int NewCustomer(string fname, string sname, string DOB,
+            string gender, string addressOne, string addressTwo, string email)
         {
             int rowsaffected = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -107,13 +162,12 @@ namespace A2_Coursework
                     SqlCommand AddCustomer = new SqlCommand();
                     AddCustomer.Connection = connection;
 
-                    AddCustomer.CommandType = System.Data.CommandType.StoredProcedure;
-                    AddCustomer.CommandText = "NewBooking";
-                    AddCustomer.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
+                    AddCustomer.CommandType = CommandType.StoredProcedure;
+                    AddCustomer.CommandText = "AddCustomer";
                     AddCustomer.Parameters.Add(new SqlParameter("@DOB", DOB));
-                    AddCustomer.Parameters.Add(new SqlParameter("@fname", fname));
-                    AddCustomer.Parameters.Add(new SqlParameter("@sname", sname));
-                    AddCustomer.Parameters.Add(new SqlParameter("@gender", gender));
+                    AddCustomer.Parameters.Add(new SqlParameter("@Forename", fname));
+                    AddCustomer.Parameters.Add(new SqlParameter("@Surname", sname));
+                    AddCustomer.Parameters.Add(new SqlParameter("@Gender", gender));
                     AddCustomer.Parameters.Add(new SqlParameter("@AddressOne", addressOne));
                     AddCustomer.Parameters.Add(new SqlParameter("@AddressTwo", addressTwo));
                     AddCustomer.Parameters.Add(new SqlParameter("@Email", email));
@@ -131,6 +185,6 @@ namespace A2_Coursework
             }
         }
 
-        
+
     }
 }

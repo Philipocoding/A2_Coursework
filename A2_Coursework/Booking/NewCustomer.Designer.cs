@@ -32,6 +32,8 @@
             label1 = new Label();
             txtbFirstname = new TextBox();
             panel1 = new Panel();
+            label7 = new Label();
+            txtbAge = new TextBox();
             Add = new Label();
             txtbAddressTwo = new TextBox();
             txtbEmail = new TextBox();
@@ -40,12 +42,10 @@
             label5 = new Label();
             txtbSurname = new TextBox();
             label4 = new Label();
-            txtbDOB = new TextBox();
             label3 = new Label();
             txtbGender = new TextBox();
             label2 = new Label();
-            txtbAge = new TextBox();
-            label7 = new Label();
+            dtPicker = new DateTimePicker();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -80,6 +80,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(dtPicker);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(txtbAge);
             panel1.Controls.Add(Add);
@@ -90,7 +91,6 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(txtbSurname);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(txtbDOB);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(txtbGender);
             panel1.Controls.Add(label2);
@@ -101,6 +101,24 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(899, 570);
             panel1.TabIndex = 3;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 24F);
+            label7.Location = new Point(288, 272);
+            label7.Name = "label7";
+            label7.Size = new Size(77, 45);
+            label7.TabIndex = 16;
+            label7.Text = "Age";
+            // 
+            // txtbAge
+            // 
+            txtbAge.Font = new Font("Segoe UI", 24F);
+            txtbAge.Location = new Point(387, 272);
+            txtbAge.Name = "txtbAge";
+            txtbAge.Size = new Size(326, 50);
+            txtbAge.TabIndex = 15;
             // 
             // Add
             // 
@@ -174,14 +192,6 @@
             label4.TabIndex = 7;
             label4.Text = "Gender";
             // 
-            // txtbDOB
-            // 
-            txtbDOB.Font = new Font("Segoe UI", 24F);
-            txtbDOB.Location = new Point(387, 158);
-            txtbDOB.Name = "txtbDOB";
-            txtbDOB.Size = new Size(326, 50);
-            txtbDOB.TabIndex = 6;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -210,23 +220,13 @@
             label2.TabIndex = 3;
             label2.Text = "Surname";
             // 
-            // txtbAge
+            // dtPicker
             // 
-            txtbAge.Font = new Font("Segoe UI", 24F);
-            txtbAge.Location = new Point(387, 272);
-            txtbAge.Name = "txtbAge";
-            txtbAge.Size = new Size(326, 50);
-            txtbAge.TabIndex = 15;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 24F);
-            label7.Location = new Point(288, 272);
-            label7.Name = "label7";
-            label7.Size = new Size(77, 45);
-            label7.TabIndex = 16;
-            label7.Text = "Age";
+            dtPicker.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtPicker.Location = new Point(387, 158);
+            dtPicker.Name = "dtPicker";
+            dtPicker.Size = new Size(326, 50);
+            dtPicker.TabIndex = 4;
             // 
             // NewCustomer
             // 
@@ -253,7 +253,6 @@
         private Label label5;
         private TextBox txtbSurname;
         private Label label4;
-        private TextBox txtbDOB;
         private Label label3;
         private TextBox txtbGender;
         private Label label2;
@@ -261,5 +260,6 @@
         private TextBox txtbAddressTwo;
         private Label label7;
         private TextBox txtbAge;
+        private DateTimePicker dtPicker;
     }
 }

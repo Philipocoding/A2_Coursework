@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using A2_Coursework.Classes;
 
 namespace A2_Coursework
 {
@@ -19,8 +20,9 @@ namespace A2_Coursework
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            ProjectDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, txtbDOB.Text, txtbGender.Text,
-                Convert.ToInt32(txtbAge.Text), txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
+            string dateString = dtPicker.Value.ToString("yyyy-MM-dd");
+            ProjectDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, txtbGender.Text,
+                txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
         }
     }
 }
