@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using A2_Coursework.Classes;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace A2_Coursework
 {
@@ -21,8 +22,18 @@ namespace A2_Coursework
 
         private void ViewBookings_Load(object sender, EventArgs e)
         {
-            //BookingTable.Columns[0].HeaderText = "BookingID";
-            BookingTable.DataSource = Booking.populateDataGrid("h");
+            PopulateDataGrid();
+        }
+
+        private void PopulateDataGrid()
+        {
+            BookingTable.Rows.Clear();
+            List<Booking> allbookings = new();
+            allbookings = Booking.populateDataGrid();
+            foreach (Booking booking in allbookings)
+            {
+                BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.BookingDate);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -30,11 +41,8 @@ namespace A2_Coursework
             if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
             {
                 ProjectDAL.DeleteBooking(Convert.ToInt32(BookingTable.SelectedRows[0].Cells[0].Value));
-                BookingTable.DataSource = Booking.populateDataGrid("h");
+                PopulateDataGrid();
             }
-
-
-
         }
 
         private void BookingTable_CellClick(object sender, DataGridViewCellEventArgs e)

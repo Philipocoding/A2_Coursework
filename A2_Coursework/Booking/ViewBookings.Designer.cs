@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BookingTable = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnLeft = new Button();
             dateTimePicker1 = new DateTimePicker();
             pnlDatePicker = new Panel();
@@ -36,21 +38,19 @@
             btnDelete = new Button();
             txtbID = new TextBox();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
+            panel1 = new Panel();
+            DTPicker = new DateTimePicker();
+            label2 = new Label();
+            button1 = new Button();
+            listViewBookings = new ListView();
+            BookingTable = new DataGridView();
+            clmBookingID = new DataGridViewTextBoxColumn();
+            clmCustomerID = new DataGridViewTextBoxColumn();
+            clmDate = new DataGridViewTextBoxColumn();
             pnlDatePicker.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
             SuspendLayout();
-            // 
-            // BookingTable
-            // 
-            BookingTable.AllowUserToAddRows = false;
-            BookingTable.AllowUserToDeleteRows = false;
-            BookingTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            BookingTable.Location = new Point(95, 107);
-            BookingTable.Name = "BookingTable";
-            BookingTable.ReadOnly = true;
-            BookingTable.Size = new Size(821, 375);
-            BookingTable.TabIndex = 0;
-            BookingTable.CellClick += BookingTable_CellClick;
             // 
             // btnLeft
             // 
@@ -119,28 +119,117 @@
             label1.TabIndex = 6;
             label1.Text = "Booking ID";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(DTPicker);
+            panel1.Controls.Add(label2);
+            panel1.Location = new Point(622, 488);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(550, 256);
+            panel1.TabIndex = 7;
+            // 
+            // DTPicker
+            // 
+            DTPicker.Location = new Point(49, 20);
+            DTPicker.Name = "DTPicker";
+            DTPicker.Size = new Size(200, 23);
+            DTPicker.TabIndex = 3;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 26);
+            label2.Name = "label2";
+            label2.Size = new Size(31, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Date";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(525, 499);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // listViewBookings
+            // 
+            listViewBookings.Location = new Point(12, 136);
+            listViewBookings.Name = "listViewBookings";
+            listViewBookings.Size = new Size(157, 325);
+            listViewBookings.TabIndex = 4;
+            listViewBookings.UseCompatibleStateImageBehavior = false;
+            // 
+            // BookingTable
+            // 
+            BookingTable.AllowUserToAddRows = false;
+            BookingTable.AllowUserToDeleteRows = false;
+            BookingTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            BookingTable.Columns.AddRange(new DataGridViewColumn[] { clmBookingID, clmCustomerID, clmDate });
+            BookingTable.Location = new Point(293, 107);
+            BookingTable.Name = "BookingTable";
+            BookingTable.ReadOnly = true;
+            BookingTable.RowHeadersWidth = 100;
+            BookingTable.RowTemplate.Height = 35;
+            BookingTable.Size = new Size(770, 336);
+            BookingTable.StandardTab = true;
+            BookingTable.TabIndex = 0;
+            BookingTable.CellClick += BookingTable_CellClick;
+            // 
+            // clmBookingID
+            // 
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmBookingID.DefaultCellStyle = dataGridViewCellStyle1;
+            clmBookingID.FillWeight = 10F;
+            clmBookingID.HeaderText = "Booking ID";
+            clmBookingID.Name = "clmBookingID";
+            clmBookingID.ReadOnly = true;
+            clmBookingID.Width = 200;
+            // 
+            // clmCustomerID
+            // 
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle2;
+            clmCustomerID.HeaderText = "Customer ID";
+            clmCustomerID.Name = "clmCustomerID";
+            clmCustomerID.ReadOnly = true;
+            clmCustomerID.Width = 200;
+            // 
+            // clmDate
+            // 
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmDate.DefaultCellStyle = dataGridViewCellStyle3;
+            clmDate.HeaderText = "Date";
+            clmDate.Name = "clmDate";
+            clmDate.ReadOnly = true;
+            clmDate.Width = 200;
+            // 
             // ViewBookings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1038, 672);
+            ClientSize = new Size(1197, 756);
+            Controls.Add(listViewBookings);
+            Controls.Add(panel1);
+            Controls.Add(BookingTable);
             Controls.Add(label1);
+            Controls.Add(button1);
             Controls.Add(txtbID);
             Controls.Add(btnDelete);
-            Controls.Add(BookingTable);
             Controls.Add(pnlDatePicker);
             Name = "ViewBookings";
             Text = "ViewBookings";
             Load += ViewBookings_Load;
-            ((System.ComponentModel.ISupportInitialize)BookingTable).EndInit();
             pnlDatePicker.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)BookingTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView BookingTable;
         private Button btnLeft;
         private DateTimePicker dateTimePicker1;
         private Panel pnlDatePicker;
@@ -148,5 +237,14 @@
         private Button btnDelete;
         private TextBox txtbID;
         private Label label1;
+        private Panel panel1;
+        private Label label2;
+        private Button button1;
+        private DateTimePicker DTPicker;
+        private ListView listViewBookings;
+        private DataGridView BookingTable;
+        private DataGridViewTextBoxColumn clmBookingID;
+        private DataGridViewTextBoxColumn clmCustomerID;
+        private DataGridViewTextBoxColumn clmDate;
     }
 }

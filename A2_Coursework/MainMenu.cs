@@ -99,5 +99,7 @@ namespace A2_Coursework
             openChildForm(new ViewBookings());
             HideSubMenu();
         }
+
+       
     }
 }

@@ -17,34 +17,7 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-        public static List<Booking> GetBookings()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-
-                    SqlCommand GetBookings = new SqlCommand();
-                    GetBookings.Connection = connection;
-
-                    GetBookings.CommandType = CommandType.StoredProcedure;
-                    GetBookings.CommandText = "RetrieveBookings";
-
-
-                    List<Booking> Empty = new(GetBookings.ExecuteNonQuery());
-                    return Empty;
-
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-            List<Booking> allBookings = new();
-            return allBookings;
-
-        }
+       
 
         public static void DeleteBooking(int id)
         {
@@ -54,6 +27,15 @@ namespace A2_Coursework.Classes
                 {
                     connection.Open();
 
+                    SqlCommand DeleteRequests = new SqlCommand();
+                    DeleteRequests.Connection = connection;
+
+                    DeleteRequests.CommandType = CommandType.StoredProcedure;
+                    DeleteRequests.CommandText = "DeleteBookingRequests";
+                    DeleteRequests.Parameters.Add(new SqlParameter("@BookingID", id));
+
+
+                    DeleteRequests.ExecuteNonQuery();
                     SqlCommand Delete = new SqlCommand();
                     Delete.Connection = connection;
 
@@ -63,6 +45,9 @@ namespace A2_Coursework.Classes
 
 
                     Delete.ExecuteNonQuery();
+
+                    
+
 
                 }
                 catch (Exception ex)
@@ -120,9 +105,15 @@ namespace A2_Coursework.Classes
                     rowsaffected = AddBooking.ExecuteNonQuery();
 
 
-                    string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
-                    SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
-                    int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
+                    SqlCommand getID = new SqlCommand();
+                    getID.Connection = connection;
+                    getID.CommandText = "GetLastBooking";
+                    getID.CommandType = CommandType.StoredProcedure;
+                    int bookingID = getID.ExecuteNonQuery();
+
+                    //string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
+                    //SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
+                    //int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
 
 
                     SqlCommand NewBookingRequests = new SqlCommand();

@@ -60,7 +60,7 @@
             panel1.ForeColor = Color.Coral;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 711);
+            panel1.Size = new Size(200, 795);
             panel1.TabIndex = 0;
             // 
             // pnlMenuSubMenu
@@ -250,17 +250,17 @@
             pnlChildForm.Dock = DockStyle.Fill;
             pnlChildForm.Location = new Point(200, 0);
             pnlChildForm.Name = "pnlChildForm";
-            pnlChildForm.Size = new Size(1054, 711);
+            pnlChildForm.Size = new Size(1213, 795);
             pnlChildForm.TabIndex = 0;
             // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1254, 711);
+            ClientSize = new Size(1413, 795);
             Controls.Add(pnlChildForm);
             Controls.Add(panel1);
-            MinimumSize = new Size(1270, 750);
+            MinimumSize = new Size(1357, 804);
             Name = "MainMenu";
             Text = "MainMenu";
             panel1.ResumeLayout(false);

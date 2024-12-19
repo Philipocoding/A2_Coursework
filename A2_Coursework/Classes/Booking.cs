@@ -12,38 +12,53 @@ namespace A2_Coursework.Classes
     {
         public int BookingID { get; set; }
         public int CustomerID { get; set; }
-        public string Date { get; set; }
+        public string BookingDate { get; set; }
 
         public Booking() { }
         public Booking(int bookingID, int customerID, string date)
         {
             BookingID = bookingID;
             CustomerID = customerID;
-            Date = date;
+            BookingDate = date;
         }
-        public static DataTable populateDataGrid(string query)
+        public static List<Booking> populateDataGrid()
         {
-            query = "SELECT * FROM Booking";
-            DataTable datatable = new();
+            List<Booking> bookings = new List<Booking>();
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(ProjectDAL.connectionString))
                 {
                     connection.Open();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+
+                    SqlCommand GetBookings = new SqlCommand();
+
+                    GetBookings.Connection = connection;
+                    GetBookings.CommandType = System.Data.CommandType.StoredProcedure;
+                    GetBookings.CommandText = "RetrieveBookings";
+
+                    using (SqlDataReader reader = GetBookings.ExecuteReader())
                     {
-                        adapter.Fill(datatable);
+                        while (reader.Read())
+                        {
+                            Booking booking = new Booking();
+
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            bookings.Add(booking);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine($"Error: {ex.Message}");
             }
-            return datatable;
 
+            return bookings;
         }
+
 
     }
 }
