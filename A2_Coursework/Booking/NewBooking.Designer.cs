@@ -38,42 +38,45 @@
             btnDoors = new Button();
             btnFloors = new Button();
             btnBathrooms = new Button();
-            lblPlusONE = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
+            lblWindowPlus = new Label();
+            lblDoorPlus = new Label();
+            lblFloorPlus = new Label();
+            lblDustPlus = new Label();
+            lblBathroomPlus = new Label();
+            lblCarpetsPlus = new Label();
+            lblCurtainsPlus = new Label();
             lblWIndows = new Label();
             lblDoors = new Label();
             lblFloors = new Label();
             lblDusting = new Label();
             lblBathrooms = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
-            label16 = new Label();
-            label17 = new Label();
-            label18 = new Label();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
+            lblCarpets = new Label();
+            lblCurtains = new Label();
+            lblCurtainsMinus = new Label();
+            lblCarpetsMinus = new Label();
+            lblBathroomMinus = new Label();
+            lblDustMinus = new Label();
+            lblFloorMinus = new Label();
+            lblDoorMinus = new Label();
+            lblWIndowsMinus = new Label();
             btnRoomVacuum = new Button();
             btnCurtains = new Button();
-            label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
+            lblVacuumMinus = new Label();
+            lblVacuum = new Label();
+            lblVacuumPlus = new Label();
             DTPicker = new DateTimePicker();
             panel1 = new Panel();
             btnSubmit = new Button();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnWindows
             // 
             btnWindows.FlatStyle = FlatStyle.Flat;
             btnWindows.Font = new Font("Segoe UI", 18F);
-            btnWindows.Location = new Point(305, 213);
+            btnWindows.Location = new Point(694, 244);
             btnWindows.Name = "btnWindows";
             btnWindows.Size = new Size(206, 53);
             btnWindows.TabIndex = 0;
@@ -84,7 +87,7 @@
             // txtbCustomerID
             // 
             txtbCustomerID.Font = new Font("Segoe UI", 18F);
-            txtbCustomerID.Location = new Point(338, 95);
+            txtbCustomerID.Location = new Point(727, 126);
             txtbCustomerID.Name = "txtbCustomerID";
             txtbCustomerID.Size = new Size(293, 39);
             txtbCustomerID.TabIndex = 4;
@@ -92,7 +95,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(250, 119);
+            label1.Location = new Point(648, 143);
             label1.Name = "label1";
             label1.Size = new Size(73, 15);
             label1.TabIndex = 5;
@@ -101,7 +104,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(292, 169);
+            label2.Location = new Point(681, 200);
             label2.Name = "label2";
             label2.Size = new Size(31, 15);
             label2.TabIndex = 6;
@@ -111,7 +114,7 @@
             // 
             btnCarpets.FlatStyle = FlatStyle.Flat;
             btnCarpets.Font = new Font("Segoe UI", 18F);
-            btnCarpets.Location = new Point(305, 470);
+            btnCarpets.Location = new Point(694, 501);
             btnCarpets.Name = "btnCarpets";
             btnCarpets.Size = new Size(206, 53);
             btnCarpets.TabIndex = 11;
@@ -121,7 +124,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(436, 333);
+            button5.Location = new Point(825, 364);
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
             button5.TabIndex = 12;
@@ -132,7 +135,7 @@
             // 
             btnDusting.FlatStyle = FlatStyle.Flat;
             btnDusting.Font = new Font("Segoe UI", 18F);
-            btnDusting.Location = new Point(305, 367);
+            btnDusting.Location = new Point(694, 398);
             btnDusting.Name = "btnDusting";
             btnDusting.Size = new Size(206, 53);
             btnDusting.TabIndex = 13;
@@ -144,7 +147,7 @@
             // 
             btnDoors.FlatStyle = FlatStyle.Flat;
             btnDoors.Font = new Font("Segoe UI", 18F);
-            btnDoors.Location = new Point(305, 316);
+            btnDoors.Location = new Point(694, 347);
             btnDoors.Name = "btnDoors";
             btnDoors.Size = new Size(206, 53);
             btnDoors.TabIndex = 14;
@@ -156,7 +159,7 @@
             // 
             btnFloors.FlatStyle = FlatStyle.Flat;
             btnFloors.Font = new Font("Segoe UI", 18F);
-            btnFloors.Location = new Point(305, 264);
+            btnFloors.Location = new Point(694, 295);
             btnFloors.Name = "btnFloors";
             btnFloors.Size = new Size(206, 53);
             btnFloors.TabIndex = 15;
@@ -168,7 +171,7 @@
             // 
             btnBathrooms.FlatStyle = FlatStyle.Flat;
             btnBathrooms.Font = new Font("Segoe UI", 18F);
-            btnBathrooms.Location = new Point(305, 418);
+            btnBathrooms.Location = new Point(694, 449);
             btnBathrooms.Name = "btnBathrooms";
             btnBathrooms.Size = new Size(206, 53);
             btnBathrooms.TabIndex = 16;
@@ -177,81 +180,88 @@
             btnBathrooms.UseVisualStyleBackColor = true;
             btnBathrooms.Click += btnBathrooms_Click;
             // 
-            // lblPlusONE
+            // lblWindowPlus
             // 
-            lblPlusONE.AutoSize = true;
-            lblPlusONE.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPlusONE.Location = new Point(583, 218);
-            lblPlusONE.Name = "lblPlusONE";
-            lblPlusONE.Size = new Size(48, 50);
-            lblPlusONE.TabIndex = 19;
-            lblPlusONE.Text = "+";
+            lblWindowPlus.AutoSize = true;
+            lblWindowPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWindowPlus.Location = new Point(972, 249);
+            lblWindowPlus.Name = "lblWindowPlus";
+            lblWindowPlus.Size = new Size(48, 50);
+            lblWindowPlus.TabIndex = 19;
+            lblWindowPlus.Text = "+";
+            lblWindowPlus.Click += lblWindowPlus_Click;
             // 
-            // label3
+            // lblDoorPlus
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(583, 323);
-            label3.Name = "label3";
-            label3.Size = new Size(48, 50);
-            label3.TabIndex = 20;
-            label3.Text = "+";
+            lblDoorPlus.AutoSize = true;
+            lblDoorPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDoorPlus.Location = new Point(972, 354);
+            lblDoorPlus.Name = "lblDoorPlus";
+            lblDoorPlus.Size = new Size(48, 50);
+            lblDoorPlus.TabIndex = 20;
+            lblDoorPlus.Text = "+";
+            lblDoorPlus.Click += lblDoorPlus_Click;
             // 
-            // label4
+            // lblFloorPlus
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(583, 268);
-            label4.Name = "label4";
-            label4.Size = new Size(48, 50);
-            label4.TabIndex = 21;
-            label4.Text = "+";
+            lblFloorPlus.AutoSize = true;
+            lblFloorPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFloorPlus.Location = new Point(972, 299);
+            lblFloorPlus.Name = "lblFloorPlus";
+            lblFloorPlus.Size = new Size(48, 50);
+            lblFloorPlus.TabIndex = 21;
+            lblFloorPlus.Text = "+";
+            lblFloorPlus.Click += lblFloorPlus_Click;
             // 
-            // label5
+            // lblDustPlus
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(583, 373);
-            label5.Name = "label5";
-            label5.Size = new Size(48, 50);
-            label5.TabIndex = 22;
-            label5.Text = "+";
+            lblDustPlus.AutoSize = true;
+            lblDustPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDustPlus.Location = new Point(972, 404);
+            lblDustPlus.Name = "lblDustPlus";
+            lblDustPlus.Size = new Size(48, 50);
+            lblDustPlus.TabIndex = 22;
+            lblDustPlus.Text = "+";
+            lblDustPlus.Click += lblDustPlus_Click;
             // 
-            // label6
+            // lblBathroomPlus
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(583, 423);
-            label6.Name = "label6";
-            label6.Size = new Size(48, 50);
-            label6.TabIndex = 23;
-            label6.Text = "+";
+            lblBathroomPlus.AutoSize = true;
+            lblBathroomPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBathroomPlus.Location = new Point(972, 454);
+            lblBathroomPlus.Name = "lblBathroomPlus";
+            lblBathroomPlus.Size = new Size(48, 50);
+            lblBathroomPlus.TabIndex = 23;
+            lblBathroomPlus.Text = "+";
+            lblBathroomPlus.Click += lblBathroomPlus_Click;
             // 
-            // label7
+            // lblCarpetsPlus
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(583, 480);
-            label7.Name = "label7";
-            label7.Size = new Size(48, 50);
-            label7.TabIndex = 24;
-            label7.Text = "+";
+            lblCarpetsPlus.AutoSize = true;
+            lblCarpetsPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCarpetsPlus.Location = new Point(972, 511);
+            lblCarpetsPlus.Name = "lblCarpetsPlus";
+            lblCarpetsPlus.Size = new Size(48, 50);
+            lblCarpetsPlus.TabIndex = 24;
+            lblCarpetsPlus.Text = "+";
+            lblCarpetsPlus.Click += lblCarpetsPlus_Click;
             // 
-            // label8
+            // lblCurtainsPlus
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(583, 535);
-            label8.Name = "label8";
-            label8.Size = new Size(48, 50);
-            label8.TabIndex = 25;
-            label8.Text = "+";
+            lblCurtainsPlus.AutoSize = true;
+            lblCurtainsPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCurtainsPlus.Location = new Point(972, 566);
+            lblCurtainsPlus.Name = "lblCurtainsPlus";
+            lblCurtainsPlus.Size = new Size(48, 50);
+            lblCurtainsPlus.TabIndex = 25;
+            lblCurtainsPlus.Text = "+";
+            lblCurtainsPlus.Click += lblCurtainsPlus_Click;
             // 
             // lblWIndows
             // 
             lblWIndows.AutoSize = true;
             lblWIndows.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblWIndows.Location = new Point(553, 227);
+            lblWIndows.Location = new Point(942, 258);
             lblWIndows.Name = "lblWIndows";
             lblWIndows.Size = new Size(33, 37);
             lblWIndows.TabIndex = 26;
@@ -261,7 +271,7 @@
             // 
             lblDoors.AutoSize = true;
             lblDoors.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDoors.Location = new Point(553, 331);
+            lblDoors.Location = new Point(942, 362);
             lblDoors.Name = "lblDoors";
             lblDoors.Size = new Size(33, 37);
             lblDoors.TabIndex = 27;
@@ -271,7 +281,7 @@
             // 
             lblFloors.AutoSize = true;
             lblFloors.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFloors.Location = new Point(553, 280);
+            lblFloors.Location = new Point(942, 311);
             lblFloors.Name = "lblFloors";
             lblFloors.Size = new Size(33, 37);
             lblFloors.TabIndex = 28;
@@ -281,7 +291,7 @@
             // 
             lblDusting.AutoSize = true;
             lblDusting.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDusting.Location = new Point(553, 382);
+            lblDusting.Location = new Point(942, 413);
             lblDusting.Name = "lblDusting";
             lblDusting.Size = new Size(33, 37);
             lblDusting.TabIndex = 29;
@@ -291,107 +301,114 @@
             // 
             lblBathrooms.AutoSize = true;
             lblBathrooms.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBathrooms.Location = new Point(553, 433);
+            lblBathrooms.Location = new Point(942, 464);
             lblBathrooms.Name = "lblBathrooms";
             lblBathrooms.Size = new Size(33, 37);
             lblBathrooms.TabIndex = 30;
             lblBathrooms.Text = "0";
             // 
-            // label13
+            // lblCarpets
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(553, 491);
-            label13.Name = "label13";
-            label13.Size = new Size(33, 37);
-            label13.TabIndex = 31;
-            label13.Text = "0";
+            lblCarpets.AutoSize = true;
+            lblCarpets.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCarpets.Location = new Point(942, 522);
+            lblCarpets.Name = "lblCarpets";
+            lblCarpets.Size = new Size(33, 37);
+            lblCarpets.TabIndex = 31;
+            lblCarpets.Text = "0";
             // 
-            // label14
+            // lblCurtains
             // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(553, 545);
-            label14.Name = "label14";
-            label14.Size = new Size(33, 37);
-            label14.TabIndex = 32;
-            label14.Text = "0";
+            lblCurtains.AutoSize = true;
+            lblCurtains.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCurtains.Location = new Point(942, 576);
+            lblCurtains.Name = "lblCurtains";
+            lblCurtains.Size = new Size(33, 37);
+            lblCurtains.TabIndex = 32;
+            lblCurtains.Text = "0";
             // 
-            // label15
+            // lblCurtainsMinus
             // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(515, 535);
-            label15.Name = "label15";
-            label15.Size = new Size(37, 50);
-            label15.TabIndex = 39;
-            label15.Text = "-";
+            lblCurtainsMinus.AutoSize = true;
+            lblCurtainsMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCurtainsMinus.Location = new Point(904, 566);
+            lblCurtainsMinus.Name = "lblCurtainsMinus";
+            lblCurtainsMinus.Size = new Size(37, 50);
+            lblCurtainsMinus.TabIndex = 39;
+            lblCurtainsMinus.Text = "-";
+            lblCurtainsMinus.Click += lblCurtainsMinus_Click;
             // 
-            // label16
+            // lblCarpetsMinus
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(515, 481);
-            label16.Name = "label16";
-            label16.Size = new Size(37, 50);
-            label16.TabIndex = 38;
-            label16.Text = "-";
+            lblCarpetsMinus.AutoSize = true;
+            lblCarpetsMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCarpetsMinus.Location = new Point(904, 512);
+            lblCarpetsMinus.Name = "lblCarpetsMinus";
+            lblCarpetsMinus.Size = new Size(37, 50);
+            lblCarpetsMinus.TabIndex = 38;
+            lblCarpetsMinus.Text = "-";
+            lblCarpetsMinus.Click += lblCarpetsMinus_Click;
             // 
-            // label17
+            // lblBathroomMinus
             // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.Location = new Point(515, 424);
-            label17.Name = "label17";
-            label17.Size = new Size(37, 50);
-            label17.TabIndex = 37;
-            label17.Text = "-";
+            lblBathroomMinus.AutoSize = true;
+            lblBathroomMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBathroomMinus.Location = new Point(904, 455);
+            lblBathroomMinus.Name = "lblBathroomMinus";
+            lblBathroomMinus.Size = new Size(37, 50);
+            lblBathroomMinus.TabIndex = 37;
+            lblBathroomMinus.Text = "-";
+            lblBathroomMinus.Click += lblBathroomMinus_Click;
             // 
-            // label18
+            // lblDustMinus
             // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.Location = new Point(515, 374);
-            label18.Name = "label18";
-            label18.Size = new Size(37, 50);
-            label18.TabIndex = 36;
-            label18.Text = "-";
+            lblDustMinus.AutoSize = true;
+            lblDustMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDustMinus.Location = new Point(904, 405);
+            lblDustMinus.Name = "lblDustMinus";
+            lblDustMinus.Size = new Size(37, 50);
+            lblDustMinus.TabIndex = 36;
+            lblDustMinus.Text = "-";
+            lblDustMinus.Click += lblDustMinus_Click;
             // 
-            // label19
+            // lblFloorMinus
             // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.Location = new Point(515, 269);
-            label19.Name = "label19";
-            label19.Size = new Size(37, 50);
-            label19.TabIndex = 35;
-            label19.Text = "-";
+            lblFloorMinus.AutoSize = true;
+            lblFloorMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFloorMinus.Location = new Point(904, 300);
+            lblFloorMinus.Name = "lblFloorMinus";
+            lblFloorMinus.Size = new Size(37, 50);
+            lblFloorMinus.TabIndex = 35;
+            lblFloorMinus.Text = "-";
+            lblFloorMinus.Click += lblFloorMinus_Click;
             // 
-            // label20
+            // lblDoorMinus
             // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.Location = new Point(515, 324);
-            label20.Name = "label20";
-            label20.Size = new Size(37, 50);
-            label20.TabIndex = 34;
-            label20.Text = "-";
+            lblDoorMinus.AutoSize = true;
+            lblDoorMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDoorMinus.Location = new Point(904, 355);
+            lblDoorMinus.Name = "lblDoorMinus";
+            lblDoorMinus.Size = new Size(37, 50);
+            lblDoorMinus.TabIndex = 34;
+            lblDoorMinus.Text = "-";
+            lblDoorMinus.Click += lblDoorMinus_Click;
             // 
-            // label21
+            // lblWIndowsMinus
             // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.Location = new Point(515, 219);
-            label21.Name = "label21";
-            label21.Size = new Size(37, 50);
-            label21.TabIndex = 33;
-            label21.Text = "-";
+            lblWIndowsMinus.AutoSize = true;
+            lblWIndowsMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWIndowsMinus.Location = new Point(904, 250);
+            lblWIndowsMinus.Name = "lblWIndowsMinus";
+            lblWIndowsMinus.Size = new Size(37, 50);
+            lblWIndowsMinus.TabIndex = 33;
+            lblWIndowsMinus.Text = "-";
+            lblWIndowsMinus.Click += lblWIndowsMinus_Click;
             // 
             // btnRoomVacuum
             // 
             btnRoomVacuum.FlatStyle = FlatStyle.Flat;
             btnRoomVacuum.Font = new Font("Segoe UI", 18F);
-            btnRoomVacuum.Location = new Point(304, 574);
+            btnRoomVacuum.Location = new Point(693, 605);
             btnRoomVacuum.Name = "btnRoomVacuum";
             btnRoomVacuum.Size = new Size(206, 76);
             btnRoomVacuum.TabIndex = 41;
@@ -403,7 +420,7 @@
             // 
             btnCurtains.FlatStyle = FlatStyle.Flat;
             btnCurtains.Font = new Font("Segoe UI", 18F);
-            btnCurtains.Location = new Point(305, 522);
+            btnCurtains.Location = new Point(694, 553);
             btnCurtains.Name = "btnCurtains";
             btnCurtains.Size = new Size(206, 53);
             btnCurtains.TabIndex = 42;
@@ -411,96 +428,117 @@
             btnCurtains.UseVisualStyleBackColor = true;
             btnCurtains.Click += btnCurtains_Click;
             // 
-            // label9
+            // lblVacuumMinus
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(515, 582);
-            label9.Name = "label9";
-            label9.Size = new Size(37, 50);
-            label9.TabIndex = 45;
-            label9.Text = "-";
+            lblVacuumMinus.AutoSize = true;
+            lblVacuumMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVacuumMinus.Location = new Point(904, 613);
+            lblVacuumMinus.Name = "lblVacuumMinus";
+            lblVacuumMinus.Size = new Size(37, 50);
+            lblVacuumMinus.TabIndex = 45;
+            lblVacuumMinus.Text = "-";
+            lblVacuumMinus.Click += lblVacuumMinus_Click;
             // 
-            // label10
+            // lblVacuum
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(553, 592);
-            label10.Name = "label10";
-            label10.Size = new Size(33, 37);
-            label10.TabIndex = 44;
-            label10.Text = "0";
+            lblVacuum.AutoSize = true;
+            lblVacuum.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVacuum.Location = new Point(942, 623);
+            lblVacuum.Name = "lblVacuum";
+            lblVacuum.Size = new Size(33, 37);
+            lblVacuum.TabIndex = 44;
+            lblVacuum.Text = "0";
             // 
-            // label11
+            // lblVacuumPlus
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(583, 582);
-            label11.Name = "label11";
-            label11.Size = new Size(48, 50);
-            label11.TabIndex = 43;
-            label11.Text = "+";
+            lblVacuumPlus.AutoSize = true;
+            lblVacuumPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVacuumPlus.Location = new Point(972, 613);
+            lblVacuumPlus.Name = "lblVacuumPlus";
+            lblVacuumPlus.Size = new Size(48, 50);
+            lblVacuumPlus.TabIndex = 43;
+            lblVacuumPlus.Text = "+";
+            lblVacuumPlus.Click += lblVacuumPlus_Click;
             // 
             // DTPicker
             // 
             DTPicker.CalendarFont = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DTPicker.Font = new Font("Segoe UI", 22F);
-            DTPicker.Location = new Point(338, 153);
+            DTPicker.Location = new Point(727, 184);
             DTPicker.Name = "DTPicker";
             DTPicker.Size = new Size(200, 47);
             DTPicker.TabIndex = 47;
             // 
             // panel1
             // 
-            panel1.Location = new Point(637, 84);
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(label3);
+            panel1.Location = new Point(185, 343);
             panel1.Name = "panel1";
-            panel1.Size = new Size(389, 472);
+            panel1.Size = new Size(917, 100);
             panel1.TabIndex = 48;
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(650, 574);
+            btnSubmit.Location = new Point(1039, 605);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(75, 23);
             btnSubmit.TabIndex = 0;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
-            btnSubmit.Click += btnSubmit_Click_1;
+            btnSubmit.Click += btnSubmit_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(89, 52);
+            label3.Name = "label3";
+            label3.Size = new Size(73, 15);
+            label3.TabIndex = 49;
+            label3.Text = "Customer ID";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 18F);
+            textBox1.Location = new Point(193, 35);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(293, 39);
+            textBox1.TabIndex = 49;
             // 
             // NewBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1038, 672);
+            ClientSize = new Size(1133, 696);
             Controls.Add(btnSubmit);
             Controls.Add(panel1);
             Controls.Add(DTPicker);
-            Controls.Add(label9);
-            Controls.Add(label10);
-            Controls.Add(label11);
+            Controls.Add(lblVacuumMinus);
+            Controls.Add(lblVacuum);
+            Controls.Add(lblVacuumPlus);
             Controls.Add(btnCurtains);
             Controls.Add(btnRoomVacuum);
-            Controls.Add(label15);
-            Controls.Add(label16);
-            Controls.Add(label17);
-            Controls.Add(label18);
-            Controls.Add(label19);
-            Controls.Add(label20);
-            Controls.Add(label21);
-            Controls.Add(label14);
-            Controls.Add(label13);
+            Controls.Add(lblCurtainsMinus);
+            Controls.Add(lblCarpetsMinus);
+            Controls.Add(lblBathroomMinus);
+            Controls.Add(lblDustMinus);
+            Controls.Add(lblFloorMinus);
+            Controls.Add(lblDoorMinus);
+            Controls.Add(lblWIndowsMinus);
+            Controls.Add(lblCurtains);
+            Controls.Add(lblCarpets);
             Controls.Add(lblBathrooms);
             Controls.Add(lblDusting);
             Controls.Add(lblFloors);
             Controls.Add(lblDoors);
             Controls.Add(lblWIndows);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(lblPlusONE);
+            Controls.Add(lblCurtainsPlus);
+            Controls.Add(lblCarpetsPlus);
+            Controls.Add(lblBathroomPlus);
+            Controls.Add(lblDustPlus);
+            Controls.Add(lblFloorPlus);
+            Controls.Add(lblDoorPlus);
+            Controls.Add(lblWindowPlus);
             Controls.Add(btnBathrooms);
             Controls.Add(btnFloors);
             Controls.Add(btnDoors);
@@ -514,6 +552,8 @@
             Name = "NewBooking";
             Text = "NewBooking";
             Load += NewBooking_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -532,34 +572,36 @@
         private Button btnFloors;
         private Button btnBathrooms;
         private TrackBar trackBar1;
-        private Label lblPlusONE;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
+        private Label lblWindowPlus;
+        private Label lblDoorPlus;
+        private Label lblFloorPlus;
+        private Label lblDustPlus;
+        private Label lblBathroomPlus;
+        private Label lblCarpetsPlus;
+        private Label lblCurtainsPlus;
         private Label lblWIndows;
         private Label lblDoors;
         private Label lblFloors;
         private Label lblDusting;
         private Label lblBathrooms;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private Label label17;
-        private Label label18;
-        private Label label19;
-        private Label label20;
-        private Label label21;
+        private Label lblCarpets;
+        private Label lblCurtains;
+        private Label lblCurtainsMinus;
+        private Label lblCarpetsMinus;
+        private Label lblBathroomMinus;
+        private Label lblDustMinus;
+        private Label lblFloorMinus;
+        private Label lblDoorMinus;
+        private Label lblWIndowsMinus;
         private Button btnRoomVacuum;
         private Button btnCurtains;
-        private Label label9;
-        private Label label10;
-        private Label label11;
+        private Label lblVacuumMinus;
+        private Label lblVacuum;
+        private Label lblVacuumPlus;
         private DateTimePicker DTPicker;
         private Panel panel1;
         private Button btnSubmit;
+        private TextBox textBox1;
+        private Label label3;
     }
 }

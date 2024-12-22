@@ -86,7 +86,7 @@ namespace A2_Coursework.Classes
                 }
             }
         }
-        public static int NewBooking(int CustomerID, string Date, List<int> ServiceID)
+        public static int NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
         {
             int rowsaffected = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -105,15 +105,15 @@ namespace A2_Coursework.Classes
                     rowsaffected = AddBooking.ExecuteNonQuery();
 
 
-                    SqlCommand getID = new SqlCommand();
-                    getID.Connection = connection;
-                    getID.CommandText = "GetLastBooking";
-                    getID.CommandType = CommandType.StoredProcedure;
-                    int bookingID = getID.ExecuteNonQuery();
+                    //SqlCommand getID = new SqlCommand();
+                    //getID.Connection = connection;
+                    //getID.CommandText = "GetLastBooking";
+                    //getID.CommandType = CommandType.StoredProcedure;
+                    //int bookingID = getID.ExecuteNonQuery();
 
-                    //string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
-                    //SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
-                    //int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
+                    string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
+                    SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
+                    int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
 
 
                     SqlCommand NewBookingRequests = new SqlCommand();
@@ -126,7 +126,7 @@ namespace A2_Coursework.Classes
                         NewBookingRequests.Parameters.Clear();
                         NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
                         NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", 1));
+                        NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
                         NewBookingRequests.ExecuteNonQuery();
                     }
                     connection.Close();

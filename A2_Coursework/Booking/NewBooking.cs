@@ -17,8 +17,8 @@ namespace A2_Coursework
         {
             InitializeComponent();
         }
-
         List<int> services = new List<int>();
+        List<int> quantity = new List<int>();
         bool windows = false;
         bool Floors = false;
         bool Doors = false;
@@ -91,17 +91,13 @@ namespace A2_Coursework
             {
                 btnBathrooms.Font = new Font(btnBathrooms.Font.FontFamily, btnBathrooms.Font.Size, FontStyle.Regular);
                 Bathroom = false;
-
             }
             else
             {
                 btnBathrooms.Font = new Font(btnBathrooms.Font, FontStyle.Bold);
                 Bathroom = true;
-
             }
         }
-
-
 
         private void btnVacuuming_Click(object sender, EventArgs e)
         {
@@ -109,13 +105,11 @@ namespace A2_Coursework
             {
                 btnCarpets.Font = new Font(btnCarpets.Font.FontFamily, btnCarpets.Font.Size, FontStyle.Regular);
                 Carpet = false;
-
             }
             else
             {
                 btnCarpets.Font = new Font(btnCarpets.Font, FontStyle.Bold);
                 Carpet = true;
-
             }
         }
 
@@ -125,13 +119,11 @@ namespace A2_Coursework
             {
                 btnCurtains.Font = new Font(btnCurtains.Font.FontFamily, btnCarpets.Font.Size, FontStyle.Regular);
                 Curtains = false;
-
             }
             else
             {
                 btnCurtains.Font = new Font(btnCurtains.Font, FontStyle.Bold);
                 Curtains = true;
-
             }
         }
 
@@ -141,37 +133,19 @@ namespace A2_Coursework
             {
                 btnRoomVacuum.Font = new Font(btnRoomVacuum.Font.FontFamily, btnRoomVacuum.Font.Size, FontStyle.Regular);
                 Vacuum = false;
-
-
             }
             else
             {
                 btnRoomVacuum.Font = new Font(btnRoomVacuum.Font, FontStyle.Bold);
                 Vacuum = true;
-
             }
         }
 
-        private void btnSubmit_Click_1(object sender, EventArgs e)
-        {
-            services.Clear();
-            if (windows) { services.Add(1); }
-            if (Floors) { services.Add(2); }
-            if (Doors) { services.Add(3); }
-            if (Dusting) { services.Add(4); }
-            if (Bathroom) { services.Add(5); }
-            if (Carpet) { services.Add(6); }
-            if (Curtains) { services.Add(7); }
-            if (Vacuum) { services.Add(8); }
 
-            int customerID = Convert.ToInt32(txtbCustomerID.Text);
-            string theDate = DTPicker.Value.ToShortDateString();
-            ProjectDAL.NewBooking(customerID, theDate, services);
-        }
 
         private void NewBooking_Load(object sender, EventArgs e)
         {
-            services.Clear();
+            //services.Clear();
             windows = false;
             Floors = false;
             Doors = false;
@@ -180,6 +154,153 @@ namespace A2_Coursework
             Carpet = false;
             Curtains = false;
             Vacuum = false;
+
+        }
+
+        private void lblWindowPlus_Click(object sender, EventArgs e)
+        {
+            lblWIndows.Text = (Convert.ToInt32(lblWIndows.Text) + 1).ToString();
+
+        }
+
+        private void lblWIndowsMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+                lblWIndows.Text = (Convert.ToInt32(lblWIndows.Text) - 1).ToString();
+            }
+
+        }
+
+        private void lblFloorPlus_Click(object sender, EventArgs e)
+        {
+            lblFloors.Text = (Convert.ToInt32(lblFloors.Text) + 1).ToString();
+
+        }
+
+        private void lblFloorMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+                lblFloors.Text = (Convert.ToInt32(lblFloors.Text) - 1).ToString();
+            }
+
+        }
+
+        private void lblDoorPlus_Click(object sender, EventArgs e)
+        {
+            lblDoors.Text = (Convert.ToInt32(lblDoors.Text) + 1).ToString();
+
+        }
+
+        private void lblDoorMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+                lblDoors.Text = (Convert.ToInt32(lblDoors.Text) - 1).ToString();
+            }
+
+        }
+
+        private void lblDustPlus_Click(object sender, EventArgs e)
+        {
+            lblDusting.Text = (Convert.ToInt32(lblDusting.Text) + 1).ToString();
+
+        }
+
+        private void lblDustMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+                lblDusting.Text = (Convert.ToInt32(lblDusting.Text) - 1).ToString();
+            }
+
+        }
+
+        private void lblBathroomPlus_Click(object sender, EventArgs e)
+        {
+            lblBathrooms.Text = (Convert.ToInt32(lblBathrooms.Text) + 1).ToString();
+
+        }
+
+        private void lblBathroomMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+                lblBathrooms.Text = (Convert.ToInt32(lblBathrooms.Text) - 1).ToString();
+            }
+
+        }
+
+        private void lblCarpetsPlus_Click(object sender, EventArgs e)
+        {
+            lblCarpets.Text = (Convert.ToInt32(lblCarpets.Text) + 1).ToString();
+
+        }
+
+        private void lblCarpetsMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+                lblCarpets.Text = (Convert.ToInt32(lblCarpets.Text) - 1).ToString();
+            }
+
+        }
+
+        private void lblCurtainsPlus_Click(object sender, EventArgs e)
+        {
+            lblCurtains.Text = (Convert.ToInt32(lblCurtains.Text) + 1).ToString();
+
+        }
+
+        private void lblCurtainsMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+
+                lblCurtains.Text = (Convert.ToInt32(lblCurtains.Text) - 1).ToString();
+            }
+        }
+
+        private void lblVacuumPlus_Click(object sender, EventArgs e)
+        {
+            lblVacuum.Text = (Convert.ToInt32(lblVacuum.Text) + 1).ToString();
+
+        }
+
+        private void lblVacuumMinus_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lblVacuum.Text) > 0)
+            {
+                lblVacuum.Text = (Convert.ToInt32(lblVacuum.Text) - 1).ToString();
+            }
+
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                services.Clear();
+                quantity.Clear();
+                if (windows) { services.Add(1); quantity.Add(Convert.ToInt32(lblWIndows.Text)); }
+                if (Floors) { services.Add(2); quantity.Add(Convert.ToInt32(lblFloors.Text)); }
+                if (Doors) { services.Add(3); quantity.Add(Convert.ToInt32(lblDoors.Text)); }
+                if (Dusting) { services.Add(4); quantity.Add(Convert.ToInt32(lblDusting.Text)); }
+                if (Bathroom) { services.Add(5); quantity.Add(Convert.ToInt32(lblBathrooms.Text)); }
+                if (Carpet) { services.Add(6); quantity.Add(Convert.ToInt32(lblCarpets.Text)); }
+                if (Curtains) { services.Add(7); quantity.Add(Convert.ToInt32(lblCurtains.Text)); }
+                if (Vacuum) { services.Add(8); quantity.Add(Convert.ToInt32(lblVacuum.Text)); }
+
+                int customerID = Convert.ToInt32(txtbCustomerID.Text);
+                string theDate = DTPicker.Value.ToShortDateString();
+                ProjectDAL.NewBooking(customerID, theDate, services, quantity);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
     }
 }
