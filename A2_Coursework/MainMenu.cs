@@ -100,6 +100,10 @@ namespace A2_Coursework
             HideSubMenu();
         }
 
-       
+        private void btnViewStaff_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewStaffMembers());
+            HideSubMenu();
+        }
     }
 }

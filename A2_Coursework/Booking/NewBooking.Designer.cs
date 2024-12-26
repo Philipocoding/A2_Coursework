@@ -66,9 +66,16 @@
             lblVacuumPlus = new Label();
             DTPicker = new DateTimePicker();
             panel1 = new Panel();
-            btnSubmit = new Button();
-            label3 = new Label();
+            lblCustSelected = new Label();
             textBox1 = new TextBox();
+            Address = new TextBox();
+            label5 = new Label();
+            txtbSurname = new TextBox();
+            label4 = new Label();
+            ExistingCustomer = new CheckBox();
+            txtbFirstName = new TextBox();
+            label3 = new Label();
+            btnSubmit = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -471,12 +478,100 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lblCustSelected);
             panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(Address);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(txtbSurname);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(ExistingCustomer);
+            panel1.Controls.Add(txtbFirstName);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(185, 343);
+            panel1.Location = new Point(24, 20);
             panel1.Name = "panel1";
-            panel1.Size = new Size(917, 100);
+            panel1.Size = new Size(592, 354);
             panel1.TabIndex = 48;
+            // 
+            // lblCustSelected
+            // 
+            lblCustSelected.AutoSize = true;
+            lblCustSelected.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCustSelected.ForeColor = Color.Green;
+            lblCustSelected.Location = new Point(509, 164);
+            lblCustSelected.Name = "lblCustSelected";
+            lblCustSelected.Size = new Size(164, 25);
+            lblCustSelected.TabIndex = 56;
+            lblCustSelected.Text = "CustomerSelected";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 18F);
+            textBox1.Location = new Point(19, 198);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(1045, 39);
+            textBox1.TabIndex = 55;
+            // 
+            // Address
+            // 
+            Address.Font = new Font("Segoe UI", 18F);
+            Address.Location = new Point(139, 141);
+            Address.Name = "Address";
+            Address.Size = new Size(293, 39);
+            Address.TabIndex = 53;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(35, 158);
+            label5.Name = "label5";
+            label5.Size = new Size(49, 15);
+            label5.TabIndex = 54;
+            label5.Text = "Address";
+            // 
+            // txtbSurname
+            // 
+            txtbSurname.Font = new Font("Segoe UI", 18F);
+            txtbSurname.Location = new Point(139, 79);
+            txtbSurname.Name = "txtbSurname";
+            txtbSurname.Size = new Size(293, 39);
+            txtbSurname.TabIndex = 51;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(35, 96);
+            label4.Name = "label4";
+            label4.Size = new Size(54, 15);
+            label4.TabIndex = 52;
+            label4.Text = "Surname";
+            // 
+            // ExistingCustomer
+            // 
+            ExistingCustomer.AutoSize = true;
+            ExistingCustomer.Font = new Font("Segoe UI", 20F);
+            ExistingCustomer.Location = new Point(541, 33);
+            ExistingCustomer.Name = "ExistingCustomer";
+            ExistingCustomer.Size = new Size(248, 41);
+            ExistingCustomer.TabIndex = 50;
+            ExistingCustomer.Text = "Existing Customer";
+            ExistingCustomer.UseVisualStyleBackColor = true;
+            // 
+            // txtbFirstName
+            // 
+            txtbFirstName.Font = new Font("Segoe UI", 18F);
+            txtbFirstName.Location = new Point(139, 24);
+            txtbFirstName.Name = "txtbFirstName";
+            txtbFirstName.Size = new Size(293, 39);
+            txtbFirstName.TabIndex = 49;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(35, 41);
+            label3.Name = "label3";
+            label3.Size = new Size(64, 15);
+            label3.TabIndex = 49;
+            label3.Text = "First Name";
             // 
             // btnSubmit
             // 
@@ -488,27 +583,11 @@
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(89, 52);
-            label3.Name = "label3";
-            label3.Size = new Size(73, 15);
-            label3.TabIndex = 49;
-            label3.Text = "Customer ID";
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Segoe UI", 18F);
-            textBox1.Location = new Point(193, 35);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(293, 39);
-            textBox1.TabIndex = 49;
-            // 
             // NewBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1133, 696);
             Controls.Add(btnSubmit);
             Controls.Add(panel1);
@@ -601,7 +680,14 @@
         private DateTimePicker DTPicker;
         private Panel panel1;
         private Button btnSubmit;
-        private TextBox textBox1;
+        private TextBox txtbFirstName;
         private Label label3;
+        private CheckBox ExistingCustomer;
+        private TextBox Address;
+        private Label label5;
+        private TextBox txtbSurname;
+        private Label label4;
+        private Label lblCustSelected;
+        private TextBox textBox1;
     }
 }

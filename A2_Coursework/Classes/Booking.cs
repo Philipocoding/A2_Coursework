@@ -58,7 +58,5 @@ namespace A2_Coursework.Classes
 
             return bookings;
         }
-
-
     }
 }

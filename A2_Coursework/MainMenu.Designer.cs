@@ -32,7 +32,7 @@
             pnlMenuSubMenu = new Panel();
             button8 = new Button();
             button7 = new Button();
-            button6 = new Button();
+            btnViewStaff = new Button();
             btnMenu = new Button();
             pnlMediaSubMenu = new Panel();
             btnViewBOokings = new Button();
@@ -68,7 +68,7 @@
             pnlMenuSubMenu.BackColor = SystemColors.ControlLight;
             pnlMenuSubMenu.Controls.Add(button8);
             pnlMenuSubMenu.Controls.Add(button7);
-            pnlMenuSubMenu.Controls.Add(button6);
+            pnlMenuSubMenu.Controls.Add(btnViewStaff);
             pnlMenuSubMenu.Dock = DockStyle.Top;
             pnlMenuSubMenu.Location = new Point(0, 375);
             pnlMenuSubMenu.Name = "pnlMenuSubMenu";
@@ -107,21 +107,22 @@
             button7.TextAlign = ContentAlignment.MiddleLeft;
             button7.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // btnViewStaff
             // 
-            button6.BackColor = SystemColors.ControlLightLight;
-            button6.Dock = DockStyle.Top;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.ForeColor = Color.Black;
-            button6.Location = new Point(0, 0);
-            button6.Name = "button6";
-            button6.Padding = new Padding(35, 0, 0, 0);
-            button6.Size = new Size(200, 45);
-            button6.TabIndex = 0;
-            button6.Text = "button6";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.UseVisualStyleBackColor = false;
+            btnViewStaff.BackColor = SystemColors.ControlLightLight;
+            btnViewStaff.Dock = DockStyle.Top;
+            btnViewStaff.FlatAppearance.BorderSize = 0;
+            btnViewStaff.FlatStyle = FlatStyle.Flat;
+            btnViewStaff.ForeColor = Color.Black;
+            btnViewStaff.Location = new Point(0, 0);
+            btnViewStaff.Name = "btnViewStaff";
+            btnViewStaff.Padding = new Padding(35, 0, 0, 0);
+            btnViewStaff.Size = new Size(200, 45);
+            btnViewStaff.TabIndex = 0;
+            btnViewStaff.Text = "View Staff";
+            btnViewStaff.TextAlign = ContentAlignment.MiddleLeft;
+            btnViewStaff.UseVisualStyleBackColor = false;
+            btnViewStaff.Click += btnViewStaff_Click;
             // 
             // btnMenu
             // 
@@ -281,7 +282,7 @@
         private Button btnAddStaff;
         private Button btnBooking;
         private Panel pnlMenuSubMenu;
-        private Button button6;
+        private Button btnViewStaff;
         private Button button8;
         private Button button7;
         private FlowLayoutPanel pnlChildForm;

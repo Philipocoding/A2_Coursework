@@ -48,6 +48,7 @@ namespace A2_Coursework
         private void BookingTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if ((BookingTable.SelectedRows.Count > 0)&& (BookingTable.SelectedRows.Count < 2)){
+
                 txtbID.Text = BookingTable.SelectedRows[0].Cells[0].Value.ToString();
             }
         }

@@ -10,14 +10,67 @@ using System.Xml.Linq;
 using System.Transactions;
 using System.Data.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Diagnostics;
 
 namespace A2_Coursework.Classes
 {
-    public class ProjectDAL
+    public static class ProjectDAL
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-       
+        public static void EditStaff(int id,string fname, string sname, int age, string gender,
+            double rate,int teamNo)
+        {
+            using (SqlConnection connection = new(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand EditStaff = new();
+                    EditStaff.Connection = connection;
+                    EditStaff.CommandType = CommandType.StoredProcedure;
+                    EditStaff.CommandText = "EditStaffMember";
+                    EditStaff.Parameters.Add(new SqlParameter("@StaffID", id));
+                    EditStaff.Parameters.Add(new SqlParameter("@FirstName", fname));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@Surname", sname));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@Gender", gender));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@Age", age));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@HourlyRate", rate));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@TeamNo", teamNo));
+
+                    EditStaff.ExecuteNonQuery();
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
+       public static void DeleteStaffMember(int id)
+        {
+            using(SqlConnection connection = new(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand deleteStaff = new();
+                    deleteStaff.Connection = connection;
+                    deleteStaff.CommandType = CommandType.StoredProcedure;
+                    deleteStaff.CommandText = "DeleteStaffMember";
+                    deleteStaff.Parameters.Add(new SqlParameter("@StaffID", 2));
+                    deleteStaff.ExecuteNonQuery();
+                }
+                catch(CustomException ex)
+                {
+
+                }
+            }
+        }
 
         public static void DeleteBooking(int id)
         {
