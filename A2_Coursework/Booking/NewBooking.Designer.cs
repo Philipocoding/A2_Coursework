@@ -65,25 +65,40 @@
             lblVacuum = new Label();
             lblVacuumPlus = new Label();
             DTPicker = new DateTimePicker();
-            panel1 = new Panel();
+            pnlCustomerDetails = new Panel();
+            pnlBookingDetails = new Panel();
+            btnSubmit = new Button();
+            pnlDatabase = new Panel();
+            DataGridCustomers = new DataGridView();
+            clmCustomerID = new DataGridViewTextBoxColumn();
+            clmForename = new DataGridViewTextBoxColumn();
+            clmSurname = new DataGridViewTextBoxColumn();
+            clmDOB = new DataGridViewTextBoxColumn();
+            clmGender = new DataGridViewTextBoxColumn();
+            clmAddressOne = new DataGridViewTextBoxColumn();
+            clmAddressTwo = new DataGridViewTextBoxColumn();
+            clmEmail = new DataGridViewTextBoxColumn();
             lblCustSelected = new Label();
-            textBox1 = new TextBox();
-            Address = new TextBox();
+            txtbAddress = new TextBox();
             label5 = new Label();
             txtbSurname = new TextBox();
             label4 = new Label();
             ExistingCustomer = new CheckBox();
             txtbFirstName = new TextBox();
             label3 = new Label();
-            btnSubmit = new Button();
-            panel1.SuspendLayout();
+            btnNext = new Button();
+            btnBack = new Button();
+            pnlCustomerDetails.SuspendLayout();
+            pnlBookingDetails.SuspendLayout();
+            pnlDatabase.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DataGridCustomers).BeginInit();
             SuspendLayout();
             // 
             // btnWindows
             // 
             btnWindows.FlatStyle = FlatStyle.Flat;
             btnWindows.Font = new Font("Segoe UI", 18F);
-            btnWindows.Location = new Point(694, 244);
+            btnWindows.Location = new Point(62, 73);
             btnWindows.Name = "btnWindows";
             btnWindows.Size = new Size(206, 53);
             btnWindows.TabIndex = 0;
@@ -94,7 +109,7 @@
             // txtbCustomerID
             // 
             txtbCustomerID.Font = new Font("Segoe UI", 18F);
-            txtbCustomerID.Location = new Point(727, 126);
+            txtbCustomerID.Location = new Point(129, 22);
             txtbCustomerID.Name = "txtbCustomerID";
             txtbCustomerID.Size = new Size(293, 39);
             txtbCustomerID.TabIndex = 4;
@@ -102,7 +117,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(648, 143);
+            label1.Location = new Point(50, 39);
             label1.Name = "label1";
             label1.Size = new Size(73, 15);
             label1.TabIndex = 5;
@@ -111,7 +126,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(681, 200);
+            label2.Location = new Point(38, 27);
             label2.Name = "label2";
             label2.Size = new Size(31, 15);
             label2.TabIndex = 6;
@@ -121,7 +136,7 @@
             // 
             btnCarpets.FlatStyle = FlatStyle.Flat;
             btnCarpets.Font = new Font("Segoe UI", 18F);
-            btnCarpets.Location = new Point(694, 501);
+            btnCarpets.Location = new Point(394, 121);
             btnCarpets.Name = "btnCarpets";
             btnCarpets.Size = new Size(206, 53);
             btnCarpets.TabIndex = 11;
@@ -131,7 +146,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(825, 364);
+            button5.Location = new Point(853, 50);
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
             button5.TabIndex = 12;
@@ -142,7 +157,7 @@
             // 
             btnDusting.FlatStyle = FlatStyle.Flat;
             btnDusting.Font = new Font("Segoe UI", 18F);
-            btnDusting.Location = new Point(694, 398);
+            btnDusting.Location = new Point(62, 227);
             btnDusting.Name = "btnDusting";
             btnDusting.Size = new Size(206, 53);
             btnDusting.TabIndex = 13;
@@ -154,7 +169,7 @@
             // 
             btnDoors.FlatStyle = FlatStyle.Flat;
             btnDoors.Font = new Font("Segoe UI", 18F);
-            btnDoors.Location = new Point(694, 347);
+            btnDoors.Location = new Point(62, 176);
             btnDoors.Name = "btnDoors";
             btnDoors.Size = new Size(206, 53);
             btnDoors.TabIndex = 14;
@@ -166,7 +181,7 @@
             // 
             btnFloors.FlatStyle = FlatStyle.Flat;
             btnFloors.Font = new Font("Segoe UI", 18F);
-            btnFloors.Location = new Point(694, 295);
+            btnFloors.Location = new Point(62, 124);
             btnFloors.Name = "btnFloors";
             btnFloors.Size = new Size(206, 53);
             btnFloors.TabIndex = 15;
@@ -178,7 +193,7 @@
             // 
             btnBathrooms.FlatStyle = FlatStyle.Flat;
             btnBathrooms.Font = new Font("Segoe UI", 18F);
-            btnBathrooms.Location = new Point(694, 449);
+            btnBathrooms.Location = new Point(394, 69);
             btnBathrooms.Name = "btnBathrooms";
             btnBathrooms.Size = new Size(206, 53);
             btnBathrooms.TabIndex = 16;
@@ -191,7 +206,7 @@
             // 
             lblWindowPlus.AutoSize = true;
             lblWindowPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblWindowPlus.Location = new Point(972, 249);
+            lblWindowPlus.Location = new Point(340, 78);
             lblWindowPlus.Name = "lblWindowPlus";
             lblWindowPlus.Size = new Size(48, 50);
             lblWindowPlus.TabIndex = 19;
@@ -202,7 +217,7 @@
             // 
             lblDoorPlus.AutoSize = true;
             lblDoorPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDoorPlus.Location = new Point(972, 354);
+            lblDoorPlus.Location = new Point(340, 183);
             lblDoorPlus.Name = "lblDoorPlus";
             lblDoorPlus.Size = new Size(48, 50);
             lblDoorPlus.TabIndex = 20;
@@ -213,7 +228,7 @@
             // 
             lblFloorPlus.AutoSize = true;
             lblFloorPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFloorPlus.Location = new Point(972, 299);
+            lblFloorPlus.Location = new Point(340, 128);
             lblFloorPlus.Name = "lblFloorPlus";
             lblFloorPlus.Size = new Size(48, 50);
             lblFloorPlus.TabIndex = 21;
@@ -224,7 +239,7 @@
             // 
             lblDustPlus.AutoSize = true;
             lblDustPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDustPlus.Location = new Point(972, 404);
+            lblDustPlus.Location = new Point(340, 233);
             lblDustPlus.Name = "lblDustPlus";
             lblDustPlus.Size = new Size(48, 50);
             lblDustPlus.TabIndex = 22;
@@ -235,7 +250,7 @@
             // 
             lblBathroomPlus.AutoSize = true;
             lblBathroomPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBathroomPlus.Location = new Point(972, 454);
+            lblBathroomPlus.Location = new Point(672, 74);
             lblBathroomPlus.Name = "lblBathroomPlus";
             lblBathroomPlus.Size = new Size(48, 50);
             lblBathroomPlus.TabIndex = 23;
@@ -246,7 +261,7 @@
             // 
             lblCarpetsPlus.AutoSize = true;
             lblCarpetsPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCarpetsPlus.Location = new Point(972, 511);
+            lblCarpetsPlus.Location = new Point(672, 131);
             lblCarpetsPlus.Name = "lblCarpetsPlus";
             lblCarpetsPlus.Size = new Size(48, 50);
             lblCarpetsPlus.TabIndex = 24;
@@ -257,7 +272,7 @@
             // 
             lblCurtainsPlus.AutoSize = true;
             lblCurtainsPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCurtainsPlus.Location = new Point(972, 566);
+            lblCurtainsPlus.Location = new Point(672, 186);
             lblCurtainsPlus.Name = "lblCurtainsPlus";
             lblCurtainsPlus.Size = new Size(48, 50);
             lblCurtainsPlus.TabIndex = 25;
@@ -268,7 +283,7 @@
             // 
             lblWIndows.AutoSize = true;
             lblWIndows.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblWIndows.Location = new Point(942, 258);
+            lblWIndows.Location = new Point(310, 87);
             lblWIndows.Name = "lblWIndows";
             lblWIndows.Size = new Size(33, 37);
             lblWIndows.TabIndex = 26;
@@ -278,7 +293,7 @@
             // 
             lblDoors.AutoSize = true;
             lblDoors.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDoors.Location = new Point(942, 362);
+            lblDoors.Location = new Point(310, 191);
             lblDoors.Name = "lblDoors";
             lblDoors.Size = new Size(33, 37);
             lblDoors.TabIndex = 27;
@@ -288,7 +303,7 @@
             // 
             lblFloors.AutoSize = true;
             lblFloors.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFloors.Location = new Point(942, 311);
+            lblFloors.Location = new Point(310, 140);
             lblFloors.Name = "lblFloors";
             lblFloors.Size = new Size(33, 37);
             lblFloors.TabIndex = 28;
@@ -298,7 +313,7 @@
             // 
             lblDusting.AutoSize = true;
             lblDusting.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDusting.Location = new Point(942, 413);
+            lblDusting.Location = new Point(310, 242);
             lblDusting.Name = "lblDusting";
             lblDusting.Size = new Size(33, 37);
             lblDusting.TabIndex = 29;
@@ -308,7 +323,7 @@
             // 
             lblBathrooms.AutoSize = true;
             lblBathrooms.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBathrooms.Location = new Point(942, 464);
+            lblBathrooms.Location = new Point(642, 84);
             lblBathrooms.Name = "lblBathrooms";
             lblBathrooms.Size = new Size(33, 37);
             lblBathrooms.TabIndex = 30;
@@ -318,7 +333,7 @@
             // 
             lblCarpets.AutoSize = true;
             lblCarpets.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCarpets.Location = new Point(942, 522);
+            lblCarpets.Location = new Point(642, 142);
             lblCarpets.Name = "lblCarpets";
             lblCarpets.Size = new Size(33, 37);
             lblCarpets.TabIndex = 31;
@@ -328,7 +343,7 @@
             // 
             lblCurtains.AutoSize = true;
             lblCurtains.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCurtains.Location = new Point(942, 576);
+            lblCurtains.Location = new Point(642, 196);
             lblCurtains.Name = "lblCurtains";
             lblCurtains.Size = new Size(33, 37);
             lblCurtains.TabIndex = 32;
@@ -338,7 +353,7 @@
             // 
             lblCurtainsMinus.AutoSize = true;
             lblCurtainsMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCurtainsMinus.Location = new Point(904, 566);
+            lblCurtainsMinus.Location = new Point(604, 186);
             lblCurtainsMinus.Name = "lblCurtainsMinus";
             lblCurtainsMinus.Size = new Size(37, 50);
             lblCurtainsMinus.TabIndex = 39;
@@ -349,7 +364,7 @@
             // 
             lblCarpetsMinus.AutoSize = true;
             lblCarpetsMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCarpetsMinus.Location = new Point(904, 512);
+            lblCarpetsMinus.Location = new Point(604, 132);
             lblCarpetsMinus.Name = "lblCarpetsMinus";
             lblCarpetsMinus.Size = new Size(37, 50);
             lblCarpetsMinus.TabIndex = 38;
@@ -360,7 +375,7 @@
             // 
             lblBathroomMinus.AutoSize = true;
             lblBathroomMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBathroomMinus.Location = new Point(904, 455);
+            lblBathroomMinus.Location = new Point(604, 75);
             lblBathroomMinus.Name = "lblBathroomMinus";
             lblBathroomMinus.Size = new Size(37, 50);
             lblBathroomMinus.TabIndex = 37;
@@ -371,7 +386,7 @@
             // 
             lblDustMinus.AutoSize = true;
             lblDustMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDustMinus.Location = new Point(904, 405);
+            lblDustMinus.Location = new Point(272, 234);
             lblDustMinus.Name = "lblDustMinus";
             lblDustMinus.Size = new Size(37, 50);
             lblDustMinus.TabIndex = 36;
@@ -382,7 +397,7 @@
             // 
             lblFloorMinus.AutoSize = true;
             lblFloorMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFloorMinus.Location = new Point(904, 300);
+            lblFloorMinus.Location = new Point(272, 129);
             lblFloorMinus.Name = "lblFloorMinus";
             lblFloorMinus.Size = new Size(37, 50);
             lblFloorMinus.TabIndex = 35;
@@ -393,7 +408,7 @@
             // 
             lblDoorMinus.AutoSize = true;
             lblDoorMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDoorMinus.Location = new Point(904, 355);
+            lblDoorMinus.Location = new Point(272, 184);
             lblDoorMinus.Name = "lblDoorMinus";
             lblDoorMinus.Size = new Size(37, 50);
             lblDoorMinus.TabIndex = 34;
@@ -404,7 +419,7 @@
             // 
             lblWIndowsMinus.AutoSize = true;
             lblWIndowsMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblWIndowsMinus.Location = new Point(904, 250);
+            lblWIndowsMinus.Location = new Point(272, 79);
             lblWIndowsMinus.Name = "lblWIndowsMinus";
             lblWIndowsMinus.Size = new Size(37, 50);
             lblWIndowsMinus.TabIndex = 33;
@@ -415,7 +430,7 @@
             // 
             btnRoomVacuum.FlatStyle = FlatStyle.Flat;
             btnRoomVacuum.Font = new Font("Segoe UI", 18F);
-            btnRoomVacuum.Location = new Point(693, 605);
+            btnRoomVacuum.Location = new Point(393, 225);
             btnRoomVacuum.Name = "btnRoomVacuum";
             btnRoomVacuum.Size = new Size(206, 76);
             btnRoomVacuum.TabIndex = 41;
@@ -427,7 +442,7 @@
             // 
             btnCurtains.FlatStyle = FlatStyle.Flat;
             btnCurtains.Font = new Font("Segoe UI", 18F);
-            btnCurtains.Location = new Point(694, 553);
+            btnCurtains.Location = new Point(394, 173);
             btnCurtains.Name = "btnCurtains";
             btnCurtains.Size = new Size(206, 53);
             btnCurtains.TabIndex = 42;
@@ -439,7 +454,7 @@
             // 
             lblVacuumMinus.AutoSize = true;
             lblVacuumMinus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblVacuumMinus.Location = new Point(904, 613);
+            lblVacuumMinus.Location = new Point(604, 233);
             lblVacuumMinus.Name = "lblVacuumMinus";
             lblVacuumMinus.Size = new Size(37, 50);
             lblVacuumMinus.TabIndex = 45;
@@ -450,7 +465,7 @@
             // 
             lblVacuum.AutoSize = true;
             lblVacuum.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblVacuum.Location = new Point(942, 623);
+            lblVacuum.Location = new Point(642, 243);
             lblVacuum.Name = "lblVacuum";
             lblVacuum.Size = new Size(33, 37);
             lblVacuum.TabIndex = 44;
@@ -460,7 +475,7 @@
             // 
             lblVacuumPlus.AutoSize = true;
             lblVacuumPlus.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblVacuumPlus.Location = new Point(972, 613);
+            lblVacuumPlus.Location = new Point(672, 233);
             lblVacuumPlus.Name = "lblVacuumPlus";
             lblVacuumPlus.Size = new Size(48, 50);
             lblVacuumPlus.TabIndex = 43;
@@ -471,58 +486,166 @@
             // 
             DTPicker.CalendarFont = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DTPicker.Font = new Font("Segoe UI", 22F);
-            DTPicker.Location = new Point(727, 184);
+            DTPicker.Location = new Point(95, 13);
             DTPicker.Name = "DTPicker";
             DTPicker.Size = new Size(200, 47);
             DTPicker.TabIndex = 47;
             // 
-            // panel1
+            // pnlCustomerDetails
             // 
-            panel1.Controls.Add(lblCustSelected);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(Address);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(txtbSurname);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(ExistingCustomer);
-            panel1.Controls.Add(txtbFirstName);
-            panel1.Controls.Add(label3);
-            panel1.Location = new Point(24, 20);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(592, 354);
-            panel1.TabIndex = 48;
+            pnlCustomerDetails.Controls.Add(pnlBookingDetails);
+            pnlCustomerDetails.Controls.Add(pnlDatabase);
+            pnlCustomerDetails.Controls.Add(lblCustSelected);
+            pnlCustomerDetails.Controls.Add(label1);
+            pnlCustomerDetails.Controls.Add(txtbAddress);
+            pnlCustomerDetails.Controls.Add(label5);
+            pnlCustomerDetails.Controls.Add(txtbCustomerID);
+            pnlCustomerDetails.Controls.Add(txtbSurname);
+            pnlCustomerDetails.Controls.Add(label4);
+            pnlCustomerDetails.Controls.Add(ExistingCustomer);
+            pnlCustomerDetails.Controls.Add(txtbFirstName);
+            pnlCustomerDetails.Controls.Add(label3);
+            pnlCustomerDetails.Location = new Point(24, 20);
+            pnlCustomerDetails.Name = "pnlCustomerDetails";
+            pnlCustomerDetails.Size = new Size(1042, 607);
+            pnlCustomerDetails.TabIndex = 48;
+            // 
+            // pnlBookingDetails
+            // 
+            pnlBookingDetails.Controls.Add(btnSubmit);
+            pnlBookingDetails.Controls.Add(btnFloors);
+            pnlBookingDetails.Controls.Add(label2);
+            pnlBookingDetails.Controls.Add(btnWindows);
+            pnlBookingDetails.Controls.Add(DTPicker);
+            pnlBookingDetails.Controls.Add(btnCarpets);
+            pnlBookingDetails.Controls.Add(lblVacuumMinus);
+            pnlBookingDetails.Controls.Add(button5);
+            pnlBookingDetails.Controls.Add(lblVacuum);
+            pnlBookingDetails.Controls.Add(btnDusting);
+            pnlBookingDetails.Controls.Add(lblVacuumPlus);
+            pnlBookingDetails.Controls.Add(btnDoors);
+            pnlBookingDetails.Controls.Add(btnCurtains);
+            pnlBookingDetails.Controls.Add(btnBathrooms);
+            pnlBookingDetails.Controls.Add(btnRoomVacuum);
+            pnlBookingDetails.Controls.Add(lblWindowPlus);
+            pnlBookingDetails.Controls.Add(lblCurtainsMinus);
+            pnlBookingDetails.Controls.Add(lblDoorPlus);
+            pnlBookingDetails.Controls.Add(lblCarpetsMinus);
+            pnlBookingDetails.Controls.Add(lblFloorPlus);
+            pnlBookingDetails.Controls.Add(lblBathroomMinus);
+            pnlBookingDetails.Controls.Add(lblDustPlus);
+            pnlBookingDetails.Controls.Add(lblDustMinus);
+            pnlBookingDetails.Controls.Add(lblBathroomPlus);
+            pnlBookingDetails.Controls.Add(lblFloorMinus);
+            pnlBookingDetails.Controls.Add(lblCarpetsPlus);
+            pnlBookingDetails.Controls.Add(lblDoorMinus);
+            pnlBookingDetails.Controls.Add(lblCurtainsPlus);
+            pnlBookingDetails.Controls.Add(lblWIndowsMinus);
+            pnlBookingDetails.Controls.Add(lblWIndows);
+            pnlBookingDetails.Controls.Add(lblCurtains);
+            pnlBookingDetails.Controls.Add(lblDoors);
+            pnlBookingDetails.Controls.Add(lblCarpets);
+            pnlBookingDetails.Controls.Add(lblFloors);
+            pnlBookingDetails.Controls.Add(lblBathrooms);
+            pnlBookingDetails.Controls.Add(lblDusting);
+            pnlBookingDetails.Location = new Point(18, 254);
+            pnlBookingDetails.Name = "pnlBookingDetails";
+            pnlBookingDetails.Size = new Size(956, 321);
+            pnlBookingDetails.TabIndex = 1;
+            pnlBookingDetails.Visible = false;
+            // 
+            // btnSubmit
+            // 
+            btnSubmit.Location = new Point(758, 239);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(75, 23);
+            btnSubmit.TabIndex = 0;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
+            // 
+            // pnlDatabase
+            // 
+            pnlDatabase.Controls.Add(DataGridCustomers);
+            pnlDatabase.Location = new Point(27, 275);
+            pnlDatabase.Name = "pnlDatabase";
+            pnlDatabase.Size = new Size(873, 300);
+            pnlDatabase.TabIndex = 57;
+            pnlDatabase.Visible = false;
+            // 
+            // DataGridCustomers
+            // 
+            DataGridCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridCustomers.Columns.AddRange(new DataGridViewColumn[] { clmCustomerID, clmForename, clmSurname, clmDOB, clmGender, clmAddressOne, clmAddressTwo, clmEmail });
+            DataGridCustomers.Location = new Point(3, 21);
+            DataGridCustomers.Name = "DataGridCustomers";
+            DataGridCustomers.Size = new Size(831, 259);
+            DataGridCustomers.TabIndex = 0;
+            DataGridCustomers.CellClick += DataGridCustomers_CellClick;
+            // 
+            // clmCustomerID
+            // 
+            clmCustomerID.HeaderText = "ID";
+            clmCustomerID.Name = "clmCustomerID";
+            // 
+            // clmForename
+            // 
+            clmForename.HeaderText = "Forename";
+            clmForename.Name = "clmForename";
+            // 
+            // clmSurname
+            // 
+            clmSurname.HeaderText = "Surname";
+            clmSurname.Name = "clmSurname";
+            // 
+            // clmDOB
+            // 
+            clmDOB.HeaderText = "Date of Birth";
+            clmDOB.Name = "clmDOB";
+            // 
+            // clmGender
+            // 
+            clmGender.HeaderText = "Gender";
+            clmGender.Name = "clmGender";
+            // 
+            // clmAddressOne
+            // 
+            clmAddressOne.HeaderText = "Address";
+            clmAddressOne.Name = "clmAddressOne";
+            // 
+            // clmAddressTwo
+            // 
+            clmAddressTwo.HeaderText = "Address";
+            clmAddressTwo.Name = "clmAddressTwo";
+            // 
+            // clmEmail
+            // 
+            clmEmail.HeaderText = "Email";
+            clmEmail.Name = "clmEmail";
             // 
             // lblCustSelected
             // 
             lblCustSelected.AutoSize = true;
             lblCustSelected.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCustSelected.ForeColor = Color.Green;
-            lblCustSelected.Location = new Point(509, 164);
+            lblCustSelected.Location = new Point(515, 127);
             lblCustSelected.Name = "lblCustSelected";
             lblCustSelected.Size = new Size(164, 25);
             lblCustSelected.TabIndex = 56;
             lblCustSelected.Text = "CustomerSelected";
             // 
-            // textBox1
+            // txtbAddress
             // 
-            textBox1.Font = new Font("Segoe UI", 18F);
-            textBox1.Location = new Point(19, 198);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(1045, 39);
-            textBox1.TabIndex = 55;
-            // 
-            // Address
-            // 
-            Address.Font = new Font("Segoe UI", 18F);
-            Address.Location = new Point(139, 141);
-            Address.Name = "Address";
-            Address.Size = new Size(293, 39);
-            Address.TabIndex = 53;
+            txtbAddress.Font = new Font("Segoe UI", 18F);
+            txtbAddress.Location = new Point(129, 197);
+            txtbAddress.Name = "txtbAddress";
+            txtbAddress.Size = new Size(293, 39);
+            txtbAddress.TabIndex = 53;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(35, 158);
+            label5.Location = new Point(74, 214);
             label5.Name = "label5";
             label5.Size = new Size(49, 15);
             label5.TabIndex = 54;
@@ -531,7 +654,7 @@
             // txtbSurname
             // 
             txtbSurname.Font = new Font("Segoe UI", 18F);
-            txtbSurname.Location = new Point(139, 79);
+            txtbSurname.Location = new Point(129, 135);
             txtbSurname.Name = "txtbSurname";
             txtbSurname.Size = new Size(293, 39);
             txtbSurname.TabIndex = 51;
@@ -539,7 +662,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(35, 96);
+            label4.Location = new Point(69, 152);
             label4.Name = "label4";
             label4.Size = new Size(54, 15);
             label4.TabIndex = 52;
@@ -555,11 +678,12 @@
             ExistingCustomer.TabIndex = 50;
             ExistingCustomer.Text = "Existing Customer";
             ExistingCustomer.UseVisualStyleBackColor = true;
+            ExistingCustomer.CheckedChanged += ExistingCustomer_CheckedChanged;
             // 
             // txtbFirstName
             // 
             txtbFirstName.Font = new Font("Segoe UI", 18F);
-            txtbFirstName.Location = new Point(139, 24);
+            txtbFirstName.Location = new Point(129, 80);
             txtbFirstName.Name = "txtbFirstName";
             txtbFirstName.Size = new Size(293, 39);
             txtbFirstName.TabIndex = 49;
@@ -567,74 +691,53 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(35, 41);
+            label3.Location = new Point(59, 97);
             label3.Name = "label3";
             label3.Size = new Size(64, 15);
             label3.TabIndex = 49;
             label3.Text = "First Name";
             // 
-            // btnSubmit
+            // btnNext
             // 
-            btnSubmit.Location = new Point(1039, 605);
-            btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(75, 23);
-            btnSubmit.TabIndex = 0;
-            btnSubmit.Text = "Submit";
-            btnSubmit.UseVisualStyleBackColor = true;
-            btnSubmit.Click += btnSubmit_Click;
+            btnNext.Font = new Font("Microsoft Sans Serif", 20F);
+            btnNext.Location = new Point(1079, 629);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(106, 42);
+            btnNext.TabIndex = 58;
+            btnNext.Text = "Next";
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
+            // 
+            // btnBack
+            // 
+            btnBack.Font = new Font("Microsoft Sans Serif", 20F);
+            btnBack.Location = new Point(967, 629);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(106, 42);
+            btnBack.TabIndex = 59;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // NewBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1133, 696);
-            Controls.Add(btnSubmit);
-            Controls.Add(panel1);
-            Controls.Add(DTPicker);
-            Controls.Add(lblVacuumMinus);
-            Controls.Add(lblVacuum);
-            Controls.Add(lblVacuumPlus);
-            Controls.Add(btnCurtains);
-            Controls.Add(btnRoomVacuum);
-            Controls.Add(lblCurtainsMinus);
-            Controls.Add(lblCarpetsMinus);
-            Controls.Add(lblBathroomMinus);
-            Controls.Add(lblDustMinus);
-            Controls.Add(lblFloorMinus);
-            Controls.Add(lblDoorMinus);
-            Controls.Add(lblWIndowsMinus);
-            Controls.Add(lblCurtains);
-            Controls.Add(lblCarpets);
-            Controls.Add(lblBathrooms);
-            Controls.Add(lblDusting);
-            Controls.Add(lblFloors);
-            Controls.Add(lblDoors);
-            Controls.Add(lblWIndows);
-            Controls.Add(lblCurtainsPlus);
-            Controls.Add(lblCarpetsPlus);
-            Controls.Add(lblBathroomPlus);
-            Controls.Add(lblDustPlus);
-            Controls.Add(lblFloorPlus);
-            Controls.Add(lblDoorPlus);
-            Controls.Add(lblWindowPlus);
-            Controls.Add(btnBathrooms);
-            Controls.Add(btnFloors);
-            Controls.Add(btnDoors);
-            Controls.Add(btnDusting);
-            Controls.Add(button5);
-            Controls.Add(btnCarpets);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(txtbCustomerID);
-            Controls.Add(btnWindows);
+            ClientSize = new Size(1197, 756);
+            Controls.Add(btnBack);
+            Controls.Add(btnNext);
+            Controls.Add(pnlCustomerDetails);
             Name = "NewBooking";
             Text = "NewBooking";
             Load += NewBooking_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlCustomerDetails.ResumeLayout(false);
+            pnlCustomerDetails.PerformLayout();
+            pnlBookingDetails.ResumeLayout(false);
+            pnlBookingDetails.PerformLayout();
+            pnlDatabase.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DataGridCustomers).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -678,16 +781,28 @@
         private Label lblVacuum;
         private Label lblVacuumPlus;
         private DateTimePicker DTPicker;
-        private Panel panel1;
+        private Panel pnlCustomerDetails;
         private Button btnSubmit;
         private TextBox txtbFirstName;
         private Label label3;
         private CheckBox ExistingCustomer;
-        private TextBox Address;
+        private TextBox txtbAddress;
         private Label label5;
         private TextBox txtbSurname;
         private Label label4;
         private Label lblCustSelected;
-        private TextBox textBox1;
+        private Panel pnlDatabase;
+        private DataGridView DataGridCustomers;
+        private Panel pnlBookingDetails;
+        private DataGridViewTextBoxColumn clmCustomerID;
+        private DataGridViewTextBoxColumn clmForename;
+        private DataGridViewTextBoxColumn clmSurname;
+        private DataGridViewTextBoxColumn clmDOB;
+        private DataGridViewTextBoxColumn clmGender;
+        private DataGridViewTextBoxColumn clmAddressOne;
+        private DataGridViewTextBoxColumn clmAddressTwo;
+        private DataGridViewTextBoxColumn clmEmail;
+        private Button btnNext;
+        private Button btnBack;
     }
 }

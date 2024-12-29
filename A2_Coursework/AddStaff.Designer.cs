@@ -36,11 +36,11 @@
             label3 = new Label();
             txtbSurname = new TextBox();
             label4 = new Label();
-            txtbGender = new TextBox();
             label5 = new Label();
             txtbHourlyRate = new TextBox();
             label6 = new Label();
             textBox6 = new TextBox();
+            cmbGender = new ComboBox();
             SuspendLayout();
             // 
             // btnSubmit
@@ -78,9 +78,9 @@
             label2.Font = new Font("Segoe UI", 24F);
             label2.Location = new Point(295, 159);
             label2.Name = "label2";
-            label2.Size = new Size(142, 45);
+            label2.Size = new Size(145, 45);
             label2.TabIndex = 4;
-            label2.Text = "surname";
+            label2.Text = "Surname";
             // 
             // txtbAge
             // 
@@ -118,14 +118,6 @@
             label4.TabIndex = 8;
             label4.Text = "Gender";
             // 
-            // txtbGender
-            // 
-            txtbGender.Font = new Font("Segoe UI", 24F);
-            txtbGender.Location = new Point(456, 270);
-            txtbGender.Name = "txtbGender";
-            txtbGender.Size = new Size(282, 50);
-            txtbGender.TabIndex = 7;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -162,17 +154,27 @@
             textBox6.Size = new Size(282, 50);
             textBox6.TabIndex = 11;
             // 
+            // cmbGender
+            // 
+            cmbGender.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbGender.FormattingEnabled = true;
+            cmbGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            cmbGender.Location = new Point(456, 272);
+            cmbGender.Name = "cmbGender";
+            cmbGender.Size = new Size(282, 48);
+            cmbGender.TabIndex = 13;
+            // 
             // AddStaff
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 672);
+            Controls.Add(cmbGender);
             Controls.Add(label6);
             Controls.Add(textBox6);
             Controls.Add(label5);
             Controls.Add(txtbHourlyRate);
             Controls.Add(label4);
-            Controls.Add(txtbGender);
             Controls.Add(label3);
             Controls.Add(txtbSurname);
             Controls.Add(label2);
@@ -196,10 +198,10 @@
         private Label label3;
         private TextBox txtbSurname;
         private Label label4;
-        private TextBox txtbGender;
         private Label label5;
         private TextBox txtbHourlyRate;
         private Label label6;
         private TextBox textBox6;
+        private ComboBox cmbGender;
     }
 }

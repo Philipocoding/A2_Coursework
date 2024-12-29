@@ -20,7 +20,17 @@ namespace A2_Coursework
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            ProjectDAL.NewStaffMember(txtbFirstname.Text, txtbSurname.Text, txtbGender.Text, Convert.ToInt32(txtbAge.Text), float.Parse(txtbHourlyRate.Text),1);
+            if(Convert.ToInt32(txtbHourlyRate.Text) > 100)
+            {
+                MessageBox.Show("Enter a valid hourly rate");
+            }
+            else
+            {
+                ProjectDAL.NewStaffMember(txtbFirstname.Text, txtbSurname.Text, cmbGender.Text, Convert.ToInt32(txtbAge.Text), float.Parse(txtbHourlyRate.Text), 1);
+
+            }
         }
+
+        
     }
 }

@@ -32,8 +32,8 @@
             label1 = new Label();
             txtbFirstname = new TextBox();
             panel1 = new Panel();
-            label7 = new Label();
-            txtbAge = new TextBox();
+            cmbGender = new ComboBox();
+            dtPicker = new DateTimePicker();
             Add = new Label();
             txtbAddressTwo = new TextBox();
             txtbEmail = new TextBox();
@@ -43,16 +43,14 @@
             txtbSurname = new TextBox();
             label4 = new Label();
             label3 = new Label();
-            txtbGender = new TextBox();
             label2 = new Label();
-            dtPicker = new DateTimePicker();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSubmit.Location = new Point(572, 516);
+            btnSubmit.Location = new Point(466, 444);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(141, 53);
             btnSubmit.TabIndex = 0;
@@ -80,9 +78,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(cmbGender);
             panel1.Controls.Add(dtPicker);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(txtbAge);
             panel1.Controls.Add(Add);
             panel1.Controls.Add(txtbAddressTwo);
             panel1.Controls.Add(txtbEmail);
@@ -92,7 +89,6 @@
             panel1.Controls.Add(txtbSurname);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(txtbGender);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(txtbFirstname);
             panel1.Controls.Add(btnSubmit);
@@ -102,29 +98,29 @@
             panel1.Size = new Size(899, 570);
             panel1.TabIndex = 3;
             // 
-            // label7
+            // cmbGender
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 24F);
-            label7.Location = new Point(288, 272);
-            label7.Name = "label7";
-            label7.Size = new Size(77, 45);
-            label7.TabIndex = 16;
-            label7.Text = "Age";
+            cmbGender.Font = new Font("Segoe UI", 20F);
+            cmbGender.FormattingEnabled = true;
+            cmbGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            cmbGender.Location = new Point(387, 218);
+            cmbGender.Name = "cmbGender";
+            cmbGender.Size = new Size(326, 45);
+            cmbGender.TabIndex = 17;
             // 
-            // txtbAge
+            // dtPicker
             // 
-            txtbAge.Font = new Font("Segoe UI", 24F);
-            txtbAge.Location = new Point(387, 272);
-            txtbAge.Name = "txtbAge";
-            txtbAge.Size = new Size(326, 50);
-            txtbAge.TabIndex = 15;
+            dtPicker.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtPicker.Location = new Point(387, 158);
+            dtPicker.Name = "dtPicker";
+            dtPicker.Size = new Size(326, 50);
+            dtPicker.TabIndex = 4;
             // 
             // Add
             // 
             Add.AutoSize = true;
             Add.Font = new Font("Segoe UI", 24F);
-            Add.Location = new Point(115, 386);
+            Add.Location = new Point(115, 332);
             Add.Name = "Add";
             Add.Size = new Size(257, 45);
             Add.TabIndex = 14;
@@ -133,7 +129,7 @@
             // txtbAddressTwo
             // 
             txtbAddressTwo.Font = new Font("Segoe UI", 24F);
-            txtbAddressTwo.Location = new Point(387, 386);
+            txtbAddressTwo.Location = new Point(387, 332);
             txtbAddressTwo.Name = "txtbAddressTwo";
             txtbAddressTwo.Size = new Size(326, 50);
             txtbAddressTwo.TabIndex = 13;
@@ -141,7 +137,7 @@
             // txtbEmail
             // 
             txtbEmail.Font = new Font("Segoe UI", 24F);
-            txtbEmail.Location = new Point(387, 442);
+            txtbEmail.Location = new Point(387, 388);
             txtbEmail.Name = "txtbEmail";
             txtbEmail.Size = new Size(326, 50);
             txtbEmail.TabIndex = 12;
@@ -150,7 +146,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 24F);
-            label6.Location = new Point(276, 442);
+            label6.Location = new Point(276, 388);
             label6.Name = "label6";
             label6.Size = new Size(96, 45);
             label6.TabIndex = 11;
@@ -159,7 +155,7 @@
             // txtbAddressOne
             // 
             txtbAddressOne.Font = new Font("Segoe UI", 24F);
-            txtbAddressOne.Location = new Point(387, 328);
+            txtbAddressOne.Location = new Point(387, 274);
             txtbAddressOne.Name = "txtbAddressOne";
             txtbAddressOne.Size = new Size(326, 50);
             txtbAddressOne.TabIndex = 10;
@@ -168,7 +164,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 24F);
-            label5.Location = new Point(107, 331);
+            label5.Location = new Point(107, 277);
             label5.Name = "label5";
             label5.Size = new Size(258, 45);
             label5.TabIndex = 9;
@@ -202,14 +198,6 @@
             label3.TabIndex = 5;
             label3.Text = "Date of Birth";
             // 
-            // txtbGender
-            // 
-            txtbGender.Font = new Font("Segoe UI", 24F);
-            txtbGender.Location = new Point(387, 214);
-            txtbGender.Name = "txtbGender";
-            txtbGender.Size = new Size(326, 50);
-            txtbGender.TabIndex = 4;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -219,14 +207,6 @@
             label2.Size = new Size(145, 45);
             label2.TabIndex = 3;
             label2.Text = "Surname";
-            // 
-            // dtPicker
-            // 
-            dtPicker.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtPicker.Location = new Point(387, 158);
-            dtPicker.Name = "dtPicker";
-            dtPicker.Size = new Size(326, 50);
-            dtPicker.TabIndex = 4;
             // 
             // NewCustomer
             // 
@@ -254,12 +234,10 @@
         private TextBox txtbSurname;
         private Label label4;
         private Label label3;
-        private TextBox txtbGender;
         private Label label2;
         private Label Add;
         private TextBox txtbAddressTwo;
-        private Label label7;
-        private TextBox txtbAge;
         private DateTimePicker dtPicker;
+        private ComboBox cmbGender;
     }
 }

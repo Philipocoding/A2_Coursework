@@ -32,134 +32,136 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnLeft = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            dtPicker = new DateTimePicker();
             pnlDatePicker = new Panel();
-            btnRight = new Button();
-            btnDelete = new Button();
-            txtbID = new TextBox();
-            label1 = new Label();
-            panel1 = new Panel();
-            DTPicker = new DateTimePicker();
+            cbIgnoreID = new CheckBox();
+            btnReset = new Button();
+            btnFilter = new Button();
             label2 = new Label();
-            button1 = new Button();
-            listViewBookings = new ListView();
+            txtbCustomerID = new TextBox();
+            cbDate = new CheckBox();
+            btnRight = new Button();
             BookingTable = new DataGridView();
             clmBookingID = new DataGridViewTextBoxColumn();
             clmCustomerID = new DataGridViewTextBoxColumn();
             clmDate = new DataGridViewTextBoxColumn();
+            panel1 = new Panel();
+            btnDelete = new Button();
+            txtbID = new TextBox();
+            label1 = new Label();
             pnlDatePicker.SuspendLayout();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnLeft
             // 
             btnLeft.Font = new Font("Segoe UI", 24F);
-            btnLeft.Location = new Point(248, 47);
+            btnLeft.Location = new Point(13, 20);
             btnLeft.Name = "btnLeft";
             btnLeft.Size = new Size(51, 50);
             btnLeft.TabIndex = 1;
             btnLeft.Text = "<";
             btnLeft.UseVisualStyleBackColor = true;
+            btnLeft.Click += btnLeft_Click;
             // 
-            // dateTimePicker1
+            // dtPicker
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 24F);
-            dateTimePicker1.Location = new Point(305, 47);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(216, 50);
-            dateTimePicker1.TabIndex = 2;
+            dtPicker.Font = new Font("Segoe UI", 24F);
+            dtPicker.Location = new Point(70, 20);
+            dtPicker.Name = "dtPicker";
+            dtPicker.Size = new Size(216, 50);
+            dtPicker.TabIndex = 2;
             // 
             // pnlDatePicker
             // 
+            pnlDatePicker.Controls.Add(cbIgnoreID);
+            pnlDatePicker.Controls.Add(btnReset);
+            pnlDatePicker.Controls.Add(btnFilter);
+            pnlDatePicker.Controls.Add(label2);
+            pnlDatePicker.Controls.Add(txtbCustomerID);
+            pnlDatePicker.Controls.Add(cbDate);
             pnlDatePicker.Controls.Add(btnRight);
             pnlDatePicker.Controls.Add(btnLeft);
-            pnlDatePicker.Controls.Add(dateTimePicker1);
-            pnlDatePicker.Location = new Point(95, -1);
+            pnlDatePicker.Controls.Add(dtPicker);
+            pnlDatePicker.Location = new Point(12, 357);
             pnlDatePicker.Name = "pnlDatePicker";
-            pnlDatePicker.Size = new Size(821, 102);
+            pnlDatePicker.Size = new Size(531, 316);
             pnlDatePicker.TabIndex = 3;
+            // 
+            // cbIgnoreID
+            // 
+            cbIgnoreID.AutoSize = true;
+            cbIgnoreID.Font = new Font("Segoe UI", 15.25F);
+            cbIgnoreID.Location = new Point(366, 120);
+            cbIgnoreID.Name = "cbIgnoreID";
+            cbIgnoreID.Size = new Size(92, 34);
+            cbIgnoreID.TabIndex = 12;
+            cbIgnoreID.Text = "Ignore";
+            cbIgnoreID.UseVisualStyleBackColor = true;
+            // 
+            // btnReset
+            // 
+            btnReset.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReset.Location = new Point(224, 241);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(148, 62);
+            btnReset.TabIndex = 11;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
+            // 
+            // btnFilter
+            // 
+            btnFilter.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnFilter.Location = new Point(378, 241);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new Size(148, 62);
+            btnFilter.TabIndex = 10;
+            btnFilter.Text = "Filter";
+            btnFilter.UseVisualStyleBackColor = true;
+            btnFilter.Click += btnFilter_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 20F);
+            label2.Location = new Point(82, 115);
+            label2.Name = "label2";
+            label2.Size = new Size(157, 37);
+            label2.TabIndex = 9;
+            label2.Text = "CustomerID";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtbCustomerID
+            // 
+            txtbCustomerID.Font = new Font("Segoe UI", 20F);
+            txtbCustomerID.Location = new Point(240, 115);
+            txtbCustomerID.Name = "txtbCustomerID";
+            txtbCustomerID.Size = new Size(106, 43);
+            txtbCustomerID.TabIndex = 8;
+            // 
+            // cbDate
+            // 
+            cbDate.AutoSize = true;
+            cbDate.Font = new Font("Segoe UI", 15.25F);
+            cbDate.Location = new Point(366, 29);
+            cbDate.Name = "cbDate";
+            cbDate.Size = new Size(92, 34);
+            cbDate.TabIndex = 7;
+            cbDate.Text = "Ignore";
+            cbDate.UseVisualStyleBackColor = true;
             // 
             // btnRight
             // 
             btnRight.Font = new Font("Segoe UI", 24F);
-            btnRight.Location = new Point(527, 47);
+            btnRight.Location = new Point(292, 20);
             btnRight.Name = "btnRight";
             btnRight.Size = new Size(50, 50);
             btnRight.TabIndex = 3;
             btnRight.Text = ">";
             btnRight.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(95, 515);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(148, 62);
-            btnDelete.TabIndex = 4;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // txtbID
-            // 
-            txtbID.Font = new Font("Segoe UI", 20.25F);
-            txtbID.Location = new Point(273, 527);
-            txtbID.Name = "txtbID";
-            txtbID.Size = new Size(100, 43);
-            txtbID.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20.25F);
-            label1.Location = new Point(261, 485);
-            label1.Name = "label1";
-            label1.Size = new Size(148, 37);
-            label1.TabIndex = 6;
-            label1.Text = "Booking ID";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(DTPicker);
-            panel1.Controls.Add(label2);
-            panel1.Location = new Point(622, 488);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(550, 256);
-            panel1.TabIndex = 7;
-            // 
-            // DTPicker
-            // 
-            DTPicker.Location = new Point(49, 20);
-            DTPicker.Name = "DTPicker";
-            DTPicker.Size = new Size(200, 23);
-            DTPicker.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 26);
-            label2.Name = "label2";
-            label2.Size = new Size(31, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Date";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(525, 499);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // listViewBookings
-            // 
-            listViewBookings.Location = new Point(12, 136);
-            listViewBookings.Name = "listViewBookings";
-            listViewBookings.Size = new Size(157, 325);
-            listViewBookings.TabIndex = 4;
-            listViewBookings.UseCompatibleStateImageBehavior = false;
+            btnRight.Click += btnRight_Click;
             // 
             // BookingTable
             // 
@@ -167,12 +169,12 @@
             BookingTable.AllowUserToDeleteRows = false;
             BookingTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             BookingTable.Columns.AddRange(new DataGridViewColumn[] { clmBookingID, clmCustomerID, clmDate });
-            BookingTable.Location = new Point(293, 107);
+            BookingTable.Location = new Point(12, 0);
             BookingTable.Name = "BookingTable";
             BookingTable.ReadOnly = true;
             BookingTable.RowHeadersWidth = 100;
             BookingTable.RowTemplate.Height = 35;
-            BookingTable.Size = new Size(770, 336);
+            BookingTable.Size = new Size(740, 336);
             BookingTable.StandardTab = true;
             BookingTable.TabIndex = 0;
             BookingTable.CellClick += BookingTable_CellClick;
@@ -205,46 +207,82 @@
             clmDate.ReadOnly = true;
             clmDate.Width = 200;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnDelete);
+            panel1.Controls.Add(txtbID);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(558, 357);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(350, 166);
+            panel1.TabIndex = 7;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Location = new Point(18, 67);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(148, 62);
+            btnDelete.TabIndex = 7;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click_1;
+            // 
+            // txtbID
+            // 
+            txtbID.Font = new Font("Segoe UI", 20.25F);
+            txtbID.Location = new Point(196, 79);
+            txtbID.Name = "txtbID";
+            txtbID.Size = new Size(100, 43);
+            txtbID.TabIndex = 8;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20.25F);
+            label1.Location = new Point(184, 37);
+            label1.Name = "label1";
+            label1.Size = new Size(148, 37);
+            label1.TabIndex = 9;
+            label1.Text = "Booking ID";
+            // 
             // ViewBookings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1197, 756);
-            Controls.Add(listViewBookings);
             Controls.Add(panel1);
             Controls.Add(BookingTable);
-            Controls.Add(label1);
-            Controls.Add(button1);
-            Controls.Add(txtbID);
-            Controls.Add(btnDelete);
             Controls.Add(pnlDatePicker);
             Name = "ViewBookings";
             Text = "ViewBookings";
             Load += ViewBookings_Load;
             pnlDatePicker.ResumeLayout(false);
+            pnlDatePicker.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)BookingTable).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)BookingTable).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
         private Button btnLeft;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtPicker;
         private Panel pnlDatePicker;
         private Button btnRight;
-        private Button btnDelete;
-        private TextBox txtbID;
-        private Label label1;
-        private Panel panel1;
-        private Label label2;
-        private Button button1;
-        private DateTimePicker DTPicker;
-        private ListView listViewBookings;
         private DataGridView BookingTable;
         private DataGridViewTextBoxColumn clmBookingID;
         private DataGridViewTextBoxColumn clmCustomerID;
         private DataGridViewTextBoxColumn clmDate;
+        private CheckBox cbDate;
+        private Panel panel1;
+        private Button btnDelete;
+        private TextBox txtbID;
+        private Label label1;
+        private Button btnFilter;
+        private Label label2;
+        private TextBox txtbCustomerID;
+        private Button btnReset;
+        private CheckBox cbIgnoreID;
     }
 }

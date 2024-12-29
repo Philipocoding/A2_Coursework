@@ -58,5 +58,113 @@ namespace A2_Coursework.Classes
 
             return bookings;
         }
+        public static List<Booking> GetBookings(int id)
+        {
+            List<Booking> bookings = new List<Booking>();
+            try
+            {
+                using (SqlConnection connection = new(ProjectDAL.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand getBookings = new();
+                    getBookings.Connection = connection;
+                    getBookings.CommandType = CommandType.StoredProcedure;
+                    getBookings.CommandText = "BookingsByID";
+                    getBookings.Parameters.Add(new SqlParameter("@CustomerID", id));
+
+                    using (SqlDataReader reader = getBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Booking booking = new Booking();
+
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            bookings.Add(booking);
+                        }
+                    }
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
+            return bookings;
+
+        }
+
+        public static List<Booking> GetBookings(string date)
+        {
+            List<Booking> bookings = new List<Booking>();
+            try
+            {
+                using (SqlConnection connection = new(ProjectDAL.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand getBookings = new();
+                    getBookings.Connection = connection;
+                    getBookings.CommandType = CommandType.StoredProcedure;
+                    getBookings.CommandText = "BookingsByDate";
+                    getBookings.Parameters.Add(new SqlParameter("@Date", date));
+
+                    using (SqlDataReader reader = getBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Booking booking = new Booking();
+
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            bookings.Add(booking);
+                        }
+                    }
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
+            return bookings;
+
+        }
+        public static List<Booking> GetBookings(string date, int id)
+        {
+            List<Booking> bookings = new List<Booking>();
+            try
+            {
+                using (SqlConnection connection = new(ProjectDAL.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand getBookings = new();
+                    getBookings.Connection = connection;
+                    getBookings.CommandType = CommandType.StoredProcedure;
+                    getBookings.CommandText = "BookingsBy_Date_ID";
+                    getBookings.Parameters.Add(new SqlParameter("@Date", date));
+                    getBookings.Parameters.Add(new SqlParameter("@CustomerID", id));
+
+
+                    using (SqlDataReader reader = getBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Booking booking = new Booking();
+
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            bookings.Add(booking);
+                        }
+                    }
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
+            return bookings;
+
+        }
     }
 }

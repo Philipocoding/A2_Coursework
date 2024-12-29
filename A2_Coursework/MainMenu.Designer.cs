@@ -31,7 +31,7 @@
             panel1 = new Panel();
             pnlMenuSubMenu = new Panel();
             button8 = new Button();
-            button7 = new Button();
+            btnViewCustomers = new Button();
             btnViewStaff = new Button();
             btnMenu = new Button();
             pnlMediaSubMenu = new Panel();
@@ -67,7 +67,7 @@
             // 
             pnlMenuSubMenu.BackColor = SystemColors.ControlLight;
             pnlMenuSubMenu.Controls.Add(button8);
-            pnlMenuSubMenu.Controls.Add(button7);
+            pnlMenuSubMenu.Controls.Add(btnViewCustomers);
             pnlMenuSubMenu.Controls.Add(btnViewStaff);
             pnlMenuSubMenu.Dock = DockStyle.Top;
             pnlMenuSubMenu.Location = new Point(0, 375);
@@ -91,21 +91,22 @@
             button8.TextAlign = ContentAlignment.MiddleLeft;
             button8.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btnViewCustomers
             // 
-            button7.BackColor = SystemColors.ControlLightLight;
-            button7.Dock = DockStyle.Top;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.ForeColor = Color.Black;
-            button7.Location = new Point(0, 45);
-            button7.Name = "button7";
-            button7.Padding = new Padding(35, 0, 0, 0);
-            button7.Size = new Size(200, 45);
-            button7.TabIndex = 1;
-            button7.Text = "button7";
-            button7.TextAlign = ContentAlignment.MiddleLeft;
-            button7.UseVisualStyleBackColor = false;
+            btnViewCustomers.BackColor = SystemColors.ControlLightLight;
+            btnViewCustomers.Dock = DockStyle.Top;
+            btnViewCustomers.FlatAppearance.BorderSize = 0;
+            btnViewCustomers.FlatStyle = FlatStyle.Flat;
+            btnViewCustomers.ForeColor = Color.Black;
+            btnViewCustomers.Location = new Point(0, 45);
+            btnViewCustomers.Name = "btnViewCustomers";
+            btnViewCustomers.Padding = new Padding(35, 0, 0, 0);
+            btnViewCustomers.Size = new Size(200, 45);
+            btnViewCustomers.TabIndex = 1;
+            btnViewCustomers.Text = "View Customers";
+            btnViewCustomers.TextAlign = ContentAlignment.MiddleLeft;
+            btnViewCustomers.UseVisualStyleBackColor = false;
+            btnViewCustomers.Click += btnViewCustomers_Click;
             // 
             // btnViewStaff
             // 
@@ -284,7 +285,7 @@
         private Panel pnlMenuSubMenu;
         private Button btnViewStaff;
         private Button button8;
-        private Button button7;
+        private Button btnViewCustomers;
         private FlowLayoutPanel pnlChildForm;
     }
 }

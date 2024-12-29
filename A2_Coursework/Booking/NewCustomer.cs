@@ -21,8 +21,17 @@ namespace A2_Coursework
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string dateString = dtPicker.Value.ToString("yyyy-MM-dd");
-            ProjectDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, txtbGender.Text,
-                txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
+            if (Validation.ValidGender(cmbGender.Text))
+            {
+                ProjectDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
+                    txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
+                MessageBox.Show("Customer Added");
+            }
+            else
+            {
+                MessageBox.Show("Enter valid gender");
+            }
+
         }
     }
 }

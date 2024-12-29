@@ -18,6 +18,60 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
+        public static void DeleteCustomer(int id)
+        {
+            using (SqlConnection connection = new(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand DeleteCustomer = new();
+                    DeleteCustomer.Connection = connection;
+                    DeleteCustomer.CommandType = CommandType.StoredProcedure;
+                    DeleteCustomer.CommandText = "DeleteCustomer";
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@CustomerID", id));
+                    DeleteCustomer.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        public static void EditCustomer(int customerID, string firstname, string surname, string dOB,
+            string gender, string addressOne, string addressTwo, string email)
+        {
+            using (SqlConnection connection = new(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand EditStaff = new();
+                    EditStaff.Connection = connection;
+                    EditStaff.CommandType = CommandType.StoredProcedure;
+                    EditStaff.CommandText = "EditCustomer";
+                    EditStaff.Parameters.Add(new SqlParameter("@CustomerID", customerID));
+                    EditStaff.Parameters.Add(new SqlParameter("@Forename", firstname));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@Surname", surname));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@DOB", dOB));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@Gender", gender));
+
+                    EditStaff.Parameters.Add(new SqlParameter("@AddressOne", addressOne));
+                    EditStaff.Parameters.Add(new SqlParameter("@AddressTwo", addressTwo));
+                    EditStaff.Parameters.Add(new SqlParameter("@Email", email));
+
+
+                    EditStaff.ExecuteNonQuery();
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
         public static void EditStaff(int id,string fname, string sname, int age, string gender,
             double rate,int teamNo)
         {
@@ -156,14 +210,6 @@ namespace A2_Coursework.Classes
                     AddBooking.Parameters.Add(new SqlParameter("@BookingDate", Date));
                     AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
                     rowsaffected = AddBooking.ExecuteNonQuery();
-
-
-                    //SqlCommand getID = new SqlCommand();
-                    //getID.Connection = connection;
-                    //getID.CommandText = "GetLastBooking";
-                    //getID.CommandType = CommandType.StoredProcedure;
-                    //int bookingID = getID.ExecuteNonQuery();
-
                     string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
                     SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
                     int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());

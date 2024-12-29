@@ -295,12 +295,74 @@ namespace A2_Coursework
                 int customerID = Convert.ToInt32(txtbCustomerID.Text);
                 string theDate = DTPicker.Value.ToShortDateString();
                 ProjectDAL.NewBooking(customerID, theDate, services, quantity);
+                MessageBox.Show("Booking confirmed");
             }
             catch (Exception ex)
             {
 
             }
 
+        }
+        private void PopulateDataGrid()
+        {
+            DataGridCustomers.Rows.Clear();
+            List<Customer> allCustomers = new();
+            allCustomers = Customer.populateDataGrid();
+            foreach (Customer customer in allCustomers)
+            {
+                DataGridCustomers.Rows.Add(customer.CustomerID, customer.Firstname, customer.Surname, customer.DOB
+                    , customer.Gender, customer.AddressOne, customer.AddressTwo, customer.Email);
+            }
+        }
+        private void ExistingCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ExistingCustomer.Checked)
+            {
+                pnlDatabase.Visible = true;
+                PopulateDataGrid();
+            }
+            else
+            {
+                pnlDatabase.Visible = false;
+            }
+        }
+
+        private void DataGridCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmCustomerID"].Value.ToString();
+            txtbFirstName.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmForename"].Value.ToString();
+            txtbSurname.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmSurname"].Value.ToString();
+            txtbAddress.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmAddressOne"].Value.ToString() + " " + DataGridCustomers.SelectedRows[0]
+                .Cells["clmAddressTwo"].Value.ToString();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (!pnlBookingDetails.Visible)
+            {
+                pnlDatabase.Visible = false;
+                pnlBookingDetails.Visible = true;
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (pnlBookingDetails.Visible)
+            {
+                pnlBookingDetails.Visible = false;
+                if (ExistingCustomer.Checked)
+                {
+                    pnlDatabase.Visible = true;
+                }
+                else
+                {
+                    pnlDatabase.Visible = false;
+                }
+            }
         }
     }
 }
