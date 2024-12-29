@@ -628,7 +628,7 @@
             lblCustSelected.AutoSize = true;
             lblCustSelected.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCustSelected.ForeColor = Color.Green;
-            lblCustSelected.Location = new Point(515, 127);
+            lblCustSelected.Location = new Point(574, 135);
             lblCustSelected.Name = "lblCustSelected";
             lblCustSelected.Size = new Size(164, 25);
             lblCustSelected.TabIndex = 56;
