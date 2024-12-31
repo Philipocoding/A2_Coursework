@@ -145,7 +145,6 @@ namespace A2_Coursework
 
         private void NewBooking_Load(object sender, EventArgs e)
         {
-            //services.Clear();
             windows = false;
             Floors = false;
             Doors = false;
@@ -279,6 +278,7 @@ namespace A2_Coursework
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            int id = 0;
             try
             {
                 services.Clear();
@@ -292,10 +292,37 @@ namespace A2_Coursework
                 if (Curtains) { services.Add(7); quantity.Add(Convert.ToInt32(lblCurtains.Text)); }
                 if (Vacuum) { services.Add(8); quantity.Add(Convert.ToInt32(lblVacuum.Text)); }
 
-                int customerID = Convert.ToInt32(txtbCustomerID.Text);
-                string theDate = DTPicker.Value.ToShortDateString();
-                ProjectDAL.NewBooking(customerID, theDate, services, quantity);
-                MessageBox.Show("Booking confirmed");
+                string dateString = dtPickerDOB_.Value.ToString("yyyy-MM-dd");
+                if (Validation.ValidGender(cmbGender_.Text))
+                {
+                    if ((!Validation.isNullorEmpty(txtbFirstname_.Text) && (!Validation.isNullorEmpty(txtbFirstname_.Text))
+                   && (!Validation.isNullorEmpty(txtbEmail_.Text)) && (!Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (!Validation.isNullorEmpty(txtbAddressOne.Text)
+                   && (!Validation.isNullorEmpty(cmbGender_.Text)) && (!Validation.isNullorEmpty(dtPickerDOB_.Text)))))
+                    {
+                        id = ProjectDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
+                       txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
+                        MessageBox.Show("Customer Added");
+
+                        string theDate = BookingDate.Value.ToShortDateString();
+                        ProjectDAL.NewBooking(id, theDate, services, quantity);
+                        MessageBox.Show("Booking confirmed");
+                    }
+                    else
+                    {
+
+                        string theDate = BookingDate.Value.ToShortDateString();
+                        ProjectDAL.NewBooking(Convert.ToInt32(txtbCustomerID.Text), theDate, services, quantity);
+                        MessageBox.Show("Booking confirmed");
+                    }
+                   
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Enter valid gender");
+                }
+
+                
             }
             catch (Exception ex)
             {
@@ -318,34 +345,61 @@ namespace A2_Coursework
         {
             if (ExistingCustomer.Checked)
             {
+                pnlAddCustomer.Visible = false;
                 pnlDatabase.Visible = true;
                 PopulateDataGrid();
             }
             else
             {
+                pnlAddCustomer.Visible = true;
                 pnlDatabase.Visible = false;
+                txtbFirstname_.Text = "";
+                txtbSurname_.Text = "";
+                txtbEmail_.Text = "";
+                txtbAddressOne_.Text = "";
+                txtbAddressTwo_.Text = "";
+                cmbGender_.Text = "";
+                dtPickerDOB_.Text = "";
             }
         }
 
         private void DataGridCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
+           txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
                 .Cells["clmCustomerID"].Value.ToString();
-            txtbFirstName.Text = DataGridCustomers.SelectedRows[0]
+            txtbFirstname_.Text = DataGridCustomers.SelectedRows[0]
                 .Cells["clmForename"].Value.ToString();
-            txtbSurname.Text = DataGridCustomers.SelectedRows[0]
+            txtbSurname_.Text = DataGridCustomers.SelectedRows[0]
                 .Cells["clmSurname"].Value.ToString();
-            txtbAddress.Text = DataGridCustomers.SelectedRows[0]
-                .Cells["clmAddressOne"].Value.ToString() + " " + DataGridCustomers.SelectedRows[0]
+            dtPickerDOB_.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmDOB"].Value.ToString();
+            cmbGender_.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmGender"].Value.ToString();
+            txtbAddressOne_.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmAddressOne"].Value.ToString();
+            txtbAddressTwo_.Text = DataGridCustomers.SelectedRows[0]
                 .Cells["clmAddressTwo"].Value.ToString();
+            txtbEmail_.Text = DataGridCustomers.SelectedRows[0]
+                .Cells["clmEmail"].Value.ToString();
+
+            if (DataGridCustomers.SelectedRows.Count > 0)
+            {
+                lblCustSelected.Visible = true;
+            }
+            else
+            {
+                lblCustSelected.Visible = false;
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (!pnlBookingDetails.Visible)
             {
+                pnlAddCustomer.Visible = false;
                 pnlDatabase.Visible = false;
                 pnlBookingDetails.Visible = true;
+                btnNext.Visible = false;
             }
         }
 
@@ -353,6 +407,9 @@ namespace A2_Coursework
         {
             if (pnlBookingDetails.Visible)
             {
+                btnNext.Visible = true;
+                pnlAddCustomer.Visible = true;
+
                 pnlBookingDetails.Visible = false;
                 if (ExistingCustomer.Checked)
                 {
@@ -363,6 +420,17 @@ namespace A2_Coursework
                     pnlDatabase.Visible = false;
                 }
             }
+        }
+
+        private void btnUnselect_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in DataGridCustomers.Rows)
+            {
+                row.Selected = false;
+                lblCustSelected.Visible = false;
+            }
+            txtbCustomerID.Text = "";
+
         }
     }
 }

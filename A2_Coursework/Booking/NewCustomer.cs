@@ -23,9 +23,19 @@ namespace A2_Coursework
             string dateString = dtPicker.Value.ToString("yyyy-MM-dd");
             if (Validation.ValidGender(cmbGender.Text))
             {
-                ProjectDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
+                if ((!Validation.isNullorEmpty(txtbFirstname.Text) &&(!Validation.isNullorEmpty(txtbFirstname.Text))
+                    &&(!Validation.isNullorEmpty(txtbEmail.Text))&&(!Validation.isNullorEmpty(txtbAddressTwo.Text))&&(!Validation.isNullorEmpty(txtbAddressOne.Text)
+                    &&(!Validation.isNullorEmpty(cmbGender.Text)) &&(!Validation.isNullorEmpty(dtPicker.Text)))))
+                {
+                    ProjectDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
                     txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
-                MessageBox.Show("Customer Added");
+                    MessageBox.Show("Customer Added");
+                }
+                else
+                {
+                    MessageBox.Show("Ensure all fields are completed");
+                }
+                
             }
             else
             {

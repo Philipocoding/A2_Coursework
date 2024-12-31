@@ -53,7 +53,7 @@ namespace A2_Coursework
             try
             {
                 ProjectDAL.DeleteCustomer(Convert.ToInt32(DataGridCustomers.SelectedRows[0]
-                .Cells["clmCustomerID"].Value));
+                .Cells[0].Value));
                 PopulateDataGrid();
                 MessageBox.Show("Customer deleted");
             }

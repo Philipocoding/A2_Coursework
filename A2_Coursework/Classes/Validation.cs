@@ -19,6 +19,17 @@ namespace A2_Coursework.Classes
                 return true;
             }
         }
+        public static bool isNullorEmpty(string text)
+        {
+            if (String.IsNullOrEmpty(text))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public static bool validAge(int age)
         {
             if ((age < 18)|| (age > 115))

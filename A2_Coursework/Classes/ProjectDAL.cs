@@ -18,18 +18,26 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-        public static void DeleteCustomer(int id)
+        public static void DeleteCustomer(int Custid)
         {
             using (SqlConnection connection = new(connectionString))
             {
                 try
                 {
+              
+                    List<Booking> bookings = Booking.GetBookings(Custid);
+                    foreach(Booking reservation in bookings)
+                    {
+                        DeleteBooking(reservation.BookingID);
+                    }
+
+
                     connection.Open();
                     SqlCommand DeleteCustomer = new();
                     DeleteCustomer.Connection = connection;
                     DeleteCustomer.CommandType = CommandType.StoredProcedure;
                     DeleteCustomer.CommandText = "DeleteCustomer";
-                    DeleteCustomer.Parameters.Add(new SqlParameter("@CustomerID", id));
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@CustomerID", Custid));
                     DeleteCustomer.ExecuteNonQuery();
                 }
                 catch (Exception ex)
@@ -262,9 +270,17 @@ namespace A2_Coursework.Classes
                     AddCustomer.Parameters.Add(new SqlParameter("@AddressTwo", addressTwo));
                     AddCustomer.Parameters.Add(new SqlParameter("@Email", email));
 
-                    rowsaffected = AddCustomer.ExecuteNonQuery();
+                    AddCustomer.ExecuteNonQuery();
+
+                    SqlCommand getID = new SqlCommand();
+                    getID.Connection = connection;
+
+                    getID.CommandType = CommandType.StoredProcedure;
+                    getID.CommandText = "GetLastCustomer";
+                    rowsaffected = Convert.ToInt32(getID.ExecuteScalar());
 
                     connection.Close();
+
 
                 }
                 catch (Exception ex)

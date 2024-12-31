@@ -33,7 +33,6 @@
             label1 = new Label();
             label2 = new Label();
             btnCarpets = new Button();
-            button5 = new Button();
             btnDusting = new Button();
             btnDoors = new Button();
             btnFloors = new Button();
@@ -64,11 +63,27 @@
             lblVacuumMinus = new Label();
             lblVacuum = new Label();
             lblVacuumPlus = new Label();
-            DTPicker = new DateTimePicker();
+            BookingDate = new DateTimePicker();
             pnlCustomerDetails = new Panel();
+            pnlAddCustomer = new Panel();
+            cmbGender_ = new ComboBox();
+            dtPickerDOB_ = new DateTimePicker();
+            Add = new Label();
+            txtbAddressTwo_ = new TextBox();
+            txtbEmail_ = new TextBox();
+            label6 = new Label();
+            txtbAddressOne_ = new TextBox();
+            label7 = new Label();
+            txtbSurname_ = new TextBox();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            txtbFirstname_ = new TextBox();
+            label11 = new Label();
             pnlBookingDetails = new Panel();
             btnSubmit = new Button();
             pnlDatabase = new Panel();
+            btnUnselect = new Button();
             DataGridCustomers = new DataGridView();
             clmCustomerID = new DataGridViewTextBoxColumn();
             clmForename = new DataGridViewTextBoxColumn();
@@ -79,16 +94,11 @@
             clmAddressTwo = new DataGridViewTextBoxColumn();
             clmEmail = new DataGridViewTextBoxColumn();
             lblCustSelected = new Label();
-            txtbAddress = new TextBox();
-            label5 = new Label();
-            txtbSurname = new TextBox();
-            label4 = new Label();
             ExistingCustomer = new CheckBox();
-            txtbFirstName = new TextBox();
-            label3 = new Label();
             btnNext = new Button();
             btnBack = new Button();
             pnlCustomerDetails.SuspendLayout();
+            pnlAddCustomer.SuspendLayout();
             pnlBookingDetails.SuspendLayout();
             pnlDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).BeginInit();
@@ -109,26 +119,28 @@
             // txtbCustomerID
             // 
             txtbCustomerID.Font = new Font("Segoe UI", 18F);
-            txtbCustomerID.Location = new Point(129, 22);
+            txtbCustomerID.Location = new Point(155, 75);
             txtbCustomerID.Name = "txtbCustomerID";
-            txtbCustomerID.Size = new Size(293, 39);
+            txtbCustomerID.Size = new Size(320, 39);
             txtbCustomerID.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(50, 39);
+            label1.Font = new Font("Segoe UI", 16F);
+            label1.Location = new Point(15, 80);
             label1.Name = "label1";
-            label1.Size = new Size(73, 15);
+            label1.Size = new Size(134, 30);
             label1.TabIndex = 5;
             label1.Text = "Customer ID";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(38, 27);
+            label2.Font = new Font("Segoe UI", 16F);
+            label2.Location = new Point(31, 26);
             label2.Name = "label2";
-            label2.Size = new Size(31, 15);
+            label2.Size = new Size(58, 30);
             label2.TabIndex = 6;
             label2.Text = "Date";
             // 
@@ -143,15 +155,6 @@
             btnCarpets.Text = "Carpets";
             btnCarpets.UseVisualStyleBackColor = true;
             btnCarpets.Click += btnVacuuming_Click;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(853, 50);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 12;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
             // 
             // btnDusting
             // 
@@ -482,33 +485,177 @@
             lblVacuumPlus.Text = "+";
             lblVacuumPlus.Click += lblVacuumPlus_Click;
             // 
-            // DTPicker
+            // BookingDate
             // 
-            DTPicker.CalendarFont = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DTPicker.Font = new Font("Segoe UI", 22F);
-            DTPicker.Location = new Point(95, 13);
-            DTPicker.Name = "DTPicker";
-            DTPicker.Size = new Size(200, 47);
-            DTPicker.TabIndex = 47;
+            BookingDate.CalendarFont = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BookingDate.Font = new Font("Segoe UI", 22F);
+            BookingDate.Location = new Point(95, 13);
+            BookingDate.Name = "BookingDate";
+            BookingDate.Size = new Size(302, 47);
+            BookingDate.TabIndex = 47;
             // 
             // pnlCustomerDetails
             // 
+            pnlCustomerDetails.Controls.Add(pnlAddCustomer);
             pnlCustomerDetails.Controls.Add(pnlBookingDetails);
             pnlCustomerDetails.Controls.Add(pnlDatabase);
             pnlCustomerDetails.Controls.Add(lblCustSelected);
             pnlCustomerDetails.Controls.Add(label1);
-            pnlCustomerDetails.Controls.Add(txtbAddress);
-            pnlCustomerDetails.Controls.Add(label5);
             pnlCustomerDetails.Controls.Add(txtbCustomerID);
-            pnlCustomerDetails.Controls.Add(txtbSurname);
-            pnlCustomerDetails.Controls.Add(label4);
             pnlCustomerDetails.Controls.Add(ExistingCustomer);
-            pnlCustomerDetails.Controls.Add(txtbFirstName);
-            pnlCustomerDetails.Controls.Add(label3);
-            pnlCustomerDetails.Location = new Point(24, 20);
+            pnlCustomerDetails.Location = new Point(19, 12);
             pnlCustomerDetails.Name = "pnlCustomerDetails";
-            pnlCustomerDetails.Size = new Size(1042, 607);
+            pnlCustomerDetails.Size = new Size(1054, 607);
             pnlCustomerDetails.TabIndex = 48;
+            // 
+            // pnlAddCustomer
+            // 
+            pnlAddCustomer.Controls.Add(cmbGender_);
+            pnlAddCustomer.Controls.Add(dtPickerDOB_);
+            pnlAddCustomer.Controls.Add(Add);
+            pnlAddCustomer.Controls.Add(txtbAddressTwo_);
+            pnlAddCustomer.Controls.Add(txtbEmail_);
+            pnlAddCustomer.Controls.Add(label6);
+            pnlAddCustomer.Controls.Add(txtbAddressOne_);
+            pnlAddCustomer.Controls.Add(label7);
+            pnlAddCustomer.Controls.Add(txtbSurname_);
+            pnlAddCustomer.Controls.Add(label8);
+            pnlAddCustomer.Controls.Add(label9);
+            pnlAddCustomer.Controls.Add(label10);
+            pnlAddCustomer.Controls.Add(txtbFirstname_);
+            pnlAddCustomer.Controls.Add(label11);
+            pnlAddCustomer.Location = new Point(15, 16);
+            pnlAddCustomer.Name = "pnlAddCustomer";
+            pnlAddCustomer.Size = new Size(717, 492);
+            pnlAddCustomer.TabIndex = 58;
+            // 
+            // cmbGender_
+            // 
+            cmbGender_.Font = new Font("Segoe UI", 20F);
+            cmbGender_.FormattingEnabled = true;
+            cmbGender_.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            cmbGender_.Location = new Point(283, 195);
+            cmbGender_.Name = "cmbGender_";
+            cmbGender_.Size = new Size(326, 45);
+            cmbGender_.TabIndex = 32;
+            // 
+            // dtPickerDOB_
+            // 
+            dtPickerDOB_.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtPickerDOB_.Location = new Point(283, 135);
+            dtPickerDOB_.Name = "dtPickerDOB_";
+            dtPickerDOB_.Size = new Size(326, 50);
+            dtPickerDOB_.TabIndex = 22;
+            // 
+            // Add
+            // 
+            Add.AutoSize = true;
+            Add.Font = new Font("Segoe UI", 24F);
+            Add.Location = new Point(11, 309);
+            Add.Name = "Add";
+            Add.Size = new Size(257, 45);
+            Add.TabIndex = 31;
+            Add.Text = "Address line two";
+            // 
+            // txtbAddressTwo_
+            // 
+            txtbAddressTwo_.Font = new Font("Segoe UI", 24F);
+            txtbAddressTwo_.Location = new Point(283, 309);
+            txtbAddressTwo_.Name = "txtbAddressTwo_";
+            txtbAddressTwo_.Size = new Size(326, 50);
+            txtbAddressTwo_.TabIndex = 30;
+            // 
+            // txtbEmail_
+            // 
+            txtbEmail_.Font = new Font("Segoe UI", 24F);
+            txtbEmail_.Location = new Point(283, 365);
+            txtbEmail_.Name = "txtbEmail_";
+            txtbEmail_.Size = new Size(326, 50);
+            txtbEmail_.TabIndex = 29;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 24F);
+            label6.Location = new Point(172, 365);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 45);
+            label6.TabIndex = 28;
+            label6.Text = "Email";
+            // 
+            // txtbAddressOne_
+            // 
+            txtbAddressOne_.Font = new Font("Segoe UI", 24F);
+            txtbAddressOne_.Location = new Point(283, 251);
+            txtbAddressOne_.Name = "txtbAddressOne_";
+            txtbAddressOne_.Size = new Size(326, 50);
+            txtbAddressOne_.TabIndex = 27;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 24F);
+            label7.Location = new Point(3, 254);
+            label7.Name = "label7";
+            label7.Size = new Size(258, 45);
+            label7.TabIndex = 26;
+            label7.Text = "Address line one";
+            // 
+            // txtbSurname_
+            // 
+            txtbSurname_.Font = new Font("Segoe UI", 24F);
+            txtbSurname_.Location = new Point(283, 79);
+            txtbSurname_.Name = "txtbSurname_";
+            txtbSurname_.Size = new Size(326, 50);
+            txtbSurname_.TabIndex = 25;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 24F);
+            label8.Location = new Point(144, 191);
+            label8.Name = "label8";
+            label8.Size = new Size(124, 45);
+            label8.TabIndex = 24;
+            label8.Text = "Gender";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 24F);
+            label9.Location = new Point(69, 135);
+            label9.Name = "label9";
+            label9.Size = new Size(199, 45);
+            label9.TabIndex = 23;
+            label9.Text = "Date of Birth";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 24F);
+            label10.Location = new Point(123, 79);
+            label10.Name = "label10";
+            label10.Size = new Size(145, 45);
+            label10.TabIndex = 21;
+            label10.Text = "Surname";
+            // 
+            // txtbFirstname_
+            // 
+            txtbFirstname_.Font = new Font("Segoe UI", 24F);
+            txtbFirstname_.Location = new Point(283, 23);
+            txtbFirstname_.Name = "txtbFirstname_";
+            txtbFirstname_.Size = new Size(326, 50);
+            txtbFirstname_.TabIndex = 20;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 24F);
+            label11.Location = new Point(118, 23);
+            label11.Name = "label11";
+            label11.Size = new Size(159, 45);
+            label11.TabIndex = 19;
+            label11.Text = "Firstname";
             // 
             // pnlBookingDetails
             // 
@@ -516,10 +663,9 @@
             pnlBookingDetails.Controls.Add(btnFloors);
             pnlBookingDetails.Controls.Add(label2);
             pnlBookingDetails.Controls.Add(btnWindows);
-            pnlBookingDetails.Controls.Add(DTPicker);
+            pnlBookingDetails.Controls.Add(BookingDate);
             pnlBookingDetails.Controls.Add(btnCarpets);
             pnlBookingDetails.Controls.Add(lblVacuumMinus);
-            pnlBookingDetails.Controls.Add(button5);
             pnlBookingDetails.Controls.Add(lblVacuum);
             pnlBookingDetails.Controls.Add(btnDusting);
             pnlBookingDetails.Controls.Add(lblVacuumPlus);
@@ -548,7 +694,7 @@
             pnlBookingDetails.Controls.Add(lblFloors);
             pnlBookingDetails.Controls.Add(lblBathrooms);
             pnlBookingDetails.Controls.Add(lblDusting);
-            pnlBookingDetails.Location = new Point(18, 254);
+            pnlBookingDetails.Location = new Point(8, 168);
             pnlBookingDetails.Name = "pnlBookingDetails";
             pnlBookingDetails.Size = new Size(956, 321);
             pnlBookingDetails.TabIndex = 1;
@@ -556,9 +702,10 @@
             // 
             // btnSubmit
             // 
+            btnSubmit.Font = new Font("Segoe UI", 20F);
             btnSubmit.Location = new Point(758, 239);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(75, 23);
+            btnSubmit.Size = new Size(139, 62);
             btnSubmit.TabIndex = 0;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
@@ -566,12 +713,24 @@
             // 
             // pnlDatabase
             // 
+            pnlDatabase.Controls.Add(btnUnselect);
             pnlDatabase.Controls.Add(DataGridCustomers);
-            pnlDatabase.Location = new Point(27, 275);
+            pnlDatabase.Location = new Point(9, 182);
             pnlDatabase.Name = "pnlDatabase";
-            pnlDatabase.Size = new Size(873, 300);
+            pnlDatabase.Size = new Size(955, 237);
             pnlDatabase.TabIndex = 57;
             pnlDatabase.Visible = false;
+            // 
+            // btnUnselect
+            // 
+            btnUnselect.Font = new Font("Microsoft Sans Serif", 20F);
+            btnUnselect.Location = new Point(726, 187);
+            btnUnselect.Name = "btnUnselect";
+            btnUnselect.Size = new Size(144, 42);
+            btnUnselect.TabIndex = 60;
+            btnUnselect.Text = "Unselect";
+            btnUnselect.UseVisualStyleBackColor = true;
+            btnUnselect.Click += btnUnselect_Click;
             // 
             // DataGridCustomers
             // 
@@ -579,7 +738,7 @@
             DataGridCustomers.Columns.AddRange(new DataGridViewColumn[] { clmCustomerID, clmForename, clmSurname, clmDOB, clmGender, clmAddressOne, clmAddressTwo, clmEmail });
             DataGridCustomers.Location = new Point(3, 21);
             DataGridCustomers.Name = "DataGridCustomers";
-            DataGridCustomers.Size = new Size(831, 259);
+            DataGridCustomers.Size = new Size(867, 160);
             DataGridCustomers.TabIndex = 0;
             DataGridCustomers.CellClick += DataGridCustomers_CellClick;
             // 
@@ -628,74 +787,24 @@
             lblCustSelected.AutoSize = true;
             lblCustSelected.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCustSelected.ForeColor = Color.Green;
-            lblCustSelected.Location = new Point(574, 135);
+            lblCustSelected.Location = new Point(818, 89);
             lblCustSelected.Name = "lblCustSelected";
             lblCustSelected.Size = new Size(164, 25);
             lblCustSelected.TabIndex = 56;
             lblCustSelected.Text = "CustomerSelected";
-            // 
-            // txtbAddress
-            // 
-            txtbAddress.Font = new Font("Segoe UI", 18F);
-            txtbAddress.Location = new Point(129, 197);
-            txtbAddress.Name = "txtbAddress";
-            txtbAddress.Size = new Size(293, 39);
-            txtbAddress.TabIndex = 53;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(74, 214);
-            label5.Name = "label5";
-            label5.Size = new Size(49, 15);
-            label5.TabIndex = 54;
-            label5.Text = "Address";
-            // 
-            // txtbSurname
-            // 
-            txtbSurname.Font = new Font("Segoe UI", 18F);
-            txtbSurname.Location = new Point(129, 135);
-            txtbSurname.Name = "txtbSurname";
-            txtbSurname.Size = new Size(293, 39);
-            txtbSurname.TabIndex = 51;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(69, 152);
-            label4.Name = "label4";
-            label4.Size = new Size(54, 15);
-            label4.TabIndex = 52;
-            label4.Text = "Surname";
+            lblCustSelected.Visible = false;
             // 
             // ExistingCustomer
             // 
             ExistingCustomer.AutoSize = true;
             ExistingCustomer.Font = new Font("Segoe UI", 20F);
-            ExistingCustomer.Location = new Point(541, 33);
+            ExistingCustomer.Location = new Point(783, 45);
             ExistingCustomer.Name = "ExistingCustomer";
             ExistingCustomer.Size = new Size(248, 41);
             ExistingCustomer.TabIndex = 50;
             ExistingCustomer.Text = "Existing Customer";
             ExistingCustomer.UseVisualStyleBackColor = true;
             ExistingCustomer.CheckedChanged += ExistingCustomer_CheckedChanged;
-            // 
-            // txtbFirstName
-            // 
-            txtbFirstName.Font = new Font("Segoe UI", 18F);
-            txtbFirstName.Location = new Point(129, 80);
-            txtbFirstName.Name = "txtbFirstName";
-            txtbFirstName.Size = new Size(293, 39);
-            txtbFirstName.TabIndex = 49;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(59, 97);
-            label3.Name = "label3";
-            label3.Size = new Size(64, 15);
-            label3.TabIndex = 49;
-            label3.Text = "First Name";
             // 
             // btnNext
             // 
@@ -733,6 +842,8 @@
             Load += NewBooking_Load;
             pnlCustomerDetails.ResumeLayout(false);
             pnlCustomerDetails.PerformLayout();
+            pnlAddCustomer.ResumeLayout(false);
+            pnlAddCustomer.PerformLayout();
             pnlBookingDetails.ResumeLayout(false);
             pnlBookingDetails.PerformLayout();
             pnlDatabase.ResumeLayout(false);
@@ -748,7 +859,6 @@
         private Label label2;
         private Button button3;
         private Button btnCarpets;
-        private Button button5;
         private Button btnDusting;
         private Button btnDoors;
         private Button btnFloors;
@@ -780,16 +890,10 @@
         private Label lblVacuumMinus;
         private Label lblVacuum;
         private Label lblVacuumPlus;
-        private DateTimePicker DTPicker;
+        private DateTimePicker BookingDate;
         private Panel pnlCustomerDetails;
         private Button btnSubmit;
-        private TextBox txtbFirstName;
-        private Label label3;
         private CheckBox ExistingCustomer;
-        private TextBox txtbAddress;
-        private Label label5;
-        private TextBox txtbSurname;
-        private Label label4;
         private Label lblCustSelected;
         private Panel pnlDatabase;
         private DataGridView DataGridCustomers;
@@ -804,5 +908,21 @@
         private DataGridViewTextBoxColumn clmEmail;
         private Button btnNext;
         private Button btnBack;
+        private Button btnUnselect;
+        private Panel pnlAddCustomer;
+        private ComboBox cmbGender_;
+        private DateTimePicker dtPickerDOB_;
+        private Label Add;
+        private TextBox txtbAddressTwo_;
+        private TextBox txtbEmail_;
+        private Label label6;
+        private TextBox txtbAddressOne_;
+        private Label label7;
+        private TextBox txtbSurname_;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private TextBox txtbFirstname_;
+        private Label label11;
     }
 }
