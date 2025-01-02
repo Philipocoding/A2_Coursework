@@ -13,6 +13,10 @@ namespace A2_Coursework.Classes
         public int BookingID { get; set; }
         public int CustomerID { get; set; }
         public string BookingDate { get; set; }
+        public static Dictionary<int, string> BookingRequests = new Dictionary<int, string>();
+
+        
+
 
         public Booking() { }
         public Booking(int bookingID, int customerID, string date)
@@ -20,6 +24,18 @@ namespace A2_Coursework.Classes
             BookingID = bookingID;
             CustomerID = customerID;
             BookingDate = date;
+        }
+        public static void PopulateDictionary()
+        {
+            BookingRequests[1] = "Windows";
+            BookingRequests[2] = "Floors";
+            BookingRequests[3] = "Doors";
+            BookingRequests[4] = "Dusting";
+            BookingRequests[5] = "Bathroom";
+            BookingRequests[6] = "Carpets";
+            BookingRequests[7] = "Curtains";
+            BookingRequests[8] = "Vacuum";
+
         }
         public static List<Booking> populateDataGrid()
         {

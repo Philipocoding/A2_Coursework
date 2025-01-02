@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using A2_Coursework.Classes;
 using Microsoft.VisualBasic.ApplicationServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace A2_Coursework
 {
@@ -22,6 +24,8 @@ namespace A2_Coursework
 
         private void ViewBookings_Load(object sender, EventArgs e)
         {
+            txtbBookingID.ReadOnly = true;
+            txtbCustID.ReadOnly = true;
             PopulateDataGrid();
         }
 
@@ -41,8 +45,37 @@ namespace A2_Coursework
         {
             if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
             {
-
+                txtbBookingID.Text = BookingTable.SelectedRows[0].Cells[0].Value.ToString();
+                txtbCustID.Text = BookingTable.SelectedRows[0].Cells[1].Value.ToString();
                 txtbID.Text = BookingTable.SelectedRows[0].Cells[0].Value.ToString();
+                Customer customer = Customer.GetCustomer(Convert.ToInt32(txtbCustID.Text));
+                txtbEmail.Text = customer.Email;
+                txtbFirstname.Text = customer.Firstname;
+                txtbSurname.Text = customer.Surname;
+
+                
+                var result = ProjectDAL.RetrieveBookingRequestsbyID(Convert.ToInt32(txtbBookingID.Text));
+
+                List<int> ServiceID = result.ServiceID;
+                List<int> Quantity = result.Quantity;
+                List<string> services = new();
+                
+
+                foreach (int id in ServiceID)
+                {
+                    if (Booking.BookingRequests.ContainsKey(id))
+                    {
+                        services.Add(Booking.BookingRequests[id]);
+                    }
+                }
+                listbServices.Items.Clear();
+                listbServices.Items.AddRange(services.ToArray());
+                listbQuantity.Items.Clear();
+                foreach (var quantity in Quantity)
+                {
+                    listbQuantity.Items.Add(quantity);
+                }
+
             }
         }
 

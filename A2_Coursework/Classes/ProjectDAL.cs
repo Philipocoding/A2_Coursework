@@ -11,6 +11,7 @@ using System.Transactions;
 using System.Data.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics;
+using System.Numerics;
 
 namespace A2_Coursework.Classes
 {
@@ -18,6 +19,30 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
+        public static (List<int> ServiceID, List<int> Quantity) RetrieveBookingRequestsbyID(int id)
+        {
+            List<int> serviceID = new List<int>();
+            List<int> Quantity = new List<int>();
+            using (SqlConnection connection = new(connectionString))
+            {
+                connection.Open();
+                SqlCommand GetRequests = new SqlCommand();
+                GetRequests.Connection = connection;
+                GetRequests.CommandType = CommandType.StoredProcedure;
+                GetRequests.CommandText = "RetrieveRequests";
+                GetRequests.Parameters.Add(new SqlParameter("@BookingID", id));
+
+                using (SqlDataReader reader = GetRequests.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        serviceID.Add(Convert.ToInt32(reader["ServiceID"]));
+                        Quantity.Add(Convert.ToInt32(reader["Quantity"]));
+                    }
+                }
+            }
+            return(serviceID, Quantity);
+        }
         public static void DeleteCustomer(int Custid)
         {
             using (SqlConnection connection = new(connectionString))

@@ -75,5 +75,58 @@ namespace A2_Coursework.Classes
 
             return customers;
         }
+        public static Customer GetCustomer(int id)
+        {
+            List<Customer> customers = new List<Customer>();
+            Customer selectedCustomer = new();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ProjectDAL.connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand GetBookings = new SqlCommand();
+
+                    GetBookings.Connection = connection;
+                    GetBookings.CommandType = System.Data.CommandType.StoredProcedure;
+                    GetBookings.CommandText = "RetrieveCustomers";
+
+                    using (SqlDataReader reader = GetBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Customer customer = new Customer();
+
+                            customer.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            customer.Firstname = reader["Forename"].ToString();
+                            customer.Surname = reader["Surname"].ToString();
+                            customer.DOB = (reader["DOB"]).ToString();
+                            customer.Gender = reader["Gender"].ToString();
+                            customer.AddressOne = reader["AddressOne"].ToString();
+                            customer.AddressTwo = reader["AddressTwo"].ToString();
+                            customer.Email = reader["Email"].ToString();
+                            customers.Add(customer);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            foreach(Customer customer in customers)
+            {
+                if(customer.CustomerID == id)
+                {
+                    selectedCustomer = customer;
+                }
+            }
+            if (Validation.isNullorEmpty(selectedCustomer.CustomerID.ToString()))
+            {
+
+            }
+            return selectedCustomer;
+        }
     }
 }

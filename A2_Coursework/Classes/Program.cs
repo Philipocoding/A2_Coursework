@@ -19,6 +19,7 @@ namespace A2_Coursework.Classes
             string debugPath = Path.GetDirectoryName(Environment.CurrentDirectory);
             string dataDirectoryPath = Path.GetDirectoryName(debugPath);
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectoryPath);
+            Booking.PopulateDictionary();
         }
     }
 }

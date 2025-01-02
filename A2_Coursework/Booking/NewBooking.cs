@@ -153,13 +153,11 @@ namespace A2_Coursework
             Carpet = false;
             Curtains = false;
             Vacuum = false;
-
         }
 
         private void lblWindowPlus_Click(object sender, EventArgs e)
         {
             lblWIndows.Text = (Convert.ToInt32(lblWIndows.Text) + 1).ToString();
-
         }
 
         private void lblWIndowsMinus_Click(object sender, EventArgs e)
@@ -168,13 +166,11 @@ namespace A2_Coursework
             {
                 lblWIndows.Text = (Convert.ToInt32(lblWIndows.Text) - 1).ToString();
             }
-
         }
 
         private void lblFloorPlus_Click(object sender, EventArgs e)
         {
             lblFloors.Text = (Convert.ToInt32(lblFloors.Text) + 1).ToString();
-
         }
 
         private void lblFloorMinus_Click(object sender, EventArgs e)
@@ -189,7 +185,6 @@ namespace A2_Coursework
         private void lblDoorPlus_Click(object sender, EventArgs e)
         {
             lblDoors.Text = (Convert.ToInt32(lblDoors.Text) + 1).ToString();
-
         }
 
         private void lblDoorMinus_Click(object sender, EventArgs e)
@@ -204,7 +199,6 @@ namespace A2_Coursework
         private void lblDustPlus_Click(object sender, EventArgs e)
         {
             lblDusting.Text = (Convert.ToInt32(lblDusting.Text) + 1).ToString();
-
         }
 
         private void lblDustMinus_Click(object sender, EventArgs e)
@@ -219,7 +213,6 @@ namespace A2_Coursework
         private void lblBathroomPlus_Click(object sender, EventArgs e)
         {
             lblBathrooms.Text = (Convert.ToInt32(lblBathrooms.Text) + 1).ToString();
-
         }
 
         private void lblBathroomMinus_Click(object sender, EventArgs e)
@@ -234,7 +227,6 @@ namespace A2_Coursework
         private void lblCarpetsPlus_Click(object sender, EventArgs e)
         {
             lblCarpets.Text = (Convert.ToInt32(lblCarpets.Text) + 1).ToString();
-
         }
 
         private void lblCarpetsMinus_Click(object sender, EventArgs e)
@@ -243,20 +235,17 @@ namespace A2_Coursework
             {
                 lblCarpets.Text = (Convert.ToInt32(lblCarpets.Text) - 1).ToString();
             }
-
         }
 
         private void lblCurtainsPlus_Click(object sender, EventArgs e)
         {
             lblCurtains.Text = (Convert.ToInt32(lblCurtains.Text) + 1).ToString();
-
         }
 
         private void lblCurtainsMinus_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(lblVacuum.Text) > 0)
             {
-
                 lblCurtains.Text = (Convert.ToInt32(lblCurtains.Text) - 1).ToString();
             }
         }
@@ -264,7 +253,6 @@ namespace A2_Coursework
         private void lblVacuumPlus_Click(object sender, EventArgs e)
         {
             lblVacuum.Text = (Convert.ToInt32(lblVacuum.Text) + 1).ToString();
-
         }
 
         private void lblVacuumMinus_Click(object sender, EventArgs e)
@@ -296,7 +284,7 @@ namespace A2_Coursework
                 if (Validation.ValidGender(cmbGender_.Text))
                 {
                     if ((!Validation.isNullorEmpty(txtbFirstname_.Text) && (!Validation.isNullorEmpty(txtbFirstname_.Text))
-                   && (!Validation.isNullorEmpty(txtbEmail_.Text)) && (!Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (!Validation.isNullorEmpty(txtbAddressOne.Text)
+                   && (!Validation.isNullorEmpty(txtbEmail_.Text)) && (!Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (!Validation.isNullorEmpty(txtbAddressOne_.Text)
                    && (!Validation.isNullorEmpty(cmbGender_.Text)) && (!Validation.isNullorEmpty(dtPickerDOB_.Text)))))
                     {
                         id = ProjectDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
@@ -310,9 +298,7 @@ namespace A2_Coursework
                     else
                     {
 
-                        string theDate = BookingDate.Value.ToShortDateString();
-                        ProjectDAL.NewBooking(Convert.ToInt32(txtbCustomerID.Text), theDate, services, quantity);
-                        MessageBox.Show("Booking confirmed");
+                        MessageBox.Show("Ensure all fields are completed");
                     }
                    
                     
