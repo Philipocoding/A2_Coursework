@@ -80,8 +80,6 @@
             label10 = new Label();
             txtbFirstname_ = new TextBox();
             label11 = new Label();
-            pnlBookingDetails = new Panel();
-            btnSubmit = new Button();
             pnlDatabase = new Panel();
             btnUnselect = new Button();
             DataGridCustomers = new DataGridView();
@@ -95,13 +93,16 @@
             clmEmail = new DataGridViewTextBoxColumn();
             lblCustSelected = new Label();
             ExistingCustomer = new CheckBox();
+            pnlBookingDetails = new Panel();
+            lblDateError = new Label();
+            btnSubmit = new Button();
             btnNext = new Button();
             btnBack = new Button();
             pnlCustomerDetails.SuspendLayout();
             pnlAddCustomer.SuspendLayout();
-            pnlBookingDetails.SuspendLayout();
             pnlDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).BeginInit();
+            pnlBookingDetails.SuspendLayout();
             SuspendLayout();
             // 
             // btnWindows
@@ -493,11 +494,11 @@
             BookingDate.Name = "BookingDate";
             BookingDate.Size = new Size(302, 47);
             BookingDate.TabIndex = 47;
+            BookingDate.ValueChanged += BookingDate_ValueChanged;
             // 
             // pnlCustomerDetails
             // 
             pnlCustomerDetails.Controls.Add(pnlAddCustomer);
-            pnlCustomerDetails.Controls.Add(pnlBookingDetails);
             pnlCustomerDetails.Controls.Add(pnlDatabase);
             pnlCustomerDetails.Controls.Add(lblCustSelected);
             pnlCustomerDetails.Controls.Add(label1);
@@ -505,7 +506,7 @@
             pnlCustomerDetails.Controls.Add(ExistingCustomer);
             pnlCustomerDetails.Location = new Point(19, 12);
             pnlCustomerDetails.Name = "pnlCustomerDetails";
-            pnlCustomerDetails.Size = new Size(1054, 607);
+            pnlCustomerDetails.Size = new Size(1071, 607);
             pnlCustomerDetails.TabIndex = 48;
             // 
             // pnlAddCustomer
@@ -524,9 +525,9 @@
             pnlAddCustomer.Controls.Add(label10);
             pnlAddCustomer.Controls.Add(txtbFirstname_);
             pnlAddCustomer.Controls.Add(label11);
-            pnlAddCustomer.Location = new Point(15, 16);
+            pnlAddCustomer.Location = new Point(8, 3);
             pnlAddCustomer.Name = "pnlAddCustomer";
-            pnlAddCustomer.Size = new Size(717, 492);
+            pnlAddCustomer.Size = new Size(793, 492);
             pnlAddCustomer.TabIndex = 58;
             // 
             // cmbGender_
@@ -546,6 +547,7 @@
             dtPickerDOB_.Name = "dtPickerDOB_";
             dtPickerDOB_.Size = new Size(326, 50);
             dtPickerDOB_.TabIndex = 22;
+            dtPickerDOB_.ValueChanged += dtPickerDOB__ValueChanged;
             // 
             // Add
             // 
@@ -657,60 +659,6 @@
             label11.TabIndex = 19;
             label11.Text = "Firstname";
             // 
-            // pnlBookingDetails
-            // 
-            pnlBookingDetails.Controls.Add(btnSubmit);
-            pnlBookingDetails.Controls.Add(btnFloors);
-            pnlBookingDetails.Controls.Add(label2);
-            pnlBookingDetails.Controls.Add(btnWindows);
-            pnlBookingDetails.Controls.Add(BookingDate);
-            pnlBookingDetails.Controls.Add(btnCarpets);
-            pnlBookingDetails.Controls.Add(lblVacuumMinus);
-            pnlBookingDetails.Controls.Add(lblVacuum);
-            pnlBookingDetails.Controls.Add(btnDusting);
-            pnlBookingDetails.Controls.Add(lblVacuumPlus);
-            pnlBookingDetails.Controls.Add(btnDoors);
-            pnlBookingDetails.Controls.Add(btnCurtains);
-            pnlBookingDetails.Controls.Add(btnBathrooms);
-            pnlBookingDetails.Controls.Add(btnRoomVacuum);
-            pnlBookingDetails.Controls.Add(lblWindowPlus);
-            pnlBookingDetails.Controls.Add(lblCurtainsMinus);
-            pnlBookingDetails.Controls.Add(lblDoorPlus);
-            pnlBookingDetails.Controls.Add(lblCarpetsMinus);
-            pnlBookingDetails.Controls.Add(lblFloorPlus);
-            pnlBookingDetails.Controls.Add(lblBathroomMinus);
-            pnlBookingDetails.Controls.Add(lblDustPlus);
-            pnlBookingDetails.Controls.Add(lblDustMinus);
-            pnlBookingDetails.Controls.Add(lblBathroomPlus);
-            pnlBookingDetails.Controls.Add(lblFloorMinus);
-            pnlBookingDetails.Controls.Add(lblCarpetsPlus);
-            pnlBookingDetails.Controls.Add(lblDoorMinus);
-            pnlBookingDetails.Controls.Add(lblCurtainsPlus);
-            pnlBookingDetails.Controls.Add(lblWIndowsMinus);
-            pnlBookingDetails.Controls.Add(lblWIndows);
-            pnlBookingDetails.Controls.Add(lblCurtains);
-            pnlBookingDetails.Controls.Add(lblDoors);
-            pnlBookingDetails.Controls.Add(lblCarpets);
-            pnlBookingDetails.Controls.Add(lblFloors);
-            pnlBookingDetails.Controls.Add(lblBathrooms);
-            pnlBookingDetails.Controls.Add(lblDusting);
-            pnlBookingDetails.Location = new Point(8, 168);
-            pnlBookingDetails.Name = "pnlBookingDetails";
-            pnlBookingDetails.Size = new Size(956, 321);
-            pnlBookingDetails.TabIndex = 1;
-            pnlBookingDetails.Visible = false;
-            // 
-            // btnSubmit
-            // 
-            btnSubmit.Font = new Font("Segoe UI", 20F);
-            btnSubmit.Location = new Point(758, 239);
-            btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(139, 62);
-            btnSubmit.TabIndex = 0;
-            btnSubmit.Text = "Submit";
-            btnSubmit.UseVisualStyleBackColor = true;
-            btnSubmit.Click += btnSubmit_Click;
-            // 
             // pnlDatabase
             // 
             pnlDatabase.Controls.Add(btnUnselect);
@@ -798,13 +746,80 @@
             // 
             ExistingCustomer.AutoSize = true;
             ExistingCustomer.Font = new Font("Segoe UI", 20F);
-            ExistingCustomer.Location = new Point(783, 45);
+            ExistingCustomer.Location = new Point(806, 43);
             ExistingCustomer.Name = "ExistingCustomer";
             ExistingCustomer.Size = new Size(248, 41);
             ExistingCustomer.TabIndex = 50;
             ExistingCustomer.Text = "Existing Customer";
             ExistingCustomer.UseVisualStyleBackColor = true;
             ExistingCustomer.CheckedChanged += ExistingCustomer_CheckedChanged;
+            // 
+            // pnlBookingDetails
+            // 
+            pnlBookingDetails.Controls.Add(lblDateError);
+            pnlBookingDetails.Controls.Add(btnSubmit);
+            pnlBookingDetails.Controls.Add(btnFloors);
+            pnlBookingDetails.Controls.Add(label2);
+            pnlBookingDetails.Controls.Add(btnWindows);
+            pnlBookingDetails.Controls.Add(BookingDate);
+            pnlBookingDetails.Controls.Add(btnCarpets);
+            pnlBookingDetails.Controls.Add(lblVacuumMinus);
+            pnlBookingDetails.Controls.Add(lblVacuum);
+            pnlBookingDetails.Controls.Add(btnDusting);
+            pnlBookingDetails.Controls.Add(lblVacuumPlus);
+            pnlBookingDetails.Controls.Add(btnDoors);
+            pnlBookingDetails.Controls.Add(btnCurtains);
+            pnlBookingDetails.Controls.Add(btnBathrooms);
+            pnlBookingDetails.Controls.Add(btnRoomVacuum);
+            pnlBookingDetails.Controls.Add(lblWindowPlus);
+            pnlBookingDetails.Controls.Add(lblCurtainsMinus);
+            pnlBookingDetails.Controls.Add(lblDoorPlus);
+            pnlBookingDetails.Controls.Add(lblCarpetsMinus);
+            pnlBookingDetails.Controls.Add(lblFloorPlus);
+            pnlBookingDetails.Controls.Add(lblBathroomMinus);
+            pnlBookingDetails.Controls.Add(lblDustPlus);
+            pnlBookingDetails.Controls.Add(lblDustMinus);
+            pnlBookingDetails.Controls.Add(lblBathroomPlus);
+            pnlBookingDetails.Controls.Add(lblFloorMinus);
+            pnlBookingDetails.Controls.Add(lblCarpetsPlus);
+            pnlBookingDetails.Controls.Add(lblDoorMinus);
+            pnlBookingDetails.Controls.Add(lblCurtainsPlus);
+            pnlBookingDetails.Controls.Add(lblWIndowsMinus);
+            pnlBookingDetails.Controls.Add(lblWIndows);
+            pnlBookingDetails.Controls.Add(lblCurtains);
+            pnlBookingDetails.Controls.Add(lblDoors);
+            pnlBookingDetails.Controls.Add(lblCarpets);
+            pnlBookingDetails.Controls.Add(lblFloors);
+            pnlBookingDetails.Controls.Add(lblBathrooms);
+            pnlBookingDetails.Controls.Add(lblDusting);
+            pnlBookingDetails.Location = new Point(12, 167);
+            pnlBookingDetails.Name = "pnlBookingDetails";
+            pnlBookingDetails.Size = new Size(956, 321);
+            pnlBookingDetails.TabIndex = 1;
+            pnlBookingDetails.Visible = false;
+            // 
+            // lblDateError
+            // 
+            lblDateError.AutoSize = true;
+            lblDateError.Font = new Font("Segoe UI", 12F);
+            lblDateError.ForeColor = Color.Red;
+            lblDateError.Location = new Point(403, 27);
+            lblDateError.Name = "lblDateError";
+            lblDateError.Size = new Size(265, 21);
+            lblDateError.TabIndex = 48;
+            lblDateError.Text = "Booking must be 2 weeks in advance";
+            lblDateError.Visible = false;
+            // 
+            // btnSubmit
+            // 
+            btnSubmit.Font = new Font("Segoe UI", 20F);
+            btnSubmit.Location = new Point(758, 239);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(139, 62);
+            btnSubmit.TabIndex = 0;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // btnNext
             // 
@@ -835,6 +850,7 @@
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1197, 756);
             Controls.Add(btnBack);
+            Controls.Add(pnlBookingDetails);
             Controls.Add(btnNext);
             Controls.Add(pnlCustomerDetails);
             Name = "NewBooking";
@@ -844,10 +860,10 @@
             pnlCustomerDetails.PerformLayout();
             pnlAddCustomer.ResumeLayout(false);
             pnlAddCustomer.PerformLayout();
-            pnlBookingDetails.ResumeLayout(false);
-            pnlBookingDetails.PerformLayout();
             pnlDatabase.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).EndInit();
+            pnlBookingDetails.ResumeLayout(false);
+            pnlBookingDetails.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -924,5 +940,6 @@
         private Label label10;
         private TextBox txtbFirstname_;
         private Label label11;
+        private Label lblDateError;
     }
 }

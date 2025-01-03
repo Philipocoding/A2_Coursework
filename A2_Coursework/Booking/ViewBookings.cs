@@ -53,13 +53,13 @@ namespace A2_Coursework
                 txtbFirstname.Text = customer.Firstname;
                 txtbSurname.Text = customer.Surname;
 
-                
+
                 var result = ProjectDAL.RetrieveBookingRequestsbyID(Convert.ToInt32(txtbBookingID.Text));
 
                 List<int> ServiceID = result.ServiceID;
                 List<int> Quantity = result.Quantity;
                 List<string> services = new();
-                
+
 
                 foreach (int id in ServiceID)
                 {
@@ -152,6 +152,89 @@ namespace A2_Coursework
                 ProjectDAL.DeleteBooking(Convert.ToInt32(BookingTable.SelectedRows[0].Cells[0].Value));
                 PopulateDataGrid();
             }
+        }
+
+        private void listbQuantity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = listbQuantity.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                string selectedValue = listbQuantity.Items[selectedIndex].ToString();
+                //cmbEditQuantity.Text = selectedValue;
+
+                string value = listbServices.Items[selectedIndex].ToString();
+                txtbService.Text = value;
+
+                listbServices.ClearSelected();
+                //listbServices.SetSelected(selectedIndex, true);
+
+
+            }
+        }
+
+        private void listbServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = listbServices.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                string selectedValue = listbServices.Items[selectedIndex].ToString();
+                txtbService.Text = selectedValue;
+
+                string value = listbQuantity.Items[selectedIndex].ToString();
+                cmbEditQuantity.Text = value;
+
+                listbQuantity.ClearSelected();
+               //listbQuantity.SetSelected(selectedIndex, true);
+
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            int bookingId = 0;
+            int quantity = 0; 
+            int requestNo = 0;
+            try
+            {
+                bookingId = Convert.ToInt32(txtbBookingID.Text);
+                quantity = Convert.ToInt32(Convert.ToInt32(cmbEditQuantity.Text));
+                requestNo = ProjectDAL.GetRequestNo(bookingId,
+                Booking.Booking_Requests[txtbService.Text]);
+            }
+            catch(CustomException ex)
+            {
+                MessageBox.Show("Invalid details entered");
+            }
+            
+
+
+            Booking.editRequest(requestNo, bookingId, Booking.Booking_Requests[txtbService.Text]
+                , quantity);
+            MessageBox.Show("Request updated!");
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            foreach (var key in Booking.Booking_Requests.Keys)
+            {
+                if(key.ToLower() == cmbService.Text.ToLower())
+                {
+                    if(Validation.ValidService(cmbService.Text))
+                    {
+                        ProjectDAL.addRequest(Booking.Booking_Requests[key], Convert.ToInt32(txtbBookingID.Text),
+                       Convert.ToInt32(cmbQuantity.Text));
+                        PopulateDataGrid();
+                        MessageBox.Show("Service added!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Enter a valid Service");
+                    }
+                   
+                }
+            }
+
         }
     }
 }

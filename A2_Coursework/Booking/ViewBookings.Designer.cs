@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnLeft = new Button();
             dtPicker = new DateTimePicker();
             pnlDatePicker = new Panel();
@@ -50,6 +50,13 @@
             txtbID = new TextBox();
             label1 = new Label();
             pnlBookingDetails = new Panel();
+            btnAdd = new Button();
+            cmbQuantity = new ComboBox();
+            cmbService = new ComboBox();
+            label10 = new Label();
+            txtbService = new TextBox();
+            label9 = new Label();
+            label8 = new Label();
             listbQuantity = new ListBox();
             listbServices = new ListBox();
             txtbEmail = new TextBox();
@@ -62,9 +69,9 @@
             label4 = new Label();
             txtbBookingID = new TextBox();
             label3 = new Label();
-            button1 = new Button();
-            label8 = new Label();
-            label9 = new Label();
+            btnSave = new Button();
+            label11 = new Label();
+            cmbEditQuantity = new ComboBox();
             pnlDatePicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
             panel1.SuspendLayout();
@@ -101,9 +108,9 @@
             pnlDatePicker.Controls.Add(btnRight);
             pnlDatePicker.Controls.Add(btnLeft);
             pnlDatePicker.Controls.Add(dtPicker);
-            pnlDatePicker.Location = new Point(12, 357);
+            pnlDatePicker.Location = new Point(4, 357);
             pnlDatePicker.Name = "pnlDatePicker";
-            pnlDatePicker.Size = new Size(469, 316);
+            pnlDatePicker.Size = new Size(456, 316);
             pnlDatePicker.TabIndex = 3;
             // 
             // cbIgnoreID
@@ -198,8 +205,8 @@
             // 
             // clmBookingID
             // 
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmBookingID.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmBookingID.DefaultCellStyle = dataGridViewCellStyle1;
             clmBookingID.FillWeight = 10F;
             clmBookingID.HeaderText = "Booking ID";
             clmBookingID.Name = "clmBookingID";
@@ -208,8 +215,8 @@
             // 
             // clmCustomerID
             // 
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle2;
             clmCustomerID.HeaderText = "Customer ID";
             clmCustomerID.Name = "clmCustomerID";
             clmCustomerID.ReadOnly = true;
@@ -217,8 +224,8 @@
             // 
             // clmDate
             // 
-            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmDate.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmDate.DefaultCellStyle = dataGridViewCellStyle3;
             clmDate.HeaderText = "Date";
             clmDate.Name = "clmDate";
             clmDate.ReadOnly = true;
@@ -229,7 +236,7 @@
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(txtbID);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(487, 357);
+            panel1.Location = new Point(469, 357);
             panel1.Name = "panel1";
             panel1.Size = new Size(265, 166);
             panel1.TabIndex = 7;
@@ -265,6 +272,13 @@
             // 
             // pnlBookingDetails
             // 
+            pnlBookingDetails.Controls.Add(cmbEditQuantity);
+            pnlBookingDetails.Controls.Add(label11);
+            pnlBookingDetails.Controls.Add(btnAdd);
+            pnlBookingDetails.Controls.Add(cmbQuantity);
+            pnlBookingDetails.Controls.Add(cmbService);
+            pnlBookingDetails.Controls.Add(label10);
+            pnlBookingDetails.Controls.Add(txtbService);
             pnlBookingDetails.Controls.Add(label9);
             pnlBookingDetails.Controls.Add(label8);
             pnlBookingDetails.Controls.Add(listbQuantity);
@@ -279,36 +293,107 @@
             pnlBookingDetails.Controls.Add(label4);
             pnlBookingDetails.Controls.Add(txtbBookingID);
             pnlBookingDetails.Controls.Add(label3);
-            pnlBookingDetails.Controls.Add(button1);
+            pnlBookingDetails.Controls.Add(btnSave);
             pnlBookingDetails.Location = new Point(758, 5);
             pnlBookingDetails.Name = "pnlBookingDetails";
-            pnlBookingDetails.Size = new Size(427, 712);
+            pnlBookingDetails.Size = new Size(427, 745);
             pnlBookingDetails.TabIndex = 8;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Font = new Font("Segoe UI", 20F);
+            btnAdd.Location = new Point(142, 644);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(95, 45);
+            btnAdd.TabIndex = 38;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // cmbQuantity
+            // 
+            cmbQuantity.Font = new Font("Segoe UI", 20F);
+            cmbQuantity.FormattingEnabled = true;
+            cmbQuantity.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
+            cmbQuantity.Location = new Point(369, 593);
+            cmbQuantity.Name = "cmbQuantity";
+            cmbQuantity.Size = new Size(46, 45);
+            cmbQuantity.TabIndex = 37;
+            // 
+            // cmbService
+            // 
+            cmbService.Font = new Font("Segoe UI", 20F);
+            cmbService.FormattingEnabled = true;
+            cmbService.Items.AddRange(new object[] { "Windows", "Doors", "Floors", "Carpets", "Curtains", "Room Vacuuing", "Dusting", "Bathroom" });
+            cmbService.Location = new Point(142, 593);
+            cmbService.Name = "cmbService";
+            cmbService.Size = new Size(200, 45);
+            cmbService.TabIndex = 36;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 20F);
+            label10.Location = new Point(-7, 596);
+            label10.Name = "label10";
+            label10.Size = new Size(156, 37);
+            label10.TabIndex = 35;
+            label10.Text = "Add Service";
+            // 
+            // txtbService
+            // 
+            txtbService.Font = new Font("Segoe UI", 20.25F);
+            txtbService.Location = new Point(181, 544);
+            txtbService.Name = "txtbService";
+            txtbService.Size = new Size(151, 43);
+            txtbService.TabIndex = 10;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 20F);
+            label9.Location = new Point(306, 303);
+            label9.Name = "label9";
+            label9.Size = new Size(119, 37);
+            label9.TabIndex = 31;
+            label9.Text = "Quantity";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 20F);
+            label8.Location = new Point(190, 303);
+            label8.Name = "label8";
+            label8.Size = new Size(100, 37);
+            label8.TabIndex = 30;
+            label8.Text = "Service";
             // 
             // listbQuantity
             // 
             listbQuantity.Font = new Font("Segoe UI", 18F);
             listbQuantity.FormattingEnabled = true;
             listbQuantity.ItemHeight = 32;
-            listbQuantity.Location = new Point(293, 403);
+            listbQuantity.Location = new Point(320, 343);
             listbQuantity.Name = "listbQuantity";
             listbQuantity.Size = new Size(95, 196);
             listbQuantity.TabIndex = 29;
+            listbQuantity.SelectedIndexChanged += listbQuantity_SelectedIndexChanged;
             // 
             // listbServices
             // 
             listbServices.Font = new Font("Segoe UI", 18F);
             listbServices.FormattingEnabled = true;
             listbServices.ItemHeight = 32;
-            listbServices.Location = new Point(136, 403);
+            listbServices.Location = new Point(163, 343);
             listbServices.Name = "listbServices";
             listbServices.Size = new Size(151, 196);
             listbServices.TabIndex = 28;
+            listbServices.SelectedIndexChanged += listbServices_SelectedIndexChanged;
             // 
             // txtbEmail
             // 
             txtbEmail.Font = new Font("Segoe UI", 20F);
-            txtbEmail.Location = new Point(163, 288);
+            txtbEmail.Location = new Point(163, 250);
             txtbEmail.Name = "txtbEmail";
             txtbEmail.Size = new Size(261, 43);
             txtbEmail.TabIndex = 19;
@@ -317,7 +402,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 20F);
-            label7.Location = new Point(75, 294);
+            label7.Location = new Point(75, 256);
             label7.Name = "label7";
             label7.Size = new Size(82, 37);
             label7.TabIndex = 18;
@@ -326,7 +411,7 @@
             // txtbSurname
             // 
             txtbSurname.Font = new Font("Segoe UI", 20F);
-            txtbSurname.Location = new Point(163, 228);
+            txtbSurname.Location = new Point(163, 190);
             txtbSurname.Name = "txtbSurname";
             txtbSurname.Size = new Size(261, 43);
             txtbSurname.TabIndex = 17;
@@ -335,7 +420,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 20F);
-            label6.Location = new Point(36, 228);
+            label6.Location = new Point(36, 190);
             label6.Name = "label6";
             label6.Size = new Size(121, 37);
             label6.TabIndex = 16;
@@ -344,7 +429,7 @@
             // txtbFirstname
             // 
             txtbFirstname.Font = new Font("Segoe UI", 20F);
-            txtbFirstname.Location = new Point(163, 164);
+            txtbFirstname.Location = new Point(163, 126);
             txtbFirstname.Name = "txtbFirstname";
             txtbFirstname.Size = new Size(261, 43);
             txtbFirstname.TabIndex = 15;
@@ -353,7 +438,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 20F);
-            label5.Location = new Point(25, 164);
+            label5.Location = new Point(25, 126);
             label5.Name = "label5";
             label5.Size = new Size(132, 37);
             label5.TabIndex = 14;
@@ -362,7 +447,7 @@
             // txtbCustID
             // 
             txtbCustID.Font = new Font("Segoe UI", 20F);
-            txtbCustID.Location = new Point(163, 106);
+            txtbCustID.Location = new Point(163, 68);
             txtbCustID.Name = "txtbCustID";
             txtbCustID.Size = new Size(261, 43);
             txtbCustID.TabIndex = 13;
@@ -371,7 +456,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 20F);
-            label4.Location = new Point(-7, 106);
+            label4.Location = new Point(-7, 68);
             label4.Name = "label4";
             label4.Size = new Size(164, 37);
             label4.TabIndex = 12;
@@ -380,7 +465,7 @@
             // txtbBookingID
             // 
             txtbBookingID.Font = new Font("Segoe UI", 20F);
-            txtbBookingID.Location = new Point(163, 49);
+            txtbBookingID.Location = new Point(163, 11);
             txtbBookingID.Name = "txtbBookingID";
             txtbBookingID.Size = new Size(261, 43);
             txtbBookingID.TabIndex = 11;
@@ -389,40 +474,42 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 20F);
-            label3.Location = new Point(9, 49);
+            label3.Location = new Point(9, 11);
             label3.Name = "label3";
             label3.Size = new Size(148, 37);
             label3.TabIndex = 9;
             label3.Text = "Booking ID";
             // 
-            // button1
+            // btnSave
             // 
-            button1.Location = new Point(301, 669);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 40);
-            button1.TabIndex = 10;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnSave.Font = new Font("Segoe UI", 20F);
+            btnSave.Location = new Point(329, 694);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(95, 45);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
-            // label8
+            // label11
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 20F);
-            label8.Location = new Point(163, 363);
-            label8.Name = "label8";
-            label8.Size = new Size(100, 37);
-            label8.TabIndex = 30;
-            label8.Text = "Service";
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 20F);
+            label11.Location = new Point(3, 548);
+            label11.Name = "label11";
+            label11.Size = new Size(172, 37);
+            label11.TabIndex = 39;
+            label11.Text = "Edit Quantity";
             // 
-            // label9
+            // cmbEditQuantity
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 20F);
-            label9.Location = new Point(279, 363);
-            label9.Name = "label9";
-            label9.Size = new Size(119, 37);
-            label9.TabIndex = 31;
-            label9.Text = "Quantity";
+            cmbEditQuantity.Font = new Font("Segoe UI", 20F);
+            cmbEditQuantity.FormattingEnabled = true;
+            cmbEditQuantity.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
+            cmbEditQuantity.Location = new Point(369, 543);
+            cmbEditQuantity.Name = "cmbEditQuantity";
+            cmbEditQuantity.Size = new Size(46, 45);
+            cmbEditQuantity.TabIndex = 40;
             // 
             // ViewBookings
             // 
@@ -476,10 +563,17 @@
         private Label label4;
         private TextBox txtbBookingID;
         private Label label3;
-        private Button button1;
+        private Button btnSave;
         private ListBox listbServices;
         private ListBox listbQuantity;
         private Label label9;
         private Label label8;
+        private TextBox txtbService;
+        private ComboBox cmbService;
+        private Label label10;
+        private ComboBox cmbQuantity;
+        private Button btnAdd;
+        private ComboBox cmbEditQuantity;
+        private Label label11;
     }
 }

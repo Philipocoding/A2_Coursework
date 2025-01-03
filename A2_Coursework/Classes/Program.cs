@@ -8,7 +8,6 @@ namespace A2_Coursework.Classes
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             SetupDataDirectoryPath();
@@ -20,6 +19,7 @@ namespace A2_Coursework.Classes
             string dataDirectoryPath = Path.GetDirectoryName(debugPath);
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectoryPath);
             Booking.PopulateDictionary();
+            Booking.Populate_Dictionary();
         }
     }
 }

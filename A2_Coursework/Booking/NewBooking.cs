@@ -266,6 +266,7 @@ namespace A2_Coursework
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            dateChecker();
             int id = 0;
             try
             {
@@ -283,32 +284,49 @@ namespace A2_Coursework
                 string dateString = dtPickerDOB_.Value.ToString("yyyy-MM-dd");
                 if (Validation.ValidGender(cmbGender_.Text))
                 {
-                    if ((!Validation.isNullorEmpty(txtbFirstname_.Text) && (!Validation.isNullorEmpty(txtbFirstname_.Text))
-                   && (!Validation.isNullorEmpty(txtbEmail_.Text)) && (!Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (!Validation.isNullorEmpty(txtbAddressOne_.Text)
-                   && (!Validation.isNullorEmpty(cmbGender_.Text)) && (!Validation.isNullorEmpty(dtPickerDOB_.Text)))))
+                    if ((Validation.isNullorEmpty(txtbFirstname_.Text) && (Validation.isNullorEmpty(txtbFirstname_.Text))
+                   && (Validation.isNullorEmpty(txtbEmail_.Text)) && (Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (Validation.isNullorEmpty(txtbAddressOne_.Text)
+                   && (Validation.isNullorEmpty(dtPickerDOB_.Text)))))
                     {
-                        id = ProjectDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
-                       txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
-                        MessageBox.Show("Customer Added");
+                        if (!lblDateError.Visible)
+                        {
+                            if (!ExistingCustomer.Checked)
+                            {
+                                id = ProjectDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
+                     txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
+                                MessageBox.Show("Customer Added");
+                            }
+                            else
+                            {
+                                id = Convert.ToInt32(txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
+                 .Cells["clmCustomerID"].Value.ToString());
+                            }
+                           
 
-                        string theDate = BookingDate.Value.ToShortDateString();
-                        ProjectDAL.NewBooking(id, theDate, services, quantity);
-                        MessageBox.Show("Booking confirmed");
+                            string theDate = BookingDate.Value.ToShortDateString();
+                            ProjectDAL.NewBooking(id, theDate, services, quantity);
+                            MessageBox.Show("Booking confirmed");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid booking date!");
+                        }
+                       
                     }
                     else
                     {
 
                         MessageBox.Show("Ensure all fields are completed");
                     }
-                   
-                    
+
+
                 }
                 else
                 {
                     MessageBox.Show("Enter valid gender");
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -331,9 +349,10 @@ namespace A2_Coursework
         {
             if (ExistingCustomer.Checked)
             {
-                pnlAddCustomer.Visible = false;
-                pnlDatabase.Visible = true;
                 PopulateDataGrid();
+                pnlDatabase.Visible = true;
+                pnlAddCustomer.Visible = false;
+
             }
             else
             {
@@ -351,8 +370,8 @@ namespace A2_Coursework
 
         private void DataGridCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
-                .Cells["clmCustomerID"].Value.ToString();
+            txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
+                 .Cells["clmCustomerID"].Value.ToString();
             txtbFirstname_.Text = DataGridCustomers.SelectedRows[0]
                 .Cells["clmForename"].Value.ToString();
             txtbSurname_.Text = DataGridCustomers.SelectedRows[0]
@@ -417,6 +436,31 @@ namespace A2_Coursework
             }
             txtbCustomerID.Text = "";
 
+        }
+
+        private void dateChecker()
+        {
+            DateTime bookingDate = BookingDate.Value;
+            DateTime minimumDate = DateTime.Now.AddDays(14);
+
+            if (bookingDate <= minimumDate)
+            {
+                lblDateError.Visible = true;
+            }
+            else
+            {
+                lblDateError.Visible = false;
+
+            }
+        }
+        private void dtPickerDOB__ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BookingDate_ValueChanged(object sender, EventArgs e)
+        {
+            dateChecker();
         }
     }
 }

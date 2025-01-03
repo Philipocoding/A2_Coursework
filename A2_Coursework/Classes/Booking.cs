@@ -14,8 +14,10 @@ namespace A2_Coursework.Classes
         public int CustomerID { get; set; }
         public string BookingDate { get; set; }
         public static Dictionary<int, string> BookingRequests = new Dictionary<int, string>();
+        public static Dictionary<string, int> Booking_Requests = new Dictionary<string, int>();
 
-        
+
+
 
 
         public Booking() { }
@@ -36,6 +38,43 @@ namespace A2_Coursework.Classes
             BookingRequests[7] = "Curtains";
             BookingRequests[8] = "Vacuum";
 
+        }
+        public static void Populate_Dictionary()
+        {
+            Booking_Requests["Windows"] = 1;
+            Booking_Requests["Floors"] = 2;
+            Booking_Requests["Doors"] = 3;
+            Booking_Requests["Dusting"] = 4;
+            Booking_Requests["Bathroom"] = 5;
+            Booking_Requests["Carpets"] = 6;
+            Booking_Requests["Curtains"] = 7;
+            Booking_Requests["Vacuum"] = 8;
+
+        }
+        public static void editRequest(int requestno,int bookingid, int serviceid, int quantity)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ProjectDAL.connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand editRequest = new SqlCommand();
+
+                    editRequest.Connection = connection;
+                    editRequest.CommandType = System.Data.CommandType.StoredProcedure;
+                    editRequest.CommandText = "EditRequests";
+                    editRequest.Parameters.Add(new SqlParameter("@RequestNo", requestno));
+                    editRequest.Parameters.Add(new SqlParameter("@ServiceID", serviceid));
+                    editRequest.Parameters.Add(new SqlParameter("@BookingID", bookingid));
+                    editRequest.Parameters.Add(new SqlParameter("@Quantity", quantity));
+                    editRequest.ExecuteNonQuery();
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
         }
         public static List<Booking> populateDataGrid()
         {
@@ -182,5 +221,6 @@ namespace A2_Coursework.Classes
             return bookings;
 
         }
+
     }
 }

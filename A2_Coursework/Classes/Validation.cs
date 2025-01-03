@@ -38,5 +38,17 @@ namespace A2_Coursework.Classes
             }
             return true;
         }
+
+        public static bool ValidService(string service)
+        {
+            foreach (var key in Booking.Booking_Requests.Keys)
+            {
+                if (key.ToLower() == service.ToLower())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

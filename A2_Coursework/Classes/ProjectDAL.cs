@@ -12,6 +12,9 @@ using System.Data.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics;
 using System.Numerics;
+using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Reflection;
 
 namespace A2_Coursework.Classes
 {
@@ -19,6 +22,63 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
+        public static int GetRequestNo(int bookingid, int serviceid)
+        {
+            int requestNo = 0;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand AddRequest = new SqlCommand();
+                    AddRequest.Connection = connection;
+
+                    AddRequest.CommandType = CommandType.StoredProcedure;
+                    AddRequest.CommandText = "GetRequestNo";
+                    AddRequest.Parameters.Add(new SqlParameter("@ServiceID", serviceid));
+                    AddRequest.Parameters.Add(new SqlParameter("@BookingID", bookingid));
+
+                    using (SqlDataReader reader = AddRequest.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            requestNo = Convert.ToInt32(reader["RequestNo"]);
+                        }
+                    }
+                }
+                catch (CustomException ex)
+                {
+
+                }
+                return requestNo;
+            }
+        }
+        public static void addRequest(int serviceid, int bookingid, int quantity)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand AddRequest = new SqlCommand();
+                    AddRequest.Connection = connection;
+
+                    AddRequest.CommandType = CommandType.StoredProcedure;
+                    AddRequest.CommandText = "AddRequest";
+                    AddRequest.Parameters.Add(new SqlParameter("@ServiceID", serviceid));
+                    AddRequest.Parameters.Add(new SqlParameter("@BookingID", bookingid));
+                    AddRequest.Parameters.Add(new SqlParameter("@Quantity", quantity));
+
+                    AddRequest.ExecuteNonQuery();
+                }
+                catch(CustomException ex)
+                {
+
+                }
+            }
+        }
         public static (List<int> ServiceID, List<int> Quantity) RetrieveBookingRequestsbyID(int id)
         {
             List<int> serviceID = new List<int>();
