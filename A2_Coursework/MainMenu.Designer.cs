@@ -30,7 +30,7 @@
         {
             panel1 = new Panel();
             pnlMenuSubMenu = new Panel();
-            button8 = new Button();
+            btnSchedule = new Button();
             btnViewCustomers = new Button();
             btnViewStaff = new Button();
             btnMenu = new Button();
@@ -66,7 +66,7 @@
             // pnlMenuSubMenu
             // 
             pnlMenuSubMenu.BackColor = SystemColors.ControlLight;
-            pnlMenuSubMenu.Controls.Add(button8);
+            pnlMenuSubMenu.Controls.Add(btnSchedule);
             pnlMenuSubMenu.Controls.Add(btnViewCustomers);
             pnlMenuSubMenu.Controls.Add(btnViewStaff);
             pnlMenuSubMenu.Dock = DockStyle.Top;
@@ -75,21 +75,22 @@
             pnlMenuSubMenu.Size = new Size(200, 170);
             pnlMenuSubMenu.TabIndex = 1;
             // 
-            // button8
+            // btnSchedule
             // 
-            button8.BackColor = SystemColors.ControlLightLight;
-            button8.Dock = DockStyle.Top;
-            button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.ForeColor = Color.Black;
-            button8.Location = new Point(0, 90);
-            button8.Name = "button8";
-            button8.Padding = new Padding(35, 0, 0, 0);
-            button8.Size = new Size(200, 45);
-            button8.TabIndex = 2;
-            button8.Text = "button8";
-            button8.TextAlign = ContentAlignment.MiddleLeft;
-            button8.UseVisualStyleBackColor = false;
+            btnSchedule.BackColor = SystemColors.ControlLightLight;
+            btnSchedule.Dock = DockStyle.Top;
+            btnSchedule.FlatAppearance.BorderSize = 0;
+            btnSchedule.FlatStyle = FlatStyle.Flat;
+            btnSchedule.ForeColor = Color.Black;
+            btnSchedule.Location = new Point(0, 90);
+            btnSchedule.Name = "btnSchedule";
+            btnSchedule.Padding = new Padding(35, 0, 0, 0);
+            btnSchedule.Size = new Size(200, 45);
+            btnSchedule.TabIndex = 2;
+            btnSchedule.Text = "View Schedule";
+            btnSchedule.TextAlign = ContentAlignment.MiddleLeft;
+            btnSchedule.UseVisualStyleBackColor = false;
+            btnSchedule.Click += btnSchedule_Click;
             // 
             // btnViewCustomers
             // 
@@ -284,7 +285,7 @@
         private Button btnBooking;
         private Panel pnlMenuSubMenu;
         private Button btnViewStaff;
-        private Button button8;
+        private Button btnSchedule;
         private Button btnViewCustomers;
         private FlowLayoutPanel pnlChildForm;
     }
