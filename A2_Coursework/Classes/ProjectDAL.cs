@@ -22,6 +22,111 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
+       
+        public static Customer GetCustomer(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                Customer customer = new();
+
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand GetBookings = new SqlCommand();
+                    GetBookings.Connection = connection;
+
+                    GetBookings.CommandType = CommandType.StoredProcedure;
+                    GetBookings.CommandText = "GetCustomer";
+                    GetBookings.Parameters.Add(new SqlParameter("@CustomerID", id));
+
+                    using (SqlDataReader reader = GetBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            customer.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            customer.Firstname = reader["Firstname"].ToString();
+                            customer.Firstname = reader["Surname"].ToString();
+                            customer.AddressOne = reader["AddressOne"].ToString();
+                            customer.AddressTwo = reader["AddressTwo"].ToString();
+
+                        }
+                    }
+
+
+                }
+                catch (CustomException ex)
+                {
+
+                }
+
+                return customer;
+            }
+        }
+        public static (List<Customer> customerList, List<Booking> bookingList) GetBookingsByDate(string date)
+        {
+            
+            List<Booking> bookingList = new List<Booking>();
+            List<Customer> customerList = new();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand GetBookings = new SqlCommand();
+                    GetBookings.Connection = connection;
+
+                    GetBookings.CommandType = CommandType.StoredProcedure;
+                    GetBookings.CommandText = "GetBookingsByDate";
+                    GetBookings.Parameters.Add(new SqlParameter("@Date", date));
+
+                    using (SqlDataReader reader = GetBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Booking booking = new();
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            bookingList.Add(booking);
+                        }
+                    }
+
+                    foreach(Booking booking in bookingList)
+                    {
+                        Customer customer = new();
+                        SqlCommand getCustomer = new SqlCommand();
+                        getCustomer.Connection = connection;
+
+                        getCustomer.CommandType = CommandType.StoredProcedure;
+                        getCustomer.CommandText = "GetCustomer";
+                        getCustomer.Parameters.Add(new SqlParameter("@CustomerID", booking.CustomerID));
+
+                        using (SqlDataReader reader = getCustomer.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                customer.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                                customer.Firstname = reader["Forename"].ToString();
+                                customer.Surname = reader["Surname"].ToString();
+                                customer.AddressOne = reader["AddressOne"].ToString();
+                                customer.AddressTwo = reader["AddressTwo"].ToString();
+                                customerList.Add(customer);
+                            }
+                        }
+                    }
+
+                    
+                }
+                catch (CustomException ex)
+                {
+
+                }
+                return (customerList, bookingList);
+
+            }
+        }
         public static int GetRequestNo(int bookingid, int serviceid)
         {
             int requestNo = 0;

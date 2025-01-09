@@ -441,9 +441,9 @@ namespace A2_Coursework
         private void dateChecker()
         {
             DateTime bookingDate = BookingDate.Value;
-            DateTime minimumDate = DateTime.Now.AddDays(14);
+            DateTime minimumDate = DateTime.Now.AddDays(13);
 
-            if (bookingDate <= minimumDate)
+            if (bookingDate < minimumDate)
             {
                 lblDateError.Visible = true;
             }
