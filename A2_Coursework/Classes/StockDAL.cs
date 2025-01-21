@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace A2_Coursework.Classes
 {
@@ -18,7 +19,6 @@ namespace A2_Coursework.Classes
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 List <Stock> stockList = new();
-                Stock stock = new();
                 try
                 {
                     connection.Open();
@@ -28,16 +28,16 @@ namespace A2_Coursework.Classes
 
                     GetOrder.CommandType = CommandType.StoredProcedure;
                     GetOrder.CommandText = "GetStockReorder";
-                    GetOrder.Parameters.Add(new SqlParameter("@BookingDate", bookingDate));
+                    GetOrder.Parameters.Add(new SqlParameter("@orderdate", bookingDate));
 
                     using (SqlDataReader reader = GetOrder.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            stock.StockID = Convert.ToInt32(reader["CustomerID"]);
-                            stock.StockName = reader["Firstname"].ToString();
-                            stock.Quantity = Convert.ToInt32(reader["Surname"].ToString());
-                            stock.Cost = Convert.ToDouble(reader["Cost"].ToString());
+                            Stock stock = new();
+                            stock.StockID = Convert.ToInt32(reader["StockID"]);
+                            stock.Quantity = Convert.ToInt32(reader["Quantity"].ToString());
+                            stock.OrderDate = reader["OrderDate"].ToString();
 
                            stockList.Add(stock);
                         }
@@ -51,6 +51,92 @@ namespace A2_Coursework.Classes
                 }
 
                 return stockList;
+            }
+        }
+
+        public static void DeleteStockOrder(int id, string orderDate)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand DeleteOrder = new SqlCommand();
+                    DeleteOrder.Connection = connection;
+
+                    DeleteOrder.CommandType = CommandType.StoredProcedure;
+                    DeleteOrder.CommandText = "DeleteStockOrder";
+                    DeleteOrder.Parameters.Add(new SqlParameter("@StockID", id));
+                    DeleteOrder.Parameters.Add(new SqlParameter("@OrderDate", orderDate));
+                    DeleteOrder.ExecuteNonQuery();
+
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
+        public static double GetStockPrice(int id)
+        {
+            Stock stock = new();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand GetOrder = new SqlCommand();
+                    GetOrder.Connection = connection;
+
+                    GetOrder.CommandType = CommandType.StoredProcedure;
+                    GetOrder.CommandText = "GetStockPrice";
+                    GetOrder.Parameters.Add(new SqlParameter("@StockID", id));
+
+                    using (SqlDataReader reader = GetOrder.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            stock.Cost = Convert.ToDouble(reader["Cost"]);
+                        }
+                    }
+
+
+                }
+                catch (CustomException ex)
+                {
+
+                }
+
+                return stock.Cost;
+            }
+        }
+        public static void AddStockOrder(int id, int quantity, string orderDate)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand GetOrder = new SqlCommand();
+                    GetOrder.Connection = connection;
+
+                    GetOrder.CommandType = CommandType.StoredProcedure;
+                    GetOrder.CommandText = "AddStockOrder";
+                    GetOrder.Parameters.Add(new SqlParameter("@StockID", id));
+                    GetOrder.Parameters.Add(new SqlParameter("@Quantity", quantity));
+                    GetOrder.Parameters.Add(new SqlParameter("@OrderDate", orderDate));
+                    GetOrder.ExecuteNonQuery();
+
+                }
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    throw new CustomException("Not a unique order. An order for this item already exists!");
+                }
+
             }
         }
 

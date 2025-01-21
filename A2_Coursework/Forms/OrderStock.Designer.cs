@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             dataGridStockOrder = new DataGridView();
-            clmStockID = new DataGridViewTextBoxColumn();
-            clmStockName = new DataGridViewTextBoxColumn();
-            clmQuantity = new DataGridViewTextBoxColumn();
-            clmCostPerUnit = new DataGridViewTextBoxColumn();
             pnlStockReorder = new Panel();
             btnOrder = new Button();
             label3 = new Label();
@@ -41,7 +37,13 @@
             cmbQuantity = new ComboBox();
             cmbStock = new ComboBox();
             label1 = new Label();
-            button1 = new Button();
+            btnDelete = new Button();
+            btnEdit = new Button();
+            clmStockID = new DataGridViewTextBoxColumn();
+            clmStockName = new DataGridViewTextBoxColumn();
+            clmQuantity = new DataGridViewTextBoxColumn();
+            clmOrderDate = new DataGridViewTextBoxColumn();
+            clmCostPerUnit = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridStockOrder).BeginInit();
             pnlStockReorder.SuspendLayout();
             SuspendLayout();
@@ -49,32 +51,11 @@
             // dataGridStockOrder
             // 
             dataGridStockOrder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridStockOrder.Columns.AddRange(new DataGridViewColumn[] { clmStockID, clmStockName, clmQuantity, clmCostPerUnit });
+            dataGridStockOrder.Columns.AddRange(new DataGridViewColumn[] { clmStockID, clmStockName, clmQuantity, clmOrderDate, clmCostPerUnit });
             dataGridStockOrder.Location = new Point(318, 291);
             dataGridStockOrder.Name = "dataGridStockOrder";
-            dataGridStockOrder.Size = new Size(544, 253);
+            dataGridStockOrder.Size = new Size(645, 253);
             dataGridStockOrder.TabIndex = 2;
-            // 
-            // clmStockID
-            // 
-            clmStockID.HeaderText = "Stock ID";
-            clmStockID.Name = "clmStockID";
-            // 
-            // clmStockName
-            // 
-            clmStockName.HeaderText = "Stock";
-            clmStockName.Name = "clmStockName";
-            clmStockName.Width = 200;
-            // 
-            // clmQuantity
-            // 
-            clmQuantity.HeaderText = "Quantity";
-            clmQuantity.Name = "clmQuantity";
-            // 
-            // clmCostPerUnit
-            // 
-            clmCostPerUnit.HeaderText = "Cost per unit";
-            clmCostPerUnit.Name = "clmCostPerUnit";
             // 
             // pnlStockReorder
             // 
@@ -159,22 +140,60 @@
             label1.TabIndex = 5;
             label1.Text = "Stock";
             // 
-            // button1
+            // btnDelete
             // 
-            button1.Font = new Font("Segoe UI", 20F);
-            button1.Location = new Point(504, 550);
-            button1.Name = "button1";
-            button1.Size = new Size(135, 56);
-            button1.TabIndex = 11;
-            button1.Text = "Order";
-            button1.UseVisualStyleBackColor = true;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 20F);
+            btnDelete.Location = new Point(416, 550);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(191, 54);
+            btnDelete.TabIndex = 4;
+            btnDelete.Text = "Delete Order";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Font = new Font("Microsoft Sans Serif", 20F);
+            btnEdit.Location = new Point(613, 550);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(191, 54);
+            btnEdit.TabIndex = 5;
+            btnEdit.Text = "Edit Order";
+            btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // clmStockID
+            // 
+            clmStockID.HeaderText = "Stock ID";
+            clmStockID.Name = "clmStockID";
+            // 
+            // clmStockName
+            // 
+            clmStockName.HeaderText = "Stock";
+            clmStockName.Name = "clmStockName";
+            clmStockName.Width = 200;
+            // 
+            // clmQuantity
+            // 
+            clmQuantity.HeaderText = "Quantity";
+            clmQuantity.Name = "clmQuantity";
+            // 
+            // clmOrderDate
+            // 
+            clmOrderDate.HeaderText = "Order date";
+            clmOrderDate.Name = "clmOrderDate";
+            // 
+            // clmCostPerUnit
+            // 
+            clmCostPerUnit.HeaderText = "Cost per unit";
+            clmCostPerUnit.Name = "clmCostPerUnit";
             // 
             // OrderStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1197, 756);
-            Controls.Add(button1);
+            Controls.Add(btnEdit);
+            Controls.Add(btnDelete);
             Controls.Add(pnlStockReorder);
             Controls.Add(dataGridStockOrder);
             Name = "OrderStock";
@@ -193,13 +212,15 @@
         private ComboBox cmbQuantity;
         private ComboBox cmbStock;
         private Label label1;
-        private DataGridViewTextBoxColumn clmStockID;
-        private DataGridViewTextBoxColumn clmStockName;
-        private DataGridViewTextBoxColumn clmQuantity;
-        private DataGridViewTextBoxColumn clmCostPerUnit;
         private Label label3;
         private DateTimePicker dtPickerOrderDate;
         private Button btnOrder;
-        private Button button1;
+        private Button btnDelete;
+        private Button btnEdit;
+        private DataGridViewTextBoxColumn clmStockID;
+        private DataGridViewTextBoxColumn clmStockName;
+        private DataGridViewTextBoxColumn clmQuantity;
+        private DataGridViewTextBoxColumn clmOrderDate;
+        private DataGridViewTextBoxColumn clmCostPerUnit;
     }
 }
