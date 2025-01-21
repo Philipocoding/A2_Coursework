@@ -22,7 +22,33 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-       
+
+        public static void UpdateBookingDate(int id, string bookingDate)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                Customer customer = new();
+
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand GetBookings = new SqlCommand();
+                    GetBookings.Connection = connection;
+
+                    GetBookings.CommandType = CommandType.StoredProcedure;
+                    GetBookings.CommandText = "EditBookingDate";
+                    GetBookings.Parameters.Add(new SqlParameter("@BookingID", id));
+                    GetBookings.Parameters.Add(new SqlParameter("@Newdate", bookingDate));
+                    GetBookings.ExecuteNonQuery();
+
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
         public static Customer GetCustomer(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

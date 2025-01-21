@@ -117,5 +117,11 @@ namespace A2_Coursework
             openChildForm(new BookingSchedules());
             HideSubMenu();
         }
+
+        private void btnStockOrder_Click(object sender, EventArgs e)
+        {
+            openChildForm(new OrderStock());
+            HideSubMenu();
+        }
     }
 }

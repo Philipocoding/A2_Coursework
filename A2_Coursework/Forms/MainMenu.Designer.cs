@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            panel2 = new Panel();
+            button2 = new Button();
+            btnStockOrder = new Button();
+            btnViewStock = new Button();
+            btnStock = new Button();
             pnlMenuSubMenu = new Panel();
             btnSchedule = new Button();
             btnViewCustomers = new Button();
@@ -43,6 +48,7 @@
             pnlLogo = new Panel();
             pnlChildForm = new FlowLayoutPanel();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             pnlMenuSubMenu.SuspendLayout();
             pnlMediaSubMenu.SuspendLayout();
             SuspendLayout();
@@ -51,6 +57,8 @@
             // 
             panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(btnStock);
             panel1.Controls.Add(pnlMenuSubMenu);
             panel1.Controls.Add(btnMenu);
             panel1.Controls.Add(pnlMediaSubMenu);
@@ -63,6 +71,83 @@
             panel1.Size = new Size(200, 795);
             panel1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.ControlLight;
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(btnStockOrder);
+            panel2.Controls.Add(btnViewStock);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 563);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(200, 143);
+            panel2.TabIndex = 8;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlLightLight;
+            button2.Dock = DockStyle.Top;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(0, 90);
+            button2.Name = "button2";
+            button2.Padding = new Padding(35, 0, 0, 0);
+            button2.Size = new Size(200, 45);
+            button2.TabIndex = 2;
+            button2.Text = "View Schedule";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // btnStockOrder
+            // 
+            btnStockOrder.BackColor = SystemColors.ControlLightLight;
+            btnStockOrder.Dock = DockStyle.Top;
+            btnStockOrder.FlatAppearance.BorderSize = 0;
+            btnStockOrder.FlatStyle = FlatStyle.Flat;
+            btnStockOrder.ForeColor = Color.Black;
+            btnStockOrder.Location = new Point(0, 45);
+            btnStockOrder.Name = "btnStockOrder";
+            btnStockOrder.Padding = new Padding(35, 0, 0, 0);
+            btnStockOrder.Size = new Size(200, 45);
+            btnStockOrder.TabIndex = 1;
+            btnStockOrder.Text = "Order stock";
+            btnStockOrder.TextAlign = ContentAlignment.MiddleLeft;
+            btnStockOrder.UseVisualStyleBackColor = false;
+            btnStockOrder.Click += btnStockOrder_Click;
+            // 
+            // btnViewStock
+            // 
+            btnViewStock.BackColor = SystemColors.ControlLightLight;
+            btnViewStock.Dock = DockStyle.Top;
+            btnViewStock.FlatAppearance.BorderSize = 0;
+            btnViewStock.FlatStyle = FlatStyle.Flat;
+            btnViewStock.ForeColor = Color.Black;
+            btnViewStock.Location = new Point(0, 0);
+            btnViewStock.Name = "btnViewStock";
+            btnViewStock.Padding = new Padding(35, 0, 0, 0);
+            btnViewStock.Size = new Size(200, 45);
+            btnViewStock.TabIndex = 0;
+            btnViewStock.Text = "View stock";
+            btnViewStock.TextAlign = ContentAlignment.MiddleLeft;
+            btnViewStock.UseVisualStyleBackColor = false;
+            // 
+            // btnStock
+            // 
+            btnStock.BackColor = Color.Coral;
+            btnStock.Dock = DockStyle.Top;
+            btnStock.FlatAppearance.BorderSize = 0;
+            btnStock.FlatStyle = FlatStyle.Flat;
+            btnStock.ForeColor = Color.Black;
+            btnStock.Location = new Point(0, 518);
+            btnStock.Name = "btnStock";
+            btnStock.Padding = new Padding(15, 0, 0, 0);
+            btnStock.Size = new Size(200, 45);
+            btnStock.TabIndex = 7;
+            btnStock.Text = "Stock";
+            btnStock.TextAlign = ContentAlignment.MiddleLeft;
+            btnStock.UseVisualStyleBackColor = false;
+            // 
             // pnlMenuSubMenu
             // 
             pnlMenuSubMenu.BackColor = SystemColors.ControlLight;
@@ -72,7 +157,7 @@
             pnlMenuSubMenu.Dock = DockStyle.Top;
             pnlMenuSubMenu.Location = new Point(0, 375);
             pnlMenuSubMenu.Name = "pnlMenuSubMenu";
-            pnlMenuSubMenu.Size = new Size(200, 170);
+            pnlMenuSubMenu.Size = new Size(200, 143);
             pnlMenuSubMenu.TabIndex = 1;
             // 
             // btnSchedule
@@ -267,6 +352,7 @@
             Name = "MainMenu";
             Text = "MainMenu";
             panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             pnlMenuSubMenu.ResumeLayout(false);
             pnlMediaSubMenu.ResumeLayout(false);
             ResumeLayout(false);
@@ -288,5 +374,10 @@
         private Button btnSchedule;
         private Button btnViewCustomers;
         private FlowLayoutPanel pnlChildForm;
+        private Panel panel2;
+        private Button button2;
+        private Button btnStockOrder;
+        private Button btnViewStock;
+        private Button btnStock;
     }
 }

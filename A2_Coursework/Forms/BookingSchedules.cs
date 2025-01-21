@@ -18,6 +18,47 @@ namespace A2_Coursework
         public BookingSchedules()
         {
             InitializeComponent();
+            dataGridOne.MouseDown += DataGridView_MouseDown;
+            dataGrid2.MouseDown += DataGridView_MouseDown;
+            dataGrid3.MouseDown += DataGridView_MouseDown;
+            dataGrid4.MouseDown += DataGridView_MouseDown;
+            dataGrid5.MouseDown += DataGridView_MouseDown;
+        }
+        private DataGridViewRow GetSelectedRow()
+        {
+            var grids = new[] { dataGridOne, dataGrid2, dataGrid3, dataGrid4, dataGrid5};
+
+            foreach (var grid in grids)
+            {
+                if (grid.SelectedRows.Count > 0)
+                {
+                    return grid.SelectedRows[0]; 
+                }
+            }
+
+            return null;
+        }
+
+        private void DataGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (sender is DataGridView currentGrid)
+            {
+                // Deselect rows in other grids
+                foreach (var grid in new[] { dataGridOne, dataGrid2, dataGrid3, dataGrid4, dataGrid5 })
+                {
+                    if (grid != currentGrid)
+                    {
+                        grid.ClearSelection();
+                    }
+                }
+
+                // Ensure the clicked row is selected
+                var hitTest = currentGrid.HitTest(e.X, e.Y);
+                if (hitTest.RowIndex >= 0)
+                {
+                    currentGrid.Rows[hitTest.RowIndex].Selected = true;
+                }
+            }
         }
 
         private void updateDates()
@@ -36,10 +77,10 @@ namespace A2_Coursework
         }
         private void PopulateDataGrid()
         {
-            getData(DtPicker.Value.AddDays(1).ToString("dd/MM/yyyy"));
+            getData(DtPicker.Value.ToString("dd/MM/yyyy"));
             dataGridOne.Rows.Clear();
-            List<Booking> allbookings = new();
-            allbookings = Booking.populateDataGrid();
+            //List<Booking> allbookings = new();
+            //allbookings = Booking.populateDataGrid();
             for (int i = 0; i < bookings.Count; i++)
             {
                 dataGridOne.Rows.Add(bookings[i].BookingID, customers[i].CustomerID, customers[i].Firstname, customers[i].Surname);
@@ -51,10 +92,8 @@ namespace A2_Coursework
         }
         private void PopulateDataGridTwo()
         {
-            getData(DtPicker.Value.AddDays(2).ToString("dd/MM/yyyy"));
+            getData(DtPicker.Value.AddDays(1).ToString("dd/MM/yyyy"));
             dataGrid2.Rows.Clear();
-            List<Booking> allbookings = new();
-            allbookings = Booking.populateDataGrid();
             for (int i = 0; i < bookings.Count; i++)
             {
                 dataGrid2.Rows.Add(bookings[i].BookingID, customers[i].CustomerID, customers[i].Firstname, customers[i].Surname);
@@ -62,10 +101,8 @@ namespace A2_Coursework
         }
         private void PopulateDataGridThree()
         {
-            getData(DtPicker.Value.AddDays(3).ToString("dd/MM/yyyy"));
+            getData(DtPicker.Value.AddDays(2).ToString("dd/MM/yyyy"));
             dataGrid3.Rows.Clear();
-            List<Booking> allbookings = new();
-            allbookings = Booking.populateDataGrid();
             for (int i = 0; i < bookings.Count; i++)
             {
                 dataGrid3.Rows.Add(bookings[i].BookingID, customers[i].CustomerID, customers[i].Firstname, customers[i].Surname);
@@ -73,10 +110,8 @@ namespace A2_Coursework
         }
         private void PopulateDataGridFour()
         {
-            getData(DtPicker.Value.AddDays(4).ToString("dd/MM/yyyy"));
+            getData(DtPicker.Value.AddDays(3).ToString("dd/MM/yyyy"));
             dataGrid4.Rows.Clear();
-            List<Booking> allbookings = new();
-            allbookings = Booking.populateDataGrid();
             for (int i = 0; i < bookings.Count; i++)
             {
                 dataGrid4.Rows.Add(bookings[i].BookingID, customers[i].CustomerID, customers[i].Firstname, customers[i].Surname);
@@ -84,10 +119,8 @@ namespace A2_Coursework
         }
         private void PopulateDataGridFive()
         {
-            getData(DtPicker.Value.AddDays(5).ToString("dd/MM/yyyy"));
+            getData(DtPicker.Value.AddDays(4).ToString("dd/MM/yyyy"));
             dataGrid5.Rows.Clear();
-            List<Booking> allbookings = new();
-            allbookings = Booking.populateDataGrid();
             for (int i = 0; i < bookings.Count; i++)
             {
                 dataGrid5.Rows.Add(bookings[i].BookingID, customers[i].CustomerID, customers[i].Firstname, customers[i].Surname);
@@ -102,10 +135,7 @@ namespace A2_Coursework
             btnWcFour.Text = GetUpcomingMonday(DtPicker.Value.AddDays(21));
 
             PopulateDataGrid();
-            for (int i = 0; i < bookings.Count; i++)
-            {
-
-            }
+            
         }
         private string GetUpcomingMonday(DateTime startDate)
         {
@@ -136,14 +166,37 @@ namespace A2_Coursework
 
         private void btnPostpone_Click(object sender, EventArgs e)
         {
-            pnlPostponeDetails.Visible = true;
+            var selectedRow = GetSelectedRow();
+            if (selectedRow == null)
+            {
+                MessageBox.Show("Select a row!");
+            }
+            else
+            {
+                pnlPostponeDetails.Visible = true;
+
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            var selectedRow = GetSelectedRow();
             pnlPostponeDetails.Visible = false;
-           // if (DtPicker.)
+            try
+            {
+                string date = dtPickerPostpone.Value.ToString("dd/MM/yyyy");
+                int id = Convert.ToInt32(selectedRow.Cells[0].Value);
+                MessageBox.Show(date);
+                ProjectDAL.UpdateBookingDate(id, date);
+                PopulateDataGrid();
+                pnlPostponeDetails.Visible = false;
                 MessageBox.Show("Booking updated");
+
+            }
+            catch (CustomException ex)
+            {
+
+            }
         }
 
         private void btnWcOne_Click(object sender, EventArgs e)

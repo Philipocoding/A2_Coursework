@@ -36,7 +36,8 @@ namespace A2_Coursework
 
         private void DataGridCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if((DataGridCustomers.SelectedRows.Count > 0)&&(DataGridCustomers.SelectedRows.Count < 2)){
+            if ((DataGridCustomers.SelectedRows.Count > 0) && (DataGridCustomers.SelectedRows.Count < 2))
+            {
                 txtbFirstname.Text = DataGridCustomers.SelectedRows[0].Cells["clmForename"].Value.ToString();
                 txtbSurname.Text = DataGridCustomers.SelectedRows[0].Cells["clmSurname"].Value.ToString();
                 txtbDOB.Text = DataGridCustomers.SelectedRows[0].Cells["clmDOB"].Value.ToString();
@@ -57,7 +58,7 @@ namespace A2_Coursework
                 PopulateDataGrid();
                 MessageBox.Show("Customer deleted");
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -78,11 +79,16 @@ namespace A2_Coursework
                 PopulateDataGrid();
                 MessageBox.Show("Updated");
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 MessageBox.Show(ex.Message);
 
             }
+
+        }
+
+        private void DataGridCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

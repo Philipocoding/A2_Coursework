@@ -76,6 +76,7 @@
             DataGridCustomers.Size = new Size(1280, 292);
             DataGridCustomers.TabIndex = 0;
             DataGridCustomers.CellClick += DataGridCustomers_CellClick;
+            DataGridCustomers.CellContentClick += DataGridCustomers_CellContentClick;
             // 
             // clmCustomerID
             // 
