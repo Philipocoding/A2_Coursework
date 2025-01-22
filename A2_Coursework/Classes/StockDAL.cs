@@ -27,7 +27,7 @@ namespace A2_Coursework.Classes
                     GetOrder.Connection = connection;
 
                     GetOrder.CommandType = CommandType.StoredProcedure;
-                    GetOrder.CommandText = "GetStockReorder";
+                    GetOrder.CommandText = "GetStockOrder";
                     GetOrder.Parameters.Add(new SqlParameter("@orderdate", bookingDate));
 
                     using (SqlDataReader reader = GetOrder.ExecuteReader())
@@ -78,6 +78,42 @@ namespace A2_Coursework.Classes
                 }
             }
         }
+        public static List<Stock> GetAllOrders()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                List<Stock> stockList = new();
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand GetInfo = new SqlCommand();
+                    GetInfo.Connection = connection;
+
+                    GetInfo.CommandType = CommandType.StoredProcedure;
+                    GetInfo.CommandText = "GetAllStockOrder";
+
+                    using (SqlDataReader reader = GetInfo.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Stock stock = new();
+
+                            stock.StockID = Convert.ToInt32(reader["StockID"]);
+                            stock.Quantity = Convert.ToInt32(reader["Quantity"]);
+                            stock.OrderDate = reader["OrderDate"].ToString();
+
+                            stockList.Add(stock);
+                        }
+                    }
+                }
+                catch (CustomException ex)
+                {
+
+                }
+                return stockList;
+            }
+        }
         public static double GetStockPrice(int id)
         {
             Stock stock = new();
@@ -86,22 +122,22 @@ namespace A2_Coursework.Classes
             {
                 try
                 {
-                    connection.Open();
+                        connection.Open();
 
-                    SqlCommand GetOrder = new SqlCommand();
-                    GetOrder.Connection = connection;
+                        SqlCommand GetOrder = new SqlCommand();
+                        GetOrder.Connection = connection;
 
-                    GetOrder.CommandType = CommandType.StoredProcedure;
-                    GetOrder.CommandText = "GetStockPrice";
-                    GetOrder.Parameters.Add(new SqlParameter("@StockID", id));
+                        GetOrder.CommandType = CommandType.StoredProcedure;
+                        GetOrder.CommandText = "GetStockPrice";
+                        GetOrder.Parameters.Add(new SqlParameter("@StockID", id));
 
-                    using (SqlDataReader reader = GetOrder.ExecuteReader())
-                    {
-                        while (reader.Read())
+                        using (SqlDataReader reader = GetOrder.ExecuteReader())
                         {
-                            stock.Cost = Convert.ToDouble(reader["Cost"]);
+                            while (reader.Read())
+                            {
+                                stock.Cost = Convert.ToDouble(reader["Cost"]);
+                            }
                         }
-                    }
 
 
                 }
@@ -109,10 +145,14 @@ namespace A2_Coursework.Classes
                 {
 
                 }
-
                 return stock.Cost;
+
+
+                
             }
+
         }
+
         public static void AddStockOrder(int id, int quantity, string orderDate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -134,7 +174,8 @@ namespace A2_Coursework.Classes
                 }
                 catch (System.Data.SqlClient.SqlException ex)
                 {
-                    throw new CustomException("Not a unique order. An order for this item already exists!");
+                    throw new CustomException("An order for this item on this date exists!! " +
+                        "item already exists! Edit the existing order");
                 }
 
             }

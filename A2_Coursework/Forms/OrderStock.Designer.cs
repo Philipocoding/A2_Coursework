@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             dataGridStockOrder = new DataGridView();
+            clmStockID = new DataGridViewTextBoxColumn();
+            clmStockName = new DataGridViewTextBoxColumn();
+            clmQuantity = new DataGridViewTextBoxColumn();
+            clmOrderDate = new DataGridViewTextBoxColumn();
+            clmCostPerUnit = new DataGridViewTextBoxColumn();
             pnlStockReorder = new Panel();
             btnOrder = new Button();
             label3 = new Label();
@@ -39,11 +44,9 @@
             label1 = new Label();
             btnDelete = new Button();
             btnEdit = new Button();
-            clmStockID = new DataGridViewTextBoxColumn();
-            clmStockName = new DataGridViewTextBoxColumn();
-            clmQuantity = new DataGridViewTextBoxColumn();
-            clmOrderDate = new DataGridViewTextBoxColumn();
-            clmCostPerUnit = new DataGridViewTextBoxColumn();
+            btnViewOrders = new Button();
+            btnViewAllOrders = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridStockOrder).BeginInit();
             pnlStockReorder.SuspendLayout();
             SuspendLayout();
@@ -54,8 +57,35 @@
             dataGridStockOrder.Columns.AddRange(new DataGridViewColumn[] { clmStockID, clmStockName, clmQuantity, clmOrderDate, clmCostPerUnit });
             dataGridStockOrder.Location = new Point(318, 291);
             dataGridStockOrder.Name = "dataGridStockOrder";
-            dataGridStockOrder.Size = new Size(645, 253);
+            dataGridStockOrder.Size = new Size(667, 253);
             dataGridStockOrder.TabIndex = 2;
+            dataGridStockOrder.CellClick += dataGridStockOrder_CellClick;
+            // 
+            // clmStockID
+            // 
+            clmStockID.HeaderText = "Stock ID";
+            clmStockID.Name = "clmStockID";
+            // 
+            // clmStockName
+            // 
+            clmStockName.HeaderText = "Stock";
+            clmStockName.Name = "clmStockName";
+            clmStockName.Width = 200;
+            // 
+            // clmQuantity
+            // 
+            clmQuantity.HeaderText = "Quantity";
+            clmQuantity.Name = "clmQuantity";
+            // 
+            // clmOrderDate
+            // 
+            clmOrderDate.HeaderText = "Order date";
+            clmOrderDate.Name = "clmOrderDate";
+            // 
+            // clmCostPerUnit
+            // 
+            clmCostPerUnit.HeaderText = "Cost per unit";
+            clmCostPerUnit.Name = "clmCostPerUnit";
             // 
             // pnlStockReorder
             // 
@@ -76,7 +106,7 @@
             btnOrder.Font = new Font("Segoe UI", 20F);
             btnOrder.Location = new Point(208, 195);
             btnOrder.Name = "btnOrder";
-            btnOrder.Size = new Size(135, 56);
+            btnOrder.Size = new Size(200, 56);
             btnOrder.TabIndex = 10;
             btnOrder.Text = "Order";
             btnOrder.UseVisualStyleBackColor = true;
@@ -143,7 +173,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Microsoft Sans Serif", 20F);
-            btnDelete.Location = new Point(416, 550);
+            btnDelete.Location = new Point(318, 550);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(191, 54);
             btnDelete.TabIndex = 4;
@@ -154,44 +184,55 @@
             // btnEdit
             // 
             btnEdit.Font = new Font("Microsoft Sans Serif", 20F);
-            btnEdit.Location = new Point(613, 550);
+            btnEdit.Location = new Point(794, 550);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(191, 54);
             btnEdit.TabIndex = 5;
             btnEdit.Text = "Edit Order";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
-            // clmStockID
+            // btnViewOrders
             // 
-            clmStockID.HeaderText = "Stock ID";
-            clmStockID.Name = "clmStockID";
+            btnViewOrders.Font = new Font("Microsoft Sans Serif", 20F);
+            btnViewOrders.Location = new Point(515, 550);
+            btnViewOrders.Name = "btnViewOrders";
+            btnViewOrders.Size = new Size(273, 54);
+            btnViewOrders.TabIndex = 6;
+            btnViewOrders.Text = "View pending orders";
+            btnViewOrders.UseVisualStyleBackColor = true;
+            btnViewOrders.Click += btnViewOrders_Click;
             // 
-            // clmStockName
+            // btnViewAllOrders
             // 
-            clmStockName.HeaderText = "Stock";
-            clmStockName.Name = "clmStockName";
-            clmStockName.Width = 200;
+            btnViewAllOrders.Font = new Font("Microsoft Sans Serif", 20F);
+            btnViewAllOrders.Location = new Point(546, 610);
+            btnViewAllOrders.Name = "btnViewAllOrders";
+            btnViewAllOrders.Size = new Size(202, 54);
+            btnViewAllOrders.TabIndex = 7;
+            btnViewAllOrders.Text = "View all orders";
+            btnViewAllOrders.UseVisualStyleBackColor = true;
+            btnViewAllOrders.Click += btnViewAllOrders_Click;
             // 
-            // clmQuantity
+            // button1
             // 
-            clmQuantity.HeaderText = "Quantity";
-            clmQuantity.Name = "clmQuantity";
-            // 
-            // clmOrderDate
-            // 
-            clmOrderDate.HeaderText = "Order date";
-            clmOrderDate.Name = "clmOrderDate";
-            // 
-            // clmCostPerUnit
-            // 
-            clmCostPerUnit.HeaderText = "Cost per unit";
-            clmCostPerUnit.Name = "clmCostPerUnit";
+            button1.Font = new Font("Microsoft Sans Serif", 20F);
+            button1.Location = new Point(754, 610);
+            button1.Name = "button1";
+            button1.Size = new Size(267, 54);
+            button1.TabIndex = 8;
+            button1.Text = "View orders by date";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // OrderStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1197, 756);
+            Controls.Add(button1);
+            Controls.Add(btnViewAllOrders);
+            Controls.Add(btnViewOrders);
             Controls.Add(btnEdit);
             Controls.Add(btnDelete);
             Controls.Add(pnlStockReorder);
@@ -222,5 +263,8 @@
         private DataGridViewTextBoxColumn clmQuantity;
         private DataGridViewTextBoxColumn clmOrderDate;
         private DataGridViewTextBoxColumn clmCostPerUnit;
+        private Button btnViewOrders;
+        private Button btnViewAllOrders;
+        private Button button1;
     }
 }
