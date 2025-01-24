@@ -43,6 +43,7 @@
             // Settings
             // 
             AutoScaleMode = AutoScaleMode.None;
+            AutoSize = true;
             BackColor = SystemColors.ControlText;
             ClientSize = new Size(1038, 672);
             Controls.Add(button1);

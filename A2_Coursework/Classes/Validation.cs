@@ -19,6 +19,18 @@ namespace A2_Coursework.Classes
                 return true;
             }
         }
+        public static bool ValidTeamNo(string teamNo)
+        {
+            int team = Convert.ToInt32(teamNo);
+            if ((team<1)||(team>3))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public static bool isNullorEmpty(string text)
         {
             if (String.IsNullOrEmpty(text))
@@ -32,7 +44,7 @@ namespace A2_Coursework.Classes
         }
         public static bool validAge(int age)
         {
-            if ((age < 18)|| (age > 115))
+            if ((age < 16)|| (age > 99))
             {
                 return false;
             }

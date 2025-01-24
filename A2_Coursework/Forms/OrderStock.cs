@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace A2_Coursework
 {
@@ -115,6 +116,9 @@ namespace A2_Coursework
         }
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            DateTime today = DateTime.Now;
+            
+
             try
             {
                 string date = dtPickerOrderDate.Value.ToString("dd/MM/yyyy");
@@ -135,13 +139,21 @@ namespace A2_Coursework
                 }
                 else
                 {
-
-                    Stock newStock = new Stock();
-                    StockDAL.AddStockOrder(Stock.StockIDs[item].StockID, quantity, date);
-                    MessageBox.Show("Order Created");
-                    cmbStock.Text = "";
-                    cmbQuantity.Text = "";
-                    PopulateCustomDataGrid();
+                    DateTime itemDate = DateTime.Parse(date);
+                    if (itemDate >= today)
+                    {
+                        Stock newStock = new Stock();
+                        StockDAL.AddStockOrder(Stock.StockIDs[item].StockID, quantity, date);
+                        MessageBox.Show("Order Created");
+                        cmbStock.Text = "";
+                        cmbQuantity.Text = "";
+                        PopulateCustomDataGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not a valid date!");
+                    }
+                    
                 }
 
             }

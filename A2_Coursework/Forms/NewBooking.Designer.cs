@@ -847,6 +847,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1197, 756);
             Controls.Add(btnBack);

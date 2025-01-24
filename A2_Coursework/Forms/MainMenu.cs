@@ -23,19 +23,9 @@ namespace A2_Coursework
             pnlMediaSubMenu.Visible = false;
             pnlMenuSubMenu.Visible = false;
         }
-        private void HideSubMenu()
-        {
-            if (pnlMenuSubMenu.Visible)
-            {
-                pnlMenuSubMenu.Visible = false;
-            }
-            if (pnlMediaSubMenu.Visible)
-            {
-                pnlMediaSubMenu.Visible = false;
-            }
-        }
+       
 
-        private void showSubMenu(Panel subMenu)
+        public void showSubMenu(Panel subMenu)
         {
             if (!subMenu.Visible)
             {
@@ -47,22 +37,66 @@ namespace A2_Coursework
                 subMenu.Visible = false;
             }
         }
-
+        private void HideSubMenu()
+        {
+            if (pnlMenuSubMenu.Visible)
+            {
+                pnlMenuSubMenu.Visible = false;
+            }
+            if (pnlMediaSubMenu.Visible)
+            {
+                pnlMediaSubMenu.Visible = false;
+            }
+        }
         private Form activeForm = null;
-        private void openChildForm(Form childForm)
+        public void openChildForm(Form childForm)
         {
             activeForm = childForm;
+
             activeForm.Location = new System.Drawing.Point(0, 0);
+
+            activeForm.TopLevel = false;
             activeForm.Enabled = true;
             activeForm.Visible = true;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            //childForm.Dock = DockStyle.Fill;
+            activeForm.FormBorderStyle = FormBorderStyle.None;
+            activeForm.Dock = DockStyle.Fill;
+
+            pnlChildForm.Controls.Clear();
             pnlChildForm.Controls.Add(activeForm);
-            pnlChildForm.Tag = childForm;
-            childForm.BringToFront();
+
+            activeForm.BringToFront();
+
+
+            //  pnlChildForm.Tag = childForm;
             childForm.Show();
         }
+       //private Form activeForm = null;
+
+        //public void openChildForm(Form childForm)
+        //{
+        //    // Close and dispose of the previous form if it exists
+        //    if (activeForm != null)
+        //    {
+        //        activeForm.Close();
+        //    }
+
+        //    // Set the new active form
+        //    activeForm = childForm;
+
+        //    // Configure the new child form
+        //    activeForm.Location = new System.Drawing.Point(0, 0); // Top-left corner
+        //    activeForm.TopLevel = false; // Make it a non-top-level form
+        //    activeForm.FormBorderStyle = FormBorderStyle.None; // Remove border
+        //    activeForm.Dock = DockStyle.Fill; // Fill the parent container
+
+        //    // Add the new form to the panel
+        //    pnlChildForm.Controls.Clear(); // Clear previous controls
+        //    pnlChildForm.Controls.Add(activeForm);
+
+        //    // Bring it to the front and explicitly show it
+        //    activeForm.BringToFront();
+        //    activeForm.Show();
+        //}
 
         private void btnMedia_Click(object sender, EventArgs e)
         {
@@ -87,12 +121,12 @@ namespace A2_Coursework
             openChildForm(new AddStaff());
             HideSubMenu();
         }
-
-        private void btnCustomer_Click(object sender, EventArgs e)
+ private void btnCustomer_Click(object sender, EventArgs e)
         {
             openChildForm(new NewCustomer());
             HideSubMenu();
         }
+       
 
         private void btnViewBOokings_Click(object sender, EventArgs e)
         {
@@ -122,6 +156,17 @@ namespace A2_Coursework
         {
             openChildForm(new OrderStock());
             HideSubMenu();
+        }
+
+        private void btnViewStock_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewStockLevels());
+            HideSubMenu();
+        }
+
+        private void pnlChildForm_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

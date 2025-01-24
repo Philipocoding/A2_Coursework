@@ -50,6 +50,8 @@
             txtbID = new TextBox();
             label1 = new Label();
             pnlBookingDetails = new Panel();
+            cmbEditQuantity = new ComboBox();
+            label11 = new Label();
             btnAdd = new Button();
             cmbQuantity = new ComboBox();
             cmbService = new ComboBox();
@@ -70,8 +72,6 @@
             txtbBookingID = new TextBox();
             label3 = new Label();
             btnSave = new Button();
-            label11 = new Label();
-            cmbEditQuantity = new ComboBox();
             pnlDatePicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
             panel1.SuspendLayout();
@@ -299,6 +299,26 @@
             pnlBookingDetails.Size = new Size(427, 745);
             pnlBookingDetails.TabIndex = 8;
             // 
+            // cmbEditQuantity
+            // 
+            cmbEditQuantity.Font = new Font("Segoe UI", 20F);
+            cmbEditQuantity.FormattingEnabled = true;
+            cmbEditQuantity.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
+            cmbEditQuantity.Location = new Point(369, 543);
+            cmbEditQuantity.Name = "cmbEditQuantity";
+            cmbEditQuantity.Size = new Size(46, 45);
+            cmbEditQuantity.TabIndex = 40;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 20F);
+            label11.Location = new Point(3, 548);
+            label11.Name = "label11";
+            label11.Size = new Size(172, 37);
+            label11.TabIndex = 39;
+            label11.Text = "Edit Quantity";
+            // 
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 20F);
@@ -491,30 +511,11 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 20F);
-            label11.Location = new Point(3, 548);
-            label11.Name = "label11";
-            label11.Size = new Size(172, 37);
-            label11.TabIndex = 39;
-            label11.Text = "Edit Quantity";
-            // 
-            // cmbEditQuantity
-            // 
-            cmbEditQuantity.Font = new Font("Segoe UI", 20F);
-            cmbEditQuantity.FormattingEnabled = true;
-            cmbEditQuantity.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
-            cmbEditQuantity.Location = new Point(369, 543);
-            cmbEditQuantity.Name = "cmbEditQuantity";
-            cmbEditQuantity.Size = new Size(46, 45);
-            cmbEditQuantity.TabIndex = 40;
-            // 
             // ViewBookings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(1197, 756);
             Controls.Add(pnlBookingDetails);
             Controls.Add(panel1);

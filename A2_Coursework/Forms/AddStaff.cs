@@ -20,15 +20,32 @@ namespace A2_Coursework
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if(Convert.ToInt32(txtbHourlyRate.Text) > 100)
+            try
             {
-                MessageBox.Show("Enter a valid hourly rate");
-            }
-            else
-            {
-                ProjectDAL.NewStaffMember(txtbFirstname.Text, txtbSurname.Text, cmbGender.Text, Convert.ToInt32(txtbAge.Text), float.Parse(txtbHourlyRate.Text), 1);
+                if (Convert.ToInt32(txtbHourlyRate.Text) > 50)
+                {
+                    MessageBox.Show("Enter a valid hourly rate");
+                }
+                else
+                {
+                    if ((Validation.ValidGender(cmbGender.Text)) && (Validation.validAge(Convert.ToInt32(txtbAge.Text))) && (Validation.ValidTeamNo(cmbTeamNo.Text)))
+                    {
+                        ProjectDAL.NewStaffMember(txtbFirstname.Text, txtbSurname.Text, cmbGender.Text,
+                       Convert.ToInt32(txtbAge.Text), float.Parse(txtbHourlyRate.Text), Convert.ToInt32(cmbTeamNo.Text));
+                        MessageBox.Show("Staff member added!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ensure all details are sensible and valid");
+                    }
 
+                }
             }
+            catch(FormatException ex)
+            {
+                MessageBox.Show("Error occurred when trying to add staff member");
+            }
+           
         }
 
         

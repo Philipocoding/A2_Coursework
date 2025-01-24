@@ -131,6 +131,7 @@
             btnViewStock.Text = "View stock";
             btnViewStock.TextAlign = ContentAlignment.MiddleLeft;
             btnViewStock.UseVisualStyleBackColor = false;
+            btnViewStock.Click += btnViewStock_Click;
             // 
             // btnStock
             // 
@@ -340,6 +341,7 @@
             pnlChildForm.Name = "pnlChildForm";
             pnlChildForm.Size = new Size(1213, 795);
             pnlChildForm.TabIndex = 0;
+            pnlChildForm.Paint += pnlChildForm_Paint;
             // 
             // MainMenu
             // 

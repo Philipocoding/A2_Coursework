@@ -51,6 +51,14 @@ namespace A2_Coursework.Classes
             Booking_Requests["Vacuum"] = 8;
 
         }
+
+        public static void CheckAvailability(string date)
+        {
+            List<Booking> bookings = new();
+            var result = ProjectDAL.GetBookingsByDate(date);
+            bookings = result.bookingList;
+
+        }
         public static void editRequest(int requestno,int bookingid, int serviceid, int quantity)
         {
             try

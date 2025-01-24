@@ -212,6 +212,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(1038, 672);
             Controls.Add(panel1);
             Name = "NewCustomer";
