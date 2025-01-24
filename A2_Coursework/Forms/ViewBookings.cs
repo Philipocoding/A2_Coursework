@@ -54,7 +54,7 @@ namespace A2_Coursework
                 txtbSurname.Text = customer.Surname;
 
 
-                var result = ProjectDAL.RetrieveBookingRequestsbyID(Convert.ToInt32(txtbBookingID.Text));
+                var result = BookingDAL.RetrieveBookingRequestsbyID(Convert.ToInt32(txtbBookingID.Text));
 
                 List<int> ServiceID = result.ServiceID;
                 List<int> Quantity = result.Quantity;
@@ -149,7 +149,7 @@ namespace A2_Coursework
         {
             if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
             {
-                ProjectDAL.DeleteBooking(Convert.ToInt32(BookingTable.SelectedRows[0].Cells[0].Value));
+                BookingDAL.DeleteBooking(Convert.ToInt32(BookingTable.SelectedRows[0].Cells[0].Value));
                 PopulateDataGrid();
             }
         }
@@ -198,7 +198,7 @@ namespace A2_Coursework
             {
                 bookingId = Convert.ToInt32(txtbBookingID.Text);
                 quantity = Convert.ToInt32(Convert.ToInt32(cmbEditQuantity.Text));
-                requestNo = ProjectDAL.GetRequestNo(bookingId,
+                requestNo = BookingDAL.GetRequestNo(bookingId,
                 Booking.Booking_Requests[txtbService.Text]);
             }
             catch(CustomException ex)
@@ -222,7 +222,7 @@ namespace A2_Coursework
                 {
                     if(Validation.ValidService(cmbService.Text))
                     {
-                        ProjectDAL.addRequest(Booking.Booking_Requests[key], Convert.ToInt32(txtbBookingID.Text),
+                        BookingDAL.addRequest(Booking.Booking_Requests[key], Convert.ToInt32(txtbBookingID.Text),
                        Convert.ToInt32(cmbQuantity.Text));
                         PopulateDataGrid();
                         MessageBox.Show("Service added!");

@@ -146,7 +146,7 @@ namespace A2_Coursework
 
         private void getData(string date)
         {
-            var result = ProjectDAL.GetBookingsByDate(date);
+            var result = BookingDAL.GetBookingsByDate(date);
 
             customers = result.customerList;
             bookings = result.bookingList;
@@ -187,7 +187,7 @@ namespace A2_Coursework
                 string date = dtPickerPostpone.Value.ToString("dd/MM/yyyy");
                 int id = Convert.ToInt32(selectedRow.Cells[0].Value);
                 MessageBox.Show(date);
-                ProjectDAL.UpdateBookingDate(id, date);
+                BookingDAL.UpdateBookingDate(id, date);
                 PopulateDataGrid();
                 pnlPostponeDetails.Visible = false;
                 MessageBox.Show("Booking updated");

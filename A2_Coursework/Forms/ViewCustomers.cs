@@ -53,7 +53,7 @@ namespace A2_Coursework
         {
             try
             {
-                ProjectDAL.DeleteCustomer(Convert.ToInt32(DataGridCustomers.SelectedRows[0]
+                BookingDAL.DeleteCustomer(Convert.ToInt32(DataGridCustomers.SelectedRows[0]
                 .Cells[0].Value));
                 PopulateDataGrid();
                 MessageBox.Show("Customer deleted");
@@ -73,7 +73,7 @@ namespace A2_Coursework
                 {
                     int id = Convert.ToInt32(DataGridCustomers.SelectedRows[0].Cells["clmCustomerID"].Value);
 
-                    ProjectDAL.EditCustomer(id, txtbFirstname.Text, txtbSurname.Text, txtbDOB.Text, txtbGender.Text, txtbAddressOne.Text,
+                    BookingDAL.EditCustomer(id, txtbFirstname.Text, txtbSurname.Text, txtbDOB.Text, txtbGender.Text, txtbAddressOne.Text,
                         txtbAddressTwo.Text, txtbEmail.Text);
                 }
                 PopulateDataGrid();

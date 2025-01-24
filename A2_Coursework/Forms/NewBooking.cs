@@ -292,7 +292,7 @@ namespace A2_Coursework
                         {
                             if (!ExistingCustomer.Checked)
                             {
-                                id = ProjectDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
+                                id = BookingDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
                      txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
                                 MessageBox.Show("Customer Added");
                             }
@@ -304,29 +304,24 @@ namespace A2_Coursework
                            
 
                             string theDate = BookingDate.Value.ToShortDateString();
-                            ProjectDAL.NewBooking(id, theDate, services, quantity);
+                            BookingDAL.NewBooking(id, theDate, services, quantity);
                             MessageBox.Show("Booking confirmed");
                         }
                         else
                         {
                             MessageBox.Show("Invalid booking date!");
                         }
-                       
                     }
                     else
                     {
 
                         MessageBox.Show("Ensure all fields are completed");
                     }
-
-
                 }
                 else
                 {
                     MessageBox.Show("Enter valid gender");
                 }
-
-
             }
             catch (Exception ex)
             {

@@ -30,7 +30,7 @@ namespace A2_Coursework
                 {
                     if ((Validation.ValidGender(cmbGender.Text)) && (Validation.validAge(Convert.ToInt32(txtbAge.Text))) && (Validation.ValidTeamNo(cmbTeamNo.Text)))
                     {
-                        ProjectDAL.NewStaffMember(txtbFirstname.Text, txtbSurname.Text, cmbGender.Text,
+                        BookingDAL.NewStaffMember(txtbFirstname.Text, txtbSurname.Text, cmbGender.Text,
                        Convert.ToInt32(txtbAge.Text), float.Parse(txtbHourlyRate.Text), Convert.ToInt32(cmbTeamNo.Text));
                         MessageBox.Show("Staff member added!");
                     }

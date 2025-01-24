@@ -48,55 +48,55 @@ namespace A2_Coursework
                 pnlMediaSubMenu.Visible = false;
             }
         }
-        private Form activeForm = null;
-        public void openChildForm(Form childForm)
-        {
-            activeForm = childForm;
-
-            activeForm.Location = new System.Drawing.Point(0, 0);
-
-            activeForm.TopLevel = false;
-            activeForm.Enabled = true;
-            activeForm.Visible = true;
-            activeForm.FormBorderStyle = FormBorderStyle.None;
-            activeForm.Dock = DockStyle.Fill;
-
-            pnlChildForm.Controls.Clear();
-            pnlChildForm.Controls.Add(activeForm);
-
-            activeForm.BringToFront();
-
-
-            //  pnlChildForm.Tag = childForm;
-            childForm.Show();
-        }
-       //private Form activeForm = null;
-
+        //private Form activeForm = null;
         //public void openChildForm(Form childForm)
         //{
-        //    // Close and dispose of the previous form if it exists
-        //    if (activeForm != null)
-        //    {
-        //        activeForm.Close();
-        //    }
-
-        //    // Set the new active form
         //    activeForm = childForm;
 
-        //    // Configure the new child form
-        //    activeForm.Location = new System.Drawing.Point(0, 0); // Top-left corner
-        //    activeForm.TopLevel = false; // Make it a non-top-level form
-        //    activeForm.FormBorderStyle = FormBorderStyle.None; // Remove border
-        //    activeForm.Dock = DockStyle.Fill; // Fill the parent container
+        //    activeForm.Location = new System.Drawing.Point(0, 0);
 
-        //    // Add the new form to the panel
-        //    pnlChildForm.Controls.Clear(); // Clear previous controls
+        //    activeForm.TopLevel = false;
+        //    activeForm.Enabled = true;
+        //    activeForm.Visible = true;
+        //    activeForm.FormBorderStyle = FormBorderStyle.None;
+        //    activeForm.Dock = DockStyle.Fill;
+
+        //    pnlChildForm.Controls.Clear();
         //    pnlChildForm.Controls.Add(activeForm);
 
-        //    // Bring it to the front and explicitly show it
         //    activeForm.BringToFront();
-        //    activeForm.Show();
+
+
+        //    //  pnlChildForm.Tag = childForm;
+        //    childForm.Show();
         //}
+        private Form activeForm = null;
+
+        public void openChildForm(Form childForm)
+        {
+            // Close and dispose of the previous form if it exists
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+
+            // Set the new active form
+            activeForm = childForm;
+
+            // Configure the new child form
+            activeForm.Location = new System.Drawing.Point(0, 0); // Top-left corner
+            activeForm.TopLevel = false; // Make it a non-top-level form
+            activeForm.FormBorderStyle = FormBorderStyle.None; // Remove border
+            activeForm.Dock = DockStyle.Fill; // Fill the parent container
+
+            // Add the new form to the panel
+            pnlChildForm.Controls.Clear(); // Clear previous controls
+            pnlChildForm.Controls.Add(activeForm);
+
+            // Bring it to the front and explicitly show it
+            activeForm.BringToFront();
+            activeForm.Show();
+        }
 
         private void btnMedia_Click(object sender, EventArgs e)
         {

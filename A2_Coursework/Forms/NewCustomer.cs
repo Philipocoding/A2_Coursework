@@ -27,7 +27,7 @@ namespace A2_Coursework
                     &&(!Validation.isNullorEmpty(txtbEmail.Text))&&(!Validation.isNullorEmpty(txtbAddressTwo.Text))&&(!Validation.isNullorEmpty(txtbAddressOne.Text)
                     &&(!Validation.isNullorEmpty(cmbGender.Text)) &&(!Validation.isNullorEmpty(dtPicker.Text)))))
                 {
-                    ProjectDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
+                    BookingDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
                     txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
                     MessageBox.Show("Customer Added");
                 }

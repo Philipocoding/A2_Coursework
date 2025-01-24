@@ -54,7 +54,7 @@ namespace A2_Coursework
         private void btnDelete_Click(object sender, EventArgs e)
         {
             id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells["clmStaffID"].Value);
-            ProjectDAL.DeleteStaffMember(id);
+            BookingDAL.DeleteStaffMember(id);
             PopulateDataGrid();
             pnlDetails.Visible = false;
         }
@@ -62,7 +62,7 @@ namespace A2_Coursework
         private void btnSave_Click(object sender, EventArgs e)
         {
             id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells["clmStaffID"].Value);
-            ProjectDAL.EditStaff(id, txtbFirstname.Text, txtbSurname.Text, Convert.ToInt32(txtbAge.Text), txtbGender.Text, 
+            BookingDAL.EditStaff(id, txtbFirstname.Text, txtbSurname.Text, Convert.ToInt32(txtbAge.Text), txtbGender.Text, 
                 Convert.ToInt32(txtbHourlyRate.Text), Convert.ToInt32(txtbTeamNo.Text));
             PopulateDataGrid();
             pnlDetails.Visible = false;

@@ -15,6 +15,7 @@ namespace A2_Coursework.Classes
         public string BookingDate { get; set; }
         public static Dictionary<int, string> BookingRequests = new Dictionary<int, string>();
         public static Dictionary<string, int> Booking_Requests = new Dictionary<string, int>();
+        static List<Booking> bookings = new();
 
 
 
@@ -51,19 +52,43 @@ namespace A2_Coursework.Classes
             Booking_Requests["Vacuum"] = 8;
 
         }
-
-        public static void CheckAvailability(string date)
+        public static int getTeamNo()
         {
-            List<Booking> bookings = new();
-            var result = ProjectDAL.GetBookingsByDate(date);
+            int num = bookings.Count;
+            int teamNo = 0;
+            if((num/1 == 1)||(num /3 == 2))
+            {
+                teamNo = 1;
+            }
+            if ((num / 2 == 3) || (num / 5 == (6/5)))
+            {
+                teamNo = 2;
+            }
+            else
+            {
+                teamNo = 3;
+            }
+            return teamNo;
+        }
+        public static bool CheckAvailability(string date)
+        {
+            var result = BookingDAL.GetBookingsByDate(date);
             bookings = result.bookingList;
+            if (bookings.Count < 6)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
         public static void editRequest(int requestno,int bookingid, int serviceid, int quantity)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(ProjectDAL.connectionString))
+                using (SqlConnection connection = new SqlConnection(BookingDAL.connectionString))
                 {
                     connection.Open();
 
@@ -90,7 +115,7 @@ namespace A2_Coursework.Classes
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(ProjectDAL.connectionString))
+                using (SqlConnection connection = new SqlConnection(BookingDAL.connectionString))
                 {
                     connection.Open();
 
@@ -126,7 +151,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(ProjectDAL.connectionString))
+                using (SqlConnection connection = new(BookingDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();
@@ -162,7 +187,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(ProjectDAL.connectionString))
+                using (SqlConnection connection = new(BookingDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();
@@ -197,7 +222,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(ProjectDAL.connectionString))
+                using (SqlConnection connection = new(BookingDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();

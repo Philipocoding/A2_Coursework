@@ -18,11 +18,68 @@ using System.Reflection;
 
 namespace A2_Coursework.Classes
 {
-    public static class ProjectDAL
+    public static class BookingDAL
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
+        public static List<int> GetMembersFromTeam(int teamNo)
+        {
+            List<int> staffMembers = new();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand GetTeamMembers = new SqlCommand();
+                    GetTeamMembers.Connection = connection;
 
+                    GetTeamMembers.CommandType = CommandType.StoredProcedure;
+                    GetTeamMembers.CommandText = "GetMembersFromTeam";
+                    GetTeamMembers.Parameters.Add(new SqlParameter("@TeamNo", teamNo));
+
+                    using (SqlDataReader reader = GetTeamMembers.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            staffMembers.Add(Convert.ToInt32(reader["StaffID"]));
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                return staffMembers;
+            }
+        }
+        public static void AssignBookingsToTeams(int bookingID, int teamNo)
+        {
+            List<int> staffMembers = GetMembersFromTeam(teamNo);
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand AssignBookings = new SqlCommand();
+                    AssignBookings.Connection = connection;
+
+                    AssignBookings.CommandType = CommandType.StoredProcedure;
+                    AssignBookings.CommandText = "GetBookingsByDate";
+                    foreach(int id in staffMembers)
+                    {
+                        AssignBookings.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+                        AssignBookings.Parameters.Add(new SqlParameter("@StaffID", id));
+                        AssignBookings.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
         public static void UpdateBookingDate(int id, string bookingDate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -426,33 +483,44 @@ namespace A2_Coursework.Classes
                 {
                     connection.Open();
 
-                    SqlCommand AddBooking = new SqlCommand();
-                    AddBooking.Connection = connection;
+                    
 
-                    AddBooking.CommandType = CommandType.StoredProcedure;
-                    AddBooking.CommandText = "NewBooking";
-                    AddBooking.Parameters.Add(new SqlParameter("@BookingDate", Date));
-                    AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
-                    rowsaffected = AddBooking.ExecuteNonQuery();
-                    string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
-                    SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
-                    int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
-
-
-                    SqlCommand NewBookingRequests = new SqlCommand();
-                    NewBookingRequests.Connection = connection;
-
-                    NewBookingRequests.CommandType = CommandType.StoredProcedure;
-                    NewBookingRequests.CommandText = "NewBookingRequests";
-                    for (int i = 0; i < ServiceID.Count; i++)
+                    if (Booking.CheckAvailability(Date))
                     {
-                        NewBookingRequests.Parameters.Clear();
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
-                        NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
-                        NewBookingRequests.ExecuteNonQuery();
+                        SqlCommand AddBooking = new SqlCommand();
+                        AddBooking.Connection = connection;
+
+                        AddBooking.CommandType = CommandType.StoredProcedure;
+                        AddBooking.CommandText = "NewBooking";
+                        AddBooking.Parameters.Add(new SqlParameter("@BookingDate", Date));
+                        AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
+                        rowsaffected = AddBooking.ExecuteNonQuery();
+
+                        string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
+                        SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
+                        int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
+
+                        
+                        AssignBookingsToTeams(bookingID, Booking.getTeamNo());
+
+
+                        SqlCommand NewBookingRequests = new SqlCommand();
+                        NewBookingRequests.Connection = connection;
+
+                        NewBookingRequests.CommandType = CommandType.StoredProcedure;
+                        NewBookingRequests.CommandText = "NewBookingRequests";
+                        for (int i = 0; i < ServiceID.Count; i++)
+                        {
+                            NewBookingRequests.Parameters.Clear();
+                            NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+                            NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
+                            NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
+                            NewBookingRequests.ExecuteNonQuery();
+                        }
+                        connection.Close();
                     }
-                    connection.Close();
+
+                  
 
                 }
                 catch (Exception ex)
