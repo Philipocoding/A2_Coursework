@@ -20,6 +20,11 @@ namespace A2_Coursework.Classes
         public string Email { get; set; }
 
         public Customer() { }
+        public Customer(string firstname,string surname)
+        {
+            this.Firstname = firstname;
+            this.Surname = surname;
+        }
         public Customer(int customerID, string firstname, string surname, string dOB,
             string gender, string addressOne, string addressTwo, string email)
         {

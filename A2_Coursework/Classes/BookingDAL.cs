@@ -66,9 +66,10 @@ namespace A2_Coursework.Classes
                     AssignBookings.Connection = connection;
 
                     AssignBookings.CommandType = CommandType.StoredProcedure;
-                    AssignBookings.CommandText = "GetBookingsByDate";
+                    AssignBookings.CommandText = "AssignBookingsToTeams";
                     foreach(int id in staffMembers)
                     {
+                        AssignBookings.Parameters.Clear();
                         AssignBookings.Parameters.Add(new SqlParameter("@BookingID", bookingID));
                         AssignBookings.Parameters.Add(new SqlParameter("@StaffID", id));
                         AssignBookings.ExecuteNonQuery();
@@ -474,7 +475,7 @@ namespace A2_Coursework.Classes
                 }
             }
         }
-        public static int NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
+        public static bool NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
         {
             int rowsaffected = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -518,16 +519,19 @@ namespace A2_Coursework.Classes
                             NewBookingRequests.ExecuteNonQuery();
                         }
                         connection.Close();
+
                     }
-
-                  
-
+                    else
+                    {
+                        return false;
+                    }
                 }
                 catch (Exception ex)
                 {
 
                 }
-                return rowsaffected;
+                return true;
+
             }
         }
 

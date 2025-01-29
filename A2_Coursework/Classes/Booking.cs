@@ -13,12 +13,10 @@ namespace A2_Coursework.Classes
         public int BookingID { get; set; }
         public int CustomerID { get; set; }
         public string BookingDate { get; set; }
+        public Customer customer = new();
         public static Dictionary<int, string> BookingRequests = new Dictionary<int, string>();
         public static Dictionary<string, int> Booking_Requests = new Dictionary<string, int>();
         static List<Booking> bookings = new();
-
-
-
 
 
         public Booking() { }
@@ -55,20 +53,18 @@ namespace A2_Coursework.Classes
         public static int getTeamNo()
         {
             int num = bookings.Count;
-            int teamNo = 0;
-            if((num/1 == 1)||(num /3 == 2))
+            if((num == 1)||(num  == 4))
             {
-                teamNo = 1;
+                return 1;
             }
-            if ((num / 2 == 3) || (num / 5 == (6/5)))
+            if ((num == 2) || (num == 5))
             {
-                teamNo = 2;
+                return 2;
             }
             else
             {
-                teamNo = 3;
+                return 3;
             }
-            return teamNo;
         }
         public static bool CheckAvailability(string date)
         {
@@ -123,7 +119,7 @@ namespace A2_Coursework.Classes
 
                     GetBookings.Connection = connection;
                     GetBookings.CommandType = System.Data.CommandType.StoredProcedure;
-                    GetBookings.CommandText = "RetrieveBookings";
+                    GetBookings.CommandText = "GetBookingANDCustomer";
 
                     using (SqlDataReader reader = GetBookings.ExecuteReader())
                     {
@@ -134,6 +130,9 @@ namespace A2_Coursework.Classes
                             booking.BookingID = Convert.ToInt32(reader["BookingID"]);
                             booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
                             booking.BookingDate = reader["BookingDate"].ToString();
+                            booking.customer.Firstname = reader["Forename"].ToString();
+                            booking.customer.Surname = reader["Surname"].ToString();
+
                             bookings.Add(booking);
                         }
                     }
@@ -229,7 +228,7 @@ namespace A2_Coursework.Classes
                     getBookings.Connection = connection;
                     getBookings.CommandType = CommandType.StoredProcedure;
                     getBookings.CommandText = "BookingsBy_Date_ID";
-                    getBookings.Parameters.Add(new SqlParameter("@Date", date));
+                    getBookings.Parameters.Add(new SqlParameter("@BookingDate", date));
                     getBookings.Parameters.Add(new SqlParameter("@CustomerID", id));
 
 
@@ -242,6 +241,9 @@ namespace A2_Coursework.Classes
                             booking.BookingID = Convert.ToInt32(reader["BookingID"]);
                             booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
                             booking.BookingDate = reader["BookingDate"].ToString();
+                            booking.customer.Firstname = reader["Forename"].ToString();
+                            booking.customer.Surname = reader["Surname"].ToString();
+
                             bookings.Add(booking);
                         }
                     }

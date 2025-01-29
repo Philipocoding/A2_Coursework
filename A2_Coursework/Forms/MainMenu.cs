@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace A2_Coursework
 {
@@ -17,13 +18,14 @@ namespace A2_Coursework
             InitializeComponent();
             customiseDesign();
         }
-
         private void customiseDesign()
         {
             pnlMediaSubMenu.Visible = false;
             pnlMenuSubMenu.Visible = false;
+            pnlAddDetails.Visible = false;
+            pnlStock.Visible = false;
         }
-       
+
 
         public void showSubMenu(Panel subMenu)
         {
@@ -47,29 +49,16 @@ namespace A2_Coursework
             {
                 pnlMediaSubMenu.Visible = false;
             }
+            if (pnlStock.Visible)
+            {
+                pnlStock.Visible = false;
+            }
+            if (pnlAddDetails.Visible)
+            {
+                pnlAddDetails.Visible = false;
+            }
         }
-        //private Form activeForm = null;
-        //public void openChildForm(Form childForm)
-        //{
-        //    activeForm = childForm;
 
-        //    activeForm.Location = new System.Drawing.Point(0, 0);
-
-        //    activeForm.TopLevel = false;
-        //    activeForm.Enabled = true;
-        //    activeForm.Visible = true;
-        //    activeForm.FormBorderStyle = FormBorderStyle.None;
-        //    activeForm.Dock = DockStyle.Fill;
-
-        //    pnlChildForm.Controls.Clear();
-        //    pnlChildForm.Controls.Add(activeForm);
-
-        //    activeForm.BringToFront();
-
-
-        //    //  pnlChildForm.Tag = childForm;
-        //    childForm.Show();
-        //}
         private Form activeForm = null;
 
         public void openChildForm(Form childForm)
@@ -101,6 +90,7 @@ namespace A2_Coursework
         private void btnMedia_Click(object sender, EventArgs e)
         {
             showSubMenu(pnlMediaSubMenu);
+
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -121,12 +111,12 @@ namespace A2_Coursework
             openChildForm(new AddStaff());
             HideSubMenu();
         }
- private void btnCustomer_Click(object sender, EventArgs e)
+        private void btnCustomer_Click(object sender, EventArgs e)
         {
             openChildForm(new NewCustomer());
             HideSubMenu();
         }
-       
+
 
         private void btnViewBOokings_Click(object sender, EventArgs e)
         {
@@ -164,7 +154,21 @@ namespace A2_Coursework
             HideSubMenu();
         }
 
-        private void pnlChildForm_Paint(object sender, PaintEventArgs e)
+
+
+        private void btnAddDetails_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlAddDetails);
+
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlStock);
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

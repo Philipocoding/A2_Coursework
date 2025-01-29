@@ -33,6 +33,12 @@ namespace A2_Coursework
                         BookingDAL.NewStaffMember(txtbFirstname.Text, txtbSurname.Text, cmbGender.Text,
                        Convert.ToInt32(txtbAge.Text), float.Parse(txtbHourlyRate.Text), Convert.ToInt32(cmbTeamNo.Text));
                         MessageBox.Show("Staff member added!");
+                        txtbFirstname.Text = "";
+                        txtbSurname.Text = "";
+                        txtbHourlyRate.Text = "";
+                        txtbAge.Text = "";
+                        cmbGender.Text = "";
+                        cmbTeamNo.Text = "";
                     }
                     else
                     {

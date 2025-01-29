@@ -194,6 +194,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            BackColor = Color.FromArgb(109, 132, 156);
             ClientSize = new Size(1197, 756);
             Controls.Add(panel1);
             Name = "AddStaff";

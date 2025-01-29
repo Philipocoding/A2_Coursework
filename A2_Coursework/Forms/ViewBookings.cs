@@ -36,7 +36,8 @@ namespace A2_Coursework
             allbookings = Booking.populateDataGrid();
             foreach (Booking booking in allbookings)
             {
-                BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.BookingDate);
+                BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.customer.Firstname,
+                    booking.customer.Surname, booking.BookingDate);
             }
         }
 

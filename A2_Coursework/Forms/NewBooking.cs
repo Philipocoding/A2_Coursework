@@ -141,10 +141,46 @@ namespace A2_Coursework
             }
         }
 
+        private void AdjustDataGridViewSize()
+        {
 
+            DataGridCustomers.DefaultCellStyle.ForeColor = Color.Black; // Text color
+            DataGridCustomers.DefaultCellStyle.Font = new Font("Arial", 15); // Font and size
+            int totalHeight = DataGridCustomers.ColumnHeadersHeight;
 
+            // Calculate total height
+            foreach (DataGridViewRow row in DataGridCustomers.Rows)
+            {
+                totalHeight += row.Height;
+            }
+
+            int totalWidth = 0;
+
+            // Calculate total width
+            foreach (DataGridViewColumn column in DataGridCustomers.Columns)
+            {
+                totalWidth += column.Width;
+            }
+
+            // Optionally add padding for borders
+            totalHeight += 2;
+            totalWidth += 2;
+
+            // Set the DataGridView size
+            DataGridCustomers.Size = new Size(
+                Math.Min(totalWidth, this.ClientSize.Width - 20),  // Max width to fit form
+                Math.Min(totalHeight, this.ClientSize.Height - 50) // Max height to fit form
+            );
+        }
+        private void StyleDataGrid()
+        {
+            DataGridCustomers.DefaultCellStyle.ForeColor = Color.Black; // Text color
+            DataGridCustomers.DefaultCellStyle.Font = new Font("Arial", 15); // Font and size
+
+        }
         private void NewBooking_Load(object sender, EventArgs e)
         {
+            AdjustDataGridViewSize();
             windows = false;
             Floors = false;
             Doors = false;
@@ -155,115 +191,6 @@ namespace A2_Coursework
             Vacuum = false;
         }
 
-        private void lblWindowPlus_Click(object sender, EventArgs e)
-        {
-            lblWIndows.Text = (Convert.ToInt32(lblWIndows.Text) + 1).ToString();
-        }
-
-        private void lblWIndowsMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblWIndows.Text = (Convert.ToInt32(lblWIndows.Text) - 1).ToString();
-            }
-        }
-
-        private void lblFloorPlus_Click(object sender, EventArgs e)
-        {
-            lblFloors.Text = (Convert.ToInt32(lblFloors.Text) + 1).ToString();
-        }
-
-        private void lblFloorMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblFloors.Text = (Convert.ToInt32(lblFloors.Text) - 1).ToString();
-            }
-
-        }
-
-        private void lblDoorPlus_Click(object sender, EventArgs e)
-        {
-            lblDoors.Text = (Convert.ToInt32(lblDoors.Text) + 1).ToString();
-        }
-
-        private void lblDoorMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblDoors.Text = (Convert.ToInt32(lblDoors.Text) - 1).ToString();
-            }
-
-        }
-
-        private void lblDustPlus_Click(object sender, EventArgs e)
-        {
-            lblDusting.Text = (Convert.ToInt32(lblDusting.Text) + 1).ToString();
-        }
-
-        private void lblDustMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblDusting.Text = (Convert.ToInt32(lblDusting.Text) - 1).ToString();
-            }
-
-        }
-
-        private void lblBathroomPlus_Click(object sender, EventArgs e)
-        {
-            lblBathrooms.Text = (Convert.ToInt32(lblBathrooms.Text) + 1).ToString();
-        }
-
-        private void lblBathroomMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblBathrooms.Text = (Convert.ToInt32(lblBathrooms.Text) - 1).ToString();
-            }
-
-        }
-
-        private void lblCarpetsPlus_Click(object sender, EventArgs e)
-        {
-            lblCarpets.Text = (Convert.ToInt32(lblCarpets.Text) + 1).ToString();
-        }
-
-        private void lblCarpetsMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblCarpets.Text = (Convert.ToInt32(lblCarpets.Text) - 1).ToString();
-            }
-        }
-
-        private void lblCurtainsPlus_Click(object sender, EventArgs e)
-        {
-            lblCurtains.Text = (Convert.ToInt32(lblCurtains.Text) + 1).ToString();
-        }
-
-        private void lblCurtainsMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblCurtains.Text = (Convert.ToInt32(lblCurtains.Text) - 1).ToString();
-            }
-        }
-
-        private void lblVacuumPlus_Click(object sender, EventArgs e)
-        {
-            lblVacuum.Text = (Convert.ToInt32(lblVacuum.Text) + 1).ToString();
-        }
-
-        private void lblVacuumMinus_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(lblVacuum.Text) > 0)
-            {
-                lblVacuum.Text = (Convert.ToInt32(lblVacuum.Text) - 1).ToString();
-            }
-
-        }
-
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             dateChecker();
@@ -272,14 +199,14 @@ namespace A2_Coursework
             {
                 services.Clear();
                 quantity.Clear();
-                if (windows) { services.Add(1); quantity.Add(Convert.ToInt32(lblWIndows.Text)); }
-                if (Floors) { services.Add(2); quantity.Add(Convert.ToInt32(lblFloors.Text)); }
-                if (Doors) { services.Add(3); quantity.Add(Convert.ToInt32(lblDoors.Text)); }
-                if (Dusting) { services.Add(4); quantity.Add(Convert.ToInt32(lblDusting.Text)); }
-                if (Bathroom) { services.Add(5); quantity.Add(Convert.ToInt32(lblBathrooms.Text)); }
-                if (Carpet) { services.Add(6); quantity.Add(Convert.ToInt32(lblCarpets.Text)); }
-                if (Curtains) { services.Add(7); quantity.Add(Convert.ToInt32(lblCurtains.Text)); }
-                if (Vacuum) { services.Add(8); quantity.Add(Convert.ToInt32(lblVacuum.Text)); }
+                if (windows) { services.Add(1); quantity.Add(Convert.ToInt32(NumWindows.Value)); }
+                if (Floors) { services.Add(2); quantity.Add(Convert.ToInt32(NumFloors.Value)); }
+                if (Doors) { services.Add(3); quantity.Add(Convert.ToInt32(NumDoors.Value)); }
+                if (Dusting) { services.Add(4); quantity.Add(Convert.ToInt32(NumDusting.Value)); }
+                if (Bathroom) { services.Add(5); quantity.Add(Convert.ToInt32(NumBathroom.Value)); }
+                if (Carpet) { services.Add(6); quantity.Add(Convert.ToInt32(NumCarpets.Value)); }
+                if (Curtains) { services.Add(7); quantity.Add(Convert.ToInt32(NumCurtains.Value)); }
+                if (Vacuum) { services.Add(8); quantity.Add(Convert.ToInt32(NumVacuum.Value)); }
 
                 string dateString = dtPickerDOB_.Value.ToString("yyyy-MM-dd");
                 if (Validation.ValidGender(cmbGender_.Text))
@@ -304,8 +231,15 @@ namespace A2_Coursework
                            
 
                             string theDate = BookingDate.Value.ToShortDateString();
-                            BookingDAL.NewBooking(id, theDate, services, quantity);
-                            MessageBox.Show("Booking confirmed");
+                            if(BookingDAL.NewBooking(id, theDate, services, quantity))
+                            {
+                                MessageBox.Show("Booking confirmed");
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("No availability for this date");
+                            }
                         }
                         else
                         {
@@ -385,10 +319,14 @@ namespace A2_Coursework
             if (DataGridCustomers.SelectedRows.Count > 0)
             {
                 lblCustSelected.Visible = true;
+                btnUnselect.Visible = true;
+
             }
             else
             {
                 lblCustSelected.Visible = false;
+                btnUnselect.Visible = false;
+
             }
         }
 
