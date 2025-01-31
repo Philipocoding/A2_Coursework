@@ -43,6 +43,7 @@
             label1 = new Label();
             cmbQuantity = new ComboBox();
             btnReorderStock = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridStock).BeginInit();
             pnlReorder.SuspendLayout();
             SuspendLayout();
@@ -51,7 +52,7 @@
             // 
             dataGridStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridStock.Columns.AddRange(new DataGridViewColumn[] { clmStockID, clmStockName, clmQuantity, clmCost });
-            dataGridStock.Location = new Point(193, 118);
+            dataGridStock.Location = new Point(317, 12);
             dataGridStock.Name = "dataGridStock";
             dataGridStock.Size = new Size(545, 349);
             dataGridStock.TabIndex = 0;
@@ -80,9 +81,9 @@
             // btnAutoOrder
             // 
             btnAutoOrder.Font = new Font("Microsoft Sans Serif", 20F);
-            btnAutoOrder.Location = new Point(317, 460);
+            btnAutoOrder.Location = new Point(317, 390);
             btnAutoOrder.Name = "btnAutoOrder";
-            btnAutoOrder.Size = new Size(349, 69);
+            btnAutoOrder.Size = new Size(326, 69);
             btnAutoOrder.TabIndex = 1;
             btnAutoOrder.Text = "Create automatic reorder";
             btnAutoOrder.UseVisualStyleBackColor = true;
@@ -106,16 +107,16 @@
             pnlReorder.Controls.Add(label1);
             pnlReorder.Controls.Add(cmbQuantity);
             pnlReorder.Controls.Add(cmbStock);
-            pnlReorder.Location = new Point(193, 558);
+            pnlReorder.Location = new Point(317, 475);
             pnlReorder.Name = "pnlReorder";
-            pnlReorder.Size = new Size(666, 177);
+            pnlReorder.Size = new Size(646, 264);
             pnlReorder.TabIndex = 3;
             pnlReorder.Visible = false;
             // 
             // btnconfirm
             // 
             btnconfirm.Font = new Font("Microsoft Sans Serif", 20F);
-            btnconfirm.Location = new Point(495, 92);
+            btnconfirm.Location = new Point(300, 192);
             btnconfirm.Name = "btnconfirm";
             btnconfirm.Size = new Size(143, 69);
             btnconfirm.TabIndex = 4;
@@ -176,13 +177,22 @@
             // btnReorderStock
             // 
             btnReorderStock.Font = new Font("Microsoft Sans Serif", 20F);
-            btnReorderStock.Location = new Point(672, 460);
+            btnReorderStock.Location = new Point(649, 390);
             btnReorderStock.Name = "btnReorderStock";
-            btnReorderStock.Size = new Size(208, 69);
+            btnReorderStock.Size = new Size(213, 69);
             btnReorderStock.TabIndex = 4;
             btnReorderStock.Text = "Reorder stock";
             btnReorderStock.UseVisualStyleBackColor = true;
             btnReorderStock.Click += btnReorderStock_Click;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Microsoft Sans Serif", 20F);
+            button1.Location = new Point(1091, 684);
+            button1.Name = "button1";
+            button1.Size = new Size(143, 69);
+            button1.TabIndex = 8;
+            button1.UseVisualStyleBackColor = true;
             // 
             // ViewStockLevels
             // 
@@ -190,6 +200,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1246, 765);
+            Controls.Add(button1);
             Controls.Add(btnReorderStock);
             Controls.Add(pnlReorder);
             Controls.Add(dataGridStock);
@@ -220,5 +231,6 @@
         private ComboBox cmbQuantity;
         private Button btnconfirm;
         private Button btnReorderStock;
+        private Button button1;
     }
 }

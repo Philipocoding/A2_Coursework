@@ -36,6 +36,10 @@ namespace A2_Coursework.Classes
             BookingRequests[6] = "Carpets";
             BookingRequests[7] = "Curtains";
             BookingRequests[8] = "Vacuum";
+            BookingRequests[2005] = "Kitchen Appliances";
+            BookingRequests[2006] = "Deep Clean";
+            BookingRequests[2007] = "Furniture";
+
 
         }
         public static void Populate_Dictionary()
@@ -48,6 +52,10 @@ namespace A2_Coursework.Classes
             Booking_Requests["Carpets"] = 6;
             Booking_Requests["Curtains"] = 7;
             Booking_Requests["Vacuum"] = 8;
+            Booking_Requests["Kitchen Appliances"] = 2005;
+            Booking_Requests["Deep Clean"] = 2006;
+            Booking_Requests["Furniture"] = 2007;
+
 
         }
         public static int getTeamNo()

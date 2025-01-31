@@ -42,6 +42,11 @@
             cbDate = new CheckBox();
             btnRight = new Button();
             BookingTable = new DataGridView();
+            clmBookingID = new DataGridViewTextBoxColumn();
+            clmCustomerID = new DataGridViewTextBoxColumn();
+            clmFIrstname = new DataGridViewTextBoxColumn();
+            clmSurname = new DataGridViewTextBoxColumn();
+            clmDate = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             btnDelete = new Button();
             txtbID = new TextBox();
@@ -69,11 +74,6 @@
             txtbBookingID = new TextBox();
             label3 = new Label();
             btnSave = new Button();
-            clmBookingID = new DataGridViewTextBoxColumn();
-            clmCustomerID = new DataGridViewTextBoxColumn();
-            clmFIrstname = new DataGridViewTextBoxColumn();
-            clmSurname = new DataGridViewTextBoxColumn();
-            clmDate = new DataGridViewTextBoxColumn();
             pnlDatePicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
             panel1.SuspendLayout();
@@ -112,7 +112,7 @@
             pnlDatePicker.Controls.Add(dtPicker);
             pnlDatePicker.Location = new Point(4, 357);
             pnlDatePicker.Name = "pnlDatePicker";
-            pnlDatePicker.Size = new Size(456, 316);
+            pnlDatePicker.Size = new Size(456, 250);
             pnlDatePicker.TabIndex = 3;
             // 
             // cbIgnoreID
@@ -129,7 +129,7 @@
             // btnReset
             // 
             btnReset.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnReset.Location = new Point(138, 241);
+            btnReset.Location = new Point(138, 179);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(148, 62);
             btnReset.TabIndex = 11;
@@ -140,7 +140,7 @@
             // btnFilter
             // 
             btnFilter.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnFilter.Location = new Point(292, 241);
+            btnFilter.Location = new Point(292, 179);
             btnFilter.Name = "btnFilter";
             btnFilter.Size = new Size(148, 62);
             btnFilter.TabIndex = 10;
@@ -152,7 +152,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20F);
-            label2.Location = new Point(82, 115);
+            label2.Location = new Point(77, 117);
             label2.Name = "label2";
             label2.Size = new Size(157, 37);
             label2.TabIndex = 9;
@@ -205,20 +205,60 @@
             BookingTable.TabIndex = 0;
             BookingTable.CellClick += BookingTable_CellClick;
             // 
+            // clmBookingID
+            // 
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmBookingID.DefaultCellStyle = dataGridViewCellStyle1;
+            clmBookingID.FillWeight = 10F;
+            clmBookingID.HeaderText = "Booking ID";
+            clmBookingID.Name = "clmBookingID";
+            clmBookingID.ReadOnly = true;
+            clmBookingID.Width = 200;
+            // 
+            // clmCustomerID
+            // 
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle2;
+            clmCustomerID.HeaderText = "Customer ID";
+            clmCustomerID.Name = "clmCustomerID";
+            clmCustomerID.ReadOnly = true;
+            clmCustomerID.Width = 200;
+            // 
+            // clmFIrstname
+            // 
+            clmFIrstname.HeaderText = "FIrstname";
+            clmFIrstname.Name = "clmFIrstname";
+            clmFIrstname.ReadOnly = true;
+            // 
+            // clmSurname
+            // 
+            clmSurname.HeaderText = "Surname";
+            clmSurname.Name = "clmSurname";
+            clmSurname.ReadOnly = true;
+            // 
+            // clmDate
+            // 
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmDate.DefaultCellStyle = dataGridViewCellStyle3;
+            clmDate.HeaderText = "Date";
+            clmDate.Name = "clmDate";
+            clmDate.ReadOnly = true;
+            clmDate.Width = 200;
+            // 
             // panel1
             // 
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(txtbID);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(469, 357);
+            panel1.Location = new Point(4, 610);
             panel1.Name = "panel1";
-            panel1.Size = new Size(265, 166);
+            panel1.Size = new Size(269, 140);
             panel1.TabIndex = 7;
             // 
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(3, 67);
+            btnDelete.Location = new Point(0, 43);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(148, 62);
             btnDelete.TabIndex = 7;
@@ -229,7 +269,7 @@
             // txtbID
             // 
             txtbID.Font = new Font("Segoe UI", 20.25F);
-            txtbID.Location = new Point(157, 77);
+            txtbID.Location = new Point(165, 62);
             txtbID.Name = "txtbID";
             txtbID.Size = new Size(100, 43);
             txtbID.TabIndex = 8;
@@ -238,7 +278,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F);
-            label1.Location = new Point(109, 20);
+            label1.Location = new Point(109, 3);
             label1.Name = "label1";
             label1.Size = new Size(148, 37);
             label1.TabIndex = 9;
@@ -318,7 +358,7 @@
             // 
             cmbService.Font = new Font("Segoe UI", 20F);
             cmbService.FormattingEnabled = true;
-            cmbService.Items.AddRange(new object[] { "Windows", "Doors", "Floors", "Carpets", "Curtains", "Room Vacuuing", "Dusting", "Bathroom" });
+            cmbService.Items.AddRange(new object[] { "Windows", "Doors", "Floors", "Carpets", "Curtains", "Room Vacuuing", "Dusting", "Bathroom", "Kitchen Applicances", "Deep Clean", "Furniture" });
             cmbService.Location = new Point(142, 593);
             cmbService.Name = "cmbService";
             cmbService.Size = new Size(200, 45);
@@ -484,46 +524,6 @@
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
-            // 
-            // clmBookingID
-            // 
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmBookingID.DefaultCellStyle = dataGridViewCellStyle1;
-            clmBookingID.FillWeight = 10F;
-            clmBookingID.HeaderText = "Booking ID";
-            clmBookingID.Name = "clmBookingID";
-            clmBookingID.ReadOnly = true;
-            clmBookingID.Width = 200;
-            // 
-            // clmCustomerID
-            // 
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle2;
-            clmCustomerID.HeaderText = "Customer ID";
-            clmCustomerID.Name = "clmCustomerID";
-            clmCustomerID.ReadOnly = true;
-            clmCustomerID.Width = 200;
-            // 
-            // clmFIrstname
-            // 
-            clmFIrstname.HeaderText = "FIrstname";
-            clmFIrstname.Name = "clmFIrstname";
-            clmFIrstname.ReadOnly = true;
-            // 
-            // clmSurname
-            // 
-            clmSurname.HeaderText = "Surname";
-            clmSurname.Name = "clmSurname";
-            clmSurname.ReadOnly = true;
-            // 
-            // clmDate
-            // 
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmDate.DefaultCellStyle = dataGridViewCellStyle3;
-            clmDate.HeaderText = "Date";
-            clmDate.Name = "clmDate";
-            clmDate.ReadOnly = true;
-            clmDate.Width = 200;
             // 
             // ViewBookings
             // 

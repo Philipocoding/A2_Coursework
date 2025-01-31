@@ -168,9 +168,18 @@ namespace A2_Coursework
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
+        
 
+        private void btnAdd_Customer_Click(object sender, EventArgs e)
+        {
+            openChildForm(new NewCustomer());
+            HideSubMenu();
+        }
+
+        private void btnAdd_Staff_Click(object sender, EventArgs e)
+        {
+            openChildForm(new AddStaff());
+            HideSubMenu();
         }
     }
 }

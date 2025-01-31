@@ -27,6 +27,11 @@ namespace A2_Coursework
         bool Carpet = false;
         bool Curtains = false;
         bool Vacuum = false;
+        bool KitchenApp = false;
+        bool DeepClean = false;
+        bool Furniture = false;
+
+
 
         private void btnWindows_Click(object sender, EventArgs e)
         {
@@ -189,6 +194,12 @@ namespace A2_Coursework
             Carpet = false;
             Curtains = false;
             Vacuum = false;
+            KitchenApp = false;
+            DeepClean = false;
+            Furniture = false;
+
+
+
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -206,7 +217,10 @@ namespace A2_Coursework
                 if (Bathroom) { services.Add(5); quantity.Add(Convert.ToInt32(NumBathroom.Value)); }
                 if (Carpet) { services.Add(6); quantity.Add(Convert.ToInt32(NumCarpets.Value)); }
                 if (Curtains) { services.Add(7); quantity.Add(Convert.ToInt32(NumCurtains.Value)); }
-                if (Vacuum) { services.Add(8); quantity.Add(Convert.ToInt32(NumVacuum.Value)); }
+                if (Vacuum) { services.Add(8); quantity.Add(Convert.ToInt32(NumFurniture.Value)); }
+                if (KitchenApp) { services.Add(2005); quantity.Add(Convert.ToInt32(NumKitchenApp.Value)); }
+                if (DeepClean) { services.Add(2006); quantity.Add(Convert.ToInt32(numUpDownDeepclean.Value)); }
+                if (Furniture) { services.Add(2007); quantity.Add(Convert.ToInt32(NumFurniture.Value)); }
 
                 string dateString = dtPickerDOB_.Value.ToString("yyyy-MM-dd");
                 if (Validation.ValidGender(cmbGender_.Text))
@@ -228,10 +242,10 @@ namespace A2_Coursework
                                 id = Convert.ToInt32(txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
                  .Cells["clmCustomerID"].Value.ToString());
                             }
-                           
+
 
                             string theDate = BookingDate.Value.ToShortDateString();
-                            if(BookingDAL.NewBooking(id, theDate, services, quantity))
+                            if (BookingDAL.NewBooking(id, theDate, services, quantity))
                             {
                                 MessageBox.Show("Booking confirmed");
 
@@ -394,6 +408,62 @@ namespace A2_Coursework
         private void BookingDate_ValueChanged(object sender, EventArgs e)
         {
             dateChecker();
+        }
+
+        private void btnViewPrice_Click(object sender, EventArgs e)
+        {
+            if (pnlPrices.Visible)
+            {
+                pnlPrices.Visible = false;
+
+            }
+
+            else
+            {
+                pnlPrices.Visible = true;
+            }
+        }
+
+        private void btnKitchenApp_Click(object sender, EventArgs e)
+        {
+            if (btnKitchenApp.Font.Style.HasFlag(FontStyle.Bold))
+            {
+                btnKitchenApp.Font = new Font(btnKitchenApp.Font.FontFamily, btnKitchenApp.Font.Size, FontStyle.Regular);
+                KitchenApp = false;
+            }
+            else
+            {
+                btnKitchenApp.Font = new Font(btnKitchenApp.Font, FontStyle.Bold);
+                KitchenApp = true;
+            }
+        }
+
+        private void btndeepClean_Click(object sender, EventArgs e)
+        {
+            if (btndeepClean.Font.Style.HasFlag(FontStyle.Bold))
+            {
+                btndeepClean.Font = new Font(btndeepClean.Font.FontFamily, btndeepClean.Font.Size, FontStyle.Regular);
+                DeepClean = false;
+            }
+            else
+            {
+                btndeepClean.Font = new Font(btndeepClean.Font, FontStyle.Bold);
+                DeepClean = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (btnFurniture.Font.Style.HasFlag(FontStyle.Bold))
+            {
+                btnFurniture.Font = new Font(btnFurniture.Font.FontFamily, btnFurniture.Font.Size, FontStyle.Regular);
+                Furniture = false;
+            }
+            else
+            {
+                btnFurniture.Font = new Font(btnFurniture.Font, FontStyle.Bold);
+                Furniture = true;
+            }
         }
     }
 }

@@ -185,7 +185,7 @@ namespace A2_Coursework
                 cmbEditQuantity.Text = value;
 
                 listbQuantity.ClearSelected();
-               //listbQuantity.SetSelected(selectedIndex, true);
+                //listbQuantity.SetSelected(selectedIndex, true);
 
             }
         }
@@ -193,7 +193,7 @@ namespace A2_Coursework
         private void btnSave_Click(object sender, EventArgs e)
         {
             int bookingId = 0;
-            int quantity = 0; 
+            int quantity = 0;
             int requestNo = 0;
             try
             {
@@ -202,11 +202,11 @@ namespace A2_Coursework
                 requestNo = BookingDAL.GetRequestNo(bookingId,
                 Booking.Booking_Requests[txtbService.Text]);
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 MessageBox.Show("Invalid details entered");
             }
-            
+
 
 
             Booking.editRequest(requestNo, bookingId, Booking.Booking_Requests[txtbService.Text]
@@ -219,9 +219,9 @@ namespace A2_Coursework
         {
             foreach (var key in Booking.Booking_Requests.Keys)
             {
-                if(key.ToLower() == cmbService.Text.ToLower())
+                if (key.ToLower() == cmbService.Text.ToLower())
                 {
-                    if(Validation.ValidService(cmbService.Text))
+                    if (Validation.ValidService(cmbService.Text))
                     {
                         BookingDAL.addRequest(Booking.Booking_Requests[key], Convert.ToInt32(txtbBookingID.Text),
                        Convert.ToInt32(cmbQuantity.Text));
@@ -232,10 +232,12 @@ namespace A2_Coursework
                     {
                         MessageBox.Show("Enter a valid Service");
                     }
-                   
+
                 }
             }
 
         }
+
+        
     }
 }

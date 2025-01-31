@@ -55,7 +55,33 @@
             lblCustSelected = new Label();
             ExistingCustomer = new CheckBox();
             pnlBookingDetails = new Panel();
-            NumVacuum = new NumericUpDown();
+            btnFurniture = new Button();
+            numUpDownDeepclean = new NumericUpDown();
+            btnViewPrice = new Button();
+            btndeepClean = new Button();
+            pnlPrices = new Panel();
+            label28 = new Label();
+            label27 = new Label();
+            label26 = new Label();
+            label25 = new Label();
+            label24 = new Label();
+            label23 = new Label();
+            label22 = new Label();
+            label20 = new Label();
+            label19 = new Label();
+            label16 = new Label();
+            label17 = new Label();
+            label18 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label12 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            NumKitchenApp = new NumericUpDown();
+            btnKitchenApp = new Button();
+            NumFurniture = new NumericUpDown();
             NumCurtains = new NumericUpDown();
             NumCarpets = new NumericUpDown();
             NumDusting = new NumericUpDown();
@@ -86,7 +112,10 @@
             pnlDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).BeginInit();
             pnlBookingDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)NumVacuum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numUpDownDeepclean).BeginInit();
+            pnlPrices.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NumKitchenApp).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumFurniture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumCurtains).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumCarpets).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumDusting).BeginInit();
@@ -103,11 +132,11 @@
             btnWindows.FlatStyle = FlatStyle.Flat;
             btnWindows.Font = new Font("Segoe UI", 18F);
             btnWindows.ForeColor = Color.Black;
-            btnWindows.Location = new Point(226, 203);
+            btnWindows.Location = new Point(18, 202);
             btnWindows.Name = "btnWindows";
-            btnWindows.Size = new Size(206, 53);
+            btnWindows.Size = new Size(329, 53);
             btnWindows.TabIndex = 0;
-            btnWindows.Text = "Windows";
+            btnWindows.Text = "Window wash and dry";
             btnWindows.UseVisualStyleBackColor = false;
             btnWindows.Click += btnWindows_Click;
             // 
@@ -133,11 +162,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 16F);
+            label2.Font = new Font("Segoe UI", 20F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(159, 155);
+            label2.Location = new Point(144, 151);
             label2.Name = "label2";
-            label2.Size = new Size(58, 30);
+            label2.Size = new Size(73, 37);
             label2.TabIndex = 6;
             label2.Text = "Date";
             // 
@@ -147,11 +176,11 @@
             btnCarpets.FlatStyle = FlatStyle.Flat;
             btnCarpets.Font = new Font("Segoe UI", 18F);
             btnCarpets.ForeColor = Color.Black;
-            btnCarpets.Location = new Point(558, 251);
+            btnCarpets.Location = new Point(439, 251);
             btnCarpets.Name = "btnCarpets";
-            btnCarpets.Size = new Size(206, 53);
+            btnCarpets.Size = new Size(325, 53);
             btnCarpets.TabIndex = 11;
-            btnCarpets.Text = "Carpets";
+            btnCarpets.Text = "Complete carpet clean";
             btnCarpets.UseVisualStyleBackColor = false;
             btnCarpets.Click += btnVacuuming_Click;
             // 
@@ -161,11 +190,11 @@
             btnDusting.FlatStyle = FlatStyle.Flat;
             btnDusting.Font = new Font("Segoe UI", 18F);
             btnDusting.ForeColor = Color.Black;
-            btnDusting.Location = new Point(226, 357);
+            btnDusting.Location = new Point(18, 356);
             btnDusting.Name = "btnDusting";
-            btnDusting.Size = new Size(206, 53);
+            btnDusting.Size = new Size(329, 53);
             btnDusting.TabIndex = 13;
-            btnDusting.Text = "Dusting";
+            btnDusting.Text = "Room dusting";
             btnDusting.UseVisualStyleBackColor = false;
             btnDusting.Click += btnDusting_Click;
             // 
@@ -175,11 +204,11 @@
             btnDoors.FlatStyle = FlatStyle.Flat;
             btnDoors.Font = new Font("Segoe UI", 18F);
             btnDoors.ForeColor = Color.Black;
-            btnDoors.Location = new Point(226, 306);
+            btnDoors.Location = new Point(18, 305);
             btnDoors.Name = "btnDoors";
-            btnDoors.Size = new Size(206, 53);
+            btnDoors.Size = new Size(329, 53);
             btnDoors.TabIndex = 14;
-            btnDoors.Text = "Doors";
+            btnDoors.Text = "Door clean";
             btnDoors.UseVisualStyleBackColor = false;
             btnDoors.Click += btnDoors_Click;
             // 
@@ -189,11 +218,11 @@
             btnFloors.FlatStyle = FlatStyle.Flat;
             btnFloors.Font = new Font("Segoe UI", 18F);
             btnFloors.ForeColor = Color.Black;
-            btnFloors.Location = new Point(226, 254);
+            btnFloors.Location = new Point(18, 253);
             btnFloors.Name = "btnFloors";
-            btnFloors.Size = new Size(206, 53);
+            btnFloors.Size = new Size(329, 53);
             btnFloors.TabIndex = 15;
-            btnFloors.Text = "Floors";
+            btnFloors.Text = "Floor hoover and mop";
             btnFloors.UseVisualStyleBackColor = false;
             btnFloors.Click += btnFloors_Click;
             // 
@@ -203,12 +232,12 @@
             btnBathrooms.FlatStyle = FlatStyle.Flat;
             btnBathrooms.Font = new Font("Segoe UI", 18F);
             btnBathrooms.ForeColor = Color.Black;
-            btnBathrooms.Location = new Point(558, 199);
+            btnBathrooms.Location = new Point(439, 199);
             btnBathrooms.Name = "btnBathrooms";
-            btnBathrooms.Size = new Size(206, 53);
+            btnBathrooms.Size = new Size(325, 53);
             btnBathrooms.TabIndex = 16;
             btnBathrooms.TabStop = false;
-            btnBathrooms.Text = "Bathrooms";
+            btnBathrooms.Text = "Full bathroom clean";
             btnBathrooms.UseVisualStyleBackColor = false;
             btnBathrooms.Click += btnBathrooms_Click;
             // 
@@ -218,7 +247,7 @@
             btnRoomVacuum.FlatStyle = FlatStyle.Flat;
             btnRoomVacuum.Font = new Font("Segoe UI", 18F);
             btnRoomVacuum.ForeColor = Color.Black;
-            btnRoomVacuum.Location = new Point(557, 355);
+            btnRoomVacuum.Location = new Point(173, 4);
             btnRoomVacuum.Name = "btnRoomVacuum";
             btnRoomVacuum.Size = new Size(207, 54);
             btnRoomVacuum.TabIndex = 41;
@@ -232,11 +261,11 @@
             btnCurtains.FlatStyle = FlatStyle.Flat;
             btnCurtains.Font = new Font("Segoe UI", 18F);
             btnCurtains.ForeColor = Color.Black;
-            btnCurtains.Location = new Point(558, 303);
+            btnCurtains.Location = new Point(439, 303);
             btnCurtains.Name = "btnCurtains";
-            btnCurtains.Size = new Size(206, 53);
+            btnCurtains.Size = new Size(325, 53);
             btnCurtains.TabIndex = 42;
-            btnCurtains.Text = "Curtains";
+            btnCurtains.Text = "Complete curtain clean";
             btnCurtains.UseVisualStyleBackColor = false;
             btnCurtains.Click += btnCurtains_Click;
             // 
@@ -259,9 +288,9 @@
             pnlCustomerDetails.Controls.Add(label1);
             pnlCustomerDetails.Controls.Add(txtbCustomerID);
             pnlCustomerDetails.Controls.Add(ExistingCustomer);
-            pnlCustomerDetails.Location = new Point(3, 12);
+            pnlCustomerDetails.Location = new Point(30, 29);
             pnlCustomerDetails.Name = "pnlCustomerDetails";
-            pnlCustomerDetails.Size = new Size(1193, 667);
+            pnlCustomerDetails.Size = new Size(1164, 600);
             pnlCustomerDetails.TabIndex = 48;
             // 
             // btnUnselect
@@ -385,7 +414,14 @@
             // 
             // pnlBookingDetails
             // 
-            pnlBookingDetails.Controls.Add(NumVacuum);
+            pnlBookingDetails.Controls.Add(btnFurniture);
+            pnlBookingDetails.Controls.Add(numUpDownDeepclean);
+            pnlBookingDetails.Controls.Add(btnViewPrice);
+            pnlBookingDetails.Controls.Add(btndeepClean);
+            pnlBookingDetails.Controls.Add(pnlPrices);
+            pnlBookingDetails.Controls.Add(NumKitchenApp);
+            pnlBookingDetails.Controls.Add(btnKitchenApp);
+            pnlBookingDetails.Controls.Add(NumFurniture);
             pnlBookingDetails.Controls.Add(NumCurtains);
             pnlBookingDetails.Controls.Add(NumCarpets);
             pnlBookingDetails.Controls.Add(NumDusting);
@@ -406,19 +442,330 @@
             pnlBookingDetails.Controls.Add(btnBathrooms);
             pnlBookingDetails.Controls.Add(btnRoomVacuum);
             pnlBookingDetails.ForeColor = Color.White;
-            pnlBookingDetails.Location = new Point(20, 23);
+            pnlBookingDetails.Location = new Point(12, 8);
             pnlBookingDetails.Name = "pnlBookingDetails";
-            pnlBookingDetails.Size = new Size(839, 673);
+            pnlBookingDetails.Size = new Size(1167, 653);
             pnlBookingDetails.TabIndex = 1;
             pnlBookingDetails.Visible = false;
             // 
-            // NumVacuum
+            // btnFurniture
             // 
-            NumVacuum.Font = new Font("Segoe UI", 25F);
-            NumVacuum.Location = new Point(770, 355);
-            NumVacuum.Name = "NumVacuum";
-            NumVacuum.Size = new Size(62, 52);
-            NumVacuum.TabIndex = 57;
+            btnFurniture.BackColor = SystemColors.ButtonHighlight;
+            btnFurniture.FlatStyle = FlatStyle.Flat;
+            btnFurniture.Font = new Font("Segoe UI", 18F);
+            btnFurniture.ForeColor = Color.Black;
+            btnFurniture.Location = new Point(439, 354);
+            btnFurniture.Name = "btnFurniture";
+            btnFurniture.Size = new Size(325, 53);
+            btnFurniture.TabIndex = 62;
+            btnFurniture.Text = "Furniture clean";
+            btnFurniture.UseVisualStyleBackColor = false;
+            btnFurniture.Click += button1_Click;
+            // 
+            // numUpDownDeepclean
+            // 
+            numUpDownDeepclean.Font = new Font("Segoe UI", 25F);
+            numUpDownDeepclean.Location = new Point(770, 409);
+            numUpDownDeepclean.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
+            numUpDownDeepclean.Name = "numUpDownDeepclean";
+            numUpDownDeepclean.Size = new Size(62, 52);
+            numUpDownDeepclean.TabIndex = 61;
+            // 
+            // btnViewPrice
+            // 
+            btnViewPrice.BackColor = Color.FromArgb(50, 55, 59);
+            btnViewPrice.FlatAppearance.BorderSize = 0;
+            btnViewPrice.FlatStyle = FlatStyle.Flat;
+            btnViewPrice.Font = new Font("Segoe UI", 20F);
+            btnViewPrice.ForeColor = Color.White;
+            btnViewPrice.Location = new Point(892, 26);
+            btnViewPrice.Name = "btnViewPrice";
+            btnViewPrice.Size = new Size(225, 62);
+            btnViewPrice.TabIndex = 58;
+            btnViewPrice.Text = "View Price list";
+            btnViewPrice.UseVisualStyleBackColor = false;
+            btnViewPrice.Click += btnViewPrice_Click;
+            // 
+            // btndeepClean
+            // 
+            btndeepClean.BackColor = SystemColors.ButtonHighlight;
+            btndeepClean.FlatStyle = FlatStyle.Flat;
+            btndeepClean.Font = new Font("Segoe UI", 18F);
+            btndeepClean.ForeColor = Color.Black;
+            btndeepClean.Location = new Point(439, 406);
+            btndeepClean.Name = "btndeepClean";
+            btndeepClean.Size = new Size(325, 53);
+            btndeepClean.TabIndex = 60;
+            btndeepClean.Text = "Room deep clean";
+            btndeepClean.UseVisualStyleBackColor = false;
+            btndeepClean.Click += btndeepClean_Click;
+            // 
+            // pnlPrices
+            // 
+            pnlPrices.Controls.Add(label28);
+            pnlPrices.Controls.Add(label27);
+            pnlPrices.Controls.Add(label26);
+            pnlPrices.Controls.Add(label25);
+            pnlPrices.Controls.Add(label24);
+            pnlPrices.Controls.Add(label23);
+            pnlPrices.Controls.Add(label22);
+            pnlPrices.Controls.Add(label20);
+            pnlPrices.Controls.Add(label19);
+            pnlPrices.Controls.Add(label16);
+            pnlPrices.Controls.Add(label17);
+            pnlPrices.Controls.Add(label18);
+            pnlPrices.Controls.Add(label13);
+            pnlPrices.Controls.Add(label14);
+            pnlPrices.Controls.Add(label15);
+            pnlPrices.Controls.Add(label12);
+            pnlPrices.Controls.Add(label5);
+            pnlPrices.Controls.Add(label4);
+            pnlPrices.Controls.Add(label3);
+            pnlPrices.Location = new Point(847, 96);
+            pnlPrices.Name = "pnlPrices";
+            pnlPrices.Size = new Size(318, 503);
+            pnlPrices.TabIndex = 61;
+            pnlPrices.Visible = false;
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Font = new Font("Segoe UI", 20F);
+            label28.ForeColor = Color.White;
+            label28.Location = new Point(96, 452);
+            label28.Name = "label28";
+            label28.Size = new Size(47, 37);
+            label28.TabIndex = 19;
+            label28.Text = "£1";
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Segoe UI", 20F);
+            label27.ForeColor = Color.White;
+            label27.Location = new Point(188, 400);
+            label27.Name = "label27";
+            label27.Size = new Size(47, 37);
+            label27.TabIndex = 18;
+            label27.Text = "£5";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new Font("Segoe UI", 20F);
+            label26.ForeColor = Color.White;
+            label26.Location = new Point(108, 357);
+            label26.Name = "label26";
+            label26.Size = new Size(47, 37);
+            label26.TabIndex = 17;
+            label26.Text = "£1";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new Font("Segoe UI", 20F);
+            label25.ForeColor = Color.White;
+            label25.Location = new Point(96, 303);
+            label25.Name = "label25";
+            label25.Size = new Size(47, 37);
+            label25.TabIndex = 16;
+            label25.Text = "£1";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Segoe UI", 20F);
+            label24.ForeColor = Color.White;
+            label24.Location = new Point(88, 105);
+            label24.Name = "label24";
+            label24.Size = new Size(47, 37);
+            label24.TabIndex = 15;
+            label24.Text = "£1";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Segoe UI", 20F);
+            label23.ForeColor = Color.White;
+            label23.Location = new Point(83, 158);
+            label23.Name = "label23";
+            label23.Size = new Size(47, 37);
+            label23.TabIndex = 14;
+            label23.Text = "£1";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Segoe UI", 20F);
+            label22.ForeColor = Color.White;
+            label22.Location = new Point(110, 208);
+            label22.Name = "label22";
+            label22.Size = new Size(47, 37);
+            label22.TabIndex = 13;
+            label22.Text = "£1";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 20F);
+            label20.ForeColor = Color.White;
+            label20.Location = new Point(134, 253);
+            label20.Name = "label20";
+            label20.Size = new Size(62, 37);
+            label20.TabIndex = 11;
+            label20.Text = "£15";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 20F);
+            label19.ForeColor = Color.White;
+            label19.Location = new Point(124, 59);
+            label19.Name = "label19";
+            label19.Size = new Size(47, 37);
+            label19.TabIndex = 10;
+            label19.Text = "£1";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 20F);
+            label16.ForeColor = Color.White;
+            label16.Location = new Point(3, 354);
+            label16.Name = "label16";
+            label16.Size = new Size(109, 37);
+            label16.TabIndex = 9;
+            label16.Text = "Curtain:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 20F);
+            label17.ForeColor = Color.White;
+            label17.Location = new Point(3, 400);
+            label17.Name = "label17";
+            label17.Size = new Size(192, 37);
+            label17.TabIndex = 8;
+            label17.Text = "Room vacuum:";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Segoe UI", 20F);
+            label18.ForeColor = Color.White;
+            label18.Location = new Point(3, 452);
+            label18.Name = "label18";
+            label18.Size = new Size(102, 37);
+            label18.TabIndex = 7;
+            label18.Text = "Carpet:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 20F);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(3, 205);
+            label13.Name = "label13";
+            label13.Size = new Size(115, 37);
+            label13.TabIndex = 6;
+            label13.Text = "Dusting:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 20F);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(3, 251);
+            label14.Name = "label14";
+            label14.Size = new Size(140, 37);
+            label14.TabIndex = 5;
+            label14.Text = "Bathroom:";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 20F);
+            label15.ForeColor = Color.White;
+            label15.Location = new Point(3, 303);
+            label15.Name = "label15";
+            label15.Size = new Size(102, 37);
+            label15.TabIndex = 4;
+            label15.Text = "Carpet:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 20F);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(3, 58);
+            label12.Name = "label12";
+            label12.Size = new Size(129, 37);
+            label12.TabIndex = 3;
+            label12.Text = "Window :";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 20F);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(3, 104);
+            label5.Name = "label5";
+            label5.Size = new Size(91, 37);
+            label5.TabIndex = 2;
+            label5.Text = "Floor :";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 20F);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(3, 156);
+            label4.Name = "label4";
+            label4.Size = new Size(83, 37);
+            label4.TabIndex = 1;
+            label4.Text = "Door:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(3, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(132, 37);
+            label3.TabIndex = 0;
+            label3.Text = "Price per:";
+            // 
+            // NumKitchenApp
+            // 
+            NumKitchenApp.Font = new Font("Segoe UI", 25F);
+            NumKitchenApp.Location = new Point(353, 409);
+            NumKitchenApp.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
+            NumKitchenApp.Name = "NumKitchenApp";
+            NumKitchenApp.Size = new Size(62, 52);
+            NumKitchenApp.TabIndex = 59;
+            // 
+            // btnKitchenApp
+            // 
+            btnKitchenApp.BackColor = SystemColors.ButtonHighlight;
+            btnKitchenApp.FlatStyle = FlatStyle.Flat;
+            btnKitchenApp.Font = new Font("Segoe UI", 18F);
+            btnKitchenApp.ForeColor = Color.Black;
+            btnKitchenApp.Location = new Point(18, 409);
+            btnKitchenApp.Name = "btnKitchenApp";
+            btnKitchenApp.Size = new Size(329, 53);
+            btnKitchenApp.TabIndex = 58;
+            btnKitchenApp.Text = "All kitchen appliances";
+            btnKitchenApp.UseVisualStyleBackColor = false;
+            btnKitchenApp.Click += btnKitchenApp_Click;
+            // 
+            // NumFurniture
+            // 
+            NumFurniture.Font = new Font("Segoe UI", 25F);
+            NumFurniture.Location = new Point(770, 355);
+            NumFurniture.Name = "NumFurniture";
+            NumFurniture.Size = new Size(62, 52);
+            NumFurniture.TabIndex = 57;
             // 
             // NumCurtains
             // 
@@ -441,7 +788,7 @@
             // NumDusting
             // 
             NumDusting.Font = new Font("Segoe UI", 25F);
-            NumDusting.Location = new Point(438, 357);
+            NumDusting.Location = new Point(353, 356);
             NumDusting.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             NumDusting.Name = "NumDusting";
             NumDusting.Size = new Size(62, 52);
@@ -450,7 +797,7 @@
             // NumDoors
             // 
             NumDoors.Font = new Font("Segoe UI", 25F);
-            NumDoors.Location = new Point(438, 307);
+            NumDoors.Location = new Point(353, 306);
             NumDoors.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             NumDoors.Name = "NumDoors";
             NumDoors.Size = new Size(62, 52);
@@ -459,7 +806,7 @@
             // NumFloors
             // 
             NumFloors.Font = new Font("Segoe UI", 25F);
-            NumFloors.Location = new Point(438, 255);
+            NumFloors.Location = new Point(353, 254);
             NumFloors.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             NumFloors.Name = "NumFloors";
             NumFloors.Size = new Size(62, 52);
@@ -468,7 +815,7 @@
             // NumWindows
             // 
             NumWindows.Font = new Font("Segoe UI", 25F);
-            NumWindows.Location = new Point(438, 203);
+            NumWindows.Location = new Point(353, 202);
             NumWindows.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             NumWindows.Name = "NumWindows";
             NumWindows.Size = new Size(62, 52);
@@ -501,7 +848,7 @@
             btnSubmit.FlatStyle = FlatStyle.Flat;
             btnSubmit.Font = new Font("Segoe UI", 20F);
             btnSubmit.ForeColor = Color.White;
-            btnSubmit.Location = new Point(468, 442);
+            btnSubmit.Location = new Point(461, 537);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(139, 62);
             btnSubmit.TabIndex = 0;
@@ -525,9 +872,9 @@
             pnlAddCustomer.Controls.Add(label10);
             pnlAddCustomer.Controls.Add(txtbFirstname_);
             pnlAddCustomer.Controls.Add(label11);
-            pnlAddCustomer.Location = new Point(6, 0);
+            pnlAddCustomer.Location = new Point(12, 8);
             pnlAddCustomer.Name = "pnlAddCustomer";
-            pnlAddCustomer.Size = new Size(846, 665);
+            pnlAddCustomer.Size = new Size(823, 665);
             pnlAddCustomer.TabIndex = 58;
             // 
             // cmbGender_
@@ -673,7 +1020,7 @@
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Microsoft Sans Serif", 20F);
             btnNext.ForeColor = Color.White;
-            btnNext.Location = new Point(1049, 635);
+            btnNext.Location = new Point(1076, 683);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(115, 61);
             btnNext.TabIndex = 58;
@@ -688,7 +1035,7 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Microsoft Sans Serif", 20F);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(910, 635);
+            btnBack.Location = new Point(937, 683);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(133, 61);
             btnBack.TabIndex = 59;
@@ -703,11 +1050,11 @@
             AutoSize = true;
             BackColor = Color.FromArgb(109, 132, 156);
             ClientSize = new Size(1197, 756);
-            Controls.Add(pnlAddCustomer);
-            Controls.Add(btnBack);
             Controls.Add(pnlBookingDetails);
-            Controls.Add(btnNext);
+            Controls.Add(pnlAddCustomer);
             Controls.Add(pnlCustomerDetails);
+            Controls.Add(btnBack);
+            Controls.Add(btnNext);
             ForeColor = Color.DarkGreen;
             Name = "NewBooking";
             Text = "NewBooking";
@@ -718,7 +1065,11 @@
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).EndInit();
             pnlBookingDetails.ResumeLayout(false);
             pnlBookingDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)NumVacuum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numUpDownDeepclean).EndInit();
+            pnlPrices.ResumeLayout(false);
+            pnlPrices.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)NumKitchenApp).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumFurniture).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumCurtains).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumCarpets).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumDusting).EndInit();
@@ -774,7 +1125,7 @@
         private Label label11;
         private Label lblDateError;
         private NumericUpDown NumBathroom;
-        private NumericUpDown NumVacuum;
+        private NumericUpDown NumFurniture;
         private NumericUpDown NumCurtains;
         private NumericUpDown NumCarpets;
         private NumericUpDown NumDusting;
@@ -789,5 +1140,31 @@
         private DataGridViewTextBoxColumn clmAddressOne;
         private DataGridViewTextBoxColumn clmAddressTwo;
         private DataGridViewTextBoxColumn clmEmail;
+        private Panel pnlPrices;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label12;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label19;
+        private Label label16;
+        private Label label17;
+        private Label label18;
+        private Button btnViewPrice;
+        private Label label28;
+        private Label label27;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private Label label23;
+        private Label label22;
+        private Label label20;
+        private NumericUpDown numUpDownDeepclean;
+        private Button btndeepClean;
+        private NumericUpDown NumKitchenApp;
+        private Button btnKitchenApp;
+        private Button btnFurniture;
     }
 }

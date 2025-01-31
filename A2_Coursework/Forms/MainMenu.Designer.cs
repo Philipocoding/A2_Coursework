@@ -93,7 +93,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(32, 44);
             panel2.TabIndex = 0;
-            panel2.Paint += panel2_Paint;
             // 
             // pictureBox3
             // 
@@ -152,6 +151,7 @@
             btnAdd_Staff.Text = "Add Staff";
             btnAdd_Staff.TextAlign = ContentAlignment.MiddleLeft;
             btnAdd_Staff.UseVisualStyleBackColor = false;
+            btnAdd_Staff.Click += btnAdd_Staff_Click;
             // 
             // btnAdd_Customer
             // 
@@ -169,6 +169,7 @@
             btnAdd_Customer.Text = "Add Customer";
             btnAdd_Customer.TextAlign = ContentAlignment.MiddleLeft;
             btnAdd_Customer.UseVisualStyleBackColor = false;
+            btnAdd_Customer.Click += btnAdd_Customer_Click;
             // 
             // btnAddDetails
             // 
