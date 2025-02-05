@@ -93,11 +93,13 @@ namespace A2_Coursework
         private void btnLeft_Click(object sender, EventArgs e)
         {
             dtPicker.Value = dtPicker.Value.AddDays(-1);
+            pnlFilter.Visible = false;
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
             BookingTable.Rows.Clear();
+            pnlFilter.Visible = false;
             string date = dtPicker.Value.ToString("dd/MM/yyyy");
             int id = 0;
 
@@ -238,6 +240,9 @@ namespace A2_Coursework
 
         }
 
-        
+        private void btnOpenFilter_Click(object sender, EventArgs e)
+        {
+            pnlFilter.Visible = true;
+        }
     }
 }

@@ -115,27 +115,15 @@ namespace A2_Coursework
         private void btnOrder_Click(object sender, EventArgs e)
         {
             DateTime today = DateTime.Now.AddDays(3);
-            
+
             try
             {
                 string date = dtPickerOrderDate.Value.ToString("dd/MM/yyyy");
                 string item = cmbStock.Text;
                 int quantity = Convert.ToInt32(cmbQuantity.Text);
 
-                if (btnOrder.Text == "Save changes")
-                {
-                    StockDAL.DeleteStockOrder(Stock.StockIDs[cmbStock.Text].StockID,
-                        date);
-                    StockDAL.AddStockOrder(Stock.StockIDs[cmbStock.Text].StockID, quantity,
-                        date);
-                    btnOrder.Text = "Order";
-                    MessageBox.Show("Order updated");
-                    cmbStock.Text = "";
-                    cmbQuantity.Text = "";
-                    PopulateCustomDataGrid();
-                }
-                else
-                {
+               
+                
                     DateTime itemDate = DateTime.Parse(date);
                     if (itemDate >= today)
                     {
@@ -149,10 +137,9 @@ namespace A2_Coursework
                     else
                     {
                         MessageBox.Show("A delivery will take at least 3 days to arrive!");
-
                     }
 
-                }
+                
 
             }
             catch (CustomException ex)
@@ -191,13 +178,15 @@ namespace A2_Coursework
         {
             try
             {
-                cmbStock.Text = dataGridStockOrder.SelectedRows[0].Cells[1].Value.ToString();
-                cmbQuantity.Text = dataGridStockOrder.SelectedRows[0].Cells[2].Value.ToString();
-                dtPickerOrderDate.Text = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
-                btnOrder.Text = "Save changes";
+                pnlEdithide.Visible = false;
+                cmbStockEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[1].Value.ToString();
+                cmbQtyEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[2].Value.ToString();
+                cmbDTEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
+               // btnOrder.Text = "Save changes";
             }
             catch (System.ArgumentOutOfRangeException ex)
             {
+                pnlEdithide.Visible = true;
                 MessageBox.Show("Select a row!");
             }
 
@@ -220,6 +209,23 @@ namespace A2_Coursework
         private void button1_Click(object sender, EventArgs e)
         {
             PopulateDataGridByDate();
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            StockDAL.DeleteStockOrder(Stock.StockIDs[cmbStockEdit.Text].StockID,
+                        cmbDTEdit.Value.ToString("dd/MM/yyyy"));
+            StockDAL.AddStockOrder(Stock.StockIDs[cmbStockEdit.Text].StockID, Convert.ToInt32(cmbQtyEdit.Text),
+                 cmbDTEdit.Value.ToString("dd/MM/yyyy"));
+            btnOrder.Text = "Order";
+            MessageBox.Show("Order updated");
+            cmbStock.Text = "";
+            cmbQuantity.Text = "";
+            cmbQtyEdit.Text = "";
+            cmbStockEdit.Text = "";
+            PopulateDataGridAllOrders();
+            pnlEdithide.Visible = true;
+
         }
     }
 }

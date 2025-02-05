@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             btnLeft = new Button();
             dtPicker = new DateTimePicker();
-            pnlDatePicker = new Panel();
+            pnlFilter = new Panel();
             cbIgnoreID = new CheckBox();
             btnReset = new Button();
             btnFilter = new Button();
@@ -74,7 +74,8 @@
             txtbBookingID = new TextBox();
             label3 = new Label();
             btnSave = new Button();
-            pnlDatePicker.SuspendLayout();
+            btnOpenFilter = new Button();
+            pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
             panel1.SuspendLayout();
             pnlBookingDetails.SuspendLayout();
@@ -99,21 +100,22 @@
             dtPicker.Size = new Size(216, 50);
             dtPicker.TabIndex = 2;
             // 
-            // pnlDatePicker
+            // pnlFilter
             // 
-            pnlDatePicker.Controls.Add(cbIgnoreID);
-            pnlDatePicker.Controls.Add(btnReset);
-            pnlDatePicker.Controls.Add(btnFilter);
-            pnlDatePicker.Controls.Add(label2);
-            pnlDatePicker.Controls.Add(txtbCustomerID);
-            pnlDatePicker.Controls.Add(cbDate);
-            pnlDatePicker.Controls.Add(btnRight);
-            pnlDatePicker.Controls.Add(btnLeft);
-            pnlDatePicker.Controls.Add(dtPicker);
-            pnlDatePicker.Location = new Point(4, 357);
-            pnlDatePicker.Name = "pnlDatePicker";
-            pnlDatePicker.Size = new Size(456, 250);
-            pnlDatePicker.TabIndex = 3;
+            pnlFilter.Controls.Add(cbIgnoreID);
+            pnlFilter.Controls.Add(btnReset);
+            pnlFilter.Controls.Add(btnFilter);
+            pnlFilter.Controls.Add(label2);
+            pnlFilter.Controls.Add(txtbCustomerID);
+            pnlFilter.Controls.Add(cbDate);
+            pnlFilter.Controls.Add(btnRight);
+            pnlFilter.Controls.Add(btnLeft);
+            pnlFilter.Controls.Add(dtPicker);
+            pnlFilter.Location = new Point(7, 421);
+            pnlFilter.Name = "pnlFilter";
+            pnlFilter.Size = new Size(469, 250);
+            pnlFilter.TabIndex = 3;
+            pnlFilter.Visible = false;
             // 
             // cbIgnoreID
             // 
@@ -207,8 +209,8 @@
             // 
             // clmBookingID
             // 
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmBookingID.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmBookingID.DefaultCellStyle = dataGridViewCellStyle4;
             clmBookingID.FillWeight = 10F;
             clmBookingID.HeaderText = "Booking ID";
             clmBookingID.Name = "clmBookingID";
@@ -217,8 +219,8 @@
             // 
             // clmCustomerID
             // 
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle5;
             clmCustomerID.HeaderText = "Customer ID";
             clmCustomerID.Name = "clmCustomerID";
             clmCustomerID.ReadOnly = true;
@@ -238,8 +240,8 @@
             // 
             // clmDate
             // 
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmDate.DefaultCellStyle = dataGridViewCellStyle6;
             clmDate.HeaderText = "Date";
             clmDate.Name = "clmDate";
             clmDate.ReadOnly = true;
@@ -250,7 +252,7 @@
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(txtbID);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(4, 610);
+            panel1.Location = new Point(486, 450);
             panel1.Name = "panel1";
             panel1.Size = new Size(269, 140);
             panel1.TabIndex = 7;
@@ -525,21 +527,33 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // btnOpenFilter
+            // 
+            btnOpenFilter.Font = new Font("Segoe UI", 22F);
+            btnOpenFilter.Location = new Point(92, 364);
+            btnOpenFilter.Name = "btnOpenFilter";
+            btnOpenFilter.Size = new Size(261, 51);
+            btnOpenFilter.TabIndex = 13;
+            btnOpenFilter.Text = "Filter bookings";
+            btnOpenFilter.UseVisualStyleBackColor = true;
+            btnOpenFilter.Click += btnOpenFilter_Click;
+            // 
             // ViewBookings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1197, 756);
+            Controls.Add(btnOpenFilter);
             Controls.Add(pnlBookingDetails);
             Controls.Add(panel1);
             Controls.Add(BookingTable);
-            Controls.Add(pnlDatePicker);
+            Controls.Add(pnlFilter);
             Name = "ViewBookings";
             Text = "ViewBookings";
             Load += ViewBookings_Load;
-            pnlDatePicker.ResumeLayout(false);
-            pnlDatePicker.PerformLayout();
+            pnlFilter.ResumeLayout(false);
+            pnlFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)BookingTable).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -551,7 +565,7 @@
         #endregion
         private Button btnLeft;
         private DateTimePicker dtPicker;
-        private Panel pnlDatePicker;
+        private Panel pnlFilter;
         private Button btnRight;
         private DataGridView BookingTable;
         private CheckBox cbDate;
@@ -592,5 +606,6 @@
         private DataGridViewTextBoxColumn clmFIrstname;
         private DataGridViewTextBoxColumn clmSurname;
         private DataGridViewTextBoxColumn clmDate;
+        private Button btnOpenFilter;
     }
 }

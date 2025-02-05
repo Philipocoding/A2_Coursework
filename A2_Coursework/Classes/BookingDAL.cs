@@ -586,7 +586,6 @@ namespace A2_Coursework.Classes
                             NewBookingRequests.ExecuteNonQuery();
                         }
 
-                       // List<int> Quantity = Stock.QuantityNeeded(ServiceID);
                         List<int> stockNeeded = GetStockID(ServiceID);
                         SqlCommand AddBookingEquipment = new SqlCommand();
                         AddBookingEquipment.Connection = connection;
