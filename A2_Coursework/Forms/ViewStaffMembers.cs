@@ -17,12 +17,21 @@ namespace A2_Coursework
         public ViewStaffMembers()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         private void ViewStaffMembers_Load(object sender, EventArgs e)
         {
-            PopulateDataGrid();
-            pnlDetails.Visible = false;
+            try
+            {
+                PopulateDataGrid();
+                pnlDetails.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading form: " + ex.Message);
+            }
+           
         }
 
 

@@ -11,6 +11,7 @@ namespace A2_Coursework.Classes
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             SetupDataDirectoryPath();
+            StockDAL.AddStock();
             Application.Run(new MainMenu());
         }
         private static void SetupDataDirectoryPath()
@@ -20,6 +21,7 @@ namespace A2_Coursework.Classes
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectoryPath);
             Booking.PopulateDictionary();
             Booking.Populate_Dictionary();
+            Stock.PopulateList();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace A2_Coursework
 {
-    partial class ViewStaffMembers
+    partial class COpy
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridStaff = new DataGridView();
-            clmStaffID = new DataGridViewTextBoxColumn();
-            clmFirstname = new DataGridViewTextBoxColumn();
-            clmSurname = new DataGridViewTextBoxColumn();
-            clmGender = new DataGridViewTextBoxColumn();
-            clmAge = new DataGridViewTextBoxColumn();
-            clmHourlyRate = new DataGridViewTextBoxColumn();
-            clmTeamNo = new DataGridViewTextBoxColumn();
             pnlDetails = new Panel();
             label5 = new Label();
             label4 = new Label();
@@ -52,61 +44,17 @@
             txtbHourlyRate = new TextBox();
             txtbTeamNo = new TextBox();
             txtbFirstname = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)DataGridStaff).BeginInit();
+            DataGridStaff = new DataGridView();
+            clmStaffID = new DataGridViewTextBoxColumn();
+            clmFirstname = new DataGridViewTextBoxColumn();
+            clmSurname = new DataGridViewTextBoxColumn();
+            clmGender = new DataGridViewTextBoxColumn();
+            clmAge = new DataGridViewTextBoxColumn();
+            clmHourlyRate = new DataGridViewTextBoxColumn();
+            clmTeamNo = new DataGridViewTextBoxColumn();
             pnlDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DataGridStaff).BeginInit();
             SuspendLayout();
-            // 
-            // DataGridStaff
-            // 
-            DataGridStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridStaff.Columns.AddRange(new DataGridViewColumn[] { clmStaffID, clmFirstname, clmSurname, clmGender, clmAge, clmHourlyRate, clmTeamNo });
-            DataGridStaff.Location = new Point(0, 0);
-            DataGridStaff.Name = "DataGridStaff";
-            DataGridStaff.Size = new Size(745, 356);
-            DataGridStaff.TabIndex = 0;
-            DataGridStaff.CellClick += DataGridStaff_CellClick;
-            // 
-            // clmStaffID
-            // 
-            clmStaffID.HeaderText = "StaffID";
-            clmStaffID.Name = "clmStaffID";
-            clmStaffID.ReadOnly = true;
-            // 
-            // clmFirstname
-            // 
-            clmFirstname.HeaderText = "Firstname";
-            clmFirstname.Name = "clmFirstname";
-            clmFirstname.ReadOnly = true;
-            // 
-            // clmSurname
-            // 
-            clmSurname.HeaderText = "Surname";
-            clmSurname.Name = "clmSurname";
-            clmSurname.ReadOnly = true;
-            // 
-            // clmGender
-            // 
-            clmGender.HeaderText = "Gender";
-            clmGender.Name = "clmGender";
-            clmGender.ReadOnly = true;
-            // 
-            // clmAge
-            // 
-            clmAge.HeaderText = "Age";
-            clmAge.Name = "clmAge";
-            clmAge.ReadOnly = true;
-            // 
-            // clmHourlyRate
-            // 
-            clmHourlyRate.HeaderText = "Hourly Rate";
-            clmHourlyRate.Name = "clmHourlyRate";
-            clmHourlyRate.ReadOnly = true;
-            // 
-            // clmTeamNo
-            // 
-            clmTeamNo.HeaderText = "TeamNo";
-            clmTeamNo.Name = "clmTeamNo";
-            clmTeamNo.ReadOnly = true;
             // 
             // pnlDetails
             // 
@@ -125,10 +73,10 @@
             pnlDetails.Controls.Add(txtbHourlyRate);
             pnlDetails.Controls.Add(txtbTeamNo);
             pnlDetails.Controls.Add(txtbFirstname);
-            pnlDetails.Location = new Point(776, 0);
+            pnlDetails.Location = new Point(578, -80);
             pnlDetails.Name = "pnlDetails";
             pnlDetails.Size = new Size(420, 611);
-            pnlDetails.TabIndex = 17;
+            pnlDetails.TabIndex = 19;
             // 
             // label5
             // 
@@ -199,7 +147,6 @@
             btnSave.TabIndex = 25;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
             // 
             // btnDelete
             // 
@@ -210,7 +157,6 @@
             btnDelete.TabIndex = 24;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
             // 
             // label1
             // 
@@ -268,32 +214,74 @@
             txtbFirstname.Size = new Size(273, 47);
             txtbFirstname.TabIndex = 17;
             // 
-            // ViewStaffMembers
+            // DataGridStaff
+            // 
+            DataGridStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridStaff.Columns.AddRange(new DataGridViewColumn[] { clmStaffID, clmFirstname, clmSurname, clmGender, clmAge, clmHourlyRate, clmTeamNo });
+            DataGridStaff.Location = new Point(-198, -80);
+            DataGridStaff.Name = "DataGridStaff";
+            DataGridStaff.Size = new Size(745, 356);
+            DataGridStaff.TabIndex = 18;
+            // 
+            // clmStaffID
+            // 
+            clmStaffID.HeaderText = "StaffID";
+            clmStaffID.Name = "clmStaffID";
+            clmStaffID.ReadOnly = true;
+            // 
+            // clmFirstname
+            // 
+            clmFirstname.HeaderText = "Firstname";
+            clmFirstname.Name = "clmFirstname";
+            clmFirstname.ReadOnly = true;
+            // 
+            // clmSurname
+            // 
+            clmSurname.HeaderText = "Surname";
+            clmSurname.Name = "clmSurname";
+            clmSurname.ReadOnly = true;
+            // 
+            // clmGender
+            // 
+            clmGender.HeaderText = "Gender";
+            clmGender.Name = "clmGender";
+            clmGender.ReadOnly = true;
+            // 
+            // clmAge
+            // 
+            clmAge.HeaderText = "Age";
+            clmAge.Name = "clmAge";
+            clmAge.ReadOnly = true;
+            // 
+            // clmHourlyRate
+            // 
+            clmHourlyRate.HeaderText = "Hourly Rate";
+            clmHourlyRate.Name = "clmHourlyRate";
+            clmHourlyRate.ReadOnly = true;
+            // 
+            // clmTeamNo
+            // 
+            clmTeamNo.HeaderText = "TeamNo";
+            clmTeamNo.Name = "clmTeamNo";
+            clmTeamNo.ReadOnly = true;
+            // 
+            // COpy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1197, 756);
+            ClientSize = new Size(1157, 726);
             Controls.Add(pnlDetails);
             Controls.Add(DataGridStaff);
-            Name = "ViewStaffMembers";
-            Text = "ViewStaffMembers";
-            Load += ViewStaffMembers_Load;
-            ((System.ComponentModel.ISupportInitialize)DataGridStaff).EndInit();
+            Name = "COpy";
+            Text = "COpy";
             pnlDetails.ResumeLayout(false);
             pnlDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DataGridStaff).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView DataGridStaff;
-        private DataGridViewTextBoxColumn clmStaffID;
-        private DataGridViewTextBoxColumn clmFirstname;
-        private DataGridViewTextBoxColumn clmSurname;
-        private DataGridViewTextBoxColumn clmGender;
-        private DataGridViewTextBoxColumn clmAge;
-        private DataGridViewTextBoxColumn clmHourlyRate;
-        private DataGridViewTextBoxColumn clmTeamNo;
         private Panel pnlDetails;
         private Label label5;
         private Label label4;
@@ -310,5 +298,13 @@
         private TextBox txtbHourlyRate;
         private TextBox txtbTeamNo;
         private TextBox txtbFirstname;
+        private DataGridView DataGridStaff;
+        private DataGridViewTextBoxColumn clmStaffID;
+        private DataGridViewTextBoxColumn clmFirstname;
+        private DataGridViewTextBoxColumn clmSurname;
+        private DataGridViewTextBoxColumn clmGender;
+        private DataGridViewTextBoxColumn clmAge;
+        private DataGridViewTextBoxColumn clmHourlyRate;
+        private DataGridViewTextBoxColumn clmTeamNo;
     }
 }

@@ -114,6 +114,42 @@ namespace A2_Coursework.Classes
                 return stockList;
             }
         }
+
+        [Obsolete]
+        public static void AddStock()
+        {
+
+            DateTime today = DateTime.Now.AddDays(-1);
+            List<Stock> allorders = StockDAL.GetAllOrders();
+            foreach (Stock item in allorders)
+            {
+                DateTime itemDate = DateTime.Parse(item.OrderDate);
+                if (itemDate.Date == today.Date)
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            connection.Open();
+
+                            SqlCommand AddMoreStock = new SqlCommand();
+                            AddMoreStock.Connection = connection;
+
+                            AddMoreStock.CommandType = CommandType.StoredProcedure;
+                            AddMoreStock.CommandText = "AddStock";
+                            AddMoreStock.Parameters.Add(new SqlParameter("@StockID", item.StockID));
+                            AddMoreStock.Parameters.Add(new SqlParameter("@Quantity", item.Quantity));
+                            AddMoreStock.ExecuteNonQuery();
+                        }
+                        catch (CustomException ex)
+                        {
+
+                        }
+                    }
+                }
+            }
+            
+        }
         public static double GetStockPrice(int id)
         {
             Stock stock = new();

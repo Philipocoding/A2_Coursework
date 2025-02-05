@@ -31,7 +31,6 @@
             panel1 = new Panel();
             panel2 = new Panel();
             pictureBox3 = new PictureBox();
-            pcbInfo = new PictureBox();
             pictureBox1 = new PictureBox();
             pnlAddDetails = new Panel();
             btnAdd_Staff = new Button();
@@ -44,6 +43,7 @@
             pnlMenuSubMenu = new Panel();
             btnViewCustomers = new Button();
             btnViewStaff = new Button();
+            pcbInfo = new PictureBox();
             btnViewDetails = new Button();
             pnlMediaSubMenu = new Panel();
             btnViewBOokings = new Button();
@@ -54,11 +54,11 @@
             pnlChildForm = new FlowLayoutPanel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pcbInfo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlAddDetails.SuspendLayout();
             pnlStock.SuspendLayout();
             pnlMenuSubMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbInfo).BeginInit();
             pnlMediaSubMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,8 +67,6 @@
             panel1.AutoScroll = true;
             panel1.BackColor = Color.FromArgb(5, 32, 74);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(pictureBox3);
-            panel1.Controls.Add(pcbInfo);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(pnlAddDetails);
             panel1.Controls.Add(btnAddDetails);
@@ -97,22 +95,12 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.add;
-            pictureBox3.Location = new Point(3, 585);
+            pictureBox3.Location = new Point(65, 15);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(47, 48);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 11;
             pictureBox3.TabStop = false;
-            // 
-            // pcbInfo
-            // 
-            pcbInfo.Image = Properties.Resources.about;
-            pcbInfo.Location = new Point(3, 291);
-            pcbInfo.Name = "pcbInfo";
-            pcbInfo.Size = new Size(47, 48);
-            pcbInfo.SizeMode = PictureBoxSizeMode.Zoom;
-            pcbInfo.TabIndex = 10;
-            pcbInfo.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -128,6 +116,7 @@
             // 
             pnlAddDetails.BackColor = Color.FromArgb(60, 145, 230);
             pnlAddDetails.Controls.Add(btnAdd_Staff);
+            pnlAddDetails.Controls.Add(pictureBox3);
             pnlAddDetails.Controls.Add(btnAdd_Customer);
             pnlAddDetails.Dock = DockStyle.Top;
             pnlAddDetails.Location = new Point(0, 639);
@@ -179,12 +168,13 @@
             btnAddDetails.FlatStyle = FlatStyle.Flat;
             btnAddDetails.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
             btnAddDetails.ForeColor = Color.Transparent;
+            btnAddDetails.Image = Properties.Resources.Booking;
+            btnAddDetails.ImageAlign = ContentAlignment.MiddleLeft;
             btnAddDetails.Location = new Point(0, 583);
             btnAddDetails.Name = "btnAddDetails";
-            btnAddDetails.Padding = new Padding(45, 0, 0, 0);
             btnAddDetails.Size = new Size(230, 56);
             btnAddDetails.TabIndex = 9;
-            btnAddDetails.Text = "Add details";
+            btnAddDetails.Text = "         Add details";
             btnAddDetails.TextAlign = ContentAlignment.MiddleLeft;
             btnAddDetails.UseVisualStyleBackColor = false;
             btnAddDetails.Click += btnAddDetails_Click;
@@ -259,6 +249,7 @@
             pnlMenuSubMenu.BackColor = Color.FromArgb(60, 145, 230);
             pnlMenuSubMenu.Controls.Add(btnViewCustomers);
             pnlMenuSubMenu.Controls.Add(btnViewStaff);
+            pnlMenuSubMenu.Controls.Add(pcbInfo);
             pnlMenuSubMenu.Dock = DockStyle.Top;
             pnlMenuSubMenu.Location = new Point(0, 345);
             pnlMenuSubMenu.Name = "pnlMenuSubMenu";
@@ -300,6 +291,16 @@
             btnViewStaff.TextAlign = ContentAlignment.MiddleLeft;
             btnViewStaff.UseVisualStyleBackColor = false;
             btnViewStaff.Click += btnViewStaff_Click;
+            // 
+            // pcbInfo
+            // 
+            pcbInfo.Image = Properties.Resources.about;
+            pcbInfo.Location = new Point(3, -9);
+            pcbInfo.Name = "pcbInfo";
+            pcbInfo.Size = new Size(47, 48);
+            pcbInfo.SizeMode = PictureBoxSizeMode.Zoom;
+            pcbInfo.TabIndex = 10;
+            pcbInfo.TabStop = false;
             // 
             // btnViewDetails
             // 
@@ -433,11 +434,11 @@
             Text = "MainMenu";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pcbInfo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlAddDetails.ResumeLayout(false);
             pnlStock.ResumeLayout(false);
             pnlMenuSubMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pcbInfo).EndInit();
             pnlMediaSubMenu.ResumeLayout(false);
             ResumeLayout(false);
         }

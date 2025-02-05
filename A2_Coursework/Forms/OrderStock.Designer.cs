@@ -116,11 +116,11 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 20F);
-            label3.Location = new Point(54, 138);
+            label3.Location = new Point(29, 138);
             label3.Name = "label3";
-            label3.Size = new Size(148, 37);
+            label3.Size = new Size(173, 37);
             label3.TabIndex = 9;
-            label3.Text = "Order Date";
+            label3.Text = "Delivery date";
             // 
             // dtPickerOrderDate
             // 

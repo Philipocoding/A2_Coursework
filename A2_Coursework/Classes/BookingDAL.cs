@@ -67,7 +67,7 @@ namespace A2_Coursework.Classes
 
                     AssignBookings.CommandType = CommandType.StoredProcedure;
                     AssignBookings.CommandText = "AssignBookingsToTeams";
-                    foreach(int id in staffMembers)
+                    foreach (int id in staffMembers)
                     {
                         AssignBookings.Parameters.Clear();
                         AssignBookings.Parameters.Add(new SqlParameter("@BookingID", bookingID));
@@ -149,7 +149,7 @@ namespace A2_Coursework.Classes
         }
         public static (List<Customer> customerList, List<Booking> bookingList) GetBookingsByDate(string date)
         {
-            
+
             List<Booking> bookingList = new List<Booking>();
             List<Customer> customerList = new();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -177,7 +177,7 @@ namespace A2_Coursework.Classes
                         }
                     }
 
-                    foreach(Booking booking in bookingList)
+                    foreach (Booking booking in bookingList)
                     {
                         Customer customer = new();
                         SqlCommand getCustomer = new SqlCommand();
@@ -201,7 +201,7 @@ namespace A2_Coursework.Classes
                         }
                     }
 
-                    
+
                 }
                 catch (CustomException ex)
                 {
@@ -262,7 +262,7 @@ namespace A2_Coursework.Classes
 
                     AddRequest.ExecuteNonQuery();
                 }
-                catch(CustomException ex)
+                catch (CustomException ex)
                 {
 
                 }
@@ -290,7 +290,7 @@ namespace A2_Coursework.Classes
                     }
                 }
             }
-            return(serviceID, Quantity);
+            return (serviceID, Quantity);
         }
         public static void DeleteCustomer(int Custid)
         {
@@ -298,9 +298,9 @@ namespace A2_Coursework.Classes
             {
                 try
                 {
-              
+
                     List<Booking> bookings = Booking.GetBookings(Custid);
-                    foreach(Booking reservation in bookings)
+                    foreach (Booking reservation in bookings)
                     {
                         DeleteBooking(reservation.BookingID);
                     }
@@ -354,8 +354,8 @@ namespace A2_Coursework.Classes
                 }
             }
         }
-        public static void EditStaff(int id,string fname, string sname, int age, string gender,
-            double rate,int teamNo)
+        public static void EditStaff(int id, string fname, string sname, int age, string gender,
+            double rate, int teamNo)
         {
             using (SqlConnection connection = new(connectionString))
             {
@@ -387,9 +387,9 @@ namespace A2_Coursework.Classes
                 }
             }
         }
-       public static void DeleteStaffMember(int id)
+        public static void DeleteStaffMember(int id)
         {
-            using(SqlConnection connection = new(connectionString))
+            using (SqlConnection connection = new(connectionString))
             {
                 try
                 {
@@ -401,7 +401,7 @@ namespace A2_Coursework.Classes
                     deleteStaff.Parameters.Add(new SqlParameter("@StaffID", 2));
                     deleteStaff.ExecuteNonQuery();
                 }
-                catch(CustomException ex)
+                catch (CustomException ex)
                 {
 
                 }
@@ -435,7 +435,7 @@ namespace A2_Coursework.Classes
 
                     Delete.ExecuteNonQuery();
 
-                    
+
 
 
                 }
@@ -475,6 +475,77 @@ namespace A2_Coursework.Classes
                 }
             }
         }
+
+        //public static bool NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
+        //{
+        //    int rowsAffected = 0;
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            connection.Open();
+
+        //            // Check if the date is available before proceeding
+        //            if (Booking.CheckAvailability(Date))
+        //            {
+        //                // Step 1: Insert into Booking and get the new BookingID
+        //                SqlCommand AddBooking = new SqlCommand("New_Booking", connection);
+        //                AddBooking.CommandType = CommandType.StoredProcedure;
+        //                AddBooking.Parameters.Add(new SqlParameter("@BookingDate", Date));
+        //                AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
+
+        //                int bookingID = Convert.ToInt32(AddBooking.ExecuteScalar()); // Get new BookingID
+
+        //                if (bookingID <= 0)
+        //                {
+        //                    return false; // Prevent proceeding if BookingID retrieval fails
+        //                }
+
+        //                // Step 2: Assign team to booking
+        //                AssignBookingsToTeams(bookingID, Booking.getTeamNo());
+
+        //                // Step 3: Insert Booking Requests
+        //                SqlCommand NewBookingRequests = new SqlCommand("NewBookingRequests", connection);
+        //                NewBookingRequests.CommandType = CommandType.StoredProcedure;
+
+        //                for (int i = 0; i < ServiceID.Count; i++)
+        //                {
+        //                    NewBookingRequests.Parameters.Clear();
+        //                    NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+        //                    NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
+        //                    NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
+        //                    NewBookingRequests.ExecuteNonQuery();
+        //                }
+
+        //                // Step 4: Insert Booking Equipment
+        //                List<int> stockNeeded = GetStockID(ServiceID);
+        //                SqlCommand AddBookingEquipment = new SqlCommand("AssignBookingEquipment", connection);
+        //                AddBookingEquipment.CommandType = CommandType.StoredProcedure;
+
+        //                for (int i = 0; i < stockNeeded.Count; i++)
+        //                {
+        //                    AddBookingEquipment.Parameters.Clear();
+        //                    AddBookingEquipment.Parameters.Add(new SqlParameter("@StockID", stockNeeded[i]));
+        //                    AddBookingEquipment.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
+        //                    AddBookingEquipment.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+
+        //                    AddBookingEquipment.ExecuteNonQuery();
+        //                }
+
+        //                connection.Close();
+        //            }
+        //            else
+        //            {
+        //                return false; // Availability check failed
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+
+        //        }
+        //    }
+        //    return true;
+        //}
         public static bool NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
         {
             int rowsaffected = 0;
@@ -483,8 +554,6 @@ namespace A2_Coursework.Classes
                 try
                 {
                     connection.Open();
-
-                    
 
                     if (Booking.CheckAvailability(Date))
                     {
@@ -495,15 +564,13 @@ namespace A2_Coursework.Classes
                         AddBooking.CommandText = "NewBooking";
                         AddBooking.Parameters.Add(new SqlParameter("@BookingDate", Date));
                         AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
-                        rowsaffected = AddBooking.ExecuteNonQuery();
+                        AddBooking.ExecuteNonQuery();
 
                         string sqlQuery = "SELECT BookingID FROM Booking ORDER BY BookingID DESC";
                         SqlCommand GetBookingID = new SqlCommand(sqlQuery, connection);
                         int bookingID = Convert.ToInt32(GetBookingID.ExecuteScalar());
 
-                        
                         AssignBookingsToTeams(bookingID, Booking.getTeamNo());
-
 
                         SqlCommand NewBookingRequests = new SqlCommand();
                         NewBookingRequests.Connection = connection;
@@ -518,13 +585,29 @@ namespace A2_Coursework.Classes
                             NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
                             NewBookingRequests.ExecuteNonQuery();
                         }
-                        connection.Close();
 
+                       // List<int> Quantity = Stock.QuantityNeeded(ServiceID);
+                        List<int> stockNeeded = GetStockID(ServiceID);
+                        SqlCommand AddBookingEquipment = new SqlCommand();
+                        AddBookingEquipment.Connection = connection;
+
+                        AddBookingEquipment.CommandType = CommandType.StoredProcedure;
+                        AddBookingEquipment.CommandText = "AssignBookingEquipment";
+
+                        for (int i = 0; i < stockNeeded.Count; i++)
+                        {
+                            AddBookingEquipment.Parameters.Clear();
+                            AddBookingEquipment.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+                            AddBookingEquipment.Parameters.Add(new SqlParameter("@StockID", stockNeeded[i]));
+                            AddBookingEquipment.Parameters.Add(new SqlParameter("@Quantity", 2));
+                            AddBookingEquipment.ExecuteNonQuery();
+                        }
                     }
                     else
                     {
                         return false;
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -533,6 +616,119 @@ namespace A2_Coursework.Classes
                 return true;
 
             }
+        }
+
+            
+
+        public static List<int> GetStockID(List<int> serviceID)
+        {
+            List<int> StockID = new List<int>();
+            try
+            {
+                foreach (int i in serviceID)
+                {
+                    switch (i)
+                    {
+                        case 1:
+                            StockID.Add(2);
+                            StockID.Add(8);
+                            StockID.Add(11);
+                            break;
+                        case 2:
+                            StockID.Add(2);
+                            StockID.Add(8);
+                            StockID.Add(11);
+
+                            break;
+                        case 3:
+                            StockID.Add(2);
+                            StockID.Add(3);
+                            StockID.Add(11);
+
+                            break;
+                        case 4:
+                            StockID.Add(4);
+                            StockID.Add(11);
+
+                            break;
+                        case 5:
+                            StockID.Add(11);
+                            StockID.Add(2);
+                            StockID.Add(7);
+                            StockID.Add(8);
+
+                            break;
+                        case 6:
+                            StockID.Add(11);
+                            StockID.Add(9);
+                            StockID.Add(1);
+                            StockID.Add(6);
+                            StockID.Add(5);
+                            break;
+                        case 7:
+                            StockID.Add(4);
+                            StockID.Add(10);
+                            StockID.Add(13);
+
+
+                            break;
+                        case 8:
+                            StockID.Add(9);
+
+
+                            break;
+                        case 2005:
+                            StockID.Add(1);
+                            StockID.Add(2);
+                            StockID.Add(3);
+                            StockID.Add(4);
+                            StockID.Add(5);
+                            StockID.Add(6);
+                            StockID.Add(7);
+                            StockID.Add(8);
+                            StockID.Add(9);
+                            StockID.Add(10);
+                            StockID.Add(11);
+                            StockID.Add(12);
+                            StockID.Add(13);
+                            StockID.Add(14);
+                            break;
+
+                        case 2006:
+                            StockID.Add(1);
+                            StockID.Add(2);
+                            StockID.Add(3);
+                            StockID.Add(4);
+                            StockID.Add(5);
+                            StockID.Add(6);
+                            StockID.Add(7);
+                            StockID.Add(8);
+                            StockID.Add(9);
+                            StockID.Add(10);
+                            StockID.Add(11);
+                            StockID.Add(12);
+                            StockID.Add(13);
+                            StockID.Add(14);
+                            break;
+
+                        case 2007:
+                            StockID.Add(7);
+                            StockID.Add(8);
+                            StockID.Add(9);
+                            StockID.Add(10);
+                            StockID.Add(11);
+                            StockID.Add(14);
+                            break;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
+           
+            return StockID;
         }
 
         public static int NewCustomer(string fname, string sname, string DOB,

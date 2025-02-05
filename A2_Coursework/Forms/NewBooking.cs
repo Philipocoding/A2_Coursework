@@ -19,6 +19,7 @@ namespace A2_Coursework
         }
         List<int> services = new List<int>();
         List<int> quantity = new List<int>();
+
         bool windows = false;
         bool Floors = false;
         bool Doors = false;

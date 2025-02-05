@@ -105,8 +105,6 @@ namespace A2_Coursework
                         dataGridStockOrder.Rows.Add(item.StockID.ToString(), Stock.StockIds[item.StockID].StockName.ToString(),
                             item.Quantity.ToString(), itemDate.ToString("dd/MM/yyyy"), cost.ToString());
                     }
-
-
                 }
             }
             catch (CustomException ex)
@@ -116,9 +114,8 @@ namespace A2_Coursework
         }
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            DateTime today = DateTime.Now;
+            DateTime today = DateTime.Now.AddDays(3);
             
-
             try
             {
                 string date = dtPickerOrderDate.Value.ToString("dd/MM/yyyy");
@@ -151,9 +148,10 @@ namespace A2_Coursework
                     }
                     else
                     {
-                        MessageBox.Show("Not a valid date!");
+                        MessageBox.Show("A delivery will take at least 3 days to arrive!");
+
                     }
-                    
+
                 }
 
             }
