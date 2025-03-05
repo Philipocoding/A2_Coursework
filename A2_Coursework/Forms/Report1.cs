@@ -141,7 +141,7 @@ namespace A2_Coursework
 
                 string footerText = "Generated on: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
                 e.Graphics.DrawString(footerText, contentFont, textBrush, xMargin, yPosition);
-                pnlDataGrid.Location = new Point(38, 120);
+                pnlDataGrid.Location = new Point(39, 107);
                 pnlDataGrid.SendToBack();
 
             }

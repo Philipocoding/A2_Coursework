@@ -56,7 +56,7 @@
             btnPrint.FlatAppearance.BorderSize = 0;
             btnPrint.FlatStyle = FlatStyle.Flat;
             btnPrint.Font = new Font("Segoe UI", 20F);
-            btnPrint.Location = new Point(198, 359);
+            btnPrint.Location = new Point(219, 310);
             btnPrint.Name = "btnPrint";
             btnPrint.Size = new Size(193, 95);
             btnPrint.TabIndex = 0;
@@ -92,7 +92,7 @@
             // 
             DataGridBookings.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridBookings.Columns.AddRange(new DataGridViewColumn[] { clmBookingID, clmBookingDate, clmCustomerID });
-            DataGridBookings.Location = new Point(65, 52);
+            DataGridBookings.Location = new Point(68, 3);
             DataGridBookings.Name = "DataGridBookings";
             DataGridBookings.Size = new Size(510, 301);
             DataGridBookings.TabIndex = 5;
@@ -121,7 +121,7 @@
             // printPreviewControl1
             // 
             printPreviewControl1.BackColor = Color.FromArgb(109, 132, 156);
-            printPreviewControl1.Location = new Point(657, 107);
+            printPreviewControl1.Location = new Point(657, 104);
             printPreviewControl1.Name = "printPreviewControl1";
             printPreviewControl1.Size = new Size(545, 758);
             printPreviewControl1.TabIndex = 8;
@@ -134,9 +134,9 @@
             // 
             pnlDataGrid.Controls.Add(DataGridBookings);
             pnlDataGrid.Controls.Add(btnPrint);
-            pnlDataGrid.Location = new Point(262, 55);
+            pnlDataGrid.Location = new Point(262, 104);
             pnlDataGrid.Name = "pnlDataGrid";
-            pnlDataGrid.Size = new Size(774, 470);
+            pnlDataGrid.Size = new Size(998, 470);
             pnlDataGrid.TabIndex = 9;
             // 
             // label1

@@ -65,6 +65,7 @@ namespace A2_Coursework.Properties
         private void btnWCTwo_Click(object sender, EventArgs e)
         {
             CustomDay = false;
+            pnlHide.Visible = false;
 
             DtPicker.Text = btnWCTwo.Text;
             CallPrint();
@@ -73,6 +74,8 @@ namespace A2_Coursework.Properties
 
         private void btnWcThree_Click(object sender, EventArgs e)
         {
+            pnlHide.Visible = false;
+
             CustomDay = false;
             DtPicker.Text = btnWcThree.Text;
             CallPrint();
@@ -81,6 +84,8 @@ namespace A2_Coursework.Properties
 
         private void btnWcFour_Click(object sender, EventArgs e)
         {
+            pnlHide.Visible = false;
+
             CustomDay = false;
             DtPicker.Text = btnWcFour.Text;
             CallPrint();
@@ -89,6 +94,8 @@ namespace A2_Coursework.Properties
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            pnlHide.Visible = false;
+
             CallPrint();
             CustomDay = true;
         }
@@ -214,6 +221,7 @@ namespace A2_Coursework.Properties
 
         private void btnWcOne_Click(object sender, EventArgs e)
         {
+            pnlHide.Visible = false;
             CustomDay = false;
             DtPicker.Text = btnWcOne.Text;
             CallPrint();

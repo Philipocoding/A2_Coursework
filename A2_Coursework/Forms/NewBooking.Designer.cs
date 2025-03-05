@@ -114,6 +114,8 @@
             btnViewPrice = new Button();
             btndeepClean = new Button();
             pnlPrices = new Panel();
+            label21 = new Label();
+            label29 = new Label();
             lblQtySix = new Label();
             label28 = new Label();
             label27 = new Label();
@@ -1134,6 +1136,8 @@
             // 
             // pnlPrices
             // 
+            pnlPrices.Controls.Add(label21);
+            pnlPrices.Controls.Add(label29);
             pnlPrices.Controls.Add(lblQtySix);
             pnlPrices.Controls.Add(label28);
             pnlPrices.Controls.Add(label27);
@@ -1154,11 +1158,33 @@
             pnlPrices.Controls.Add(label5);
             pnlPrices.Controls.Add(label4);
             pnlPrices.Controls.Add(label3);
-            pnlPrices.Location = new Point(947, 110);
+            pnlPrices.Location = new Point(929, 110);
             pnlPrices.Name = "pnlPrices";
-            pnlPrices.Size = new Size(259, 503);
+            pnlPrices.Size = new Size(285, 596);
             pnlPrices.TabIndex = 61;
             pnlPrices.Visible = false;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 20F);
+            label21.ForeColor = Color.White;
+            label21.Location = new Point(114, 517);
+            label21.Name = "label21";
+            label21.Size = new Size(62, 37);
+            label21.TabIndex = 84;
+            label21.Text = "£25";
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Font = new Font("Segoe UI", 20F);
+            label29.ForeColor = Color.White;
+            label29.Location = new Point(-5, 516);
+            label29.Name = "label29";
+            label29.Size = new Size(129, 37);
+            label29.TabIndex = 83;
+            label29.Text = "Furniture:";
             // 
             // lblQtySix
             // 
@@ -1175,106 +1201,106 @@
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 20F);
             label28.ForeColor = Color.White;
-            label28.Location = new Point(126, 452);
+            label28.Location = new Point(140, 462);
             label28.Name = "label28";
-            label28.Size = new Size(47, 37);
+            label28.Size = new Size(62, 37);
             label28.TabIndex = 19;
-            label28.Text = "£1";
+            label28.Text = "£50";
             // 
             // label27
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Segoe UI", 20F);
             label27.ForeColor = Color.White;
-            label27.Location = new Point(218, 400);
+            label27.Location = new Point(221, 405);
             label27.Name = "label27";
-            label27.Size = new Size(47, 37);
+            label27.Size = new Size(62, 37);
             label27.TabIndex = 18;
-            label27.Text = "£5";
+            label27.Text = "£25";
             // 
             // label26
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI", 20F);
             label26.ForeColor = Color.White;
-            label26.Location = new Point(138, 357);
+            label26.Location = new Point(100, 356);
             label26.Name = "label26";
             label26.Size = new Size(47, 37);
             label26.TabIndex = 17;
-            label26.Text = "£1";
+            label26.Text = "£5";
             // 
             // label25
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI", 20F);
             label25.ForeColor = Color.White;
-            label25.Location = new Point(126, 303);
+            label25.Location = new Point(88, 304);
             label25.Name = "label25";
             label25.Size = new Size(47, 37);
             label25.TabIndex = 16;
-            label25.Text = "£1";
+            label25.Text = "£5";
             // 
             // label24
             // 
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI", 20F);
             label24.ForeColor = Color.White;
-            label24.Location = new Point(118, 105);
+            label24.Location = new Point(85, 107);
             label24.Name = "label24";
-            label24.Size = new Size(47, 37);
+            label24.Size = new Size(62, 37);
             label24.TabIndex = 15;
-            label24.Text = "£1";
+            label24.Text = "£10";
             // 
             // label23
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 20F);
             label23.ForeColor = Color.White;
-            label23.Location = new Point(113, 158);
+            label23.Location = new Point(80, 160);
             label23.Name = "label23";
             label23.Size = new Size(47, 37);
             label23.TabIndex = 14;
-            label23.Text = "£1";
+            label23.Text = "£3";
             // 
             // label22
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 20F);
             label22.ForeColor = Color.White;
-            label22.Location = new Point(140, 208);
+            label22.Location = new Point(107, 210);
             label22.Name = "label22";
             label22.Size = new Size(47, 37);
             label22.TabIndex = 13;
-            label22.Text = "£1";
+            label22.Text = "£5";
             // 
             // label20
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 20F);
             label20.ForeColor = Color.White;
-            label20.Location = new Point(164, 253);
+            label20.Location = new Point(131, 255);
             label20.Name = "label20";
             label20.Size = new Size(62, 37);
             label20.TabIndex = 11;
-            label20.Text = "£15";
+            label20.Text = "£10";
             // 
             // label19
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 20F);
             label19.ForeColor = Color.White;
-            label19.Location = new Point(154, 59);
+            label19.Location = new Point(121, 61);
             label19.Name = "label19";
             label19.Size = new Size(47, 37);
             label19.TabIndex = 10;
-            label19.Text = "£1";
+            label19.Text = "£3";
             // 
             // label16
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 20F);
             label16.ForeColor = Color.White;
-            label16.Location = new Point(33, 354);
+            label16.Location = new Point(0, 356);
             label16.Name = "label16";
             label16.Size = new Size(109, 37);
             label16.TabIndex = 9;
@@ -1285,29 +1311,29 @@
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI", 20F);
             label17.ForeColor = Color.White;
-            label17.Location = new Point(33, 400);
+            label17.Location = new Point(-5, 405);
             label17.Name = "label17";
-            label17.Size = new Size(192, 37);
+            label17.Size = new Size(236, 37);
             label17.TabIndex = 8;
-            label17.Text = "Room vacuum:";
+            label17.Text = "Kitchen Appliance:";
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 20F);
             label18.ForeColor = Color.White;
-            label18.Location = new Point(33, 452);
+            label18.Location = new Point(-5, 462);
             label18.Name = "label18";
-            label18.Size = new Size(102, 37);
+            label18.Size = new Size(155, 37);
             label18.TabIndex = 7;
-            label18.Text = "Carpet:";
+            label18.Text = "Deep clean:";
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 20F);
             label13.ForeColor = Color.White;
-            label13.Location = new Point(33, 205);
+            label13.Location = new Point(0, 207);
             label13.Name = "label13";
             label13.Size = new Size(115, 37);
             label13.TabIndex = 6;
@@ -1318,7 +1344,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 20F);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(33, 251);
+            label14.Location = new Point(0, 253);
             label14.Name = "label14";
             label14.Size = new Size(140, 37);
             label14.TabIndex = 5;
@@ -1329,7 +1355,7 @@
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 20F);
             label15.ForeColor = Color.White;
-            label15.Location = new Point(33, 303);
+            label15.Location = new Point(-5, 304);
             label15.Name = "label15";
             label15.Size = new Size(102, 37);
             label15.TabIndex = 4;
@@ -1340,7 +1366,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 20F);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(33, 58);
+            label12.Location = new Point(0, 60);
             label12.Name = "label12";
             label12.Size = new Size(129, 37);
             label12.TabIndex = 3;
@@ -1351,7 +1377,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 20F);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(33, 104);
+            label5.Location = new Point(0, 106);
             label5.Name = "label5";
             label5.Size = new Size(91, 37);
             label5.TabIndex = 2;
@@ -1362,7 +1388,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 20F);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(33, 156);
+            label4.Location = new Point(0, 158);
             label4.Name = "label4";
             label4.Size = new Size(83, 37);
             label4.TabIndex = 1;
@@ -1373,7 +1399,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(39, 5);
+            label3.Location = new Point(-5, 10);
             label3.Name = "label3";
             label3.Size = new Size(132, 37);
             label3.TabIndex = 0;
@@ -1429,7 +1455,7 @@
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Microsoft Sans Serif", 20F);
             btnNext.ForeColor = Color.White;
-            btnNext.Location = new Point(1088, 845);
+            btnNext.Location = new Point(1051, 845);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(127, 61);
             btnNext.TabIndex = 58;
@@ -1444,7 +1470,7 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Microsoft Sans Serif", 20F);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(941, 845);
+            btnBack.Location = new Point(904, 845);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(145, 61);
             btnBack.TabIndex = 59;
@@ -1641,5 +1667,7 @@
         private Label InfoThree;
         private Label InfoFOur;
         private Label InfoOne;
+        private Label label21;
+        private Label label29;
     }
 }

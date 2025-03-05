@@ -99,10 +99,11 @@ namespace A2_Coursework
 
         private void populateBookingInfo()
         {
-            
+
 
             listbQuantity.Items.Clear();
             listbServices.Items.Clear();
+            cmbServiceDelete.Items.Clear();
             if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
             {
                 txtbBookingID.Text = BookingTable.SelectedRows[0].Cells[0].Value.ToString();
@@ -128,6 +129,8 @@ namespace A2_Coursework
                 }
                 listbServices.Items.Clear();
                 listbServices.Items.AddRange(services.ToArray());
+                cmbServiceDelete.Items.AddRange(services.ToArray());
+
             }
         }
         private void populateBookingInfo(int index)
@@ -233,12 +236,12 @@ namespace A2_Coursework
 
                 date = dtPicker.Value.ToString("dd/MM/yyyy");
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 MessageBox.Show("Invaid data entered!");
                 PopulateDataGrid();
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
                 PopulateDataGrid();
@@ -379,14 +382,14 @@ namespace A2_Coursework
                 }
                 //foreach (var key in Booking.Booking_Requests.Keys)
                 //{
-                    
-                        if (services.Contains(cmbService.Text))
-                        {
-                            serviceExists = true;
-                            //break;
-                        }
-                    
-               // }
+
+                if (services.Contains(cmbService.Text))
+                {
+                    serviceExists = true;
+                    //break;
+                }
+
+                // }
 
                 if (serviceExists)
                 {
@@ -491,6 +494,35 @@ namespace A2_Coursework
 
         private void txtbService_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnServiceDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbServiceDelete.Items.Contains(cmbServiceDelete.Text))
+                {
+                    BookingDAL.DeleteBookingService(Convert.ToInt32(txtbBookingID.Text), Booking.Booking_Requests[cmbServiceDelete.Text]);
+                    PopulateDataGrid();
+                    populateBookingInfo();
+                    cmbServiceDelete.Text = "Select a service";
+                    MessageBox.Show("Service deleted");
+                }
+                else
+                {
+                    throw new CustomException("Select a service that exists in the booking");
+                }
+            }
+            catch(CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+
+            }
 
         }
     }

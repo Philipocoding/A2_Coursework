@@ -42,30 +42,25 @@
             label8 = new Label();
             label10 = new Label();
             lblStaff = new Label();
+            panel8 = new Panel();
             label4 = new Label();
             pictureBox9 = new PictureBox();
             label1 = new Label();
             panel4 = new Panel();
-            lblProfitYear = new Label();
             label12 = new Label();
-            label15 = new Label();
             lblYear = new Label();
             lblYearRevenue = new Label();
             label6 = new Label();
             panel5 = new Panel();
             lblRevenueMonth = new Label();
-            labe657 = new Label();
             label9 = new Label();
             lblMonth = new Label();
             label5 = new Label();
             panel6 = new Panel();
             label13 = new Label();
-            lblWeekProfit = new Label();
             lblWeek = new Label();
             lblWeekRevenue = new Label();
             label2 = new Label();
-            lblProfitMonth = new Label();
-            lblProfitWeek = new Label();
             panel3.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
@@ -110,7 +105,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("MV Boli", 30F, FontStyle.Bold);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(540, 324);
+            label14.Location = new Point(523, 272);
             label14.Name = "label14";
             label14.Size = new Size(209, 52);
             label14.TabIndex = 36;
@@ -129,6 +124,7 @@
             // 
             // panel7
             // 
+            panel7.BackColor = SystemColors.ActiveCaption;
             panel7.Controls.Add(label3);
             panel7.Controls.Add(label7);
             panel7.Controls.Add(lblBusyMonth);
@@ -137,16 +133,17 @@
             panel7.Controls.Add(label8);
             panel7.Controls.Add(label10);
             panel7.Controls.Add(lblStaff);
-            panel7.Location = new Point(377, 566);
+            panel7.Controls.Add(panel8);
+            panel7.Location = new Point(424, 652);
             panel7.Name = "panel7";
-            panel7.Size = new Size(646, 242);
+            panel7.Size = new Size(423, 208);
             panel7.TabIndex = 33;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F);
-            label3.Location = new Point(125, 66);
+            label3.Location = new Point(78, 66);
             label3.Name = "label3";
             label3.Size = new Size(249, 28);
             label3.TabIndex = 13;
@@ -156,7 +153,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 15F);
-            label7.Location = new Point(121, 19);
+            label7.Location = new Point(74, 19);
             label7.Name = "label7";
             label7.Size = new Size(253, 28);
             label7.TabIndex = 11;
@@ -166,7 +163,7 @@
             // 
             lblBusyMonth.AutoSize = true;
             lblBusyMonth.Font = new Font("Segoe UI", 15F);
-            lblBusyMonth.Location = new Point(369, 21);
+            lblBusyMonth.Location = new Point(322, 21);
             lblBusyMonth.Name = "lblBusyMonth";
             lblBusyMonth.Size = new Size(23, 28);
             lblBusyMonth.TabIndex = 12;
@@ -175,8 +172,9 @@
             // lblCustomers
             // 
             lblCustomers.AutoSize = true;
+            lblCustomers.BackColor = Color.FromArgb(135, 195, 255);
             lblCustomers.Font = new Font("Segoe UI", 15F);
-            lblCustomers.Location = new Point(369, 160);
+            lblCustomers.Location = new Point(322, 160);
             lblCustomers.Name = "lblCustomers";
             lblCustomers.Size = new Size(23, 28);
             lblCustomers.TabIndex = 18;
@@ -186,7 +184,7 @@
             // 
             lblLeastMonth.AutoSize = true;
             lblLeastMonth.Font = new Font("Segoe UI", 15F);
-            lblLeastMonth.Location = new Point(369, 66);
+            lblLeastMonth.Location = new Point(322, 66);
             lblLeastMonth.Name = "lblLeastMonth";
             lblLeastMonth.Size = new Size(23, 28);
             lblLeastMonth.TabIndex = 14;
@@ -195,8 +193,9 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.BackColor = Color.FromArgb(135, 195, 255);
             label8.Font = new Font("Segoe UI", 15F);
-            label8.Location = new Point(167, 160);
+            label8.Location = new Point(120, 160);
             label8.Name = "label8";
             label8.Size = new Size(205, 28);
             label8.TabIndex = 17;
@@ -205,8 +204,9 @@
             // label10
             // 
             label10.AutoSize = true;
+            label10.BackColor = Color.FromArgb(135, 195, 255);
             label10.Font = new Font("Segoe UI", 15F);
-            label10.Location = new Point(217, 113);
+            label10.Location = new Point(170, 113);
             label10.Name = "label10";
             label10.Size = new Size(155, 28);
             label10.TabIndex = 15;
@@ -215,12 +215,21 @@
             // lblStaff
             // 
             lblStaff.AutoSize = true;
+            lblStaff.BackColor = Color.FromArgb(135, 195, 255);
             lblStaff.Font = new Font("Segoe UI", 15F);
-            lblStaff.Location = new Point(369, 113);
+            lblStaff.Location = new Point(322, 113);
             lblStaff.Name = "lblStaff";
             lblStaff.Size = new Size(23, 28);
             lblStaff.TabIndex = 16;
             lblStaff.Text = "0";
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(135, 195, 255);
+            panel8.Location = new Point(0, 104);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(423, 104);
+            panel8.TabIndex = 25;
             // 
             // label4
             // 
@@ -248,7 +257,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Symbol", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(546, 0);
+            label1.Location = new Point(544, 25);
             label1.Name = "label1";
             label1.Size = new Size(212, 86);
             label1.TabIndex = 0;
@@ -257,28 +266,14 @@
             // panel4
             // 
             panel4.BackColor = Color.LightBlue;
-            panel4.Controls.Add(lblProfitYear);
             panel4.Controls.Add(label12);
-            panel4.Controls.Add(label15);
             panel4.Controls.Add(lblYear);
             panel4.Controls.Add(lblYearRevenue);
             panel4.Controls.Add(label6);
-            panel4.Location = new Point(1, 382);
+            panel4.Location = new Point(424, 341);
             panel4.Name = "panel4";
-            panel4.Size = new Size(423, 167);
+            panel4.Size = new Size(423, 104);
             panel4.TabIndex = 29;
-            // 
-            // lblProfitYear
-            // 
-            lblProfitYear.AutoSize = true;
-            lblProfitYear.BackColor = Color.LightBlue;
-            lblProfitYear.Font = new Font("Segoe UI", 15F);
-            lblProfitYear.ForeColor = Color.Black;
-            lblProfitYear.Location = new Point(303, 115);
-            lblProfitYear.Name = "lblProfitYear";
-            lblProfitYear.Size = new Size(23, 28);
-            lblProfitYear.TabIndex = 28;
-            lblProfitYear.Text = "0";
             // 
             // label12
             // 
@@ -286,24 +281,11 @@
             label12.BackColor = Color.LightBlue;
             label12.Font = new Font("Segoe UI", 15F);
             label12.ForeColor = Color.Black;
-            label12.Location = new Point(114, 63);
+            label12.Location = new Point(114, 59);
             label12.Name = "label12";
             label12.Size = new Size(210, 28);
             label12.TabIndex = 19;
             label12.Text = "Revenue for the year: £";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.LightBlue;
-            label15.Font = new Font("Segoe UI", 15F);
-            label15.ForeColor = Color.Black;
-            label15.Location = new Point(141, 113);
-            label15.Name = "label15";
-            label15.Size = new Size(169, 28);
-            label15.TabIndex = 25;
-            label15.Text = "Profit for the year:";
-            label15.Click += label15_Click;
             // 
             // lblYear
             // 
@@ -311,7 +293,7 @@
             lblYear.BackColor = Color.LightBlue;
             lblYear.Font = new Font("Segoe UI", 15F);
             lblYear.ForeColor = Color.Black;
-            lblYear.Location = new Point(303, 11);
+            lblYear.Location = new Point(303, 17);
             lblYear.Name = "lblYear";
             lblYear.Size = new Size(23, 28);
             lblYear.TabIndex = 8;
@@ -323,7 +305,7 @@
             lblYearRevenue.BackColor = Color.LightBlue;
             lblYearRevenue.Font = new Font("Segoe UI", 15F);
             lblYearRevenue.ForeColor = Color.Black;
-            lblYearRevenue.Location = new Point(319, 63);
+            lblYearRevenue.Location = new Point(319, 59);
             lblYearRevenue.Name = "lblYearRevenue";
             lblYearRevenue.Size = new Size(23, 28);
             lblYearRevenue.TabIndex = 20;
@@ -335,7 +317,7 @@
             label6.BackColor = Color.LightBlue;
             label6.Font = new Font("Segoe UI", 15F);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(7, 11);
+            label6.Location = new Point(7, 17);
             label6.Name = "label6";
             label6.Size = new Size(303, 28);
             label6.TabIndex = 7;
@@ -344,16 +326,14 @@
             // panel5
             // 
             panel5.BackColor = Color.Gainsboro;
-            panel5.Controls.Add(lblProfitMonth);
             panel5.Controls.Add(lblRevenueMonth);
-            panel5.Controls.Add(labe657);
             panel5.Controls.Add(label9);
             panel5.Controls.Add(lblMonth);
             panel5.Controls.Add(label5);
             panel5.ForeColor = Color.Gainsboro;
-            panel5.Location = new Point(424, 382);
+            panel5.Location = new Point(424, 445);
             panel5.Name = "panel5";
-            panel5.Size = new Size(423, 167);
+            panel5.Size = new Size(423, 104);
             panel5.TabIndex = 30;
             // 
             // lblRevenueMonth
@@ -362,23 +342,11 @@
             lblRevenueMonth.BackColor = Color.Gainsboro;
             lblRevenueMonth.Font = new Font("Segoe UI", 15F);
             lblRevenueMonth.ForeColor = Color.Black;
-            lblRevenueMonth.Location = new Point(332, 63);
+            lblRevenueMonth.Location = new Point(332, 59);
             lblRevenueMonth.Name = "lblRevenueMonth";
             lblRevenueMonth.Size = new Size(23, 28);
             lblRevenueMonth.TabIndex = 22;
             lblRevenueMonth.Text = "0";
-            // 
-            // labe657
-            // 
-            labe657.AutoSize = true;
-            labe657.BackColor = Color.Gainsboro;
-            labe657.Font = new Font("Segoe UI", 15F);
-            labe657.ForeColor = Color.Black;
-            labe657.Location = new Point(135, 113);
-            labe657.Name = "labe657";
-            labe657.Size = new Size(190, 28);
-            labe657.TabIndex = 27;
-            labe657.Text = "Profit for the month:";
             // 
             // label9
             // 
@@ -386,7 +354,7 @@
             label9.BackColor = Color.Gainsboro;
             label9.Font = new Font("Segoe UI", 15F);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(109, 63);
+            label9.Location = new Point(109, 59);
             label9.Name = "label9";
             label9.Size = new Size(231, 28);
             label9.TabIndex = 21;
@@ -398,7 +366,7 @@
             lblMonth.BackColor = Color.Gainsboro;
             lblMonth.Font = new Font("Segoe UI", 15F);
             lblMonth.ForeColor = Color.Black;
-            lblMonth.Location = new Point(320, 11);
+            lblMonth.Location = new Point(320, 16);
             lblMonth.Name = "lblMonth";
             lblMonth.Size = new Size(23, 28);
             lblMonth.TabIndex = 10;
@@ -410,7 +378,7 @@
             label5.BackColor = Color.Gainsboro;
             label5.Font = new Font("Segoe UI", 15F);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(3, 11);
+            label5.Location = new Point(3, 16);
             label5.Name = "label5";
             label5.Size = new Size(324, 28);
             label5.TabIndex = 6;
@@ -419,15 +387,13 @@
             // panel6
             // 
             panel6.BackColor = Color.White;
-            panel6.Controls.Add(lblProfitWeek);
             panel6.Controls.Add(label13);
-            panel6.Controls.Add(lblWeekProfit);
             panel6.Controls.Add(lblWeek);
             panel6.Controls.Add(lblWeekRevenue);
             panel6.Controls.Add(label2);
-            panel6.Location = new Point(846, 382);
+            panel6.Location = new Point(424, 548);
             panel6.Name = "panel6";
-            panel6.Size = new Size(423, 167);
+            panel6.Size = new Size(423, 104);
             panel6.TabIndex = 0;
             // 
             // label13
@@ -436,23 +402,11 @@
             label13.BackColor = Color.White;
             label13.Font = new Font("Segoe UI", 15F);
             label13.ForeColor = Color.Black;
-            label13.Location = new Point(118, 63);
+            label13.Location = new Point(118, 58);
             label13.Name = "label13";
             label13.Size = new Size(201, 28);
             label13.TabIndex = 23;
             label13.Text = "Revenue for the week:";
-            // 
-            // lblWeekProfit
-            // 
-            lblWeekProfit.AutoSize = true;
-            lblWeekProfit.BackColor = Color.White;
-            lblWeekProfit.Font = new Font("Segoe UI", 15F);
-            lblWeekProfit.ForeColor = Color.Black;
-            lblWeekProfit.Location = new Point(143, 113);
-            lblWeekProfit.Name = "lblWeekProfit";
-            lblWeekProfit.Size = new Size(176, 28);
-            lblWeekProfit.TabIndex = 26;
-            lblWeekProfit.Text = "Profit for the week:";
             // 
             // lblWeek
             // 
@@ -460,7 +414,7 @@
             lblWeek.BackColor = Color.White;
             lblWeek.Font = new Font("Segoe UI", 17.25F);
             lblWeek.ForeColor = Color.Black;
-            lblWeek.Location = new Point(314, 11);
+            lblWeek.Location = new Point(314, 15);
             lblWeek.Name = "lblWeek";
             lblWeek.Size = new Size(26, 31);
             lblWeek.TabIndex = 9;
@@ -472,7 +426,7 @@
             lblWeekRevenue.BackColor = Color.White;
             lblWeekRevenue.Font = new Font("Segoe UI", 15F);
             lblWeekRevenue.ForeColor = Color.Black;
-            lblWeekRevenue.Location = new Point(314, 63);
+            lblWeekRevenue.Location = new Point(314, 58);
             lblWeekRevenue.Name = "lblWeekRevenue";
             lblWeekRevenue.Size = new Size(23, 28);
             lblWeekRevenue.TabIndex = 24;
@@ -484,33 +438,11 @@
             label2.BackColor = Color.White;
             label2.Font = new Font("Segoe UI", 15F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(9, 11);
+            label2.Location = new Point(9, 15);
             label2.Name = "label2";
             label2.Size = new Size(310, 28);
             label2.TabIndex = 3;
             label2.Text = "Number of bookings for the week:";
-            // 
-            // lblProfitMonth
-            // 
-            lblProfitMonth.AutoSize = true;
-            lblProfitMonth.Font = new Font("Segoe UI", 15F);
-            lblProfitMonth.ForeColor = Color.Black;
-            lblProfitMonth.Location = new Point(320, 114);
-            lblProfitMonth.Name = "lblProfitMonth";
-            lblProfitMonth.Size = new Size(23, 28);
-            lblProfitMonth.TabIndex = 19;
-            lblProfitMonth.Text = "0";
-            // 
-            // lblProfitWeek
-            // 
-            lblProfitWeek.AutoSize = true;
-            lblProfitWeek.Font = new Font("Segoe UI", 15F);
-            lblProfitWeek.ForeColor = Color.Black;
-            lblProfitWeek.Location = new Point(314, 114);
-            lblProfitWeek.Name = "lblProfitWeek";
-            lblProfitWeek.Size = new Size(23, 28);
-            lblProfitWeek.TabIndex = 28;
-            lblProfitWeek.Text = "0";
             // 
             // Home
             // 
@@ -560,16 +492,12 @@
         private Label lblLeastMonth;
         private Label label3;
         private Label lblBusyMonth;
-        private Label labe657;
-        private Label lblWeekProfit;
-        private Label label15;
         private Label lblWeekRevenue;
         private Label label13;
         private Label lblRevenueMonth;
         private Label label9;
         private Label lblYearRevenue;
         private Label label12;
-        private Label lblProfitYear;
         private Panel panel4;
         private Panel panel5;
         private Panel panel6;
@@ -578,7 +506,6 @@
         private PictureBox pictureBox9;
         private Label label11;
         private Label label14;
-        private Label lblProfitMonth;
-        private Label lblProfitWeek;
+        private Panel panel8;
     }
 }

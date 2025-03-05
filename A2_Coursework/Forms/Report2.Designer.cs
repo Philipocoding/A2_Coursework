@@ -77,7 +77,7 @@
             // printPreviewControl1
             // 
             printPreviewControl1.BackColor = Color.FromArgb(109, 132, 156);
-            printPreviewControl1.Location = new Point(640, 129);
+            printPreviewControl1.Location = new Point(640, 123);
             printPreviewControl1.Name = "printPreviewControl1";
             printPreviewControl1.Size = new Size(545, 758);
             printPreviewControl1.TabIndex = 9;

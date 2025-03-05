@@ -26,7 +26,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new();
             Customer customer = new();
             List<Service> services = new();
-            HashSet<int> bookingIds = new(); // Track unique BookingIDs
+            HashSet<int> bookingIds = new(); 
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -71,6 +71,7 @@ namespace A2_Coursework.Classes
                             service.ServiceID = Convert.ToInt32(reader["ServiceID"]);
                             service.Quantity = Convert.ToInt32(reader["Quantity"]);
                             service.ServiceName = Booking.BookingRequests[service.ServiceID];
+                            service.BookingID = Convert.ToInt32(reader["BookingID"]);
                             services.Add(service);
                         }
                     }

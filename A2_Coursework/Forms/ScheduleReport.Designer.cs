@@ -48,6 +48,7 @@
             panel2 = new Panel();
             panel3 = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            pnlHide = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -241,6 +242,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(pnlHide);
             panel2.Controls.Add(printPreviewControl1);
             panel2.Location = new Point(129, 433);
             panel2.Name = "panel2";
@@ -260,6 +262,13 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(197, 33);
             flowLayoutPanel1.TabIndex = 45;
+            // 
+            // pnlHide
+            // 
+            pnlHide.Location = new Point(354, 202);
+            pnlHide.Name = "pnlHide";
+            pnlHide.Size = new Size(284, 90);
+            pnlHide.TabIndex = 44;
             // 
             // ScheduleReport
             // 
@@ -305,5 +314,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnLeft;
         private Button btnRight;
+        private Panel pnlHide;
     }
 }

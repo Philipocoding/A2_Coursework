@@ -11,6 +11,8 @@ namespace A2_Coursework.Classes
         public int ServiceID { get; set; }
         public string ServiceName { get; set; }
         public double Cost { get; set; }
+        public int BookingID { get; set; }
+
         public int Quantity { get; set; }
 
         public Service() { }
@@ -20,6 +22,14 @@ namespace A2_Coursework.Classes
             ServiceName = serviceName;
             Cost = cost;
             Quantity = quantity;
+        }
+        public Service(int serviceID, string serviceName, double cost, int Booking_ID,int quantity)
+        {
+            ServiceID = serviceID;
+            ServiceName = serviceName;
+            Cost = cost;
+            Quantity = quantity;
+            BookingID = Booking_ID;    
         }
 
         public double GetCost(int id)

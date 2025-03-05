@@ -28,9 +28,26 @@ namespace A2_Coursework.Classes
         //public static string connectionString = string.Format(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString, Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.FullName);
 
         //public static string connectionString = string.Format(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString, Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.Parent!.Parent!.FullName);
-       // public static string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString +
-    //Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.Parent!.Parent!.FullName;
+        // public static string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString +
+        //Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.Parent!.Parent!.FullName;
 
+        public static void DeleteBookingService(int bookingID, int serviceID)
+        {
+            using (SqlConnection connection = new(connectionString))
+            {
+              
+                    connection.Open();
+
+                    SqlCommand DeleteCustomer = new();
+                    DeleteCustomer.Connection = connection;
+                    DeleteCustomer.CommandType = CommandType.StoredProcedure;
+                    DeleteCustomer.CommandText = "DeleteBookingService";
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@ServiceID", serviceID));
+                    DeleteCustomer.ExecuteNonQuery();
+                
+            }
+        }
         public static double GetBookingCost(int bookingID, double JobLength)
         {
             double cost = 0;

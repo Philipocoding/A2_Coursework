@@ -372,12 +372,6 @@ namespace A2_Coursework
             }
         }
 
-
-
-
-
-
-
         private void trackBar5_Scroll(object sender, EventArgs e)
         {
 

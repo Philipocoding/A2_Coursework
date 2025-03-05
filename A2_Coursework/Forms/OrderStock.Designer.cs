@@ -318,6 +318,7 @@
             // btnDelete
             // 
             btnDelete.BackColor = Color.FromArgb(85, 193, 255);
+            btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Microsoft Sans Serif", 18F);
             btnDelete.Location = new Point(3, 3);
@@ -331,6 +332,7 @@
             // btnEdit
             // 
             btnEdit.BackColor = Color.FromArgb(85, 193, 255);
+            btnEdit.FlatAppearance.BorderSize = 0;
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Microsoft Sans Serif", 18F);
             btnEdit.Location = new Point(3, 63);
@@ -344,6 +346,7 @@
             // btnViewAllOrders
             // 
             btnViewAllOrders.BackColor = Color.FromArgb(85, 193, 255);
+            btnViewAllOrders.FlatAppearance.BorderSize = 0;
             btnViewAllOrders.FlatStyle = FlatStyle.Flat;
             btnViewAllOrders.Font = new Font("Microsoft Sans Serif", 18F);
             btnViewAllOrders.Location = new Point(218, 63);
@@ -357,6 +360,7 @@
             // button1
             // 
             button1.BackColor = Color.FromArgb(85, 193, 255);
+            button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 18F);
             button1.Location = new Point(471, 63);
@@ -384,6 +388,7 @@
             // button3
             // 
             button3.BackColor = Color.FromArgb(85, 193, 255);
+            button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.Location = new Point(218, 3);
@@ -410,6 +415,7 @@
             // btnReset
             // 
             btnReset.BackColor = Color.FromArgb(85, 193, 255);
+            btnReset.FlatAppearance.BorderSize = 0;
             btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.Font = new Font("Microsoft Sans Serif", 18F);
             btnReset.Location = new Point(135, 41);
@@ -432,6 +438,7 @@
             // btnFIlterByDate
             // 
             btnFIlterByDate.BackColor = Color.FromArgb(85, 193, 255);
+            btnFIlterByDate.FlatAppearance.BorderSize = 0;
             btnFIlterByDate.FlatStyle = FlatStyle.Flat;
             btnFIlterByDate.Font = new Font("Microsoft Sans Serif", 18F);
             btnFIlterByDate.Location = new Point(-3, 41);
@@ -445,6 +452,7 @@
             // btnMarkasReceived
             // 
             btnMarkasReceived.BackColor = Color.FromArgb(85, 193, 255);
+            btnMarkasReceived.FlatAppearance.BorderSize = 0;
             btnMarkasReceived.FlatStyle = FlatStyle.Flat;
             btnMarkasReceived.Font = new Font("Microsoft Sans Serif", 18F);
             btnMarkasReceived.Location = new Point(471, 3);

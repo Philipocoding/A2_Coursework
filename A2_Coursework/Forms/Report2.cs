@@ -24,7 +24,6 @@ namespace A2_Coursework
             BitmaptoPrint = new Bitmap(this.Width, this.Height);
             this.DrawToBitmap(BitmaptoPrint, new Rectangle(0, 0, this.Width, this.Height));
 
-            // Draw additional elements directly onto the bitmap
             using (Graphics g = Graphics.FromImage(BitmaptoPrint))
             {
                 g.DrawLine(new Pen(Color.Green, 2), new Point(10, 10), new Point(200, 10));
@@ -114,11 +113,11 @@ namespace A2_Coursework
                     }
                 }
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("An error occurred");
             }
@@ -126,7 +125,6 @@ namespace A2_Coursework
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // Define fonts for better hierarchy
             System.Drawing.Font titleFont = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Bold);
             System.Drawing.Font subTitleFont = new System.Drawing.Font("Arial", 14, System.Drawing.FontStyle.Bold);
             System.Drawing.Font contentFont = new System.Drawing.Font("Arial", 11);
@@ -140,13 +138,13 @@ namespace A2_Coursework
             Customer customer = ReportDAL.GetCustomerAnalysis(customerID).Item1;
             List<Service> services = ReportDAL.GetCustomerAnalysis(customerID).Item3;
 
-            
             System.Drawing.Image logo = Properties.Resources.LogoTransparent__1_;
             if (logo != null)
             {
                 e.Graphics.DrawImage(logo, xMargin, yPosition, 120, 80);
                 yPosition += 100;
             }
+
             // Draw Title
             e.Graphics.DrawString("Customer Details", titleFont, textBrush, xMargin, yPosition);
             yPosition += 40;
@@ -185,7 +183,7 @@ namespace A2_Coursework
                 yPosition += 25;
 
                 float xService = xMargin;
-                float xQuantity = xService + 250; 
+                float xQuantity = xService + 250;
                 float rowHeight = 25;
 
                 e.Graphics.DrawString("Service", tableHeaderFont, textBrush, xService, yPosition);
@@ -198,9 +196,12 @@ namespace A2_Coursework
                 // Table Data
                 foreach (Service service in services)
                 {
-                    e.Graphics.DrawString(service.ServiceName, contentFont, textBrush, xService, yPosition);
-                    e.Graphics.DrawString(service.Quantity.ToString(), contentFont, textBrush, xQuantity, yPosition);
-                    yPosition += rowHeight;
+                    if (service.BookingID == booking.BookingID)  // Only print services related to this booking
+                    {
+                        e.Graphics.DrawString(service.ServiceName, contentFont, textBrush, xService, yPosition);
+                        e.Graphics.DrawString(service.Quantity.ToString(), contentFont, textBrush, xQuantity, yPosition);
+                        yPosition += rowHeight;
+                    }
                 }
 
                 // **Draw a separator line between different bookings**
@@ -209,20 +210,20 @@ namespace A2_Coursework
                 yPosition += 30;
             }
 
+            // Print "Thank you for choosing Movers!" **after the loop finishes**
             e.Graphics.DrawString("Thank you for choosing Movers!", subTitleFont, textBrush, xMargin, yPosition);
             yPosition += 30;
 
+            // Footer Text
             string footerText = "Generated on: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             e.Graphics.DrawString(footerText, contentFont, textBrush, xMargin, yPosition);
 
+            // Ensure the panel is positioned correctly
             pnlDataGrid.Location = new Point(63, 106);
             pnlDataGrid.SendToBack();
 
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
 
         }
     }
+  
 }

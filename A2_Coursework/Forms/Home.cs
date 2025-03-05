@@ -40,7 +40,6 @@ namespace A2_Coursework
                 profit = profit + BookingDAL.GetBookingProfit(booking.BookingID, 4);
             }
             lblYearRevenue.Text = revenue.ToString();
-            lblProfitYear.Text = profit.ToString();
         }
         private void Month()
         {
