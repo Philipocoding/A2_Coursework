@@ -1,4 +1,5 @@
-﻿using System;
+﻿using A2_Coursework.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +21,12 @@ namespace A2_Coursework
         }
         private void customiseDesign()
         {
-            pnlMediaSubMenu.Visible = false;
-            pnlMenuSubMenu.Visible = false;
-            pnlAddDetails.Visible = false;
-            pnlStock.Visible = false;
+            pnlBookingSubMenu.Visible = false;
+            pnlBookingSubMenu.Visible = false;
+            pnlSTaffSubMenu.Visible = false;
+            pnlStockSubMenu.Visible = false;
+            pnlCustomerSUbMenu.Visible = false;
+            pnlReportSubMenu.Visible = false;
         }
 
 
@@ -41,21 +44,29 @@ namespace A2_Coursework
         }
         private void HideSubMenu()
         {
-            if (pnlMenuSubMenu.Visible)
+            if (pnlBookingSubMenu.Visible)
             {
-                pnlMenuSubMenu.Visible = false;
+                pnlBookingSubMenu.Visible = false;
             }
-            if (pnlMediaSubMenu.Visible)
+            if (pnlBookingSubMenu.Visible)
             {
-                pnlMediaSubMenu.Visible = false;
+                pnlBookingSubMenu.Visible = false;
             }
-            if (pnlStock.Visible)
+            if (pnlStockSubMenu.Visible)
             {
-                pnlStock.Visible = false;
+                pnlStockSubMenu.Visible = false;
             }
-            if (pnlAddDetails.Visible)
+            if (pnlSTaffSubMenu.Visible)
             {
-                pnlAddDetails.Visible = false;
+                pnlSTaffSubMenu.Visible = false;
+            }
+            if (pnlReportSubMenu.Visible)
+            {
+                pnlReportSubMenu.Visible = false;
+            }
+            if (pnlCustomerSUbMenu.Visible)
+            {
+                pnlCustomerSUbMenu.Visible = false;
             }
         }
 
@@ -87,102 +98,116 @@ namespace A2_Coursework
             activeForm.Show();
         }
 
-        private void btnMedia_Click(object sender, EventArgs e)
-        {
-            showSubMenu(pnlMediaSubMenu);
-
-        }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            showSubMenu(pnlMenuSubMenu);
-
-        }
-
-        private void btnBooking_Click(object sender, EventArgs e)
+        private void btnNewBooking_Click(object sender, EventArgs e)
         {
             openChildForm(new NewBooking());
-            //code
             HideSubMenu();
         }
 
-        private void btnAddStaff_Click(object sender, EventArgs e)
-        {
-            openChildForm(new AddStaff());
-            HideSubMenu();
-        }
-        private void btnCustomer_Click(object sender, EventArgs e)
-        {
-            openChildForm(new NewCustomer());
-            HideSubMenu();
-        }
-
-
-        private void btnViewBOokings_Click(object sender, EventArgs e)
+        private void btnViewBooking_Click(object sender, EventArgs e)
         {
             openChildForm(new ViewBookings());
             HideSubMenu();
         }
 
-        private void btnViewStaff_Click(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            openChildForm(new ViewStaffMembers());
+            openChildForm(new Home());
             HideSubMenu();
         }
 
-        private void btnViewCustomers_Click(object sender, EventArgs e)
+        private void btnStock_Click(object sender, EventArgs e)
         {
-            openChildForm(new ViewCustomers());
-            HideSubMenu();
+            showSubMenu(pnlStockSubMenu);
         }
 
-        private void btnSchedule_Click(object sender, EventArgs e)
-        {
-            openChildForm(new BookingSchedules());
-            HideSubMenu();
-        }
-
-        private void btnStockOrder_Click(object sender, EventArgs e)
+        private void btnOrderNewSTock_Click(object sender, EventArgs e)
         {
             openChildForm(new OrderStock());
             HideSubMenu();
         }
 
-        private void btnViewStock_Click(object sender, EventArgs e)
+        private void btnManageSTock_Click(object sender, EventArgs e)
         {
             openChildForm(new ViewStockLevels());
             HideSubMenu();
         }
 
-
-
-        private void btnAddDetails_Click(object sender, EventArgs e)
+        private void btnStaff_Click(object sender, EventArgs e)
         {
-            showSubMenu(pnlAddDetails);
-
+            showSubMenu(pnlSTaffSubMenu);
         }
 
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            showSubMenu(pnlStock);
-
-        }
-
-        
-
-        private void btnAdd_Customer_Click(object sender, EventArgs e)
-        {
-            openChildForm(new NewCustomer());
-            HideSubMenu();
-        }
-
-        private void btnAdd_Staff_Click(object sender, EventArgs e)
+        private void btnAddSTaff_Click(object sender, EventArgs e)
         {
             openChildForm(new AddStaff());
             HideSubMenu();
         }
 
-      
-          
+        private void btnManageStaff_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewStaffMembers());
+            HideSubMenu();
+        }
+
+
+
+        private void btnManageCUstomer_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewCustomers());
+            HideSubMenu();
+        }
+
+        private void btnAddCustoemr_Click(object sender, EventArgs e)
+        {
+            openChildForm(new NewCustomer());
+            HideSubMenu();
+
+        }
+
+        private void btnReportOne_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Report1());
+            HideSubMenu();
+        }
+
+        private void btnReportTwo_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Report2());
+            HideSubMenu();
+
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlCustomerSUbMenu);
+        }
+
+        private void btnBookings_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlBookingSubMenu);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlReportSubMenu);
+        }
+
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            openChildForm(new Home());
+        }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ScheduleReport());
+            HideSubMenu();
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -26,6 +26,15 @@ namespace A2_Coursework.Classes
             CustomerID = customerID;
             BookingDate = date;
         }
+        public static string GetUpcomingMonday(DateTime startDate)
+        {
+            DateTime nextMonday = startDate.AddDays((8 - (int)startDate.DayOfWeek) % 7);
+            return nextMonday.ToString("dd/MM/yyyy");
+        }
+        public static DateTime GetPastMonday(DateTime startDate)
+        {
+            return startDate.AddDays((1 - (int)startDate.DayOfWeek) % 7);
+        }
         public static void PopulateDictionary()
         {
             BookingRequests[1] = "Windows";
@@ -176,6 +185,9 @@ namespace A2_Coursework.Classes
                             booking.BookingID = Convert.ToInt32(reader["BookingID"]);
                             booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
                             booking.BookingDate = reader["BookingDate"].ToString();
+                            booking.customer.Firstname = reader["Forename"].ToString();
+                            booking.customer.Surname = reader["Surname"].ToString();
+
                             bookings.Add(booking);
                         }
                     }
@@ -212,6 +224,8 @@ namespace A2_Coursework.Classes
                             booking.BookingID = Convert.ToInt32(reader["BookingID"]);
                             booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
                             booking.BookingDate = reader["BookingDate"].ToString();
+                            booking.customer.Firstname = reader["Forename"].ToString();
+                            booking.customer.Surname = reader["Surname"].ToString();
                             bookings.Add(booking);
                         }
                     }
@@ -238,6 +252,127 @@ namespace A2_Coursework.Classes
                     getBookings.CommandText = "BookingsBy_Date_ID";
                     getBookings.Parameters.Add(new SqlParameter("@BookingDate", date));
                     getBookings.Parameters.Add(new SqlParameter("@CustomerID", id));
+
+
+                    using (SqlDataReader reader = getBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Booking booking = new Booking();
+
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            booking.customer.Firstname = reader["Forename"].ToString();
+                            booking.customer.Surname = reader["Surname"].ToString();
+
+                            bookings.Add(booking);
+                        }
+                    }
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
+            return bookings;
+
+        }
+
+        public static List<Booking> GetBookingsByYear(string year)
+        {
+            List<Booking> bookings = new List<Booking>();
+            try
+            {
+                using (SqlConnection connection = new(BookingDAL.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand getBookings = new();
+                    getBookings.Connection = connection;
+                    getBookings.CommandType = CommandType.StoredProcedure;
+                    getBookings.CommandText = "BookingsByYear";
+                    getBookings.Parameters.Add(new SqlParameter("@Year", year));
+
+
+                    using (SqlDataReader reader = getBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Booking booking = new Booking();
+
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            booking.customer.Firstname = reader["Forename"].ToString();
+                            booking.customer.Surname = reader["Surname"].ToString();
+
+                            bookings.Add(booking);
+                        }
+                    }
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
+            return bookings;
+
+        }
+        public static List<Booking> GetBookingsByMonth(int month)
+        {
+            List<Booking> bookings = new List<Booking>();
+            try
+            {
+                using (SqlConnection connection = new(BookingDAL.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand getBookings = new();
+                    getBookings.Connection = connection;
+                    getBookings.CommandType = CommandType.StoredProcedure;
+                    getBookings.CommandText = "BookingsByMonth";
+                    getBookings.Parameters.Add(new SqlParameter("@Month", month));
+
+
+                    using (SqlDataReader reader = getBookings.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Booking booking = new Booking();
+
+                            booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                            booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                            booking.BookingDate = reader["BookingDate"].ToString();
+                            booking.customer.Firstname = reader["Forename"].ToString();
+                            booking.customer.Surname = reader["Surname"].ToString();
+
+                            bookings.Add(booking);
+                        }
+                    }
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
+            return bookings;
+
+        }
+
+        public static List<Booking> GetBookingsByWeek(DateTime wc, DateTime weekend)
+        {
+            List<Booking> bookings = new List<Booking>();
+            try
+            {
+                using (SqlConnection connection = new(BookingDAL.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand getBookings = new();
+                    getBookings.Connection = connection;
+                    getBookings.CommandType = CommandType.StoredProcedure;
+                    getBookings.CommandText = "BookingsByWeek";
+                    getBookings.Parameters.Add(new SqlParameter("@WC", wc.ToString("dd/MM/yyyy")));
+                    getBookings.Parameters.Add(new SqlParameter("@Weekend", weekend.ToString("dd/MM/yyyy")));
+
 
 
                     using (SqlDataReader reader = getBookings.ExecuteReader())

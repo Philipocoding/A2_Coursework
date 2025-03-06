@@ -15,6 +15,9 @@ using System.Numerics;
 using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Reflection;
+using System.Reflection.Metadata;
+using System.Linq.Expressions;
+using System.Configuration;
 
 namespace A2_Coursework.Classes
 {
@@ -22,6 +25,118 @@ namespace A2_Coursework.Classes
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
+        //public static string connectionString = string.Format(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString, Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.FullName);
+
+        //public static string connectionString = string.Format(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString, Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.Parent!.Parent!.FullName);
+       // public static string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString +
+    //Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.Parent!.Parent!.FullName;
+
+        public static double GetBookingCost(int bookingID, double JobLength)
+        {
+            double cost = 0;
+            try
+            {
+                List<Service> ServiceList = RetrieveBookingRequestsbyID(bookingID);
+                foreach(Service service in  ServiceList)
+                {
+                    cost = cost + service.GetCost(service.ServiceID) * service.Quantity;
+                }
+                foreach(Staff staff in GetStaffForBooking(bookingID))
+                {
+                    cost = cost + staff.HourlyRate* JobLength;
+                }
+            }
+            catch(CustomException ex){
+
+            }
+            return cost;
+        }
+
+        public static double GetBookingProfit(int bookingID, double JobLength)
+        {
+            List<Stock> stockList = new();
+            double cost = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand GetStaff = new SqlCommand();
+                    GetStaff.Connection = connection;
+
+                    GetStaff.CommandType = CommandType.StoredProcedure;
+                    GetStaff.CommandText = "GetBookingStock";
+                    GetStaff.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+
+                    using (SqlDataReader reader = GetStaff.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                           Stock stock = new Stock();
+                            stock.StockID = Convert.ToInt32(reader["StockID"]);
+                            stock.StockName = reader["StockName"].ToString();
+                            stock.Cost = Convert.ToDouble(reader["Cost"]);
+                            stock.Quantity = Convert.ToInt32(reader["Quantity"]);
+                            stockList.Add(stock);
+                        }
+                    }
+                }
+                List<Service> ServiceList = RetrieveBookingRequestsbyID(bookingID);
+                foreach (Service service in ServiceList)
+                {
+                    cost = cost + service.GetCost(service.ServiceID) * service.Quantity;
+                }
+                foreach (Staff staff in GetStaffForBooking(bookingID))
+                {
+                    cost = cost + staff.HourlyRate * JobLength;
+                }
+            }
+            catch (CustomException ex)
+            {
+
+            }
+            foreach(Stock stock in stockList)
+            {
+                cost = cost - stock.Cost * stock.Quantity;
+            }
+            return cost;
+        }
+        public static List<Staff> GetStaffForBooking(int bookingID)
+        {
+            List<Staff> staffMembers = new();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand GetStaff = new SqlCommand();
+                    GetStaff.Connection = connection;
+
+                    GetStaff.CommandType = CommandType.StoredProcedure;
+                    GetStaff.CommandText = "GetStaffCostBooking";
+                    GetStaff.Parameters.Add(new SqlParameter("@BookingID", bookingID));
+
+                    using (SqlDataReader reader = GetStaff.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Staff staff = new Staff();
+                            staff.StaffID = Convert.ToInt32(reader["StaffID"]);
+                            staff.Firstname = reader["Firstname"].ToString();
+                            staff.Surname = reader["Surname"].ToString();
+                            staff.HourlyRate = Convert.ToInt32(reader["HourlyRate"]);
+                            staffMembers.Add(staff);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                return staffMembers;
+            }
+        }
         public static List<int> GetMembersFromTeam(int teamNo)
         {
             List<int> staffMembers = new();
@@ -136,14 +251,11 @@ namespace A2_Coursework.Classes
 
                         }
                     }
-
-
                 }
                 catch (CustomException ex)
                 {
 
                 }
-
                 return customer;
             }
         }
@@ -268,9 +380,9 @@ namespace A2_Coursework.Classes
                 }
             }
         }
-        public static (List<int> ServiceID, List<int> Quantity) RetrieveBookingRequestsbyID(int id)
+        public static List<Service> RetrieveBookingRequestsbyID(int BookingID)
         {
-            List<int> serviceID = new List<int>();
+            List<Service> serviceList = new List<Service>();
             List<int> Quantity = new List<int>();
             using (SqlConnection connection = new(connectionString))
             {
@@ -279,18 +391,23 @@ namespace A2_Coursework.Classes
                 GetRequests.Connection = connection;
                 GetRequests.CommandType = CommandType.StoredProcedure;
                 GetRequests.CommandText = "RetrieveRequests";
-                GetRequests.Parameters.Add(new SqlParameter("@BookingID", id));
+                GetRequests.Parameters.Add(new SqlParameter("@BookingID", BookingID));
 
                 using (SqlDataReader reader = GetRequests.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        serviceID.Add(Convert.ToInt32(reader["ServiceID"]));
-                        Quantity.Add(Convert.ToInt32(reader["Quantity"]));
+                        Service service = new Service();
+                        service.ServiceID = Convert.ToInt32(reader["ServiceID"]);
+                        service.Quantity = Convert.ToInt32(reader["Quantity"]);
+                        service.ServiceName = reader["ServiceName"].ToString();
+
+                        service.Cost = service.GetCost(service.ServiceID);
+                        serviceList.Add(service);
                     }
                 }
             }
-            return (serviceID, Quantity);
+            return serviceList;
         }
         public static void DeleteCustomer(int Custid)
         {
@@ -304,15 +421,36 @@ namespace A2_Coursework.Classes
                     {
                         DeleteBooking(reservation.BookingID);
                     }
-
-
                     connection.Open();
+
+                    List<Booking> Bookings = Booking.populateDataGrid();
+                    //List<int> bookingID = new List<int>();
+                    foreach (Booking aBooking in Bookings)
+                    {
+                        SqlCommand DeleteACustomer = new();
+                        DeleteACustomer.Connection = connection;
+                        DeleteACustomer.CommandType = CommandType.StoredProcedure;
+                        DeleteACustomer.CommandText = "DeleteCustomer";
+                        if (aBooking.CustomerID == Custid)
+                        {
+                            // bookingID.Add(aBooking.BookingID);
+
+                            DeleteACustomer.Parameters.Add(new SqlParameter("@BookingID", aBooking.BookingID));
+                            DeleteACustomer.Parameters.Add(new SqlParameter("@CustomerID", Custid));
+
+                            DeleteACustomer.ExecuteNonQuery();
+                        }
+                    }
+                    
+
                     SqlCommand DeleteCustomer = new();
                     DeleteCustomer.Connection = connection;
                     DeleteCustomer.CommandType = CommandType.StoredProcedure;
-                    DeleteCustomer.CommandText = "DeleteCustomer";
+                    DeleteCustomer.CommandText = "DeleteCustomerTwo";
                     DeleteCustomer.Parameters.Add(new SqlParameter("@CustomerID", Custid));
+
                     DeleteCustomer.ExecuteNonQuery();
+                   
                 }
                 catch (Exception ex)
                 {
@@ -398,7 +536,7 @@ namespace A2_Coursework.Classes
                     deleteStaff.Connection = connection;
                     deleteStaff.CommandType = CommandType.StoredProcedure;
                     deleteStaff.CommandText = "DeleteStaffMember";
-                    deleteStaff.Parameters.Add(new SqlParameter("@StaffID", 2));
+                    deleteStaff.Parameters.Add(new SqlParameter("@StaffID", id));
                     deleteStaff.ExecuteNonQuery();
                 }
                 catch (CustomException ex)
@@ -419,12 +557,11 @@ namespace A2_Coursework.Classes
                     SqlCommand DeleteRequests = new SqlCommand();
                     DeleteRequests.Connection = connection;
 
-                    DeleteRequests.CommandType = CommandType.StoredProcedure;
-                    DeleteRequests.CommandText = "DeleteBookingRequests";
-                    DeleteRequests.Parameters.Add(new SqlParameter("@BookingID", id));
+                    //DeleteRequests.CommandType = CommandType.StoredProcedure;
+                    //DeleteRequests.CommandText = "DeleteBookingRequests";
+                    //DeleteRequests.Parameters.Add(new SqlParameter("@BookingID", id));
+                    //DeleteRequests.ExecuteNonQuery();
 
-
-                    DeleteRequests.ExecuteNonQuery();
                     SqlCommand Delete = new SqlCommand();
                     Delete.Connection = connection;
 
@@ -476,76 +613,7 @@ namespace A2_Coursework.Classes
             }
         }
 
-        //public static bool NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
-        //{
-        //    int rowsAffected = 0;
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            connection.Open();
-
-        //            // Check if the date is available before proceeding
-        //            if (Booking.CheckAvailability(Date))
-        //            {
-        //                // Step 1: Insert into Booking and get the new BookingID
-        //                SqlCommand AddBooking = new SqlCommand("New_Booking", connection);
-        //                AddBooking.CommandType = CommandType.StoredProcedure;
-        //                AddBooking.Parameters.Add(new SqlParameter("@BookingDate", Date));
-        //                AddBooking.Parameters.Add(new SqlParameter("@CustomerID", CustomerID));
-
-        //                int bookingID = Convert.ToInt32(AddBooking.ExecuteScalar()); // Get new BookingID
-
-        //                if (bookingID <= 0)
-        //                {
-        //                    return false; // Prevent proceeding if BookingID retrieval fails
-        //                }
-
-        //                // Step 2: Assign team to booking
-        //                AssignBookingsToTeams(bookingID, Booking.getTeamNo());
-
-        //                // Step 3: Insert Booking Requests
-        //                SqlCommand NewBookingRequests = new SqlCommand("NewBookingRequests", connection);
-        //                NewBookingRequests.CommandType = CommandType.StoredProcedure;
-
-        //                for (int i = 0; i < ServiceID.Count; i++)
-        //                {
-        //                    NewBookingRequests.Parameters.Clear();
-        //                    NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
-        //                    NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
-        //                    NewBookingRequests.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
-        //                    NewBookingRequests.ExecuteNonQuery();
-        //                }
-
-        //                // Step 4: Insert Booking Equipment
-        //                List<int> stockNeeded = GetStockID(ServiceID);
-        //                SqlCommand AddBookingEquipment = new SqlCommand("AssignBookingEquipment", connection);
-        //                AddBookingEquipment.CommandType = CommandType.StoredProcedure;
-
-        //                for (int i = 0; i < stockNeeded.Count; i++)
-        //                {
-        //                    AddBookingEquipment.Parameters.Clear();
-        //                    AddBookingEquipment.Parameters.Add(new SqlParameter("@StockID", stockNeeded[i]));
-        //                    AddBookingEquipment.Parameters.Add(new SqlParameter("@Quantity", quantity[i]));
-        //                    AddBookingEquipment.Parameters.Add(new SqlParameter("@BookingID", bookingID));
-
-        //                    AddBookingEquipment.ExecuteNonQuery();
-        //                }
-
-        //                connection.Close();
-        //            }
-        //            else
-        //            {
-        //                return false; // Availability check failed
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //        }
-        //    }
-        //    return true;
-        //}
+       
         public static bool NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
         {
             int rowsaffected = 0;

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace A2_Coursework
 {
-    public partial class COpy : Form
+    public partial class ReportViewer : Form
     {
-        public COpy()
+        public ReportViewer()
         {
             InitializeComponent();
         }

@@ -20,27 +20,61 @@ namespace A2_Coursework
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string dateString = dtPicker.Value.ToString("yyyy-MM-dd");
-            if (Validation.ValidGender(cmbGender.Text))
+            try
             {
-                if ((!Validation.isNullorEmpty(txtbFirstname.Text) &&(!Validation.isNullorEmpty(txtbFirstname.Text))
-                    &&(!Validation.isNullorEmpty(txtbEmail.Text))&&(!Validation.isNullorEmpty(txtbAddressTwo.Text))&&(!Validation.isNullorEmpty(txtbAddressOne.Text)
-                    &&(!Validation.isNullorEmpty(cmbGender.Text)) &&(!Validation.isNullorEmpty(dtPicker.Text)))))
+                if (dtPicker.Value.AddYears(18) >= DateTime.Now)
                 {
-                    BookingDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
-                    txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
-                    MessageBox.Show("Customer Added");
+                    throw new CustomException("Customer must be 18 years of age or older");
                 }
                 else
                 {
-                    MessageBox.Show("Ensure all fields are completed");
+                    string dateString = dtPicker.Value.ToString("yyyy/MM/dd");
+                    if (Validation.ValidGender(cmbGender.Text))
+                    {
+                        if ((Validation.isNullorEmpty(txtbFirstname.Text) && (Validation.isNullorEmpty(txtbFirstname.Text))
+                            && (Validation.isNullorEmpty(txtbEmail.Text)) && (Validation.isNullorEmpty(txtbAddressTwo.Text)) && (Validation.isNullorEmpty(txtbAddressOne.Text)
+                            && (Validation.isNullorEmpty(cmbGender.Text)) && (Validation.isNullorEmpty(dtPicker.Text)))))
+                        {
+                            BookingDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
+                            txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
+                            MessageBox.Show("Customer Added");
+                            txtbFirstname.Text = "";
+                            txtbSurname.Text = "";
+                            txtbEmail.Text = "";
+                            txtbAddressTwo.Text = "";
+                            txtbAddressOne.Text = "";
+                            cmbGender.Text = "";
+                            dtPicker.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ensure all fields are sensibly completed");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Enter valid gender");
+                    }
                 }
                 
+
             }
-            else
+            catch(CustomException ex)
             {
-                MessageBox.Show("Enter valid gender");
+                MessageBox.Show(ex.Message.ToString());
             }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
+           
+
+        }
+
+        private void NewCustomer_Load(object sender, EventArgs e)
+        {
 
         }
     }

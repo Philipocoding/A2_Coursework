@@ -44,18 +44,25 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            label7 = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.FromArgb(50, 55, 59);
+            btnSubmit.FlatAppearance.BorderSize = 0;
+            btnSubmit.FlatStyle = FlatStyle.Flat;
             btnSubmit.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSubmit.ForeColor = Color.White;
             btnSubmit.Location = new Point(466, 444);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(141, 53);
-            btnSubmit.TabIndex = 0;
+            btnSubmit.TabIndex = 7;
             btnSubmit.Text = "Submit";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // label1
@@ -74,10 +81,11 @@
             txtbFirstname.Location = new Point(387, 46);
             txtbFirstname.Name = "txtbFirstname";
             txtbFirstname.Size = new Size(326, 50);
-            txtbFirstname.TabIndex = 2;
+            txtbFirstname.TabIndex = 0;
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(cmbGender);
             panel1.Controls.Add(dtPicker);
             panel1.Controls.Add(Add);
@@ -93,7 +101,7 @@
             panel1.Controls.Add(txtbFirstname);
             panel1.Controls.Add(btnSubmit);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(28, 65);
+            panel1.Location = new Point(100, 98);
             panel1.Name = "panel1";
             panel1.Size = new Size(899, 570);
             panel1.TabIndex = 3;
@@ -106,7 +114,7 @@
             cmbGender.Location = new Point(387, 218);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(326, 45);
-            cmbGender.TabIndex = 17;
+            cmbGender.TabIndex = 3;
             // 
             // dtPicker
             // 
@@ -114,7 +122,7 @@
             dtPicker.Location = new Point(387, 158);
             dtPicker.Name = "dtPicker";
             dtPicker.Size = new Size(326, 50);
-            dtPicker.TabIndex = 4;
+            dtPicker.TabIndex = 2;
             // 
             // Add
             // 
@@ -132,7 +140,7 @@
             txtbAddressTwo.Location = new Point(387, 332);
             txtbAddressTwo.Name = "txtbAddressTwo";
             txtbAddressTwo.Size = new Size(326, 50);
-            txtbAddressTwo.TabIndex = 13;
+            txtbAddressTwo.TabIndex = 5;
             // 
             // txtbEmail
             // 
@@ -140,7 +148,7 @@
             txtbEmail.Location = new Point(387, 388);
             txtbEmail.Name = "txtbEmail";
             txtbEmail.Size = new Size(326, 50);
-            txtbEmail.TabIndex = 12;
+            txtbEmail.TabIndex = 6;
             // 
             // label6
             // 
@@ -158,7 +166,7 @@
             txtbAddressOne.Location = new Point(387, 274);
             txtbAddressOne.Name = "txtbAddressOne";
             txtbAddressOne.Size = new Size(326, 50);
-            txtbAddressOne.TabIndex = 10;
+            txtbAddressOne.TabIndex = 4;
             // 
             // label5
             // 
@@ -176,7 +184,7 @@
             txtbSurname.Location = new Point(387, 102);
             txtbSurname.Name = "txtbSurname";
             txtbSurname.Size = new Size(326, 50);
-            txtbSurname.TabIndex = 8;
+            txtbSurname.TabIndex = 1;
             // 
             // label4
             // 
@@ -208,18 +216,49 @@
             label2.TabIndex = 3;
             label2.Text = "Surname";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold);
+            label7.Location = new Point(480, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(344, 65);
+            label7.TabIndex = 18;
+            label7.Text = "Add Customer";
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(71, 867);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(48, 237);
+            flowLayoutPanel1.TabIndex = 20;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Location = new Point(1297, 515);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(255, 33);
+            flowLayoutPanel2.TabIndex = 21;
+            // 
             // NewCustomer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1038, 672);
+            BackColor = Color.FromArgb(109, 132, 156);
+            ClientSize = new Size(1390, 922);
+            Controls.Add(flowLayoutPanel2);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(label7);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "NewCustomer";
             Text = "NewCustomer";
+            Load += NewCustomer_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -240,5 +279,8 @@
         private TextBox txtbAddressTwo;
         private DateTimePicker dtPicker;
         private ComboBox cmbGender;
+        private Label label7;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanel2;
     }
 }

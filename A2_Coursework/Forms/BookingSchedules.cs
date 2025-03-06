@@ -38,7 +38,43 @@ namespace A2_Coursework
 
             return null;
         }
+        void StyleDataGridView(DataGridView dgv)
+        {
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            dgv.BorderStyle = BorderStyle.Fixed3D;
+            dgv.BackgroundColor = Color.White;
+            dgv.GridColor = Color.LightGray;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 144, 255);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 4, 6, 4);
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            dgv.DefaultCellStyle.BackColor = Color.White;
+            dgv.DefaultCellStyle.ForeColor = Color.Black;
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
+            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255);
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.RowHeadersVisible = true;
+            dgv.RowHeadersWidth = 30;
+        }
 
+        void ApplyStyles()
+        {
+            StyleDataGridView(dataGridOne);
+            StyleDataGridView(dataGrid2);
+            StyleDataGridView(dataGrid3);
+            StyleDataGridView(dataGrid4);
+            StyleDataGridView(dataGrid5);
+        }
         private void DataGridView_MouseDown(object sender, MouseEventArgs e)
         {
             if (sender is DataGridView currentGrid)
@@ -129,19 +165,16 @@ namespace A2_Coursework
         private void BookingSchedules_Load(object sender, EventArgs e)
         {
             updateDates();
-            btnWcOne.Text = GetUpcomingMonday(DtPicker.Value);
-            btnWCTwo.Text = GetUpcomingMonday(DtPicker.Value.AddDays(7));
-            btnWcThree.Text = GetUpcomingMonday(DtPicker.Value.AddDays(14));
-            btnWcFour.Text = GetUpcomingMonday(DtPicker.Value.AddDays(21));
+            ApplyStyles();
+            btnWcOne.Text = Booking.GetUpcomingMonday(DtPicker.Value);
+            btnWCTwo.Text = Booking.GetUpcomingMonday(DtPicker.Value.AddDays(7));
+            btnWcThree.Text = Booking.GetUpcomingMonday(DtPicker.Value.AddDays(14));
+            btnWcFour.Text = Booking.GetUpcomingMonday(DtPicker.Value.AddDays(21));
 
             PopulateDataGrid();
             
         }
-        private string GetUpcomingMonday(DateTime startDate)
-        {
-            DateTime nextMonday = startDate.AddDays((8 - (int)startDate.DayOfWeek) % 7);
-            return nextMonday.ToString("dd/MM/yyyy");
-        }
+        
 
 
         private void getData(string date)

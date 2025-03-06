@@ -10,12 +10,36 @@
 
   <ItemGroup>
     <None Remove="Resources\add.png" />
+    <None Remove="Resources\booking %281%29.png" />
     <None Remove="Resources\Booking.png" />
+    <None Remove="Resources\calendar.png" />
+    <None Remove="Resources\customer.png" />
+    <None Remove="Resources\delivery.png" />
+    <None Remove="Resources\delivery1.png" />
+    <None Remove="Resources\home.png" />
+    <None Remove="Resources\id-card.png" />
+    <None Remove="Resources\LogoTransparent %281%29.png" />
+    <None Remove="Resources\report %281%29.png" />
+    <None Remove="Resources\review %281%29.png" />
+    <None Remove="Resources\team %284%29.png" />
+    <None Remove="Resources\team.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\add.png" />
+    <EmbeddedResource Include="Resources\booking (1).png" />
     <EmbeddedResource Include="Resources\Booking.png" />
+    <EmbeddedResource Include="Resources\calendar.png" />
+    <EmbeddedResource Include="Resources\customer.png" />
+    <EmbeddedResource Include="Resources\delivery.png" />
+    <EmbeddedResource Include="Resources\delivery1.png" />
+    <EmbeddedResource Include="Resources\home.png" />
+    <EmbeddedResource Include="Resources\id-card.png" />
+    <EmbeddedResource Include="Resources\LogoTransparent (1).png" />
+    <EmbeddedResource Include="Resources\report (1).png" />
+    <EmbeddedResource Include="Resources\review (1).png" />
+    <EmbeddedResource Include="Resources\team (4).png" />
+    <EmbeddedResource Include="Resources\team.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
             DataGridCustomers = new DataGridView();
             clmCustomerID = new DataGridViewTextBoxColumn();
             clmForename = new DataGridViewTextBoxColumn();
@@ -40,8 +48,8 @@
             clmEmail = new DataGridViewTextBoxColumn();
             txtbFirstname = new TextBox();
             label1 = new Label();
-            btnDelete = new Button();
-            panel1 = new Panel();
+            pnlEdit = new Panel();
+            dtPicketDOB = new DateTimePicker();
             btnSave = new Button();
             label7 = new Label();
             label6 = new Label();
@@ -52,85 +60,105 @@
             txtbAddressTwo = new TextBox();
             txtbEmail = new TextBox();
             txtbAddressOne = new TextBox();
-            txtbGender = new TextBox();
-            txtbDOB = new TextBox();
             txtbSurname = new TextBox();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            label8 = new Label();
+            btnEdit = new Button();
+            btnDeleteCustomer = new Button();
+            cmbGender = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).BeginInit();
-            panel1.SuspendLayout();
+            pnlEdit.SuspendLayout();
             SuspendLayout();
             // 
             // DataGridCustomers
             // 
             DataGridCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridCustomers.Columns.AddRange(new DataGridViewColumn[] { clmCustomerID, clmForename, clmSurname, clmDOB, clmGender, clmAddressOne, clmAddressTwo, clmEmail });
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            DataGridCustomers.DefaultCellStyle = dataGridViewCellStyle1;
-            DataGridCustomers.Location = new Point(-3, -3);
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = SystemColors.Window;
+            dataGridViewCellStyle18.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle18.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
+            DataGridCustomers.DefaultCellStyle = dataGridViewCellStyle18;
+            DataGridCustomers.Location = new Point(12, 82);
             DataGridCustomers.Name = "DataGridCustomers";
-            DataGridCustomers.Size = new Size(1280, 292);
+            DataGridCustomers.Size = new Size(1268, 292);
             DataGridCustomers.TabIndex = 0;
             DataGridCustomers.CellClick += DataGridCustomers_CellClick;
             DataGridCustomers.CellContentClick += DataGridCustomers_CellContentClick;
             // 
             // clmCustomerID
             // 
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle10;
             clmCustomerID.HeaderText = "ID";
             clmCustomerID.Name = "clmCustomerID";
             clmCustomerID.Width = 35;
             // 
             // clmForename
             // 
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmForename.DefaultCellStyle = dataGridViewCellStyle11;
             clmForename.HeaderText = "Firstname";
             clmForename.Name = "clmForename";
-            clmForename.Width = 150;
+            clmForename.Width = 130;
             // 
             // clmSurname
             // 
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmSurname.DefaultCellStyle = dataGridViewCellStyle12;
             clmSurname.HeaderText = "Surname";
             clmSurname.Name = "clmSurname";
-            clmSurname.Width = 150;
+            clmSurname.Width = 130;
             // 
             // clmDOB
             // 
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmDOB.DefaultCellStyle = dataGridViewCellStyle13;
             clmDOB.HeaderText = "Date of Birth";
             clmDOB.Name = "clmDOB";
             clmDOB.Width = 125;
             // 
             // clmGender
             // 
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmGender.DefaultCellStyle = dataGridViewCellStyle14;
             clmGender.HeaderText = "Gender";
             clmGender.Name = "clmGender";
             // 
             // clmAddressOne
             // 
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmAddressOne.DefaultCellStyle = dataGridViewCellStyle15;
             clmAddressOne.HeaderText = "Address";
             clmAddressOne.Name = "clmAddressOne";
-            clmAddressOne.Width = 250;
+            clmAddressOne.Width = 200;
             // 
             // clmAddressTwo
             // 
+            dataGridViewCellStyle16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmAddressTwo.DefaultCellStyle = dataGridViewCellStyle16;
             clmAddressTwo.HeaderText = "Address";
             clmAddressTwo.Name = "clmAddressTwo";
             clmAddressTwo.Width = 150;
             // 
             // clmEmail
             // 
+            dataGridViewCellStyle17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmEmail.DefaultCellStyle = dataGridViewCellStyle17;
             clmEmail.HeaderText = "Email";
             clmEmail.Name = "clmEmail";
-            clmEmail.Width = 310;
+            clmEmail.Width = 360;
             // 
             // txtbFirstname
             // 
             txtbFirstname.Font = new Font("Segoe UI", 20F);
             txtbFirstname.Location = new Point(169, 23);
             txtbFirstname.Name = "txtbFirstname";
-            txtbFirstname.Size = new Size(292, 43);
+            txtbFirstname.Size = new Size(371, 43);
             txtbFirstname.TabIndex = 1;
             // 
             // label1
@@ -143,49 +171,50 @@
             label1.TabIndex = 2;
             label1.Text = "Firstname";
             // 
-            // btnDelete
+            // pnlEdit
             // 
-            btnDelete.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(323, 377);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(112, 51);
-            btnDelete.TabIndex = 3;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+            pnlEdit.Controls.Add(cmbGender);
+            pnlEdit.Controls.Add(dtPicketDOB);
+            pnlEdit.Controls.Add(btnSave);
+            pnlEdit.Controls.Add(label7);
+            pnlEdit.Controls.Add(label6);
+            pnlEdit.Controls.Add(label5);
+            pnlEdit.Controls.Add(label4);
+            pnlEdit.Controls.Add(label3);
+            pnlEdit.Controls.Add(label2);
+            pnlEdit.Controls.Add(txtbAddressTwo);
+            pnlEdit.Controls.Add(txtbEmail);
+            pnlEdit.Controls.Add(txtbAddressOne);
+            pnlEdit.Controls.Add(txtbSurname);
+            pnlEdit.Controls.Add(label1);
+            pnlEdit.Controls.Add(txtbFirstname);
+            pnlEdit.Location = new Point(328, 437);
+            pnlEdit.Name = "pnlEdit";
+            pnlEdit.Size = new Size(551, 459);
+            pnlEdit.TabIndex = 4;
+            pnlEdit.Visible = false;
             // 
-            // panel1
+            // dtPicketDOB
             // 
-            panel1.Controls.Add(btnSave);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(txtbAddressTwo);
-            panel1.Controls.Add(txtbEmail);
-            panel1.Controls.Add(txtbAddressOne);
-            panel1.Controls.Add(txtbGender);
-            panel1.Controls.Add(txtbDOB);
-            panel1.Controls.Add(txtbSurname);
-            panel1.Controls.Add(btnDelete);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(txtbFirstname);
-            panel1.Location = new Point(5, 295);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(464, 459);
-            panel1.TabIndex = 4;
+            dtPicketDOB.Font = new Font("Segoe UI", 20F);
+            dtPicketDOB.Location = new Point(169, 121);
+            dtPicketDOB.Name = "dtPicketDOB";
+            dtPicketDOB.Size = new Size(371, 43);
+            dtPicketDOB.TabIndex = 25;
             // 
             // btnSave
             // 
+            btnSave.BackColor = Color.FromArgb(50, 55, 59);
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(205, 377);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(270, 366);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(112, 51);
             btnSave.TabIndex = 16;
             btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
             // label7
@@ -253,7 +282,7 @@
             txtbAddressTwo.Font = new Font("Segoe UI", 20F);
             txtbAddressTwo.Location = new Point(169, 268);
             txtbAddressTwo.Name = "txtbAddressTwo";
-            txtbAddressTwo.Size = new Size(292, 43);
+            txtbAddressTwo.Size = new Size(371, 43);
             txtbAddressTwo.TabIndex = 9;
             // 
             // txtbEmail
@@ -261,7 +290,7 @@
             txtbEmail.Font = new Font("Segoe UI", 20F);
             txtbEmail.Location = new Point(169, 317);
             txtbEmail.Name = "txtbEmail";
-            txtbEmail.Size = new Size(292, 43);
+            txtbEmail.Size = new Size(371, 43);
             txtbEmail.TabIndex = 8;
             // 
             // txtbAddressOne
@@ -269,65 +298,113 @@
             txtbAddressOne.Font = new Font("Segoe UI", 20F);
             txtbAddressOne.Location = new Point(169, 219);
             txtbAddressOne.Name = "txtbAddressOne";
-            txtbAddressOne.Size = new Size(292, 43);
+            txtbAddressOne.Size = new Size(371, 43);
             txtbAddressOne.TabIndex = 7;
-            // 
-            // txtbGender
-            // 
-            txtbGender.Font = new Font("Segoe UI", 20F);
-            txtbGender.Location = new Point(169, 170);
-            txtbGender.Name = "txtbGender";
-            txtbGender.Size = new Size(292, 43);
-            txtbGender.TabIndex = 6;
-            // 
-            // txtbDOB
-            // 
-            txtbDOB.Font = new Font("Segoe UI", 20F);
-            txtbDOB.Location = new Point(169, 121);
-            txtbDOB.Name = "txtbDOB";
-            txtbDOB.Size = new Size(292, 43);
-            txtbDOB.TabIndex = 5;
             // 
             // txtbSurname
             // 
             txtbSurname.Font = new Font("Segoe UI", 20F);
             txtbSurname.Location = new Point(169, 72);
             txtbSurname.Name = "txtbSurname";
-            txtbSurname.Size = new Size(292, 43);
+            txtbSurname.Size = new Size(371, 43);
             txtbSurname.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            panel2.Location = new Point(328, 850);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(36, 221);
+            panel2.TabIndex = 21;
+            // 
+            // panel3
+            // 
+            panel3.Location = new Point(1201, 512);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(233, 25);
+            panel3.TabIndex = 22;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold);
+            label8.Location = new Point(443, 9);
+            label8.Name = "label8";
+            label8.Size = new Size(452, 65);
+            label8.TabIndex = 17;
+            label8.Text = "Manage Customers";
+            // 
+            // btnEdit
+            // 
+            btnEdit.BackColor = Color.FromArgb(85, 193, 255);
+            btnEdit.FlatAppearance.BorderSize = 0;
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.ForeColor = Color.Black;
+            btnEdit.Location = new Point(637, 380);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(261, 51);
+            btnEdit.TabIndex = 23;
+            btnEdit.Text = "Edit customer";
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // btnDeleteCustomer
+            // 
+            btnDeleteCustomer.BackColor = Color.FromArgb(85, 193, 255);
+            btnDeleteCustomer.FlatAppearance.BorderSize = 0;
+            btnDeleteCustomer.FlatStyle = FlatStyle.Flat;
+            btnDeleteCustomer.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDeleteCustomer.ForeColor = Color.Black;
+            btnDeleteCustomer.Location = new Point(370, 380);
+            btnDeleteCustomer.Name = "btnDeleteCustomer";
+            btnDeleteCustomer.Size = new Size(261, 51);
+            btnDeleteCustomer.TabIndex = 24;
+            btnDeleteCustomer.Text = "Delete customer";
+            btnDeleteCustomer.UseVisualStyleBackColor = false;
+            btnDeleteCustomer.Click += btnDeleteCustomer_Click;
+            // 
+            // cmbGender
+            // 
+            cmbGender.Font = new Font("Segoe UI", 20F);
+            cmbGender.FormattingEnabled = true;
+            cmbGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            cmbGender.Location = new Point(169, 170);
+            cmbGender.Name = "cmbGender";
+            cmbGender.Size = new Size(371, 45);
+            cmbGender.TabIndex = 26;
             // 
             // ViewCustomers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1278, 756);
-            Controls.Add(panel1);
+            BackColor = Color.FromArgb(109, 132, 156);
+            ClientSize = new Size(1414, 867);
+            Controls.Add(btnDeleteCustomer);
+            Controls.Add(btnEdit);
+            Controls.Add(label8);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(pnlEdit);
             Controls.Add(DataGridCustomers);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "ViewCustomers";
             Text = "ViewCustomers";
             Load += ViewCustomers_Load;
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlEdit.ResumeLayout(false);
+            pnlEdit.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView DataGridCustomers;
-        private DataGridViewTextBoxColumn clmCustomerID;
-        private DataGridViewTextBoxColumn clmForename;
-        private DataGridViewTextBoxColumn clmSurname;
-        private DataGridViewTextBoxColumn clmDOB;
-        private DataGridViewTextBoxColumn clmGender;
-        private DataGridViewTextBoxColumn clmAddressOne;
-        private DataGridViewTextBoxColumn clmAddressTwo;
-        private DataGridViewTextBoxColumn clmEmail;
         private TextBox txtbFirstname;
         private Label label1;
         private Button btnDelete;
-        private Panel panel1;
+        private Panel pnlEdit;
         private Label label7;
         private Label label6;
         private Label label5;
@@ -337,9 +414,22 @@
         private TextBox txtbAddressTwo;
         private TextBox txtbEmail;
         private TextBox txtbAddressOne;
-        private TextBox txtbGender;
-        private TextBox txtbDOB;
         private TextBox txtbSurname;
         private Button btnSave;
+        private Panel panel2;
+        private Panel panel3;
+        private Label label8;
+        private Button btnEdit;
+        private Button btnDeleteCustomer;
+        private DataGridViewTextBoxColumn clmCustomerID;
+        private DataGridViewTextBoxColumn clmForename;
+        private DataGridViewTextBoxColumn clmSurname;
+        private DataGridViewTextBoxColumn clmDOB;
+        private DataGridViewTextBoxColumn clmGender;
+        private DataGridViewTextBoxColumn clmAddressOne;
+        private DataGridViewTextBoxColumn clmAddressTwo;
+        private DataGridViewTextBoxColumn clmEmail;
+        private DateTimePicker dtPicketDOB;
+        private ComboBox cmbGender;
     }
 }

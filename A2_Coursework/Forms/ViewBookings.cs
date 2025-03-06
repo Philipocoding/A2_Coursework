@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,8 @@ namespace A2_Coursework
 {
     public partial class ViewBookings : Form
     {
+        int selectedRowIndex = 0;
+        List<Service> ServiceID = new();
         public ViewBookings()
         {
             InitializeComponent();
@@ -24,9 +27,62 @@ namespace A2_Coursework
 
         private void ViewBookings_Load(object sender, EventArgs e)
         {
+            StyleDataGridView();
             txtbBookingID.ReadOnly = true;
             txtbCustID.ReadOnly = true;
             PopulateDataGrid();
+            populateBookingInfo();
+
+        }
+        void StyleDataGridView()
+        {
+            foreach (DataGridViewColumn col in BookingTable.Columns)
+            {
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            BookingTable.BorderStyle = BorderStyle.Fixed3D;
+            BookingTable.BackgroundColor = Color.White;
+            BookingTable.GridColor = Color.LightGray;
+            BookingTable.EnableHeadersVisualStyles = false;
+            BookingTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            BookingTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            BookingTable.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+            // Set column header background color and text color
+            BookingTable.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 144, 255);
+            BookingTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            BookingTable.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 4, 6, 4);
+
+            // Default cell styles
+            BookingTable.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            BookingTable.DefaultCellStyle.BackColor = Color.White;
+            BookingTable.DefaultCellStyle.ForeColor = Color.Black;
+            BookingTable.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
+            BookingTable.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Alternating row colors
+            BookingTable.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255);
+            BookingTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+            // Row headers settings
+            BookingTable.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            BookingTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            BookingTable.RowHeadersVisible = true;
+            BookingTable.RowHeadersWidth = 30;
+
+            // Optional: Apply dynamic styling based on data
+            foreach (DataGridViewRow row in BookingTable.Rows)
+            {
+                if (row.Cells["Status"].Value.ToString() == "Completed")
+                {
+                    row.DefaultCellStyle.BackColor = Color.Green;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
         }
 
         private void PopulateDataGrid()
@@ -41,43 +97,75 @@ namespace A2_Coursework
             }
         }
 
-
-        private void BookingTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void populateBookingInfo()
         {
+            
+
+            listbQuantity.Items.Clear();
+            listbServices.Items.Clear();
             if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
             {
                 txtbBookingID.Text = BookingTable.SelectedRows[0].Cells[0].Value.ToString();
                 txtbCustID.Text = BookingTable.SelectedRows[0].Cells[1].Value.ToString();
-                txtbID.Text = BookingTable.SelectedRows[0].Cells[0].Value.ToString();
                 Customer customer = Customer.GetCustomer(Convert.ToInt32(txtbCustID.Text));
                 txtbEmail.Text = customer.Email;
                 txtbFirstname.Text = customer.Firstname;
                 txtbSurname.Text = customer.Surname;
 
+                ServiceID.Clear();
+                ServiceID = BookingDAL.RetrieveBookingRequestsbyID(Convert.ToInt32(txtbBookingID.Text));
 
-                var result = BookingDAL.RetrieveBookingRequestsbyID(Convert.ToInt32(txtbBookingID.Text));
-
-                List<int> ServiceID = result.ServiceID;
-                List<int> Quantity = result.Quantity;
                 List<string> services = new();
 
 
-                foreach (int id in ServiceID)
+                foreach (Service service in ServiceID)
                 {
-                    if (Booking.BookingRequests.ContainsKey(id))
+                    listbQuantity.Items.Add(service.Quantity);
+                    if (Booking.BookingRequests.ContainsKey(service.ServiceID))
                     {
-                        services.Add(Booking.BookingRequests[id]);
+                        services.Add(Booking.BookingRequests[service.ServiceID]);
                     }
                 }
                 listbServices.Items.Clear();
                 listbServices.Items.AddRange(services.ToArray());
-                listbQuantity.Items.Clear();
-                foreach (var quantity in Quantity)
-                {
-                    listbQuantity.Items.Add(quantity);
-                }
-
             }
+        }
+        private void populateBookingInfo(int index)
+        {
+            BookingTable.CurrentCell = BookingTable.Rows[index].Cells[0];
+
+            listbQuantity.Items.Clear();
+            listbServices.Items.Clear();
+            if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
+            {
+                txtbBookingID.Text = BookingTable.SelectedRows[0].Cells[0].Value.ToString();
+                txtbCustID.Text = BookingTable.SelectedRows[0].Cells[1].Value.ToString();
+                Customer customer = Customer.GetCustomer(Convert.ToInt32(txtbCustID.Text));
+                txtbEmail.Text = customer.Email;
+                txtbFirstname.Text = customer.Firstname;
+                txtbSurname.Text = customer.Surname;
+
+                ServiceID.Clear();
+                ServiceID = BookingDAL.RetrieveBookingRequestsbyID(Convert.ToInt32(txtbBookingID.Text));
+
+                List<string> services = new();
+
+
+                foreach (Service service in ServiceID)
+                {
+                    listbQuantity.Items.Add(service.Quantity);
+                    if (Booking.BookingRequests.ContainsKey(service.ServiceID))
+                    {
+                        services.Add(Booking.BookingRequests[service.ServiceID]);
+                    }
+                }
+                listbServices.Items.Clear();
+                listbServices.Items.AddRange(services.ToArray());
+            }
+        }
+        private void BookingTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            populateBookingInfo();
         }
 
         private void pcbDate_Click(object sender, EventArgs e)
@@ -98,47 +186,71 @@ namespace A2_Coursework
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            BookingTable.Rows.Clear();
-            pnlFilter.Visible = false;
-            string date = dtPicker.Value.ToString("dd/MM/yyyy");
-            int id = 0;
+            try
+            {
+                BookingTable.Rows.Clear();
+                pnlFilter.Visible = false;
+                string date = dtPicker.Value.ToString("dd/MM/yyyy");
+                int id = 0;
 
-            if (!string.IsNullOrEmpty(txtbCustomerID.Text))
-            {
-                id = Convert.ToInt32(txtbCustomerID.Text);
-            }
-            List<Booking> Filteredbookings = new();
-            if ((!cbDate.Checked) && (!cbIgnoreID.Checked))
-            {
-                Filteredbookings = Booking.GetBookings(date, id);
-                foreach (Booking booking in Filteredbookings)
+                if (!string.IsNullOrEmpty(txtbCustomerID.Text))
                 {
-                    BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.BookingDate);
+                    id = Convert.ToInt32(txtbCustomerID.Text);
                 }
-            }
-            if ((cbDate.Checked) && (cbIgnoreID.Checked))
-            {
-                MessageBox.Show("Enter valid filter options");
-            }
-            if (cbDate.Checked)
-            {
-                List<Booking> bookings = Booking.GetBookings(id);
-                foreach (Booking booking in bookings)
+                List<Booking> Filteredbookings = new();
+                if ((!cbDate.Checked) && (!cbIgnoreID.Checked))
                 {
-                    BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.BookingDate);
+                    Filteredbookings = Booking.GetBookings(date, id);
+                    foreach (Booking booking in Filteredbookings)
+                    {
+                        BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.customer.Firstname,
+                         booking.customer.Surname, booking.BookingDate);
+                    }
                 }
+                if ((cbDate.Checked) && (cbIgnoreID.Checked))
+                {
+                    MessageBox.Show("Enter valid filter options");
+                }
+                if (cbDate.Checked)
+                {
+                    List<Booking> bookings = Booking.GetBookings(id);
+                    foreach (Booking booking in bookings)
+                    {
+                        BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.customer.Firstname,
+                         booking.customer.Surname, booking.BookingDate);
+                    }
+                }
+
+                if (cbIgnoreID.Checked)
+                {
+                    Filteredbookings = Booking.GetBookings(date);
+                    foreach (Booking booking in Filteredbookings)
+                    {
+                        BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.customer.Firstname,
+                         booking.customer.Surname, booking.BookingDate);
+                    }
+                }
+
+                date = dtPicker.Value.ToString("dd/MM/yyyy");
+            }
+            catch(FormatException ex)
+            {
+                MessageBox.Show("Invaid data entered!");
+                PopulateDataGrid();
+            }
+            catch(CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                PopulateDataGrid();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+                PopulateDataGrid();
+
             }
 
-            if (cbIgnoreID.Checked)
-            {
-                Filteredbookings = Booking.GetBookings(date);
-                foreach (Booking booking in Filteredbookings)
-                {
-                    BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.BookingDate);
-                }
-            }
-
-            date = dtPicker.Value.ToString("dd/MM/yyyy");
 
 
         }
@@ -153,7 +265,12 @@ namespace A2_Coursework
             if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
             {
                 BookingDAL.DeleteBooking(Convert.ToInt32(BookingTable.SelectedRows[0].Cells[0].Value));
+                MessageBox.Show("Booking deleted!");
                 PopulateDataGrid();
+            }
+            else
+            {
+                MessageBox.Show("Select a row!");
             }
         }
 
@@ -162,16 +279,21 @@ namespace A2_Coursework
             int selectedIndex = listbQuantity.SelectedIndex;
             if (selectedIndex != -1)
             {
+                //  txtbService.Visible = true;
+                // cmbEditQuantity.Visible = true;
                 string selectedValue = listbQuantity.Items[selectedIndex].ToString();
-                //cmbEditQuantity.Text = selectedValue;
 
                 string value = listbServices.Items[selectedIndex].ToString();
                 txtbService.Text = value;
 
                 listbServices.ClearSelected();
-                //listbServices.SetSelected(selectedIndex, true);
 
 
+            }
+            else
+            {
+                // txtbService.Visible = false;
+                // cmbEditQuantity.Visible = false;
             }
         }
 
@@ -180,6 +302,8 @@ namespace A2_Coursework
             int selectedIndex = listbServices.SelectedIndex;
             if (selectedIndex != -1)
             {
+                // txtbService.Visible = true;
+                // cmbEditQuantity.Visible = true;
                 string selectedValue = listbServices.Items[selectedIndex].ToString();
                 txtbService.Text = selectedValue;
 
@@ -187,12 +311,16 @@ namespace A2_Coursework
                 cmbEditQuantity.Text = value;
 
                 listbQuantity.ClearSelected();
-                //listbQuantity.SetSelected(selectedIndex, true);
 
+            }
+            else
+            {
+                // cmbEditQuantity.Visible = false;
+                // txtbService.Visible = false;
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void save()
         {
             int bookingId = 0;
             int quantity = 0;
@@ -201,48 +329,169 @@ namespace A2_Coursework
             {
                 bookingId = Convert.ToInt32(txtbBookingID.Text);
                 quantity = Convert.ToInt32(Convert.ToInt32(cmbEditQuantity.Text));
+                if (quantity < 1)
+                {
+                    throw new CustomException("Invalid quantity!");
+                }
                 requestNo = BookingDAL.GetRequestNo(bookingId,
                 Booking.Booking_Requests[txtbService.Text]);
+                pnlHideAddServices.Visible = true;
+
+                Booking.editRequest(requestNo, bookingId, Booking.Booking_Requests[txtbService.Text]
+                , quantity);
+                MessageBox.Show("Request updated!");
             }
             catch (CustomException ex)
             {
-                MessageBox.Show("Invalid details entered");
+                MessageBox.Show(ex.Message.ToString());
             }
+            catch (System.FormatException ex)
+            {
+                MessageBox.Show("No changes were applied");
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
 
-
-            Booking.editRequest(requestNo, bookingId, Booking.Booking_Requests[txtbService.Text]
-                , quantity);
-            MessageBox.Show("Request updated!");
-
+            }
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            save();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            foreach (var key in Booking.Booking_Requests.Keys)
+            selectedRowIndex = BookingTable.CurrentRow.Index;
+            List<string> services = new();
+            try
             {
-                if (key.ToLower() == cmbService.Text.ToLower())
+                bool serviceExists = false;
+
+                foreach (Service service in ServiceID)
                 {
-                    if (Validation.ValidService(cmbService.Text))
+                    listbQuantity.Items.Add(service.Quantity);
+                    if (Booking.BookingRequests.ContainsKey(service.ServiceID))
                     {
-                        BookingDAL.addRequest(Booking.Booking_Requests[key], Convert.ToInt32(txtbBookingID.Text),
-                       Convert.ToInt32(cmbQuantity.Text));
-                        PopulateDataGrid();
-                        MessageBox.Show("Service added!");
+                        services.Add(Booking.BookingRequests[service.ServiceID]);
+                    }
+                }
+                //foreach (var key in Booking.Booking_Requests.Keys)
+                //{
+                    
+                        if (services.Contains(cmbService.Text))
+                        {
+                            serviceExists = true;
+                            //break;
+                        }
+                    
+               // }
+
+                if (serviceExists)
+                {
+                    int index = BookingTable.CurrentRow.Index;
+
+                    populateBookingInfo(index);
+
+                    throw new CustomException("This service already exists in the booking!");
+                }
+                else
+                {
+                    int quantity = Convert.ToInt32(cmbQuantity.Text);
+                    if ((quantity < 1) || (quantity > 15))
+                    {
+                        throw new CustomException("Invalid quantity. Quantity must be between 1 and 15");
                     }
                     else
                     {
-                        MessageBox.Show("Enter a valid Service");
-                    }
+                        if (Validation.ValidService(cmbService.Text))
+                        {
+                            BookingDAL.addRequest(Booking.Booking_Requests[cmbService.Text], Convert.ToInt32(txtbBookingID.Text), quantity);
+                            BookingTable.CurrentCell = BookingTable.Rows[selectedRowIndex].Cells[0];
+                            int index = BookingTable.CurrentRow.Index;
+                            PopulateDataGrid();
+                            populateBookingInfo(index);
 
+                            pnlHideAddServices.Visible = true;
+                            MessageBox.Show("Service added!");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Enter a valid Service");
+                        }
+                    }
                 }
             }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+            }
+
 
         }
 
         private void btnOpenFilter_Click(object sender, EventArgs e)
         {
-            pnlFilter.Visible = true;
+            if (pnlFilter.Visible)
+            {
+                pnlFilter.Visible = false;
+                pnlHideAddServices.Visible = false;
+
+            }
+            else
+            {
+                pnlFilter.Visible = true;
+                pnlHideAddServices.Visible = false;
+
+
+            }
+        }
+
+        private void BookingTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if ((pnlHideAddServices.Visible))
+            {
+                pnlFilter.Visible = false;
+                pnlHideAddServices.Visible = false;
+
+            }
+            else
+            {
+                if ((BookingTable.SelectedRows.Count < 1))
+                {
+                    MessageBox.Show("Select a row");
+                }
+                else
+                {
+                    pnlHideAddServices.Visible = true;
+                    pnlFilter.Visible = false;
+                }
+            }
+
+        }
+
+        private void btnSaveQuantity_Click(object sender, EventArgs e)
+        {
+            save();
+            PopulateDataGrid();
+            populateBookingInfo();
+        }
+
+        private void txtbService_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

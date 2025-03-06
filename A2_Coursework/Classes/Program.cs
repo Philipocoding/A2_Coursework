@@ -20,6 +20,7 @@ namespace A2_Coursework.Classes
             string dataDirectoryPath = Path.GetDirectoryName(debugPath);
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectoryPath);
             Booking.PopulateDictionary();
+            OrderStock.populateDictionary();
             Booking.Populate_Dictionary();
             Stock.PopulateList();
         }

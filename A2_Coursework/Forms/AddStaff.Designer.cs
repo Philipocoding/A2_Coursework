@@ -42,18 +42,23 @@
             cmbGender = new ComboBox();
             cmbTeamNo = new ComboBox();
             panel1 = new Panel();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSubmit
             // 
+            btnSubmit.BackColor = Color.FromArgb(50, 55, 59);
+            btnSubmit.FlatAppearance.BorderSize = 0;
+            btnSubmit.FlatStyle = FlatStyle.Flat;
             btnSubmit.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSubmit.Location = new Point(442, 414);
+            btnSubmit.ForeColor = Color.White;
+            btnSubmit.Location = new Point(373, 387);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(133, 52);
-            btnSubmit.TabIndex = 0;
+            btnSubmit.TabIndex = 6;
             btnSubmit.Text = "Submit";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // txtbFirstname
@@ -62,7 +67,7 @@
             txtbFirstname.Location = new Point(293, 49);
             txtbFirstname.Name = "txtbFirstname";
             txtbFirstname.Size = new Size(282, 50);
-            txtbFirstname.TabIndex = 1;
+            txtbFirstname.TabIndex = 0;
             // 
             // Firstname
             // 
@@ -90,13 +95,13 @@
             txtbAge.Location = new Point(293, 160);
             txtbAge.Name = "txtbAge";
             txtbAge.Size = new Size(282, 50);
-            txtbAge.TabIndex = 3;
+            txtbAge.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 24F);
-            label3.Location = new Point(197, 160);
+            label3.Location = new Point(197, 163);
             label3.Name = "label3";
             label3.Size = new Size(77, 45);
             label3.TabIndex = 6;
@@ -108,13 +113,13 @@
             txtbSurname.Location = new Point(293, 105);
             txtbSurname.Name = "txtbSurname";
             txtbSurname.Size = new Size(282, 50);
-            txtbSurname.TabIndex = 5;
+            txtbSurname.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 24F);
-            label4.Location = new Point(150, 219);
+            label4.Location = new Point(150, 215);
             label4.Name = "label4";
             label4.Size = new Size(124, 45);
             label4.TabIndex = 8;
@@ -124,7 +129,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 24F);
-            label5.Location = new Point(109, 278);
+            label5.Location = new Point(109, 270);
             label5.Name = "label5";
             label5.Size = new Size(178, 45);
             label5.TabIndex = 10;
@@ -133,16 +138,16 @@
             // txtbHourlyRate
             // 
             txtbHourlyRate.Font = new Font("Segoe UI", 24F);
-            txtbHourlyRate.Location = new Point(293, 275);
+            txtbHourlyRate.Location = new Point(293, 270);
             txtbHourlyRate.Name = "txtbHourlyRate";
             txtbHourlyRate.Size = new Size(282, 50);
-            txtbHourlyRate.TabIndex = 9;
+            txtbHourlyRate.TabIndex = 4;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 24F);
-            label6.Location = new Point(72, 336);
+            label6.Location = new Point(72, 325);
             label6.Name = "label6";
             label6.Size = new Size(215, 45);
             label6.TabIndex = 12;
@@ -153,24 +158,24 @@
             cmbGender.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
-            cmbGender.Location = new Point(293, 221);
+            cmbGender.Location = new Point(293, 216);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(282, 48);
-            cmbGender.TabIndex = 13;
+            cmbGender.TabIndex = 3;
             // 
             // cmbTeamNo
             // 
             cmbTeamNo.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbTeamNo.FormattingEnabled = true;
             cmbTeamNo.Items.AddRange(new object[] { "1", "2", "3" });
-            cmbTeamNo.Location = new Point(293, 333);
+            cmbTeamNo.Location = new Point(293, 326);
             cmbTeamNo.Name = "cmbTeamNo";
             cmbTeamNo.Size = new Size(282, 48);
-            cmbTeamNo.TabIndex = 14;
+            cmbTeamNo.TabIndex = 5;
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.None;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(txtbFirstname);
             panel1.Controls.Add(cmbTeamNo);
             panel1.Controls.Add(btnSubmit);
@@ -184,10 +189,20 @@
             panel1.Controls.Add(txtbSurname);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(272, 105);
+            panel1.Location = new Point(201, 117);
             panel1.Name = "panel1";
-            panel1.Size = new Size(657, 478);
+            panel1.Size = new Size(918, 651);
             panel1.TabIndex = 15;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold);
+            label1.Location = new Point(417, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(424, 65);
+            label1.TabIndex = 15;
+            label1.Text = "Add staff member";
             // 
             // AddStaff
             // 
@@ -195,12 +210,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.FromArgb(109, 132, 156);
-            ClientSize = new Size(1197, 756);
+            ClientSize = new Size(1339, 971);
+            Controls.Add(label1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "AddStaff";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -219,5 +237,6 @@
         private ComboBox cmbGender;
         private ComboBox cmbTeamNo;
         private Panel panel1;
+        private Label label1;
     }
 }

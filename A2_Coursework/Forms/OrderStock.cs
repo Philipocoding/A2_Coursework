@@ -19,9 +19,61 @@ namespace A2_Coursework
         {
             InitializeComponent();
         }
+        void StyleDatagridview()
+        {
+            foreach (DataGridViewColumn col in dataGridStockOrder.Columns)
+            {
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            dataGridStockOrder.BorderStyle = BorderStyle.Fixed3D;
+            dataGridStockOrder.BackgroundColor = Color.White;
+            dataGridStockOrder.GridColor = Color.LightGray;
+            dataGridStockOrder.EnableHeadersVisualStyles = false;
+            dataGridStockOrder.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridStockOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridStockOrder.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            dataGridStockOrder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 144, 255);
+            dataGridStockOrder.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridStockOrder.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 4, 6, 4);
+            dataGridStockOrder.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            dataGridStockOrder.DefaultCellStyle.BackColor = Color.White;
+            dataGridStockOrder.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridStockOrder.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
+            dataGridStockOrder.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridStockOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255);
+            dataGridStockOrder.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridStockOrder.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridStockOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridStockOrder.RowHeadersVisible = true;
+            dataGridStockOrder.RowHeadersWidth = 30;
+        }
+        public static void populateDictionary()
+        {
+            List<Stock> items = StockDAL.GetEquipmentInfo();
+            foreach (Stock item in items)
+            {
+                //cmbStock.Items.Add(item.StockName);
+                if (!Stock.StockIds.ContainsKey(item.StockID))
+                {
+                    Stock.StockIds.Add(item.StockID, item);
+                }
 
+                if (!Stock.StockIDs.ContainsKey(item.StockName))
+                {
+                    Stock.StockIDs.Add(item.StockName, item);
+                }
+
+            }
+        }
         private void OrderStock_Load(object sender, EventArgs e)
         {
+            lblOrderStock.Text = "";
+            populateDictionary();
+            foreach (KeyValuePair<string, Stock> item in Stock.StockIDs)
+            {
+                cmbStock.Items.Add(item.Value.StockName);
+            }
+            StyleDatagridview();
             List<Stock> items = StockDAL.GetEquipmentInfo();
             foreach (Stock item in items)
             {
@@ -39,19 +91,19 @@ namespace A2_Coursework
                 }
 
             }
-            PopulateCustomDataGrid();
+            PopulateDataGridAllOrders();
 
 
 
         }
 
-        private void PopulateDataGridByDate()
+        private void PopulateDataGridByDate(string date)
         {
             dataGridStockOrder.Rows.Clear();
             List<Stock> orders = new();
             try
             {
-                orders = StockDAL.GetStockOrder(dtPickerOrderDate.Value.ToString("dd/MM/yyyy"));
+                orders = StockDAL.GetStockOrder(date);
                 foreach (Stock item in orders)
                 {
                     double cost = StockDAL.GetStockPrice(item.StockID);
@@ -90,22 +142,37 @@ namespace A2_Coursework
         private void PopulateCustomDataGrid()
         {
             DateTime today = DateTime.Now.AddDays(-1);
-
+            int counter = 0;
 
             dataGridStockOrder.Rows.Clear();
             try
             {
                 List<Stock> allorders = StockDAL.GetAllOrders();
-                foreach (Stock item in allorders)
+                if (allorders.Count > 0)
                 {
-                    DateTime itemDate = DateTime.Parse(item.OrderDate);
-                    if (itemDate >= today)
+                    foreach (Stock item in allorders)
                     {
-                        double cost = StockDAL.GetStockPrice(item.StockID);
-                        dataGridStockOrder.Rows.Add(item.StockID.ToString(), Stock.StockIds[item.StockID].StockName.ToString(),
-                            item.Quantity.ToString(), itemDate.ToString("dd/MM/yyyy"), cost.ToString());
+                        DateTime itemDate = DateTime.Parse(item.OrderDate);
+                        if (item.OrderReceived == 0)
+                        {
+                            double cost = StockDAL.GetStockPrice(item.StockID);
+                            dataGridStockOrder.Rows.Add(item.StockID.ToString(), Stock.StockIds[item.StockID].StockName.ToString(),
+                                item.Quantity.ToString(), itemDate.ToString("dd/MM/yyyy"), cost.ToString());
+                        }
+                        else { counter = counter + 1; }
+                    }
+                    if (counter == allorders.Count)
+                    {
+                        throw new CustomException("No pending orders!");
+
                     }
                 }
+                else
+                {
+                    throw new CustomException("No pending orders!");
+
+                }
+
             }
             catch (CustomException ex)
             {
@@ -122,45 +189,59 @@ namespace A2_Coursework
                 string item = cmbStock.Text;
                 int quantity = Convert.ToInt32(cmbQuantity.Text);
 
-               
-                
-                    DateTime itemDate = DateTime.Parse(date);
-                    if (itemDate >= today)
-                    {
-                        Stock newStock = new Stock();
-                        StockDAL.AddStockOrder(Stock.StockIDs[item].StockID, quantity, date);
-                        MessageBox.Show("Order Created");
-                        cmbStock.Text = "";
-                        cmbQuantity.Text = "";
-                        PopulateCustomDataGrid();
-                    }
-                    else
-                    {
-                        MessageBox.Show("A delivery will take at least 3 days to arrive!");
-                    }
+                if (quantity < 1)
+                {
+                    throw new CustomException("Invalid quantity");
+                }
 
-                
+                DateTime itemDate = DateTime.Parse(date);
+                if (itemDate >= today)
+                {
+                    Stock newStock = new Stock();
+                    StockDAL.AddStockOrder(Stock.StockIDs[item].StockID, quantity, date);
+                    MessageBox.Show("Order Created");
+                    cmbStock.Text = "";
+                    cmbQuantity.Text = "";
+                    PopulateCustomDataGrid();
+                }
+                else
+                {
+                    MessageBox.Show("A delivery will take at least 3 days to arrive!");
+                }
+
+
 
             }
             catch (CustomException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+            }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            pnlEdit.Visible = false;
+
             try
             {
-                if (dataGridStockOrder.SelectedRows.Count < 1)
+                if (dataGridStockOrder.SelectedRows[0].Cells[0].Value is null)
                 {
-                    throw new CustomException("Error: No row selected");
+                    throw new CustomException("Select a record with data!");
                 }
-                int id = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value.ToString());
-                string orderDate = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
-                StockDAL.DeleteStockOrder(id, orderDate);
-                PopulateCustomDataGrid();
-                MessageBox.Show("Order deleted!");
+                else
+                {
+                    int id = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value.ToString());
+                    string orderDate = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
+                    StockDAL.DeleteStockOrder(id, orderDate);
+                    PopulateDataGridAllOrders();
+                    MessageBox.Show("Order deleted!");
+                }
+                    
 
             }
             catch (CustomException ex)
@@ -171,22 +252,49 @@ namespace A2_Coursework
 
         private void btnViewOrders_Click(object sender, EventArgs e)
         {
+            pnlEdit.Visible = false;
+
             PopulateCustomDataGrid();
+            pnlDateFilter.Visible = false;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (pnlEdit.Visible)
+            {
+                lblOrderStock.Text = "";
+
+                pnlEdit.Visible = false;
+            }
+            else
+            {
+                lblOrderStock.Text = "Edit order";
+                pnlEdit.Visible = true;
+            }
             try
             {
-                pnlEdithide.Visible = false;
-                cmbStockEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[1].Value.ToString();
-                cmbQtyEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[2].Value.ToString();
-                cmbDTEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
-               // btnOrder.Text = "Save changes";
+                if (dataGridStockOrder.SelectedRows[0].Cells[0].Value is null)
+                {
+                    pnlEdit.Visible = false;
+
+                    throw new CustomException("Select a record with data!");
+                }
+                else
+                {
+                    //pnlEdit.Visible = true;
+                    cmbStockEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[1].Value.ToString();
+                    cmbQtyEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[2].Value.ToString();
+                    cmbDTEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
+                }
+
+
+            }
+            catch(CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
             catch (System.ArgumentOutOfRangeException ex)
             {
-                pnlEdithide.Visible = true;
                 MessageBox.Show("Select a row!");
             }
 
@@ -196,20 +304,46 @@ namespace A2_Coursework
 
         private void dataGridStockOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //cmbStock.Text = dataGridStockOrder.SelectedRows[0].Cells[1].Value.ToString();
-            //cmbQuantity.Text = dataGridStockOrder.SelectedRows[0].Cells[2].Value.ToString();
-            //dtPickerOrderDate.Text = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
+            try
+            {
+                if (dataGridStockOrder.SelectedRows.Count > 0)
+                {
+                    if (dataGridStockOrder.SelectedRows[0].Cells[0].Value is null)
+                    {
+                        throw new CustomException("Select a record with data!");
+                    }
+                    else
+                    {
+                        cmbStockEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[1].Value.ToString();
+                        cmbQtyEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[2].Value.ToString();
+                        cmbDTEdit.Text = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Select a record");
+                }
+
+            }
+            catch(CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch (System.ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row!");
+            }
         }
 
         private void btnViewAllOrders_Click(object sender, EventArgs e)
         {
+            pnlEdit.Visible = false;
+
             PopulateDataGridAllOrders();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PopulateDataGridByDate();
-        }
+
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
@@ -224,8 +358,92 @@ namespace A2_Coursework
             cmbQtyEdit.Text = "";
             cmbStockEdit.Text = "";
             PopulateDataGridAllOrders();
-            pnlEdithide.Visible = true;
+            pnlEdit.Visible = false;
 
+
+        }
+
+        private void btnMarkasReceived_Click(object sender, EventArgs e)
+        {
+            pnlEdit.Visible = false;
+
+            try
+            {
+                if (dataGridStockOrder.SelectedRows.Count < 1)
+                {
+                    throw new CustomException("Error: No row selected");
+                }
+                else
+                {
+                    StockDAL.AddStock(Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value),
+                        Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[2].Value));
+                    MessageBox.Show("Order received!");
+                    StockDAL.MarkOrderAsReceived(Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value),
+                        dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString());
+                    PopulateDataGridAllOrders();
+                }
+
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch(System.NullReferenceException ex)
+            {
+                MessageBox.Show("An error occurred");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lblOrderStock.Text = "";
+            pnlEdit.Visible = false;
+        }
+
+        private void pnlStockReorder_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnViewOrders_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFIlterByDate_Click(object sender, EventArgs e)
+        {
+            PopulateDataGridByDate(dtPickerFilter.Value.ToString("dd/MM/yyyy"));
+            pnlDateFilter.Visible = false;
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PopulateCustomDataGrid();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnlEdit.Visible = false;
+
+           if(pnlDateFilter.Visible)
+            {
+                pnlDateFilter.Visible = false;
+            }
+            else
+            {
+                pnlDateFilter.Visible = true;
+                pnlDateFilter.BringToFront();
+
+
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            PopulateDataGridAllOrders();
+            pnlDateFilter.Visible = false;
         }
     }
 }

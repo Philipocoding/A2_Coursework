@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,70 @@ namespace A2_Coursework.Classes
         public int Quantity { get; set; }
         public double Cost { get; set; }
         public string OrderDate { get; set; }
+        public int OrderReceived { get; set; }
+        public string SolutionDate { get; set; }
+        public string IssueID { get; set; }
+        public int IssueResolved { get; set; }
+
+
+
         public Stock() { }
         public static Dictionary<int, Stock> StockIds = new Dictionary<int, Stock>();
         public static Dictionary<string, Stock> StockIDs = new Dictionary<string, Stock>();
-        //public static Dictionary<int, int> StockForService = new Dictionary<int, int>();
         public static List<int> StockForService = new();
 
+        public Stock(int stockID, string stockNmae, int quantity, double cost)
+        {
+            StockID = stockID;
+            StockName = stockNmae;
+            Quantity = quantity;
+            Cost = cost;
+        }
+
+        public Stock(int stockID, int quantity, string orderdate)
+        {
+            StockID = stockID;
+            Quantity = quantity;
+            OrderDate = orderdate;
+        }
+        public static int GetIssueID(string issue)
+        {
+
+            switch (issue)
+            {
+                case "Broken":
+                    return 1;
+                case "Cracked":
+                    return 2;
+                case "Won't turn on":
+                    return 3;
+                case"Wrong item":
+                    return 4;
+                case"Poor quality":
+                    return 5;
+            }
+            return 0;
+        }
+        public static string GetIssueID(int issueID)
+        {
+
+            switch (issueID)
+            {
+                case 1:
+                    return "Broken";
+                case 2:
+                    return "Cracked";
+                case 3:
+                    return "Won't turn on";
+                case 4:
+                    return "Wrong item";
+                case 5:
+                    return "Poor quality";
+            }
+            return "";
+        }
+
+      
         public static void PopulateList()
         {
             StockForService.Add(2);
@@ -51,20 +110,48 @@ namespace A2_Coursework.Classes
             }
             return quantity;
         }
-
-        public Stock(int stockID, string stockNmae, int quantity, double cost)
+        public static List<Stock> RetrieveStockIssues()
         {
-            StockID = stockID;
-            StockName = stockNmae;
-            Quantity = quantity;
-            Cost = cost;
-        }
+            List<Stock> StockIssues = new List<Stock>();
 
-        public Stock(int stockID, int quantity,string orderdate)
-        {
-            StockID = stockID;
-            Quantity = quantity;
-            OrderDate = orderdate;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(BookingDAL.connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand GetStockIssues = new SqlCommand();
+
+                    GetStockIssues.Connection = connection;
+                    GetStockIssues.CommandType = System.Data.CommandType.StoredProcedure;
+                    GetStockIssues.CommandText = "RetrieveStockIssues";
+
+                    using (SqlDataReader reader = GetStockIssues.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Stock stock = new Stock();
+
+                            stock.StockID = Convert.ToInt32(reader["StockID"]);
+                            stock.Quantity = Convert.ToInt32(reader["Quantity"]);
+                            stock.IssueID = reader["IssueTypeID"].ToString();
+                            stock.SolutionDate = reader["SolutionDate"].ToString();
+                            stock.StockName = StockIds[stock.StockID].StockName.ToString();
+                            stock.IssueResolved = Convert.ToInt32(reader["IssueResolved"]);
+
+
+                            StockIssues.Add(stock);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            return StockIssues;
         }
+        
     }
 }

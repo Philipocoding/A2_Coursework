@@ -22,7 +22,8 @@ namespace A2_Coursework
         {
             try
             {
-                if (Convert.ToInt32(txtbHourlyRate.Text) > 50)
+                double rate = Convert.ToInt32(txtbHourlyRate.Text);
+                if ((rate > 50)||(rate < 6))
                 {
                     MessageBox.Show("Enter a valid hourly rate");
                 }

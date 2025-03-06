@@ -20,131 +20,44 @@ namespace A2_Coursework
         List<int> services = new List<int>();
         List<int> quantity = new List<int>();
 
-        bool windows = false;
-        bool Floors = false;
-        bool Doors = false;
-        bool Dusting = false;
-        bool Bathroom = false;
-        bool Carpet = false;
-        bool Curtains = false;
-        bool Vacuum = false;
-        bool KitchenApp = false;
-        bool DeepClean = false;
-        bool Furniture = false;
+        int windows = 0;
+        int Floors = 0;
+        int Doors = 0;
+        int Dusting = 0;
+        int Bathroom = 0;
+        int Carpet = 0;
+        int Curtains = 0;
+        int Vacuum = 0;
+        int KitchenApp = 0;
+        int DeepClean = 0;
+        int Furniture = 0;
 
-
-
-        private void btnWindows_Click(object sender, EventArgs e)
+        void StyleDataGridView()
         {
-            if (btnWindows.Font.Style.HasFlag(FontStyle.Bold))
+            foreach (DataGridViewColumn col in DataGridCustomers.Columns)
             {
-                btnWindows.Font = new Font(btnWindows.Font.FontFamily, btnWindows.Font.Size, FontStyle.Regular);
-                windows = false;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            else
-            {
-                btnWindows.Font = new Font(btnWindows.Font, FontStyle.Bold);
-                windows = true;
-            }
-
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DataGridCustomers.BorderStyle = BorderStyle.None;
+            DataGridCustomers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 222);
+            DataGridCustomers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DataGridCustomers.DefaultCellStyle.SelectionBackColor = Color.SeaGreen;
+            DataGridCustomers.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            DataGridCustomers.BackgroundColor = Color.FromArgb(11, 57, 102);
+            DataGridCustomers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            DataGridCustomers.EnableHeadersVisualStyles = false;
+            DataGridCustomers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.Font = new Font("MS Reference Sans Serif", 13);
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(11, 57, 102);
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
-        private void btnFloors_Click(object sender, EventArgs e)
-        {
-            if (btnFloors.Font.Style.HasFlag(FontStyle.Bold))
-            {
-                btnFloors.Font = new Font(btnFloors.Font.FontFamily, btnFloors.Font.Size, FontStyle.Regular);
-                Floors = false;
-            }
-            else
-            {
-                btnFloors.Font = new Font(btnFloors.Font, FontStyle.Bold);
-                Floors = true;
-            }
-        }
 
-        private void btnDoors_Click(object sender, EventArgs e)
-        {
-            if (btnDoors.Font.Style.HasFlag(FontStyle.Bold))
-            {
-                btnDoors.Font = new Font(btnDoors.Font.FontFamily, btnDoors.Font.Size, FontStyle.Regular);
-                Doors = false;
-            }
-            else
-            {
-                btnDoors.Font = new Font(btnDoors.Font, FontStyle.Bold);
-                Doors = true;
-            }
-        }
-
-        private void btnDusting_Click(object sender, EventArgs e)
-        {
-            if (btnDusting.Font.Style.HasFlag(FontStyle.Bold))
-            {
-                btnDusting.Font = new Font(btnDusting.Font.FontFamily, btnDusting.Font.Size, FontStyle.Regular);
-                Dusting = false;
-            }
-            else
-            {
-                btnDusting.Font = new Font(btnDusting.Font, FontStyle.Bold);
-                Dusting = true;
-            }
-        }
-
-        private void btnBathrooms_Click(object sender, EventArgs e)
-        {
-            if (btnBathrooms.Font.Style.HasFlag(FontStyle.Bold))
-            {
-                btnBathrooms.Font = new Font(btnBathrooms.Font.FontFamily, btnBathrooms.Font.Size, FontStyle.Regular);
-                Bathroom = false;
-            }
-            else
-            {
-                btnBathrooms.Font = new Font(btnBathrooms.Font, FontStyle.Bold);
-                Bathroom = true;
-            }
-        }
-
-        private void btnVacuuming_Click(object sender, EventArgs e)
-        {
-            if (btnCarpets.Font.Style.HasFlag(FontStyle.Bold))
-            {
-                btnCarpets.Font = new Font(btnCarpets.Font.FontFamily, btnCarpets.Font.Size, FontStyle.Regular);
-                Carpet = false;
-            }
-            else
-            {
-                btnCarpets.Font = new Font(btnCarpets.Font, FontStyle.Bold);
-                Carpet = true;
-            }
-        }
-
-        private void btnCurtains_Click(object sender, EventArgs e)
-        {
-            if (btnCurtains.Font.Style.HasFlag(FontStyle.Bold))
-            {
-                btnCurtains.Font = new Font(btnCurtains.Font.FontFamily, btnCarpets.Font.Size, FontStyle.Regular);
-                Curtains = false;
-            }
-            else
-            {
-                btnCurtains.Font = new Font(btnCurtains.Font, FontStyle.Bold);
-                Curtains = true;
-            }
-        }
 
         private void btnRoomVacuum_Click(object sender, EventArgs e)
         {
-            if (btnRoomVacuum.Font.Style.HasFlag(FontStyle.Bold))
-            {
-                btnRoomVacuum.Font = new Font(btnRoomVacuum.Font.FontFamily, btnRoomVacuum.Font.Size, FontStyle.Regular);
-                Vacuum = false;
-            }
-            else
-            {
-                btnRoomVacuum.Font = new Font(btnRoomVacuum.Font, FontStyle.Bold);
-                Vacuum = true;
-            }
+
         }
 
         private void AdjustDataGridViewSize()
@@ -178,88 +91,107 @@ namespace A2_Coursework
                 Math.Min(totalHeight, this.ClientSize.Height - 50) // Max height to fit form
             );
         }
-        private void StyleDataGrid()
+        void StyleDatagridview()
         {
-            DataGridCustomers.DefaultCellStyle.ForeColor = Color.Black; // Text color
-            DataGridCustomers.DefaultCellStyle.Font = new Font("Arial", 15); // Font and size
-
+            foreach (DataGridViewColumn col in DataGridCustomers.Columns)
+            {
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            DataGridCustomers.BorderStyle = BorderStyle.Fixed3D;
+            DataGridCustomers.BackgroundColor = Color.White;
+            DataGridCustomers.GridColor = Color.LightGray;
+            DataGridCustomers.EnableHeadersVisualStyles = false;
+            DataGridCustomers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 144, 255);
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DataGridCustomers.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 4, 6, 4);
+            DataGridCustomers.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            DataGridCustomers.DefaultCellStyle.BackColor = Color.White;
+            DataGridCustomers.DefaultCellStyle.ForeColor = Color.Black;
+            DataGridCustomers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
+            DataGridCustomers.DefaultCellStyle.SelectionForeColor = Color.White;
+            DataGridCustomers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255);
+            DataGridCustomers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DataGridCustomers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            DataGridCustomers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DataGridCustomers.RowHeadersVisible = true;
+            DataGridCustomers.RowHeadersWidth = 30;
         }
         private void NewBooking_Load(object sender, EventArgs e)
         {
+            StyleDatagridview();
+            PopulateDataGrid();
             AdjustDataGridViewSize();
-            windows = false;
-            Floors = false;
-            Doors = false;
-            Dusting = false;
-            Bathroom = false;
-            Carpet = false;
-            Curtains = false;
-            Vacuum = false;
-            KitchenApp = false;
-            DeepClean = false;
-            Furniture = false;
-
-
-
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            bool serviceAdded = false;
             dateChecker();
             int id = 0;
             try
             {
                 services.Clear();
                 quantity.Clear();
-                if (windows) { services.Add(1); quantity.Add(Convert.ToInt32(NumWindows.Value)); }
-                if (Floors) { services.Add(2); quantity.Add(Convert.ToInt32(NumFloors.Value)); }
-                if (Doors) { services.Add(3); quantity.Add(Convert.ToInt32(NumDoors.Value)); }
-                if (Dusting) { services.Add(4); quantity.Add(Convert.ToInt32(NumDusting.Value)); }
-                if (Bathroom) { services.Add(5); quantity.Add(Convert.ToInt32(NumBathroom.Value)); }
-                if (Carpet) { services.Add(6); quantity.Add(Convert.ToInt32(NumCarpets.Value)); }
-                if (Curtains) { services.Add(7); quantity.Add(Convert.ToInt32(NumCurtains.Value)); }
-                if (Vacuum) { services.Add(8); quantity.Add(Convert.ToInt32(NumFurniture.Value)); }
-                if (KitchenApp) { services.Add(2005); quantity.Add(Convert.ToInt32(NumKitchenApp.Value)); }
-                if (DeepClean) { services.Add(2006); quantity.Add(Convert.ToInt32(numUpDownDeepclean.Value)); }
-                if (Furniture) { services.Add(2007); quantity.Add(Convert.ToInt32(NumFurniture.Value)); }
+                if (windows > 0) { services.Add(1); quantity.Add(Convert.ToInt32(lblQtyOne.Text)); serviceAdded = true; }
+                if (Floors > 0) { services.Add(2); quantity.Add(Convert.ToInt32(lblQtyTwo.Text)); serviceAdded = true; }
+                if (Doors > 0) { services.Add(3); quantity.Add(Convert.ToInt32(lblQtyThree.Text)); serviceAdded = true; }
+                if (Dusting > 0) { services.Add(4); quantity.Add(Convert.ToInt32(lblQtyFour.Text)); serviceAdded = true; }
+                if (Bathroom > 0) { services.Add(5); quantity.Add(Convert.ToInt32(lblQtyFive.Text)); serviceAdded = true; }
+                if (Carpet > 0) { services.Add(6); quantity.Add(Convert.ToInt32(lblQtySix.Text)); serviceAdded = true; }
+                if (Curtains > 0) { services.Add(7); quantity.Add(Convert.ToInt32(lblQtySeven.Text)); serviceAdded = true; }
+                if (KitchenApp > 0) { services.Add(2005); quantity.Add(Convert.ToInt32(lblQtySeven.Text)); serviceAdded = true; }
+                if (DeepClean > 0) { services.Add(2006); quantity.Add(Convert.ToInt32(lblQtyNine.Text)); serviceAdded = true; }
+                if (Furniture > 0) { services.Add(2007); quantity.Add(Convert.ToInt32(lblQtyTen.Text)); serviceAdded = true; }
 
-                string dateString = dtPickerDOB_.Value.ToString("yyyy-MM-dd");
+                string dateString = dtPickerDOB_.Value.ToString("yyyy/MM/dd");
                 if (Validation.ValidGender(cmbGender_.Text))
                 {
                     if ((Validation.isNullorEmpty(txtbFirstname_.Text) && (Validation.isNullorEmpty(txtbFirstname_.Text))
                    && (Validation.isNullorEmpty(txtbEmail_.Text)) && (Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (Validation.isNullorEmpty(txtbAddressOne_.Text)
                    && (Validation.isNullorEmpty(dtPickerDOB_.Text)))))
                     {
-                        if (!lblDateError.Visible)
+                        if (serviceAdded)
                         {
-                            if (!ExistingCustomer.Checked)
+                            if (!lblDateError.Visible)
                             {
-                                id = BookingDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
-                     txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
-                                MessageBox.Show("Customer Added");
+                                if (!ExistingCustomer.Checked)
+                                {
+                                    id = BookingDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
+                         txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
+                                    MessageBox.Show("Customer Added");
+                                }
+                                else
+                                {
+                                    id = Convert.ToInt32(txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
+                     .Cells["clmCustomerID"].Value.ToString());
+                                }
+
+
+                                string theDate = BookingDate.Value.ToShortDateString();
+                                if (BookingDAL.NewBooking(id, theDate, services, quantity))
+                                {
+                                    MessageBox.Show("Booking confirmed");
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No availability for this date");
+                                }
                             }
                             else
                             {
-                                id = Convert.ToInt32(txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
-                 .Cells["clmCustomerID"].Value.ToString());
+                                MessageBox.Show("Invalid booking date!");
                             }
 
-
-                            string theDate = BookingDate.Value.ToShortDateString();
-                            if (BookingDAL.NewBooking(id, theDate, services, quantity))
-                            {
-                                MessageBox.Show("Booking confirmed");
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("No availability for this date");
-                            }
                         }
                         else
                         {
-                            MessageBox.Show("Invalid booking date!");
+                            throw new CustomException("Select a service!");
                         }
+
                     }
                     else
                     {
@@ -269,11 +201,16 @@ namespace A2_Coursework
                 }
                 else
                 {
-                    MessageBox.Show("Enter valid gender");
+                    MessageBox.Show("Customer details invalid");
                 }
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
             catch (Exception ex)
             {
+                MessageBox.Show("An error occurred!");
 
             }
 
@@ -294,14 +231,19 @@ namespace A2_Coursework
             if (ExistingCustomer.Checked)
             {
                 PopulateDataGrid();
-                pnlDatabase.Visible = true;
+                pnlCustomerDetails.Visible = true;
+                DataGridCustomers.Visible = true;
+                // pnlBookingDetails.Visible = false;
                 pnlAddCustomer.Visible = false;
 
             }
             else
             {
                 pnlAddCustomer.Visible = true;
-                pnlDatabase.Visible = false;
+                DataGridCustomers.Visible = false;
+                // pnlBookingDetails.Visible = true;
+                pnlAddCustomer.Visible = true;
+
                 txtbFirstname_.Text = "";
                 txtbSurname_.Text = "";
                 txtbEmail_.Text = "";
@@ -349,6 +291,7 @@ namespace A2_Coursework
         {
             if (!pnlBookingDetails.Visible)
             {
+                //pnlCustomerDetails.Visible = false;
                 pnlAddCustomer.Visible = false;
                 pnlDatabase.Visible = false;
                 pnlBookingDetails.Visible = true;
@@ -367,10 +310,14 @@ namespace A2_Coursework
                 if (ExistingCustomer.Checked)
                 {
                     pnlDatabase.Visible = true;
+                    pnlAddCustomer.Visible = false;
+
                 }
                 else
                 {
                     pnlDatabase.Visible = false;
+                    pnlAddCustomer.Visible = true;
+
                 }
             }
         }
@@ -425,45 +372,250 @@ namespace A2_Coursework
             }
         }
 
-        private void btnKitchenApp_Click(object sender, EventArgs e)
+
+
+
+
+
+
+        private void trackBar5_Scroll(object sender, EventArgs e)
         {
-            if (btnKitchenApp.Font.Style.HasFlag(FontStyle.Bold))
+
+            Floors = trackBar5.Value;
+            lblQtyTwo.Text = trackBar5.Value.ToString();
+        }
+
+        private void trackBar7_Scroll(object sender, EventArgs e)
+        {
+            lblQtyFour.Text = trackBar7.Value.ToString();
+            Dusting = trackBar7.Value;
+
+        }
+
+        private void trackBar8_Scroll(object sender, EventArgs e)
+        {
+            KitchenApp = trackBar8.Value;
+            lblQtyFive.Text = trackBar8.Value.ToString();
+
+        }
+
+        private void trackBar4_Scroll(object sender, EventArgs e)
+        {
+            Bathroom = trackBar4.Value;
+            lblQuantySIX.Text = trackBar4.Value.ToString();
+
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            Carpet = trackBar3.Value;
+            lblQtySeven.Text = trackBar3.Value.ToString();
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            Curtains = trackBar1.Value;
+            lblQtyEight.Text = trackBar1.Value.ToString();
+
+        }
+
+        private void trackBar9_Scroll(object sender, EventArgs e)
+        {
+            Furniture = trackBar9.Value;
+            lblQtyNine.Text = trackBar9.Value.ToString();
+
+        }
+
+        private void trackBar10_Scroll(object sender, EventArgs e)
+        {
+            DeepClean = trackBar10.Value;
+            lblQtyTen.Text = trackBar10.Value.ToString();
+
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            lblQtyOne.Text = trackBar2.Value.ToString();
+            windows = trackBar2.Value;
+        }
+
+        private void trackBar6_Scroll(object sender, EventArgs e)
+        {
+            Doors = trackBar6.Value;
+            lblQtyThree.Text = trackBar6.Value.ToString();
+        }
+        private void Visibility()
+        {
+            InfoOne.Visible = false;
+            InfoTwo.Visible = false;
+            InfoThree.Visible = false;
+            InfoFOur.Visible = false;
+            InfoFive.Visible = false;
+            InfoSix.Visible = false;
+            InfoSeven.Visible = false;
+            InfoEight.Visible = false;
+            InfoNine.Visible = false;
+            InfoTen.Visible = false;
+        }
+        private void pcbInfoOne_Click(object sender, EventArgs e)
+        {
+            if (InfoOne.Visible)
             {
-                btnKitchenApp.Font = new Font(btnKitchenApp.Font.FontFamily, btnKitchenApp.Font.Size, FontStyle.Regular);
-                KitchenApp = false;
+                InfoOne.Visible = false;
+
             }
             else
             {
-                btnKitchenApp.Font = new Font(btnKitchenApp.Font, FontStyle.Bold);
-                KitchenApp = true;
+                Visibility();
+                InfoOne.Visible = true;
+
             }
         }
 
-        private void btndeepClean_Click(object sender, EventArgs e)
+        private void pcbInfoTwo_Click(object sender, EventArgs e)
         {
-            if (btndeepClean.Font.Style.HasFlag(FontStyle.Bold))
+            if (InfoTwo.Visible)
             {
-                btndeepClean.Font = new Font(btndeepClean.Font.FontFamily, btndeepClean.Font.Size, FontStyle.Regular);
-                DeepClean = false;
+                InfoTwo.Visible = false;
+
             }
             else
             {
-                btndeepClean.Font = new Font(btndeepClean.Font, FontStyle.Bold);
-                DeepClean = true;
+                Visibility();
+
+                InfoTwo.Visible = true;
+
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pcbInfoThree_Click(object sender, EventArgs e)
         {
-            if (btnFurniture.Font.Style.HasFlag(FontStyle.Bold))
+            if (InfoThree.Visible)
             {
-                btnFurniture.Font = new Font(btnFurniture.Font.FontFamily, btnFurniture.Font.Size, FontStyle.Regular);
-                Furniture = false;
+                Visibility();
+                InfoThree.Visible = false;
+
             }
             else
             {
-                btnFurniture.Font = new Font(btnFurniture.Font, FontStyle.Bold);
-                Furniture = true;
+                Visibility();
+
+                InfoThree.Visible = true;
+
+            }
+        }
+
+        private void pcbInfoFour_Click(object sender, EventArgs e)
+        {
+            if (InfoFOur.Visible)
+            {
+                Visibility();
+                InfoFOur.Visible = false;
+
+            }
+            else
+            {
+                Visibility();
+
+                InfoFOur.Visible = true;
+
+            }
+        }
+
+        private void pcbInfoFive_Click(object sender, EventArgs e)
+        {
+            if (InfoFive.Visible)
+            {
+                InfoFive.Visible = false;
+
+            }
+            else
+            {
+                Visibility();
+
+                InfoFive.Visible = true;
+
+            }
+        }
+
+        private void pcbInfoSix_Click(object sender, EventArgs e)
+        {
+            if (InfoSix.Visible)
+            {
+                InfoSix.Visible = false;
+
+            }
+            else
+            {
+                Visibility();
+
+                InfoSix.Visible = true;
+
+            }
+        }
+
+        private void pcbInfoSeven_Click(object sender, EventArgs e)
+        {
+            if (InfoSeven.Visible)
+            {
+                InfoSeven.Visible = false;
+
+            }
+            else
+            {
+                Visibility();
+
+                InfoSeven.Visible = true;
+
+            }
+        }
+
+        private void pcbInfoEight_Click(object sender, EventArgs e)
+        {
+            if (InfoEight.Visible)
+            {
+                InfoEight.Visible = false;
+
+            }
+            else
+            {
+                Visibility();
+
+                InfoEight.Visible = true;
+
+            }
+        }
+
+        private void pcbInfoNine_Click(object sender, EventArgs e)
+        {
+            if (InfoNine.Visible)
+            {
+                InfoNine.Visible = false;
+
+            }
+            else
+            {
+                Visibility();
+
+                InfoNine.Visible = true;
+
+            }
+        }
+
+        private void pcbInfoTen_Click(object sender, EventArgs e)
+        {
+            if (InfoTen.Visible)
+            {
+                InfoTen.Visible = false;
+
+            }
+            else
+            {
+                Visibility();
+
+                InfoTen.Visible = true;
+
             }
         }
     }

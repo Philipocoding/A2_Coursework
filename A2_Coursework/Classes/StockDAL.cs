@@ -14,6 +14,61 @@ namespace A2_Coursework.Classes
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
 
+        public static void StockIssueResolved(int id, string date)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand IssueResolved = new SqlCommand();
+                    IssueResolved.Connection = connection;
+
+                    IssueResolved.CommandType = CommandType.StoredProcedure;
+                    IssueResolved.CommandText = "StockIssueResolved";
+                    IssueResolved.Parameters.Add(new SqlParameter("@StockID", id));
+                    IssueResolved.Parameters.Add(new SqlParameter("@SolutionDate", date));
+                    IssueResolved.ExecuteNonQuery();
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
+
+        public static void StockIssue(int id, int quantity, int IssueTypeID, string solutionDate)
+        {
+            if(IssueTypeID == 0)
+            {
+                throw new CustomException("Not a valid type of issue");
+            }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand ReportIssue = new SqlCommand();
+                    ReportIssue.Connection = connection;
+
+                    ReportIssue.CommandType = CommandType.StoredProcedure;
+                    ReportIssue.CommandText = "ReportStockIssue";
+                    ReportIssue.Parameters.Add(new SqlParameter("@StockID", id));
+                    ReportIssue.Parameters.Add(new SqlParameter("@Quantity", quantity));
+                    ReportIssue.Parameters.Add(new SqlParameter("@IssueTypeID", IssueTypeID));
+                    ReportIssue.Parameters.Add(new SqlParameter("@SolutionDate", solutionDate));
+
+
+                    ReportIssue.ExecuteNonQuery();
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
         public static List<Stock> GetStockOrder(string bookingDate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -42,8 +97,6 @@ namespace A2_Coursework.Classes
                            stockList.Add(stock);
                         }
                     }
-
-
                 }
                 catch (CustomException ex)
                 {
@@ -102,6 +155,8 @@ namespace A2_Coursework.Classes
                             stock.StockID = Convert.ToInt32(reader["StockID"]);
                             stock.Quantity = Convert.ToInt32(reader["Quantity"]);
                             stock.OrderDate = reader["OrderDate"].ToString();
+                            stock.OrderReceived = Convert.ToInt32(reader["OrderReceived"]);
+
 
                             stockList.Add(stock);
                         }
@@ -139,6 +194,7 @@ namespace A2_Coursework.Classes
                             AddMoreStock.CommandText = "AddStock";
                             AddMoreStock.Parameters.Add(new SqlParameter("@StockID", item.StockID));
                             AddMoreStock.Parameters.Add(new SqlParameter("@Quantity", item.Quantity));
+
                             AddMoreStock.ExecuteNonQuery();
                         }
                         catch (CustomException ex)
@@ -149,6 +205,78 @@ namespace A2_Coursework.Classes
                 }
             }
             
+        }
+        public static void MarkOrderAsReceived(int id, string date)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand MarkReceived = new SqlCommand();
+                    MarkReceived.Connection = connection;
+
+                    MarkReceived.CommandType = CommandType.StoredProcedure;
+                    MarkReceived.CommandText = "MarkOrderAsReceived";
+                    MarkReceived.Parameters.Add(new SqlParameter("@StockID", id));
+                    MarkReceived.Parameters.Add(new SqlParameter("@OrderDate", date));
+                    MarkReceived.ExecuteNonQuery();
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
+
+        public static void MarkOrderAsReceived(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand MarkReceived = new SqlCommand();
+                    MarkReceived.Connection = connection;
+
+                    MarkReceived.CommandType = CommandType.StoredProcedure;
+                    MarkReceived.CommandText = "IssueResolved";
+                    MarkReceived.Parameters.Add(new SqlParameter("@StockID", id));
+                    MarkReceived.ExecuteNonQuery();
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
+        public static void AddStock(int id, int quantity)//, string date)
+        {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            connection.Open();
+
+                            SqlCommand AddMoreStock = new SqlCommand();
+                            AddMoreStock.Connection = connection;
+
+                            AddMoreStock.CommandType = CommandType.StoredProcedure;
+                            AddMoreStock.CommandText = "AddStock";
+                            AddMoreStock.Parameters.Add(new SqlParameter("@StockID", id));
+                            AddMoreStock.Parameters.Add(new SqlParameter("@Quantity", quantity));
+                           // AddMoreStock.Parameters.Add(new SqlParameter("@OrderDate", date));
+
+
+                            AddMoreStock.ExecuteNonQuery();
+                        }
+                        catch (CustomException ex)
+                        {
+
+                        }
+                    }
         }
         public static double GetStockPrice(int id)
         {
@@ -217,7 +345,7 @@ namespace A2_Coursework.Classes
             }
         }
 
-        public static List<Stock> GetEquipmentInfo()//string bookingDate)
+        public static List<Stock> GetEquipmentInfo()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

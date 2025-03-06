@@ -19,19 +19,46 @@ namespace A2_Coursework
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
-
+        void StyleDataGridView()
+        {
+            foreach (DataGridViewColumn col in DataGridStaff.Columns)
+            {
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            DataGridStaff.BorderStyle = BorderStyle.Fixed3D;
+            DataGridStaff.BackgroundColor = Color.White;
+            DataGridStaff.GridColor = Color.LightGray;
+            DataGridStaff.EnableHeadersVisualStyles = false;
+            DataGridStaff.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            DataGridStaff.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DataGridStaff.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            DataGridStaff.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 144, 255);
+            DataGridStaff.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DataGridStaff.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 4, 6, 4);
+            DataGridStaff.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            DataGridStaff.DefaultCellStyle.BackColor = Color.White;
+            DataGridStaff.DefaultCellStyle.ForeColor = Color.Black;
+            DataGridStaff.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
+            DataGridStaff.DefaultCellStyle.SelectionForeColor = Color.White;
+            DataGridStaff.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255);
+            DataGridStaff.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DataGridStaff.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            DataGridStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DataGridStaff.RowHeadersVisible = true;
+            DataGridStaff.RowHeadersWidth = 30;
+        }
         private void ViewStaffMembers_Load(object sender, EventArgs e)
         {
+            StyleDataGridView();
             try
             {
                 PopulateDataGrid();
-                pnlDetails.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading form: " + ex.Message);
             }
-           
+
         }
 
 
@@ -50,31 +77,135 @@ namespace A2_Coursework
 
         private void DataGridStaff_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            pnlDetails.Visible = true;
-            txtbFirstname.Text = DataGridStaff.SelectedRows[0].Cells["clmFirstname"].Value.ToString();
-            txtbSurname.Text = DataGridStaff.SelectedRows[0].Cells["clmSurname"].Value.ToString();
-            txtbAge.Text = DataGridStaff.SelectedRows[0].Cells["clmAge"].Value.ToString();
-            txtbGender.Text = DataGridStaff.SelectedRows[0].Cells["clmGender"].Value.ToString();
-            txtbTeamNo.Text = DataGridStaff.SelectedRows[0].Cells["clmTeamNo"].Value.ToString();
-            txtbHourlyRate.Text = DataGridStaff.SelectedRows[0].Cells["clmHourlyRate"].Value.ToString();
+            try
+            {
+                if (DataGridStaff.SelectedRows[0].Cells[0].Value is null)
+                {
+                    MessageBox.Show("Select a rcord with data");
+
+                }
+                else
+                {
+                    txtbFirstname.Text = DataGridStaff.SelectedRows[0].Cells["clmFirstname"].Value.ToString();
+                    txtbSurname.Text = DataGridStaff.SelectedRows[0].Cells["clmSurname"].Value.ToString();
+                    txtbAge.Text = DataGridStaff.SelectedRows[0].Cells["clmAge"].Value.ToString();
+                    txtbGender.Text = DataGridStaff.SelectedRows[0].Cells["clmGender"].Value.ToString();
+                    cmbTeamNo.Text = DataGridStaff.SelectedRows[0].Cells["clmTeamNo"].Value.ToString();
+                    txtbHourlyRate.Text = DataGridStaff.SelectedRows[0].Cells["clmHourlyRate"].Value.ToString();
+                }
+
+            }
+            catch (System.NullReferenceException ex)
+            {
+                MessageBox.Show("Select a rcord with data");
+            }
+
 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells["clmStaffID"].Value);
-            BookingDAL.DeleteStaffMember(id);
-            PopulateDataGrid();
-            pnlDetails.Visible = false;
+
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells["clmStaffID"].Value);
-            BookingDAL.EditStaff(id, txtbFirstname.Text, txtbSurname.Text, Convert.ToInt32(txtbAge.Text), txtbGender.Text, 
-                Convert.ToInt32(txtbHourlyRate.Text), Convert.ToInt32(txtbTeamNo.Text));
-            PopulateDataGrid();
-            pnlDetails.Visible = false;
+            try
+            {
+                int teamNo = Convert.ToInt32(cmbTeamNo.Text);
+                if ((teamNo > 3) || (teamNo < 1))
+                {
+                    MessageBox.Show("Invalid team number");
+                }
+                else
+                {
+                    id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells["clmStaffID"].Value);
+                    BookingDAL.EditStaff(id, txtbFirstname.Text, txtbSurname.Text, Convert.ToInt32(txtbAge.Text), txtbGender.Text,
+                        Convert.ToInt32(txtbHourlyRate.Text), teamNo);
+                    PopulateDataGrid();
+                    pnlDetails.Visible = false;
+                }
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (System.FormatException ex)
+            {
+                MessageBox.Show("Invalid data has been entered");
+
+            }
+
+
+        }
+
+        private void btnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            if ((DataGridStaff.SelectedRows.Count > 0) && (DataGridStaff.SelectedRows.Count < 2))
+            {
+                try
+                {
+                    id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells[0].Value);
+                    BookingDAL.DeleteStaffMember(id);
+                    PopulateDataGrid();
+                    MessageBox.Show("Staff member deleted!");
+                    pnlDetails.Visible = false;
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select a record!");
+            }
+
+        }
+
+        private void btnDeleteStaffMember_Click(object sender, EventArgs e)
+        {
+            if ((DataGridStaff.SelectedRows.Count > 0) && (DataGridStaff.SelectedRows.Count < 2))
+            {
+                if (pnlDetails.Visible)
+                {
+                    pnlDetails.Visible = false;
+
+                }
+                else
+                {
+                    if (DataGridStaff.SelectedRows[0].Cells[0].Value is null)
+                    {
+                        MessageBox.Show("Select a rcord with data");
+                        pnlDetails.Visible = false;
+
+                    }
+                    else
+                    {
+                        pnlDetails.Visible = true;
+                        txtbFirstname.Text = DataGridStaff.SelectedRows[0].Cells["clmFirstname"].Value.ToString();
+                        txtbSurname.Text = DataGridStaff.SelectedRows[0].Cells["clmSurname"].Value.ToString();
+                        txtbAge.Text = DataGridStaff.SelectedRows[0].Cells["clmAge"].Value.ToString();
+                        txtbGender.Text = DataGridStaff.SelectedRows[0].Cells["clmGender"].Value.ToString();
+                        cmbTeamNo.Text = DataGridStaff.SelectedRows[0].Cells["clmTeamNo"].Value.ToString();
+                        txtbHourlyRate.Text = DataGridStaff.SelectedRows[0].Cells["clmHourlyRate"].Value.ToString();
+                    }
+                    
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select a record!");
+            }
+
+
+        }
+
+        private void DataGridStaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
