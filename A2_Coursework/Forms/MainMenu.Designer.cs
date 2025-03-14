@@ -81,6 +81,7 @@
             label1 = new Label();
             pictureBox9 = new PictureBox();
             pnlChildForm = new FlowLayoutPanel();
+            btnStockLevels = new Button();
             panel1.SuspendLayout();
             pnlReportSubMenu.SuspendLayout();
             panel6.SuspendLayout();
@@ -139,7 +140,7 @@
             btnSchedule.ForeColor = Color.Transparent;
             btnSchedule.Image = Properties.Resources.calendar;
             btnSchedule.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSchedule.Location = new Point(0, 960);
+            btnSchedule.Location = new Point(0, 992);
             btnSchedule.Name = "btnSchedule";
             btnSchedule.Size = new Size(254, 56);
             btnSchedule.TabIndex = 13;
@@ -156,7 +157,7 @@
             pnlReportSubMenu.Controls.Add(btnReportOne);
             pnlReportSubMenu.Controls.Add(pictureBox8);
             pnlReportSubMenu.Dock = DockStyle.Top;
-            pnlReportSubMenu.Location = new Point(0, 871);
+            pnlReportSubMenu.Location = new Point(0, 903);
             pnlReportSubMenu.Name = "pnlReportSubMenu";
             pnlReportSubMenu.Size = new Size(254, 89);
             pnlReportSubMenu.TabIndex = 12;
@@ -385,7 +386,7 @@
             button3.ForeColor = Color.Transparent;
             button3.Image = Properties.Resources.report__1_;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(0, 815);
+            button3.Location = new Point(0, 847);
             button3.Name = "button3";
             button3.Size = new Size(254, 56);
             button3.TabIndex = 11;
@@ -401,7 +402,7 @@
             pnlCustomerSUbMenu.Controls.Add(btnAddCustoemr);
             pnlCustomerSUbMenu.Controls.Add(pictureBox1);
             pnlCustomerSUbMenu.Dock = DockStyle.Top;
-            pnlCustomerSUbMenu.Location = new Point(0, 726);
+            pnlCustomerSUbMenu.Location = new Point(0, 758);
             pnlCustomerSUbMenu.Name = "pnlCustomerSUbMenu";
             pnlCustomerSUbMenu.Size = new Size(254, 89);
             pnlCustomerSUbMenu.TabIndex = 10;
@@ -613,7 +614,7 @@
             btnReport.ForeColor = Color.Transparent;
             btnReport.Image = Properties.Resources.customer;
             btnReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReport.Location = new Point(0, 670);
+            btnReport.Location = new Point(0, 702);
             btnReport.Name = "btnReport";
             btnReport.Size = new Size(254, 56);
             btnReport.TabIndex = 2;
@@ -627,7 +628,7 @@
             pnlSTaffSubMenu.Controls.Add(btnManageStaff);
             pnlSTaffSubMenu.Controls.Add(btnAddSTaff);
             pnlSTaffSubMenu.Dock = DockStyle.Top;
-            pnlSTaffSubMenu.Location = new Point(0, 577);
+            pnlSTaffSubMenu.Location = new Point(0, 609);
             pnlSTaffSubMenu.Name = "pnlSTaffSubMenu";
             pnlSTaffSubMenu.Size = new Size(254, 93);
             pnlSTaffSubMenu.TabIndex = 9;
@@ -678,7 +679,7 @@
             btnStaff.ForeColor = Color.Transparent;
             btnStaff.Image = Properties.Resources.id_card;
             btnStaff.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStaff.Location = new Point(0, 521);
+            btnStaff.Location = new Point(0, 553);
             btnStaff.Name = "btnStaff";
             btnStaff.Size = new Size(254, 56);
             btnStaff.TabIndex = 9;
@@ -689,12 +690,13 @@
             // pnlStockSubMenu
             // 
             pnlStockSubMenu.BackColor = Color.FromArgb(60, 145, 230);
+            pnlStockSubMenu.Controls.Add(btnStockLevels);
             pnlStockSubMenu.Controls.Add(btnManageSTock);
             pnlStockSubMenu.Controls.Add(btnOrderNewSTock);
             pnlStockSubMenu.Dock = DockStyle.Top;
-            pnlStockSubMenu.Location = new Point(0, 428);
+            pnlStockSubMenu.Location = new Point(0, 404);
             pnlStockSubMenu.Name = "pnlStockSubMenu";
-            pnlStockSubMenu.Size = new Size(254, 93);
+            pnlStockSubMenu.Size = new Size(254, 149);
             pnlStockSubMenu.TabIndex = 8;
             // 
             // btnManageSTock
@@ -710,7 +712,7 @@
             btnManageSTock.Padding = new Padding(55, 0, 0, 0);
             btnManageSTock.Size = new Size(254, 45);
             btnManageSTock.TabIndex = 1;
-            btnManageSTock.Text = "Manage Stock";
+            btnManageSTock.Text = "Stock issues";
             btnManageSTock.TextAlign = ContentAlignment.MiddleLeft;
             btnManageSTock.UseVisualStyleBackColor = false;
             btnManageSTock.Click += btnManageSTock_Click;
@@ -743,7 +745,7 @@
             btnStock.ForeColor = Color.Transparent;
             btnStock.Image = Properties.Resources.add;
             btnStock.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStock.Location = new Point(0, 372);
+            btnStock.Location = new Point(0, 348);
             btnStock.Name = "btnStock";
             btnStock.Size = new Size(254, 56);
             btnStock.TabIndex = 7;
@@ -758,7 +760,7 @@
             pnlBookingSubMenu.Controls.Add(btnNewBooking);
             pnlBookingSubMenu.Controls.Add(pcbInfo);
             pnlBookingSubMenu.Dock = DockStyle.Top;
-            pnlBookingSubMenu.Location = new Point(0, 283);
+            pnlBookingSubMenu.Location = new Point(0, 259);
             pnlBookingSubMenu.Name = "pnlBookingSubMenu";
             pnlBookingSubMenu.Size = new Size(254, 89);
             pnlBookingSubMenu.TabIndex = 1;
@@ -819,7 +821,7 @@
             btnBookings.ForeColor = Color.Transparent;
             btnBookings.Image = Properties.Resources.booking__1_;
             btnBookings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBookings.Location = new Point(0, 227);
+            btnBookings.Location = new Point(0, 203);
             btnBookings.Name = "btnBookings";
             btnBookings.Size = new Size(254, 56);
             btnBookings.TabIndex = 6;
@@ -837,7 +839,7 @@
             btnHome.ForeColor = Color.Transparent;
             btnHome.Image = Properties.Resources.home__1_;
             btnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHome.Location = new Point(0, 171);
+            btnHome.Location = new Point(0, 147);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(254, 56);
             btnHome.TabIndex = 1;
@@ -854,7 +856,7 @@
             pnlLogo.ForeColor = Color.FromArgb(11, 57, 72);
             pnlLogo.Location = new Point(0, 0);
             pnlLogo.Name = "pnlLogo";
-            pnlLogo.Size = new Size(254, 171);
+            pnlLogo.Size = new Size(254, 147);
             pnlLogo.TabIndex = 0;
             // 
             // label1
@@ -888,6 +890,24 @@
             pnlChildForm.Name = "pnlChildForm";
             pnlChildForm.Size = new Size(1213, 981);
             pnlChildForm.TabIndex = 0;
+            // 
+            // btnStockLevels
+            // 
+            btnStockLevels.BackColor = Color.FromArgb(60, 145, 230);
+            btnStockLevels.Dock = DockStyle.Top;
+            btnStockLevels.FlatAppearance.BorderSize = 0;
+            btnStockLevels.FlatStyle = FlatStyle.Flat;
+            btnStockLevels.Font = new Font("Segoe UI", 15F);
+            btnStockLevels.ForeColor = Color.Black;
+            btnStockLevels.Location = new Point(0, 90);
+            btnStockLevels.Name = "btnStockLevels";
+            btnStockLevels.Padding = new Padding(55, 0, 0, 0);
+            btnStockLevels.Size = new Size(254, 45);
+            btnStockLevels.TabIndex = 2;
+            btnStockLevels.Text = "Stock levels";
+            btnStockLevels.TextAlign = ContentAlignment.MiddleLeft;
+            btnStockLevels.UseVisualStyleBackColor = false;
+            btnStockLevels.Click += btnStockLevels_Click;
             // 
             // MainMenu
             // 
@@ -985,5 +1005,6 @@
         private PictureBox pictureBox9;
         private Button btnSchedule;
         private Label label1;
+        private Button btnStockLevels;
     }
 }

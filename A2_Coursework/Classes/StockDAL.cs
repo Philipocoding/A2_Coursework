@@ -14,6 +14,34 @@ namespace A2_Coursework.Classes
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
 
+        public static void AutoOrderStock(int StockID, int reordervalue, int quantity)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                Customer customer = new();
+
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand EditAutoOrder = new SqlCommand();
+                    EditAutoOrder.Connection = connection;
+
+                    EditAutoOrder.CommandType = CommandType.StoredProcedure;
+                    EditAutoOrder.CommandText = "EditAutoReorder";
+                    EditAutoOrder.Parameters.Add(new SqlParameter("@StockID", StockID));
+                    EditAutoOrder.Parameters.Add(new SqlParameter("@ReorderValue", reordervalue));
+                    EditAutoOrder.Parameters.Add(new SqlParameter("@Quantity", quantity));
+
+                    EditAutoOrder.ExecuteNonQuery();
+
+                }
+                catch (CustomException ex)
+                {
+
+                }
+            }
+        }
         public static void StockIssueResolved(int id, string date)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -370,6 +398,8 @@ namespace A2_Coursework.Classes
                             stock.StockName = reader["StockName"].ToString();
                             stock.Quantity = Convert.ToInt32(reader["Quantity"]);
                             stock.Cost = Convert.ToDouble(reader["Cost"]);
+                            stock.ReorderValue = Convert.ToInt32(reader["ReorderLevel"]);
+                            stock.ReorderQuantity = Convert.ToInt32(reader["ReorderQuantity"]);
 
                             stockList.Add(stock);
                         }

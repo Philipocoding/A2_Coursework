@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace A2_Coursework.Classes
         public string SolutionDate { get; set; }
         public string IssueID { get; set; }
         public int IssueResolved { get; set; }
+        public int ReorderValue { get; set; }
+        public int ReorderQuantity {  get; set; }
 
 
 
@@ -110,6 +113,7 @@ namespace A2_Coursework.Classes
             }
             return quantity;
         }
+        
         public static List<Stock> RetrieveStockIssues()
         {
             List<Stock> StockIssues = new List<Stock>();

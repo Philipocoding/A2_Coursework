@@ -659,11 +659,12 @@ namespace A2_Coursework.Classes
 
                         SqlCommand NewBookingRequests = new SqlCommand();
                         NewBookingRequests.Connection = connection;
-
+                        List<Stock> stockList = StockDAL.GetEquipmentInfo();
                         NewBookingRequests.CommandType = CommandType.StoredProcedure;
                         NewBookingRequests.CommandText = "NewBookingRequests";
                         for (int i = 0; i < ServiceID.Count; i++)
                         {
+                            
                             NewBookingRequests.Parameters.Clear();
                             NewBookingRequests.Parameters.Add(new SqlParameter("@BookingID", bookingID));
                             NewBookingRequests.Parameters.Add(new SqlParameter("@serviceID", ServiceID[i]));
@@ -680,11 +681,20 @@ namespace A2_Coursework.Classes
 
                         for (int i = 0; i < stockNeeded.Count; i++)
                         {
+                            
                             AddBookingEquipment.Parameters.Clear();
                             AddBookingEquipment.Parameters.Add(new SqlParameter("@BookingID", bookingID));
                             AddBookingEquipment.Parameters.Add(new SqlParameter("@StockID", stockNeeded[i]));
                             AddBookingEquipment.Parameters.Add(new SqlParameter("@Quantity", 2));
                             AddBookingEquipment.ExecuteNonQuery();
+                        }
+
+                        foreach (Stock stock in stockList)
+                        {
+                            if (stock.ReorderValue >= stock.Quantity)
+                            {
+                                StockDAL.AddStockOrder(stock.StockID, stock.ReorderQuantity, DateTime.Now.AddDays(2).ToString("dd/MM/yyyy"));
+                            }
                         }
                     }
                     else

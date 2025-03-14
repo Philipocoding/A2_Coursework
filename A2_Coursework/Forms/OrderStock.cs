@@ -375,12 +375,16 @@ namespace A2_Coursework
                 }
                 else
                 {
-                    StockDAL.AddStock(Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value),
-                        Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[2].Value));
-                    MessageBox.Show("Order received!");
-                    StockDAL.MarkOrderAsReceived(Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value),
-                        dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString());
+                    int id = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value);
+                    int quantity = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[2].Value);
+                    StockDAL.AddStock(id, quantity);
+
+                    int ID = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value);
+                    string date = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
+                    StockDAL.MarkOrderAsReceived(ID,date);
                     PopulateDataGridAllOrders();
+                    MessageBox.Show("Order received!");
+
                 }
 
             }
@@ -389,6 +393,10 @@ namespace A2_Coursework
                 MessageBox.Show(ex.Message);
             }
             catch(System.NullReferenceException ex)
+            {
+                MessageBox.Show("An error occurred");
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("An error occurred");
             }

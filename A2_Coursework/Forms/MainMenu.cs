@@ -129,7 +129,7 @@ namespace A2_Coursework
 
         private void btnManageSTock_Click(object sender, EventArgs e)
         {
-            openChildForm(new ViewStockLevels());
+            openChildForm(new StockIssues());
             HideSubMenu();
         }
 
@@ -208,6 +208,12 @@ namespace A2_Coursework
         private void pictureBox9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnStockLevels_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewStockLevels());
+            HideSubMenu();
         }
     }
 }

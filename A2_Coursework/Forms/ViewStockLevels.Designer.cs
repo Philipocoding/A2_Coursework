@@ -43,16 +43,16 @@
             clmStockName = new DataGridViewTextBoxColumn();
             clmQuantity = new DataGridViewTextBoxColumn();
             clmStatus = new DataGridViewTextBoxColumn();
+            clmReorderQuantity = new DataGridViewTextBoxColumn();
+            clmReorderValue = new DataGridViewTextBoxColumn();
             clmCost = new DataGridViewTextBoxColumn();
             btnAutoOrder = new Button();
             cmbStock = new ComboBox();
             pnlReorder = new Panel();
             btnconfirm = new Button();
             label3 = new Label();
-            cmbReorderLevel = new ComboBox();
             label2 = new Label();
             label1 = new Label();
-            cmbQuantity = new ComboBox();
             btnReorderStock = new Button();
             button1 = new Button();
             button2 = new Button();
@@ -61,12 +61,12 @@
             label7 = new Label();
             btnConfirmIssue = new Button();
             label4 = new Label();
-            panel1 = new Panel();
             cmbIsueDescription = new ComboBox();
             label5 = new Label();
             label6 = new Label();
             cmbQuantityIssue = new ComboBox();
             cmbStockIssue = new ComboBox();
+            panel1 = new Panel();
             DataGridStockIssues = new DataGridView();
             clmStockIDIssue = new DataGridViewTextBoxColumn();
             cmStockNameIssue = new DataGridViewTextBoxColumn();
@@ -84,6 +84,8 @@
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
+            txtbQuantity = new TextBox();
+            txtbReorderLevel = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridStock).BeginInit();
             pnlReorder.SuspendLayout();
             pnlReportIssue.SuspendLayout();
@@ -94,10 +96,10 @@
             // dataGridStock
             // 
             dataGridStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridStock.Columns.AddRange(new DataGridViewColumn[] { clmStockID, clmStockName, clmQuantity, clmStatus, clmCost });
+            dataGridStock.Columns.AddRange(new DataGridViewColumn[] { clmStockID, clmStockName, clmQuantity, clmStatus, clmReorderQuantity, clmReorderValue, clmCost });
             dataGridStock.Location = new Point(2, 187);
             dataGridStock.Name = "dataGridStock";
-            dataGridStock.Size = new Size(569, 349);
+            dataGridStock.Size = new Size(769, 349);
             dataGridStock.TabIndex = 0;
             // 
             // clmStockID
@@ -129,6 +131,16 @@
             clmStatus.DefaultCellStyle = dataGridViewCellStyle14;
             clmStatus.HeaderText = "Status";
             clmStatus.Name = "clmStatus";
+            // 
+            // clmReorderQuantity
+            // 
+            clmReorderQuantity.HeaderText = "Reorder Quantity";
+            clmReorderQuantity.Name = "clmReorderQuantity";
+            // 
+            // clmReorderValue
+            // 
+            clmReorderValue.HeaderText = "Reorder value";
+            clmReorderValue.Name = "clmReorderValue";
             // 
             // clmCost
             // 
@@ -163,12 +175,12 @@
             // 
             // pnlReorder
             // 
+            pnlReorder.Controls.Add(txtbReorderLevel);
+            pnlReorder.Controls.Add(txtbQuantity);
             pnlReorder.Controls.Add(btnconfirm);
             pnlReorder.Controls.Add(label3);
-            pnlReorder.Controls.Add(cmbReorderLevel);
             pnlReorder.Controls.Add(label2);
             pnlReorder.Controls.Add(label1);
-            pnlReorder.Controls.Add(cmbQuantity);
             pnlReorder.Controls.Add(cmbStock);
             pnlReorder.Location = new Point(37, 650);
             pnlReorder.Name = "pnlReorder";
@@ -201,16 +213,6 @@
             label3.TabIndex = 7;
             label3.Text = "Reorder quantity level";
             // 
-            // cmbReorderLevel
-            // 
-            cmbReorderLevel.Font = new Font("Segoe UI", 20F);
-            cmbReorderLevel.FormattingEnabled = true;
-            cmbReorderLevel.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
-            cmbReorderLevel.Location = new Point(285, 116);
-            cmbReorderLevel.Name = "cmbReorderLevel";
-            cmbReorderLevel.Size = new Size(150, 45);
-            cmbReorderLevel.TabIndex = 6;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -230,16 +232,6 @@
             label1.Size = new Size(80, 37);
             label1.TabIndex = 4;
             label1.Text = "Stock";
-            // 
-            // cmbQuantity
-            // 
-            cmbQuantity.Font = new Font("Segoe UI", 20F);
-            cmbQuantity.FormattingEnabled = true;
-            cmbQuantity.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
-            cmbQuantity.Location = new Point(285, 65);
-            cmbQuantity.Name = "cmbQuantity";
-            cmbQuantity.Size = new Size(150, 45);
-            cmbQuantity.TabIndex = 3;
             // 
             // btnReorderStock
             // 
@@ -274,7 +266,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 17.25F);
             button2.ForeColor = Color.Black;
-            button2.Location = new Point(600, 542);
+            button2.Location = new Point(733, 542);
             button2.Name = "button2";
             button2.Size = new Size(313, 52);
             button2.TabIndex = 9;
@@ -293,7 +285,7 @@
             pnlReportIssue.Controls.Add(label6);
             pnlReportIssue.Controls.Add(cmbQuantityIssue);
             pnlReportIssue.Controls.Add(cmbStockIssue);
-            pnlReportIssue.Location = new Point(489, 650);
+            pnlReportIssue.Location = new Point(622, 650);
             pnlReportIssue.Name = "pnlReportIssue";
             pnlReportIssue.Size = new Size(428, 290);
             pnlReportIssue.TabIndex = 10;
@@ -341,13 +333,6 @@
             label4.Size = new Size(75, 37);
             label4.TabIndex = 7;
             label4.Text = "Issue";
-            // 
-            // panel1
-            // 
-            panel1.Location = new Point(1268, 863);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(36, 221);
-            panel1.TabIndex = 20;
             // 
             // cmbIsueDescription
             // 
@@ -398,11 +383,18 @@
             cmbStockIssue.Size = new Size(175, 45);
             cmbStockIssue.TabIndex = 2;
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(1268, 863);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(36, 221);
+            panel1.TabIndex = 20;
+            // 
             // DataGridStockIssues
             // 
             DataGridStockIssues.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridStockIssues.Columns.AddRange(new DataGridViewColumn[] { clmStockIDIssue, cmStockNameIssue, clmQuantityIssue, clmIssue, clmResolutionDate });
-            DataGridStockIssues.Location = new Point(587, 187);
+            DataGridStockIssues.Location = new Point(777, 187);
             DataGridStockIssues.Name = "DataGridStockIssues";
             DataGridStockIssues.Size = new Size(623, 349);
             DataGridStockIssues.TabIndex = 11;
@@ -452,7 +444,7 @@
             STockIssueResolved.FlatStyle = FlatStyle.Flat;
             STockIssueResolved.Font = new Font("Microsoft Sans Serif", 17.25F);
             STockIssueResolved.ForeColor = Color.Black;
-            STockIssueResolved.Location = new Point(917, 597);
+            STockIssueResolved.Location = new Point(1050, 597);
             STockIssueResolved.Name = "STockIssueResolved";
             STockIssueResolved.Size = new Size(284, 52);
             STockIssueResolved.TabIndex = 12;
@@ -467,7 +459,7 @@
             btnPendingIssues.FlatStyle = FlatStyle.Flat;
             btnPendingIssues.Font = new Font("Microsoft Sans Serif", 17.25F);
             btnPendingIssues.ForeColor = Color.Black;
-            btnPendingIssues.Location = new Point(917, 542);
+            btnPendingIssues.Location = new Point(1050, 542);
             btnPendingIssues.Name = "btnPendingIssues";
             btnPendingIssues.Size = new Size(284, 52);
             btnPendingIssues.TabIndex = 14;
@@ -482,7 +474,7 @@
             btnIssueHistory.FlatStyle = FlatStyle.Flat;
             btnIssueHistory.Font = new Font("Microsoft Sans Serif", 17.25F);
             btnIssueHistory.ForeColor = Color.Black;
-            btnIssueHistory.Location = new Point(600, 597);
+            btnIssueHistory.Location = new Point(733, 597);
             btnIssueHistory.Name = "btnIssueHistory";
             btnIssueHistory.Size = new Size(313, 52);
             btnIssueHistory.TabIndex = 13;
@@ -496,7 +488,7 @@
             pnlIssueResolveConfirm.Controls.Add(label8);
             pnlIssueResolveConfirm.Controls.Add(btnKept);
             pnlIssueResolveConfirm.Controls.Add(btnReturned);
-            pnlIssueResolveConfirm.Location = new Point(926, 655);
+            pnlIssueResolveConfirm.Location = new Point(1059, 655);
             pnlIssueResolveConfirm.Name = "pnlIssueResolveConfirm";
             pnlIssueResolveConfirm.Size = new Size(275, 279);
             pnlIssueResolveConfirm.TabIndex = 15;
@@ -553,11 +545,11 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold);
-            label9.Location = new Point(489, 8);
+            label9.Location = new Point(516, 18);
             label9.Name = "label9";
-            label9.Size = new Size(340, 65);
+            label9.Size = new Size(297, 65);
             label9.TabIndex = 8;
-            label9.Text = "Manage Stock";
+            label9.Text = "Stock Levels";
             // 
             // label10
             // 
@@ -573,11 +565,27 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Symbol", 25F, FontStyle.Bold);
-            label11.Location = new Point(769, 138);
+            label11.Location = new Point(902, 138);
             label11.Name = "label11";
             label11.Size = new Size(211, 46);
             label11.TabIndex = 22;
             label11.Text = "Stock issues";
+            // 
+            // txtbQuantity
+            // 
+            txtbQuantity.Font = new Font("Segoe UI", 20F);
+            txtbQuantity.Location = new Point(285, 68);
+            txtbQuantity.Name = "txtbQuantity";
+            txtbQuantity.Size = new Size(150, 43);
+            txtbQuantity.TabIndex = 23;
+            // 
+            // txtbReorderLevel
+            // 
+            txtbReorderLevel.Font = new Font("Segoe UI", 20F);
+            txtbReorderLevel.Location = new Point(285, 119);
+            txtbReorderLevel.Name = "txtbReorderLevel";
+            txtbReorderLevel.Size = new Size(150, 43);
+            txtbReorderLevel.TabIndex = 24;
             // 
             // ViewStockLevels
             // 
@@ -625,10 +633,8 @@
         private ComboBox cmbStock;
         private Panel pnlReorder;
         private Label label3;
-        private ComboBox cmbReorderLevel;
         private Label label2;
         private Label label1;
-        private ComboBox cmbQuantity;
         private Button btnconfirm;
         private Button btnReorderStock;
         private Button button1;
@@ -656,15 +662,19 @@
         private Label label9;
         private Label label10;
         private Label label11;
-        private DataGridViewTextBoxColumn clmStockID;
-        private DataGridViewTextBoxColumn clmStockName;
-        private DataGridViewTextBoxColumn clmQuantity;
-        private DataGridViewTextBoxColumn clmStatus;
-        private DataGridViewTextBoxColumn clmCost;
         private DataGridViewTextBoxColumn clmStockIDIssue;
         private DataGridViewTextBoxColumn cmStockNameIssue;
         private DataGridViewTextBoxColumn clmQuantityIssue;
         private DataGridViewTextBoxColumn clmIssue;
         private DataGridViewTextBoxColumn clmResolutionDate;
+        private DataGridViewTextBoxColumn clmStockID;
+        private DataGridViewTextBoxColumn clmStockName;
+        private DataGridViewTextBoxColumn clmQuantity;
+        private DataGridViewTextBoxColumn clmStatus;
+        private DataGridViewTextBoxColumn clmReorderQuantity;
+        private DataGridViewTextBoxColumn clmReorderValue;
+        private DataGridViewTextBoxColumn clmCost;
+        private TextBox txtbReorderLevel;
+        private TextBox txtbQuantity;
     }
 }

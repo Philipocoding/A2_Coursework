@@ -45,11 +45,6 @@
             cbDate = new CheckBox();
             panel1 = new Panel();
             BookingTable = new DataGridView();
-            clmBookingID = new DataGridViewTextBoxColumn();
-            clmCustomerID = new DataGridViewTextBoxColumn();
-            clmFIrstname = new DataGridViewTextBoxColumn();
-            clmSurname = new DataGridViewTextBoxColumn();
-            clmDate = new DataGridViewTextBoxColumn();
             btnDelete = new Button();
             cmbEditQuantity = new ComboBox();
             label11 = new Label();
@@ -84,6 +79,11 @@
             panel2 = new Panel();
             label1 = new Label();
             panel3 = new Panel();
+            clmBookingID = new DataGridViewTextBoxColumn();
+            clmCustomerID = new DataGridViewTextBoxColumn();
+            clmFIrstname = new DataGridViewTextBoxColumn();
+            clmSurname = new DataGridViewTextBoxColumn();
+            clmDate = new DataGridViewTextBoxColumn();
             pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BookingTable).BeginInit();
             pnlHideAddServices.SuspendLayout();
@@ -228,50 +228,6 @@
             BookingTable.TabIndex = 0;
             BookingTable.CellClick += BookingTable_CellClick;
             BookingTable.CellContentClick += BookingTable_CellContentClick;
-            // 
-            // clmBookingID
-            // 
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmBookingID.DefaultCellStyle = dataGridViewCellStyle1;
-            clmBookingID.FillWeight = 10F;
-            clmBookingID.HeaderText = "Booking ID";
-            clmBookingID.Name = "clmBookingID";
-            clmBookingID.ReadOnly = true;
-            // 
-            // clmCustomerID
-            // 
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle2;
-            clmCustomerID.HeaderText = "Customer ID";
-            clmCustomerID.Name = "clmCustomerID";
-            clmCustomerID.ReadOnly = true;
-            // 
-            // clmFIrstname
-            // 
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmFIrstname.DefaultCellStyle = dataGridViewCellStyle3;
-            clmFIrstname.HeaderText = "FIrstname";
-            clmFIrstname.Name = "clmFIrstname";
-            clmFIrstname.ReadOnly = true;
-            clmFIrstname.Width = 150;
-            // 
-            // clmSurname
-            // 
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmSurname.DefaultCellStyle = dataGridViewCellStyle4;
-            clmSurname.HeaderText = "Surname";
-            clmSurname.Name = "clmSurname";
-            clmSurname.ReadOnly = true;
-            clmSurname.Width = 150;
-            // 
-            // clmDate
-            // 
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmDate.DefaultCellStyle = dataGridViewCellStyle5;
-            clmDate.HeaderText = "Date";
-            clmDate.Name = "clmDate";
-            clmDate.ReadOnly = true;
-            clmDate.Width = 200;
             // 
             // btnDelete
             // 
@@ -666,6 +622,50 @@
             panel3.Size = new Size(770, 423);
             panel3.TabIndex = 44;
             // 
+            // clmBookingID
+            // 
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmBookingID.DefaultCellStyle = dataGridViewCellStyle1;
+            clmBookingID.FillWeight = 10F;
+            clmBookingID.HeaderText = "Booking ID";
+            clmBookingID.Name = "clmBookingID";
+            clmBookingID.ReadOnly = true;
+            // 
+            // clmCustomerID
+            // 
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle2;
+            clmCustomerID.HeaderText = "Customer ID";
+            clmCustomerID.Name = "clmCustomerID";
+            clmCustomerID.ReadOnly = true;
+            // 
+            // clmFIrstname
+            // 
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmFIrstname.DefaultCellStyle = dataGridViewCellStyle3;
+            clmFIrstname.HeaderText = "FIrstname";
+            clmFIrstname.Name = "clmFIrstname";
+            clmFIrstname.ReadOnly = true;
+            clmFIrstname.Width = 150;
+            // 
+            // clmSurname
+            // 
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmSurname.DefaultCellStyle = dataGridViewCellStyle4;
+            clmSurname.HeaderText = "Surname";
+            clmSurname.Name = "clmSurname";
+            clmSurname.ReadOnly = true;
+            clmSurname.Width = 150;
+            // 
+            // clmDate
+            // 
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmDate.DefaultCellStyle = dataGridViewCellStyle5;
+            clmDate.HeaderText = "Date";
+            clmDate.Name = "clmDate";
+            clmDate.ReadOnly = true;
+            clmDate.Width = 200;
+            // 
             // ViewBookings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -735,14 +735,14 @@
         private Label label4;
         private TextBox txtbBookingID;
         private Label label3;
+        private Button btnSaveQuantity;
+        private Button btnServiceDelete;
+        private ComboBox cmbServiceDelete;
+        private Label label14;
         private DataGridViewTextBoxColumn clmBookingID;
         private DataGridViewTextBoxColumn clmCustomerID;
         private DataGridViewTextBoxColumn clmFIrstname;
         private DataGridViewTextBoxColumn clmSurname;
         private DataGridViewTextBoxColumn clmDate;
-        private Button btnSaveQuantity;
-        private Button btnServiceDelete;
-        private ComboBox cmbServiceDelete;
-        private Label label14;
     }
 }

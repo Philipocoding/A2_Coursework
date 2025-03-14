@@ -148,7 +148,7 @@ namespace A2_Coursework
                 }
                 double cost = StockDAL.GetStockPrice(item.StockID);
                 dataGridStock.Rows.Add(item.StockID.ToString(), Stock.StockIds[item.StockID].StockName.ToString(),
-                    item.Quantity.ToString(), status, cost.ToString());
+                    item.Quantity.ToString(), status,item.ReorderQuantity.ToString(), item.ReorderValue.ToString(), cost.ToString());
 
             }
 
@@ -202,10 +202,33 @@ namespace A2_Coursework
 
         private void btnconfirm_Click(object sender, EventArgs e)
         {
-            pnlReorder.Visible = false;
-            int quantity = Convert.ToInt32(cmbQuantity.Text);
-            string stock = cmbStock.Text;
-            int reorderValue = Convert.ToInt32(cmbReorderLevel.Text);
+            try
+            {
+                pnlReorder.Visible = false;
+                int quantity = Convert.ToInt32(txtbQuantity.Text);
+                if((quantity<1) || (quantity > 100))
+                {
+                    throw new CustomException("Invalid quantity");
+                }
+                string stock = cmbStock.Text;
+                int reorderValue = Convert.ToInt32(txtbReorderLevel.Text);
+                if ((reorderValue < 1) || (reorderValue > 400))
+                {
+                    throw new CustomException("Invalid reorder amount");
+                }
+                StockDAL.AutoOrderStock(Stock.StockIDs[cmbStock.Text].StockID, reorderValue, quantity);
+                MessageBox.Show("Automatic reorder created");
+
+            }
+            catch(CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AN error occurred");
+            }
+           
         }
 
         private void btnReorderStock_Click(object sender, EventArgs e)
