@@ -69,6 +69,7 @@ namespace A2_Coursework
         {
 
             lblOrderStock.Text = "";
+
             populateDictionary();
             foreach (KeyValuePair<string, Stock> item in Stock.StockIDs)
             {
