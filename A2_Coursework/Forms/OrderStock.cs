@@ -67,6 +67,7 @@ namespace A2_Coursework
         }
         private void OrderStock_Load(object sender, EventArgs e)
         {
+
             lblOrderStock.Text = "";
             populateDictionary();
             foreach (KeyValuePair<string, Stock> item in Stock.StockIDs)
