@@ -13,10 +13,24 @@ namespace A2_Coursework.Classes
     internal class ReportDAL
     {
 
-        
-        public static string connectionString = string.Format(
-     ConfigurationManager.ConnectionStrings["CourseWorkConnectionString"].ConnectionString,
-     Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+
+        //   public static string connectionString = string.Format(
+        //ConfigurationManager.ConnectionStrings["CourseWorkConnectionString"].ConnectionString,
+        //Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+
+        public static string connectionString = GetDatabaseConnectionString();
+        public static string GetDatabaseConnectionString()
+        {
+            string appPath = AppDomain.CurrentDomain.BaseDirectory;
+            string dbPath = Path.Combine(appPath, "Database", "Database.mdf"); // Adjust subfolder
+
+            if (!File.Exists(dbPath))
+                throw new FileNotFoundException($"Database not found at: {dbPath}");
+
+            return $@"Data Source=(LocalDB)\MSSQLLocalDB;
+             AttachDbFilename={dbPath};
+             Integrated Security=True;";
+        }
         public static (Customer,List<Booking>, List<Service>) GetCustomerAnalysis(int CustomerID)
         {
             List<Booking> bookings = new();
