@@ -13,7 +13,7 @@ namespace A2_Coursework.Classes
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Debug.Print($"{ReportDAL.connectionString}");
-            SetupDataDirectoryPath();
+            //SetupDataDirectoryPath();
             StockDAL.AddStock();
             Application.Run(new MainMenu());
         }

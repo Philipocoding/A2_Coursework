@@ -13,16 +13,10 @@ namespace A2_Coursework.Classes
     internal class ReportDAL
     {
 
-        //public static string connectionString = string.Format(
-        // ConfigurationManager.ConnectionStrings["CourseWorkConnectionString"].ConnectionStringDirectory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.FullName);
+        
         public static string connectionString = string.Format(
-        ConfigurationManager.
-        ConnectionStrings["CourseWorkConnectionString"].
-        ConnectionString,
-        Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName);
-        /// </summary>
-        /// <param name="CustomerID"></param>
-        /// <returns></returns>
+     ConfigurationManager.ConnectionStrings["CourseWorkConnectionString"].ConnectionString,
+     Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
         public static (Customer,List<Booking>, List<Service>) GetCustomerAnalysis(int CustomerID)
         {
             List<Booking> bookings = new();
