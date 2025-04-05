@@ -35,16 +35,24 @@ namespace A2_Coursework
                             && (Validation.isNullorEmpty(txtbEmail.Text)) && (Validation.isNullorEmpty(txtbAddressTwo.Text)) && (Validation.isNullorEmpty(txtbAddressOne.Text)
                             && (Validation.isNullorEmpty(cmbGender.Text)) && (Validation.isNullorEmpty(dtPicker.Text)))))
                         {
-                            BookingDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
-                            txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
-                            MessageBox.Show("Customer Added");
-                            txtbFirstname.Text = "";
-                            txtbSurname.Text = "";
-                            txtbEmail.Text = "";
-                            txtbAddressTwo.Text = "";
-                            txtbAddressOne.Text = "";
-                            cmbGender.Text = "";
-                            dtPicker.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                            if (Validation.IsValidEmail(txtbEmail.Text))
+                            {
+                                BookingDAL.NewCustomer(txtbFirstname.Text, txtbSurname.Text, dateString, cmbGender.Text,
+                           txtbAddressOne.Text, txtbAddressTwo.Text, txtbEmail.Text);
+                                MessageBox.Show("Customer Added");
+                                txtbFirstname.Text = "";
+                                txtbSurname.Text = "";
+                                txtbEmail.Text = "";
+                                txtbAddressTwo.Text = "";
+                                txtbAddressOne.Text = "";
+                                cmbGender.Text = "";
+                                dtPicker.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                            }
+                            else
+                            {
+                                throw new CustomException("Not a valid email format");
+                            }
+                           
                         }
                         else
                         {

@@ -79,7 +79,7 @@ namespace A2_Coursework
             List<Stock> items = StockDAL.GetEquipmentInfo();
             foreach (Stock item in items)
             {
-                cmbStock.Items.Add(item.StockName);
+                //cmbStock.Items.Add(item.StockName);
                 if (!Stock.StockIds.ContainsKey(item.StockID))
                 {
                     Stock.StockIds.Add(item.StockID, item);
@@ -349,19 +349,51 @@ namespace A2_Coursework
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            StockDAL.DeleteStockOrder(Stock.StockIDs[cmbStockEdit.Text].StockID,
-                        cmbDTEdit.Value.ToString("dd/MM/yyyy"));
-            StockDAL.AddStockOrder(Stock.StockIDs[cmbStockEdit.Text].StockID, Convert.ToInt32(cmbQtyEdit.Text),
-                 cmbDTEdit.Value.ToString("dd/MM/yyyy"));
-            btnOrder.Text = "Order";
-            MessageBox.Show("Order updated");
-            cmbStock.Text = "";
-            cmbQuantity.Text = "";
-            cmbQtyEdit.Text = "";
-            cmbStockEdit.Text = "";
-            PopulateDataGridAllOrders();
-            pnlEdit.Visible = false;
+            try
+            {
+                int stock = Convert.ToInt32(cmbStock.Text);
+                int quantity = Convert.ToInt32(cmbQtyEdit.Text);
+                string date = cmbDTEdit.Value.ToString("dd/MM/yyyy");
+                int stockId = Stock.StockIDs[cmbStockEdit.Text].StockID;
+                if (cmbDTEdit.Value < DateTime.Now)
+                {
+                    throw new CustomException("Enter a valid date");
+                }
+                else
+                {
+                    if ((quantity < 1) || (quantity > 100))
+                    {
+                        throw new CustomException("Invalid quantity");
 
+                    }
+                    else
+                    {
+                        StockDAL.DeleteStockOrder(Stock.StockIDs[cmbStockEdit.Text].StockID,
+                               cmbDTEdit.Value.ToString("dd/MM/yyyy"));
+                        StockDAL.AddStockOrder(stockId, quantity, date);
+                        btnOrder.Text = "Order";
+                        MessageBox.Show("Order updated");
+                        cmbStock.Text = "";
+                        cmbQuantity.Text = "";
+                        cmbQtyEdit.Text = "";
+                        cmbStockEdit.Text = "";
+                        PopulateDataGridAllOrders();
+                        pnlEdit.Visible = false;
+                    }
+                }
+               
+               
+
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+            }
+            
 
         }
 
@@ -371,21 +403,31 @@ namespace A2_Coursework
 
             try
             {
+
                 if (dataGridStockOrder.SelectedRows.Count < 1)
                 {
                     throw new CustomException("Error: No row selected");
                 }
                 else
                 {
-                    int id = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value);
-                    int quantity = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[2].Value);
-                    StockDAL.AddStock(id, quantity);
+                    if (DateTime.Now > Convert.ToDateTime(dataGridStockOrder.SelectedRows[0].Cells[3].Value))
+                    {
+                        throw new CustomException("Select a pending order.  This order has been received");
 
-                    int ID = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value);
-                    string date = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
-                    StockDAL.MarkOrderAsReceived(ID,date);
-                    PopulateDataGridAllOrders();
-                    MessageBox.Show("Order received!");
+                    }
+                    else
+                    {
+                        int id = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value);
+                        int quantity = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[2].Value);
+                        StockDAL.AddStock(id, quantity);
+
+                        int ID = Convert.ToInt32(dataGridStockOrder.SelectedRows[0].Cells[0].Value);
+                        string date = dataGridStockOrder.SelectedRows[0].Cells[3].Value.ToString();
+                        StockDAL.MarkOrderAsReceived(ID, date);
+                        PopulateDataGridAllOrders();
+                        MessageBox.Show("Order received!");
+
+                    }
 
                 }
 

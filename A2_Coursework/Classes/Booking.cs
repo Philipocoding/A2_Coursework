@@ -101,7 +101,7 @@ namespace A2_Coursework.Classes
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(BookingDAL.connectionString))
+                using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
                 {
                     connection.Open();
 
@@ -128,7 +128,7 @@ namespace A2_Coursework.Classes
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(BookingDAL.connectionString))
+                using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
                 {
                     connection.Open();
 
@@ -167,7 +167,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(BookingDAL.connectionString))
+                using (SqlConnection connection = new(ReportDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();
@@ -206,7 +206,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(BookingDAL.connectionString))
+                using (SqlConnection connection = new(ReportDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();
@@ -243,7 +243,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(BookingDAL.connectionString))
+                using (SqlConnection connection = new(ReportDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();
@@ -284,7 +284,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(BookingDAL.connectionString))
+                using (SqlConnection connection = new(ReportDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();
@@ -323,7 +323,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(BookingDAL.connectionString))
+                using (SqlConnection connection = new(ReportDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();
@@ -363,7 +363,7 @@ namespace A2_Coursework.Classes
             List<Booking> bookings = new List<Booking>();
             try
             {
-                using (SqlConnection connection = new(BookingDAL.connectionString))
+                using (SqlConnection connection = new(ReportDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand getBookings = new();

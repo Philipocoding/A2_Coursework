@@ -74,6 +74,14 @@ namespace A2_Coursework
                     staff.Age, staff.HourlyRate, staff.TeamNo);
             }
         }
+        private void PopulateDataGrid(Staff staff)
+        {
+            DataGridStaff.Rows.Clear();
+            {
+                DataGridStaff.Rows.Add(staff.StaffID, staff.Firstname, staff.Surname, staff.Gender,
+                    staff.Age, staff.HourlyRate, staff.TeamNo);
+            }
+        }
 
         private void DataGridStaff_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -113,6 +121,7 @@ namespace A2_Coursework
         {
             try
             {
+                int age = Convert.ToInt32(txtbAge.Text);
                 int teamNo = Convert.ToInt32(cmbTeamNo.Text);
                 if ((teamNo > 3) || (teamNo < 1))
                 {
@@ -120,11 +129,35 @@ namespace A2_Coursework
                 }
                 else
                 {
-                    id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells["clmStaffID"].Value);
-                    BookingDAL.EditStaff(id, txtbFirstname.Text, txtbSurname.Text, Convert.ToInt32(txtbAge.Text), txtbGender.Text,
-                        Convert.ToInt32(txtbHourlyRate.Text), teamNo);
-                    PopulateDataGrid();
-                    pnlDetails.Visible = false;
+                    if ((age < 16) || (age > 75))
+                    {
+                        throw new CustomException("Invalid age");
+                    }
+                    else
+                    {
+                        if (Validation.ValidGender(txtbGender.Text))
+                        {
+                            if ((Convert.ToInt32(txtbHourlyRate.Text) > 50) || (Convert.ToInt32(txtbHourlyRate.Text) < 5))
+                            {
+                                throw new CustomException("Invalid hourly rate!");
+                            }
+                            else
+                            {
+                                id = Convert.ToInt32(DataGridStaff.SelectedRows[0].Cells["clmStaffID"].Value);
+                                BookingDAL.EditStaff(id, txtbFirstname.Text, txtbSurname.Text, age, txtbGender.Text,
+                                    Convert.ToInt32(txtbHourlyRate.Text), teamNo);
+                                PopulateDataGrid();
+                                pnlDetails.Visible = false;
+                            }
+
+                        }
+                        else
+                        {
+                            throw new CustomException("Invalid gender!");
+                        }
+
+                    }
+
                 }
             }
             catch (CustomException ex)
@@ -135,6 +168,10 @@ namespace A2_Coursework
             {
                 MessageBox.Show("Invalid data has been entered");
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
             }
 
 
@@ -191,7 +228,7 @@ namespace A2_Coursework
                         cmbTeamNo.Text = DataGridStaff.SelectedRows[0].Cells["clmTeamNo"].Value.ToString();
                         txtbHourlyRate.Text = DataGridStaff.SelectedRows[0].Cells["clmHourlyRate"].Value.ToString();
                     }
-                    
+
 
                 }
             }
@@ -206,6 +243,66 @@ namespace A2_Coursework
         private void DataGridStaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(txtbSearch.Text);
+                PopulateDataGrid(BookingDAL.GetStaffmember(id));
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+                txtbSearch.Text = "Enter staff ID";
+
+            }
+        }
+
+        private void txtbSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtbSearch.Text == "Enter staff ID")
+            {
+                txtbSearch.Text = "";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PopulateDataGrid();
+            txtbSearch.Text = "Enter staff ID";
+        }
+
+        private void txtbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    int id = Convert.ToInt32(txtbSearch.Text);
+                    PopulateDataGrid(BookingDAL.GetStaffmember(id));
+                }
+                catch (CustomException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred");
+                    txtbSearch.Text = "Enter staff ID";
+
+                }
+            }
         }
     }
 }

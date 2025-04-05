@@ -18,22 +18,24 @@ using System.Reflection;
 using System.Reflection.Metadata;
 using System.Linq.Expressions;
 using System.Configuration;
+using System.Collections;
 
 namespace A2_Coursework.Classes
 {
     public static class BookingDAL
     {
-        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-        //public static string connectionString = string.Format(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString, Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.FullName);
+        //public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
 
-        //public static string connectionString = string.Format(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString, Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.Parent!.Parent!.FullName);
-        // public static string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString +
-        //Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.Parent!.Parent!.FullName;
-
+        //private static string connectionString = string.Format(
+        //ConfigurationManager.
+        //ConnectionStrings["CourseWorkConnectionString"].
+        //ConnectionString,
+        //Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName
+        //);
         public static void DeleteBookingService(int bookingID, int serviceID)
         {
-            using (SqlConnection connection = new(connectionString))
+            using (SqlConnection connection = new(ReportDAL.connectionString))
             {
               
                     connection.Open();
@@ -75,7 +77,7 @@ namespace A2_Coursework.Classes
             double cost = 0;
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
                 {
                     connection.Open();
                     SqlCommand GetStaff = new SqlCommand();
@@ -121,7 +123,7 @@ namespace A2_Coursework.Classes
         public static List<Staff> GetStaffForBooking(int bookingID)
         {
             List<Staff> staffMembers = new();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -157,7 +159,7 @@ namespace A2_Coursework.Classes
         public static List<int> GetMembersFromTeam(int teamNo)
         {
             List<int> staffMembers = new();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -189,7 +191,7 @@ namespace A2_Coursework.Classes
         public static void AssignBookingsToTeams(int bookingID, int teamNo)
         {
             List<int> staffMembers = GetMembersFromTeam(teamNo);
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -215,7 +217,7 @@ namespace A2_Coursework.Classes
         }
         public static void UpdateBookingDate(int id, string bookingDate)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 Customer customer = new();
 
@@ -241,47 +243,117 @@ namespace A2_Coursework.Classes
         }
         public static Customer GetCustomer(int id)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
-                Customer customer = new();
+                Customer customer = new Customer();
 
-                try
-                {
+                
                     connection.Open();
 
-                    SqlCommand GetBookings = new SqlCommand();
-                    GetBookings.Connection = connection;
-
+                    SqlCommand GetBookings = new SqlCommand("GetCustomer", connection);
                     GetBookings.CommandType = CommandType.StoredProcedure;
-                    GetBookings.CommandText = "GetCustomer";
                     GetBookings.Parameters.Add(new SqlParameter("@CustomerID", id));
 
                     using (SqlDataReader reader = GetBookings.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
                             customer.CustomerID = Convert.ToInt32(reader["CustomerID"]);
-                            customer.Firstname = reader["Firstname"].ToString();
-                            customer.Firstname = reader["Surname"].ToString();
+                            customer.Firstname = reader["Forename"].ToString();
+                            customer.Surname = reader["Surname"].ToString();
                             customer.AddressOne = reader["AddressOne"].ToString();
                             customer.AddressTwo = reader["AddressTwo"].ToString();
-
+                            customer.Email = reader["Email"].ToString();
+                            customer.DOB = reader["DOB"].ToString();
+                            customer.Gender = reader["Gender"].ToString();
                         }
                     }
-                }
-                catch (CustomException ex)
+                if (customer.CustomerID == 0)
                 {
-
+                    throw new CustomException("No customers were found");
                 }
                 return customer;
             }
         }
+        public static Booking GetBooking(int id)
+        {
+            Booking booking = new Booking();
+
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
+            {
+                connection.Open();
+
+                SqlCommand GetBookings = new SqlCommand();
+
+                GetBookings.Connection = connection;
+                GetBookings.CommandType = System.Data.CommandType.StoredProcedure;
+                GetBookings.CommandText = "GetBooking";
+                GetBookings.Parameters.Add(new SqlParameter("@BookingID", id));
+
+                using (SqlDataReader reader = GetBookings.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        booking.BookingID = Convert.ToInt32(reader["BookingID"]);
+                        booking.CustomerID = Convert.ToInt32(reader["CustomerID"]);
+                        booking.BookingDate = reader["BookingDate"].ToString();
+                        booking.customer.Firstname = reader["Forename"].ToString();
+                        booking.customer.Surname = reader["Surname"].ToString();
+
+
+                    }
+
+                }
+            }
+            if (booking.BookingID == 0)
+            {
+                throw new CustomException("No bookings were found");
+            }
+
+            return booking;
+        }
+        public static Staff GetStaffmember(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
+            {
+                Staff staff = new Staff();
+
+               
+                    connection.Open();
+
+                    SqlCommand GetBookings = new SqlCommand("GetStaffMember", connection);
+                    GetBookings.CommandType = CommandType.StoredProcedure;
+                    GetBookings.Parameters.Add(new SqlParameter("@StaffID", id));
+
+                    using (SqlDataReader reader = GetBookings.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            staff.StaffID = Convert.ToInt32(reader["StaffID"]);
+                            staff.Firstname = reader["FirstName"].ToString();
+                            staff.Surname = reader["Surname"].ToString();
+                            staff.Age = Convert.ToInt32(reader["Age"].ToString());
+                            staff.Gender = reader["Gender"].ToString();
+                            staff.HourlyRate = Convert.ToDouble(reader["HourlyRate"].ToString());
+                            staff.TeamNo = Convert.ToInt32(reader["TeamNo"].ToString());
+                        }
+                    }
+                    if (staff.StaffID == 0)
+                    {
+                        throw new CustomException("No staff members were found");
+                    }
+
+                
+                return staff;
+            }
+        }
+
         public static (List<Customer> customerList, List<Booking> bookingList) GetBookingsByDate(string date)
         {
 
             List<Booking> bookingList = new List<Booking>();
             List<Customer> customerList = new();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -343,7 +415,7 @@ namespace A2_Coursework.Classes
         public static int GetRequestNo(int bookingid, int serviceid)
         {
             int requestNo = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -374,7 +446,7 @@ namespace A2_Coursework.Classes
         }
         public static void addRequest(int serviceid, int bookingid, int quantity)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -401,7 +473,7 @@ namespace A2_Coursework.Classes
         {
             List<Service> serviceList = new List<Service>();
             List<int> Quantity = new List<int>();
-            using (SqlConnection connection = new(connectionString))
+            using (SqlConnection connection = new(ReportDAL.connectionString))
             {
                 connection.Open();
                 SqlCommand GetRequests = new SqlCommand();
@@ -428,7 +500,7 @@ namespace A2_Coursework.Classes
         }
         public static void DeleteCustomer(int Custid)
         {
-            using (SqlConnection connection = new(connectionString))
+            using (SqlConnection connection = new(ReportDAL.connectionString))
             {
                 try
                 {
@@ -478,7 +550,7 @@ namespace A2_Coursework.Classes
         public static void EditCustomer(int customerID, string firstname, string surname, string dOB,
             string gender, string addressOne, string addressTwo, string email)
         {
-            using (SqlConnection connection = new(connectionString))
+            using (SqlConnection connection = new(ReportDAL.connectionString))
             {
                 try
                 {
@@ -512,7 +584,7 @@ namespace A2_Coursework.Classes
         public static void EditStaff(int id, string fname, string sname, int age, string gender,
             double rate, int teamNo)
         {
-            using (SqlConnection connection = new(connectionString))
+            using (SqlConnection connection = new(ReportDAL.connectionString))
             {
                 try
                 {
@@ -544,7 +616,7 @@ namespace A2_Coursework.Classes
         }
         public static void DeleteStaffMember(int id)
         {
-            using (SqlConnection connection = new(connectionString))
+            using (SqlConnection connection = new(ReportDAL.connectionString))
             {
                 try
                 {
@@ -565,7 +637,7 @@ namespace A2_Coursework.Classes
 
         public static void DeleteBooking(int id)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -602,7 +674,7 @@ namespace A2_Coursework.Classes
         }
         public static void NewStaffMember(string firstname, string surname, string gender, int age, float hourlyRate, int teamNo)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -634,7 +706,7 @@ namespace A2_Coursework.Classes
         public static bool NewBooking(int CustomerID, string Date, List<int> ServiceID, List<int> quantity)
         {
             int rowsaffected = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {
@@ -829,7 +901,7 @@ namespace A2_Coursework.Classes
             string gender, string addressOne, string addressTwo, string email)
         {
             int rowsaffected = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
             {
                 try
                 {

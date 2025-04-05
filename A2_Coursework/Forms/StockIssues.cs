@@ -108,7 +108,7 @@ namespace A2_Coursework
                     }
                     if (counter == Issues.Count)
                     {
-                        throw new CustomException("No pending isses!");
+                        throw new CustomException("No pending issues!");
 
                     }
                 }
@@ -164,7 +164,7 @@ namespace A2_Coursework
                 int quantity = Convert.ToInt32(cmbQuantityIssue.Text);
                 string solutionDate = dtPickerSolutionDate.Value.ToString("dd/MM/yyyy");
 
-                if (quantity < 1)
+                if ((quantity < 1)||(quantity > 15))
                 {
                     throw new CustomException("Not a valid quantity");
                 }
@@ -198,16 +198,50 @@ namespace A2_Coursework
 
         private void STockIssueResolved_Click(object sender, EventArgs e)
         {
-            if (pnlIssueResolvedHide.Visible)
+            try
             {
-                pnlIssueResolvedHide.Visible = false;
+                if ((DataGridStockIssues.SelectedRows.Count > 0) && (DataGridStockIssues.SelectedRows.Count > 0))
+                {
+                    if (DataGridStockIssues.SelectedRows[0].Cells[0].Value is null)
+                    {
+                        MessageBox.Show("Select a rcord with data");
 
+                    }
+                    else
+                    {
+                        if (DateTime.Now > Convert.ToDateTime(DataGridStockIssues.SelectedRows[0].Cells[4].Value))
+                        {
+                            throw new CustomException("Select a pending stock issue");
+                        }
+                        else
+                        {
+
+                        }
+                        StockDAL.StockIssueResolved(Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[0].Value),
+                        DataGridStockIssues.SelectedRows[0].Cells[4].Value.ToString());
+
+                        StockDAL.AddStock(Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[0].Value),
+                                Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[2].Value));
+                        populateDataGrids();
+                        MessageBox.Show("Yay! Issue resolved.  Stock levels have now been updated");
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Select a record!");
+                }
             }
-            else
+            catch(CustomException ex)
             {
-                pnlIssueResolvedHide.Visible = true;
-
+                MessageBox.Show(ex.Message);
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error occurred");
+            }
+           
         }
 
         private void btnPendingIssues_Click(object sender, EventArgs e)
@@ -237,7 +271,6 @@ namespace A2_Coursework
 
                     populateDataGrids();
                     MessageBox.Show("Yay! Issue resolved. REFUND??");
-                    pnlIssueResolvedHide.Visible = false;
                 }
 
 
@@ -250,31 +283,7 @@ namespace A2_Coursework
 
         private void btnKept_Click(object sender, EventArgs e)
         {
-            if ((DataGridStockIssues.SelectedRows.Count > 0) && (DataGridStockIssues.SelectedRows.Count > 0))
-            {
-                if (DataGridStockIssues.SelectedRows[0].Cells[0].Value is null)
-                {
-                    MessageBox.Show("Select a rcord with data");
-
-                }
-                else
-                {
-                    StockDAL.StockIssueResolved(Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[0].Value),
-                    DataGridStockIssues.SelectedRows[0].Cells[4].Value.ToString());
-
-                    StockDAL.AddStock(Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[0].Value),
-                            Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[2].Value));
-                    populateDataGrids();
-                    MessageBox.Show("Yay! Issue resolved.  Stock levels have now been updated");
-                    pnlIssueResolvedHide.Visible = false;
-                }
-
-
-            }
-            else
-            {
-                MessageBox.Show("Select a record!");
-            }
+            
         }
 
         private void pnlIssueResolvedHide_Paint(object sender, PaintEventArgs e)

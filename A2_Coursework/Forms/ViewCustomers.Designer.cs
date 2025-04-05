@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridCustomers = new DataGridView();
             clmCustomerID = new DataGridViewTextBoxColumn();
             clmForename = new DataGridViewTextBoxColumn();
@@ -49,6 +49,7 @@
             txtbFirstname = new TextBox();
             label1 = new Label();
             pnlEdit = new Panel();
+            cmbGender = new ComboBox();
             dtPicketDOB = new DateTimePicker();
             btnSave = new Button();
             label7 = new Label();
@@ -66,7 +67,10 @@
             label8 = new Label();
             btnEdit = new Button();
             btnDeleteCustomer = new Button();
-            cmbGender = new ComboBox();
+            txtbSearch = new TextBox();
+            btnSearch = new Button();
+            button1 = new Button();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).BeginInit();
             pnlEdit.SuspendLayout();
             SuspendLayout();
@@ -75,15 +79,15 @@
             // 
             DataGridCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridCustomers.Columns.AddRange(new DataGridViewColumn[] { clmCustomerID, clmForename, clmSurname, clmDOB, clmGender, clmAddressOne, clmAddressTwo, clmEmail });
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = SystemColors.Window;
-            dataGridViewCellStyle18.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle18.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
-            DataGridCustomers.DefaultCellStyle = dataGridViewCellStyle18;
-            DataGridCustomers.Location = new Point(12, 82);
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            DataGridCustomers.DefaultCellStyle = dataGridViewCellStyle9;
+            DataGridCustomers.Location = new Point(12, 166);
             DataGridCustomers.Name = "DataGridCustomers";
             DataGridCustomers.Size = new Size(1268, 292);
             DataGridCustomers.TabIndex = 0;
@@ -92,63 +96,63 @@
             // 
             // clmCustomerID
             // 
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmCustomerID.DefaultCellStyle = dataGridViewCellStyle1;
             clmCustomerID.HeaderText = "ID";
             clmCustomerID.Name = "clmCustomerID";
-            clmCustomerID.Width = 35;
+            clmCustomerID.Width = 80;
             // 
             // clmForename
             // 
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmForename.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmForename.DefaultCellStyle = dataGridViewCellStyle2;
             clmForename.HeaderText = "Firstname";
             clmForename.Name = "clmForename";
-            clmForename.Width = 130;
+            clmForename.Width = 115;
             // 
             // clmSurname
             // 
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmSurname.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmSurname.DefaultCellStyle = dataGridViewCellStyle3;
             clmSurname.HeaderText = "Surname";
             clmSurname.Name = "clmSurname";
-            clmSurname.Width = 130;
+            clmSurname.Width = 115;
             // 
             // clmDOB
             // 
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmDOB.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmDOB.DefaultCellStyle = dataGridViewCellStyle4;
             clmDOB.HeaderText = "Date of Birth";
             clmDOB.Name = "clmDOB";
             clmDOB.Width = 125;
             // 
             // clmGender
             // 
-            dataGridViewCellStyle14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmGender.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmGender.DefaultCellStyle = dataGridViewCellStyle5;
             clmGender.HeaderText = "Gender";
             clmGender.Name = "clmGender";
             // 
             // clmAddressOne
             // 
-            dataGridViewCellStyle15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmAddressOne.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmAddressOne.DefaultCellStyle = dataGridViewCellStyle6;
             clmAddressOne.HeaderText = "Address";
             clmAddressOne.Name = "clmAddressOne";
             clmAddressOne.Width = 200;
             // 
             // clmAddressTwo
             // 
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmAddressTwo.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmAddressTwo.DefaultCellStyle = dataGridViewCellStyle7;
             clmAddressTwo.HeaderText = "Address";
             clmAddressTwo.Name = "clmAddressTwo";
             clmAddressTwo.Width = 150;
             // 
             // clmEmail
             // 
-            dataGridViewCellStyle17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clmEmail.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clmEmail.DefaultCellStyle = dataGridViewCellStyle8;
             clmEmail.HeaderText = "Email";
             clmEmail.Name = "clmEmail";
             clmEmail.Width = 360;
@@ -160,6 +164,7 @@
             txtbFirstname.Name = "txtbFirstname";
             txtbFirstname.Size = new Size(371, 43);
             txtbFirstname.TabIndex = 1;
+            txtbFirstname.TextChanged += txtbFirstname_TextChanged;
             // 
             // label1
             // 
@@ -188,11 +193,21 @@
             pnlEdit.Controls.Add(txtbSurname);
             pnlEdit.Controls.Add(label1);
             pnlEdit.Controls.Add(txtbFirstname);
-            pnlEdit.Location = new Point(328, 437);
+            pnlEdit.Location = new Point(325, 521);
             pnlEdit.Name = "pnlEdit";
             pnlEdit.Size = new Size(551, 459);
             pnlEdit.TabIndex = 4;
             pnlEdit.Visible = false;
+            // 
+            // cmbGender
+            // 
+            cmbGender.Font = new Font("Segoe UI", 20F);
+            cmbGender.FormattingEnabled = true;
+            cmbGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            cmbGender.Location = new Point(169, 170);
+            cmbGender.Name = "cmbGender";
+            cmbGender.Size = new Size(371, 45);
+            cmbGender.TabIndex = 26;
             // 
             // dtPicketDOB
             // 
@@ -340,7 +355,7 @@
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEdit.ForeColor = Color.Black;
-            btnEdit.Location = new Point(637, 380);
+            btnEdit.Location = new Point(794, 464);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(261, 51);
             btnEdit.TabIndex = 23;
@@ -355,7 +370,7 @@
             btnDeleteCustomer.FlatStyle = FlatStyle.Flat;
             btnDeleteCustomer.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDeleteCustomer.ForeColor = Color.Black;
-            btnDeleteCustomer.Location = new Point(370, 380);
+            btnDeleteCustomer.Location = new Point(260, 464);
             btnDeleteCustomer.Name = "btnDeleteCustomer";
             btnDeleteCustomer.Size = new Size(261, 51);
             btnDeleteCustomer.TabIndex = 24;
@@ -363,15 +378,58 @@
             btnDeleteCustomer.UseVisualStyleBackColor = false;
             btnDeleteCustomer.Click += btnDeleteCustomer_Click;
             // 
-            // cmbGender
+            // txtbSearch
             // 
-            cmbGender.Font = new Font("Segoe UI", 20F);
-            cmbGender.FormattingEnabled = true;
-            cmbGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
-            cmbGender.Location = new Point(169, 170);
-            cmbGender.Name = "cmbGender";
-            cmbGender.Size = new Size(371, 45);
-            cmbGender.TabIndex = 26;
+            txtbSearch.Font = new Font("Segoe UI", 20F);
+            txtbSearch.Location = new Point(427, 115);
+            txtbSearch.Name = "txtbSearch";
+            txtbSearch.Size = new Size(371, 43);
+            txtbSearch.TabIndex = 27;
+            txtbSearch.Text = "Enter customer ID";
+            txtbSearch.MouseClick += txtbSearch_MouseClick;
+            txtbSearch.TextChanged += txtbSearch_TextChanged;
+            txtbSearch.KeyPress += txtbSearch_KeyPress;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.FromArgb(85, 193, 255);
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = Color.Black;
+            btnSearch.Location = new Point(804, 113);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(109, 47);
+            btnSearch.TabIndex = 28;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(85, 193, 255);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(527, 464);
+            button1.Name = "button1";
+            button1.Size = new Size(261, 51);
+            button1.TabIndex = 29;
+            button1.Text = "View all customers";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 20F);
+            label9.Location = new Point(332, 119);
+            label9.Name = "label9";
+            label9.Size = new Size(95, 37);
+            label9.TabIndex = 30;
+            label9.Text = "Search";
+            label9.Click += label9_Click;
             // 
             // ViewCustomers
             // 
@@ -379,7 +437,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.FromArgb(109, 132, 156);
-            ClientSize = new Size(1414, 867);
+            ClientSize = new Size(1294, 865);
+            Controls.Add(label9);
+            Controls.Add(button1);
+            Controls.Add(btnSearch);
+            Controls.Add(txtbSearch);
             Controls.Add(btnDeleteCustomer);
             Controls.Add(btnEdit);
             Controls.Add(label8);
@@ -389,7 +451,7 @@
             Controls.Add(DataGridCustomers);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ViewCustomers";
-            Text = "ViewCustomers";
+            Text = "Search";
             Load += ViewCustomers_Load;
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).EndInit();
             pnlEdit.ResumeLayout(false);
@@ -421,6 +483,12 @@
         private Label label8;
         private Button btnEdit;
         private Button btnDeleteCustomer;
+        private DateTimePicker dtPicketDOB;
+        private ComboBox cmbGender;
+        private TextBox txtbSearch;
+        private Button btnSearch;
+        private Button button1;
+        private Label label9;
         private DataGridViewTextBoxColumn clmCustomerID;
         private DataGridViewTextBoxColumn clmForename;
         private DataGridViewTextBoxColumn clmSurname;
@@ -429,7 +497,5 @@
         private DataGridViewTextBoxColumn clmAddressOne;
         private DataGridViewTextBoxColumn clmAddressTwo;
         private DataGridViewTextBoxColumn clmEmail;
-        private DateTimePicker dtPicketDOB;
-        private ComboBox cmbGender;
     }
 }

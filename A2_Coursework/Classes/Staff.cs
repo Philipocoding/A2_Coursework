@@ -35,7 +35,7 @@ namespace A2_Coursework.Classes
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(BookingDAL.connectionString))
+                using (SqlConnection connection = new SqlConnection(ReportDAL.connectionString))
                 {
                     connection.Open();
 

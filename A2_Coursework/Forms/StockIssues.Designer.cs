@@ -55,15 +55,9 @@
             STockIssueResolved = new Button();
             btnPendingIssues = new Button();
             btnIssueHistory = new Button();
-            pnlIssueResolveConfirm = new Panel();
-            pnlIssueResolvedHide = new Panel();
-            label8 = new Label();
-            btnKept = new Button();
-            btnReturned = new Button();
             label9 = new Label();
             pnlReportIssue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridStockIssues).BeginInit();
-            pnlIssueResolveConfirm.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -300,65 +294,6 @@
             btnIssueHistory.UseVisualStyleBackColor = false;
             btnIssueHistory.Click += btnIssueHistory_Click;
             // 
-            // pnlIssueResolveConfirm
-            // 
-            pnlIssueResolveConfirm.Controls.Add(pnlIssueResolvedHide);
-            pnlIssueResolveConfirm.Controls.Add(label8);
-            pnlIssueResolveConfirm.Controls.Add(btnKept);
-            pnlIssueResolveConfirm.Controls.Add(btnReturned);
-            pnlIssueResolveConfirm.Location = new Point(691, 587);
-            pnlIssueResolveConfirm.Name = "pnlIssueResolveConfirm";
-            pnlIssueResolveConfirm.Size = new Size(275, 279);
-            pnlIssueResolveConfirm.TabIndex = 15;
-            // 
-            // pnlIssueResolvedHide
-            // 
-            pnlIssueResolvedHide.Location = new Point(6, 9);
-            pnlIssueResolvedHide.Name = "pnlIssueResolvedHide";
-            pnlIssueResolvedHide.Size = new Size(269, 275);
-            pnlIssueResolvedHide.TabIndex = 1;
-            pnlIssueResolvedHide.Paint += pnlIssueResolvedHide_Paint;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 18F);
-            label8.Location = new Point(1, 4);
-            label8.Name = "label8";
-            label8.Size = new Size(280, 64);
-            label8.TabIndex = 18;
-            label8.Text = "Was the stock kept or\r\nreturned to the supplier?";
-            // 
-            // btnKept
-            // 
-            btnKept.BackColor = Color.FromArgb(50, 55, 59);
-            btnKept.FlatAppearance.BorderSize = 0;
-            btnKept.FlatStyle = FlatStyle.Flat;
-            btnKept.Font = new Font("Microsoft Sans Serif", 20F);
-            btnKept.ForeColor = Color.White;
-            btnKept.Location = new Point(63, 139);
-            btnKept.Name = "btnKept";
-            btnKept.Size = new Size(135, 52);
-            btnKept.TabIndex = 17;
-            btnKept.Text = "Item kept";
-            btnKept.UseVisualStyleBackColor = false;
-            btnKept.Click += btnKept_Click;
-            // 
-            // btnReturned
-            // 
-            btnReturned.BackColor = Color.FromArgb(50, 55, 59);
-            btnReturned.FlatAppearance.BorderSize = 0;
-            btnReturned.FlatStyle = FlatStyle.Flat;
-            btnReturned.Font = new Font("Microsoft Sans Serif", 20F);
-            btnReturned.ForeColor = Color.White;
-            btnReturned.Location = new Point(63, 81);
-            btnReturned.Name = "btnReturned";
-            btnReturned.Size = new Size(135, 52);
-            btnReturned.TabIndex = 16;
-            btnReturned.Text = "Returned";
-            btnReturned.UseVisualStyleBackColor = false;
-            btnReturned.Click += btnReturned_Click;
-            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -376,7 +311,6 @@
             AutoSize = true;
             BackColor = Color.FromArgb(109, 132, 156);
             ClientSize = new Size(1382, 898);
-            Controls.Add(pnlIssueResolveConfirm);
             Controls.Add(label9);
             Controls.Add(panel1);
             Controls.Add(btnPendingIssues);
@@ -393,8 +327,6 @@
             pnlReportIssue.ResumeLayout(false);
             pnlReportIssue.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridStockIssues).EndInit();
-            pnlIssueResolveConfirm.ResumeLayout(false);
-            pnlIssueResolveConfirm.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -416,11 +348,6 @@
         private Button STockIssueResolved;
         private Button btnPendingIssues;
         private Button btnIssueHistory;
-        private Panel pnlIssueResolveConfirm;
-        private Button btnKept;
-        private Button btnReturned;
-        private Label label8;
-        private Panel pnlIssueResolvedHide;
         private Panel panel1;
         private Label label9;
         private DataGridViewTextBoxColumn clmStockIDIssue;

@@ -62,7 +62,7 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(539, 748);
+            panel1.Location = new Point(538, 870);
             panel1.Name = "panel1";
             panel1.Size = new Size(22, 268);
             panel1.TabIndex = 3;
@@ -77,9 +77,9 @@
             // printPreviewControl1
             // 
             printPreviewControl1.BackColor = Color.FromArgb(109, 132, 156);
-            printPreviewControl1.Location = new Point(640, 123);
+            printPreviewControl1.Location = new Point(640, 100);
             printPreviewControl1.Name = "printPreviewControl1";
-            printPreviewControl1.Size = new Size(545, 758);
+            printPreviewControl1.Size = new Size(545, 775);
             printPreviewControl1.TabIndex = 9;
             // 
             // DataGridCustomers
@@ -134,7 +134,7 @@
             // 
             pnlDataGrid.Controls.Add(DataGridCustomers);
             pnlDataGrid.Controls.Add(btnPrint);
-            pnlDataGrid.Location = new Point(296, 103);
+            pnlDataGrid.Location = new Point(296, 80);
             pnlDataGrid.Name = "pnlDataGrid";
             pnlDataGrid.Size = new Size(723, 427);
             pnlDataGrid.TabIndex = 12;
@@ -156,7 +156,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.FromArgb(109, 132, 156);
-            ClientSize = new Size(1220, 782);
+            ClientSize = new Size(1220, 971);
             Controls.Add(pnlDataGrid);
             Controls.Add(label1);
             Controls.Add(printPreviewControl1);

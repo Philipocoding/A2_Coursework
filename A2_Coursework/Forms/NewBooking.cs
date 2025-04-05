@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using A2_Coursework.Classes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace A2_Coursework
 {
@@ -95,8 +96,9 @@ namespace A2_Coursework
         {
             foreach (DataGridViewColumn col in DataGridCustomers.Columns)
             {
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             }
+
             DataGridCustomers.BorderStyle = BorderStyle.Fixed3D;
             DataGridCustomers.BackgroundColor = Color.White;
             DataGridCustomers.GridColor = Color.LightGray;
@@ -107,7 +109,7 @@ namespace A2_Coursework
             DataGridCustomers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 144, 255);
             DataGridCustomers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             DataGridCustomers.ColumnHeadersDefaultCellStyle.Padding = new Padding(6, 4, 6, 4);
-            DataGridCustomers.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            DataGridCustomers.DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Regular);
             DataGridCustomers.DefaultCellStyle.BackColor = Color.White;
             DataGridCustomers.DefaultCellStyle.ForeColor = Color.Black;
             DataGridCustomers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
@@ -118,6 +120,8 @@ namespace A2_Coursework
             DataGridCustomers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DataGridCustomers.RowHeadersVisible = true;
             DataGridCustomers.RowHeadersWidth = 30;
+
+
         }
         private void NewBooking_Load(object sender, EventArgs e)
         {
@@ -146,63 +150,115 @@ namespace A2_Coursework
                 if (DeepClean > 0) { services.Add(2006); quantity.Add(Convert.ToInt32(lblQtyNine.Text)); serviceAdded = true; }
                 if (Furniture > 0) { services.Add(2007); quantity.Add(Convert.ToInt32(lblQtyTen.Text)); serviceAdded = true; }
 
-                string dateString = dtPickerDOB_.Value.ToString("yyyy/MM/dd");
-                if (Validation.ValidGender(cmbGender_.Text))
+                string dateString = "";
+                if (dtPickerDOB_.Value.AddYears(18) >= DateTime.Now)
                 {
-                    if ((Validation.isNullorEmpty(txtbFirstname_.Text) && (Validation.isNullorEmpty(txtbFirstname_.Text))
-                   && (Validation.isNullorEmpty(txtbEmail_.Text)) && (Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (Validation.isNullorEmpty(txtbAddressOne_.Text)
-                   && (Validation.isNullorEmpty(dtPickerDOB_.Text)))))
+                    throw new CustomException("Customer must be 18 years of age or older");
+                }
+                else
+                {
+                    dateString =  dtPickerDOB_.Value.ToString("yyyy/MM/dd");
+                    if (Validation.ValidGender(cmbGender_.Text))
                     {
-                        if (serviceAdded)
+                        if ((Validation.isNullorEmpty(txtbFirstname_.Text) && (Validation.isNullorEmpty(txtbFirstname_.Text))
+                       && (Validation.isNullorEmpty(txtbEmail_.Text)) && (Validation.isNullorEmpty(txtbAddressTwo_.Text)) && (Validation.isNullorEmpty(txtbAddressOne_.Text)
+                       && (Validation.isNullorEmpty(dtPickerDOB_.Text)))))
                         {
-                            if (!lblDateError.Visible)
+                            if (Validation.IsValidEmail(txtbEmail_.Text))
                             {
-                                if (!ExistingCustomer.Checked)
+                                if (serviceAdded)
                                 {
-                                    id = BookingDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text,
-                         txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
-                                    MessageBox.Show("Customer Added");
+                                    if (!lblDateError.Visible)
+                                    {
+                                        if (!ExistingCustomer.Checked)
+                                        {
+                                            id = BookingDAL.NewCustomer(txtbFirstname_.Text, txtbSurname_.Text, dateString, cmbGender_.Text.ToLower(),
+                                 txtbAddressOne_.Text, txtbAddressTwo_.Text, txtbEmail_.Text);
+                                            MessageBox.Show("Customer Added");
+                                        }
+                                        else
+                                        {
+                                            id = Convert.ToInt32(txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
+                             .Cells["clmCustomerID"].Value.ToString());
+                                        }
+
+
+                                        string theDate = BookingDate.Value.ToShortDateString();
+                                        if (services.Count < 1)
+                                        {
+                                            throw new CustomException("A booking must contain services!");
+                                        }
+                                        else
+                                        {
+                                            if (BookingDAL.NewBooking(id, theDate, services, quantity))
+                                            {
+                                                MessageBox.Show("Booking confirmed");
+                                                pnlDatabase.Visible = false;
+                                                pnlAddCustomer.Visible = true;
+                                                pnlBookingDetails.Visible = false;
+                                                ExistingCustomer.Checked = false;
+                                                txtbFirstname_.Text = "";
+                                                txtbSurname_.Text= "";
+                                                txtbEmail_.Text = "";
+                                                txtbCustomerID.Text = "";
+                                                txtbAddressTwo_.Text = "";
+                                                txtbAddressOne_.Text = "";
+                                                dtPickerDOB_.Text = "";
+                                                btnNext.Visible = true;
+                                                lblCustSelected.Visible = false;
+                                                trackBar1.Value = 0; lblQtyOne.Text = "0"; lblQtyTwo.Text = "0";
+                                                trackBar2.Value = 0;lblQuantySIX.Text = "0";
+                                                trackBar3.Value = 0;lblQtyFour.Text = "0";
+                                                trackBar4.Value = 0;lblQtyFive.Text = "0";
+                                                trackBar5.Value = 0;lblQtyThree.Text = "0";
+                                                trackBar6.Value = 0;lblQtySeven.Text = "0";
+                                                trackBar7.Value = 0;
+                                                trackBar8.Value = 0;lblQtyEight.Text = "0";
+                                                trackBar9.Value = 0;lblQtyNine.Text = "0";
+                                                trackBar10.Value = 0;lblQtyTen.Text = "0";
+
+
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("No availability for this date");
+                                            }
+                                        }
+                                        
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Invalid booking date!");
+                                    }
+
                                 }
                                 else
                                 {
-                                    id = Convert.ToInt32(txtbCustomerID.Text = DataGridCustomers.SelectedRows[0]
-                     .Cells["clmCustomerID"].Value.ToString());
-                                }
-
-
-                                string theDate = BookingDate.Value.ToShortDateString();
-                                if (BookingDAL.NewBooking(id, theDate, services, quantity))
-                                {
-                                    MessageBox.Show("Booking confirmed");
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No availability for this date");
+                                    throw new CustomException("Select a service!");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Invalid booking date!");
+                                throw new CustomException("Not a valid email");
                             }
-
+                           
+                        
                         }
                         else
                         {
-                            throw new CustomException("Select a service!");
-                        }
 
+                            MessageBox.Show("Ensure all fields are completed");
+                        }
                     }
                     else
                     {
-
-                        MessageBox.Show("Ensure all fields are completed");
+                        throw new CustomException("Invalid Gender");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Customer details invalid");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Customer details invalid");
+                //}
             }
             catch (CustomException ex)
             {

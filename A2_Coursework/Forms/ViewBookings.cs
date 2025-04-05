@@ -96,6 +96,12 @@ namespace A2_Coursework
                     booking.customer.Surname, booking.BookingDate);
             }
         }
+        private void PopulateDataGrid(Booking booking)
+        {
+            BookingTable.Rows.Clear();
+            BookingTable.Rows.Add(booking.BookingID, booking.CustomerID, booking.customer.Firstname,
+                    booking.customer.Surname, booking.BookingDate);
+        }
 
         private void populateBookingInfo()
         {
@@ -267,6 +273,8 @@ namespace A2_Coursework
         {
             if ((BookingTable.SelectedRows.Count > 0) && (BookingTable.SelectedRows.Count < 2))
             {
+                pnlFilter.Visible = false;
+                pnlHideAddServices.Visible = false;
                 BookingDAL.DeleteBooking(Convert.ToInt32(BookingTable.SelectedRows[0].Cells[0].Value));
                 MessageBox.Show("Booking deleted!");
                 PopulateDataGrid();
@@ -331,7 +339,7 @@ namespace A2_Coursework
             try
             {
                 bookingId = Convert.ToInt32(txtbBookingID.Text);
-                quantity = Convert.ToInt32(Convert.ToInt32(cmbEditQuantity.Text));
+                quantity = Convert.ToInt32(cmbEditQuantity.Text);
                 if (quantity < 1)
                 {
                     throw new CustomException("Invalid quantity!");
@@ -339,7 +347,6 @@ namespace A2_Coursework
                 requestNo = BookingDAL.GetRequestNo(bookingId,
                 Booking.Booking_Requests[txtbService.Text]);
                 pnlHideAddServices.Visible = true;
-
                 Booking.editRequest(requestNo, bookingId, Booking.Booking_Requests[txtbService.Text]
                 , quantity);
                 MessageBox.Show("Request updated!");
@@ -361,7 +368,42 @@ namespace A2_Coursework
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            save();
+            updateCUstomerDetails();
+        }
+        private void updateCUstomerDetails()
+        {
+            int bookingId = 0;
+            int quantity = 0;
+            int requestNo = 0;
+            try
+            {
+                bookingId = Convert.ToInt32(txtbBookingID.Text);
+                quantity = Convert.ToInt32(cmbEditQuantity.Text);
+                if (quantity < 1)
+                {
+                    throw new CustomException("Invalid quantity!");
+                }
+                requestNo = BookingDAL.GetRequestNo(bookingId,
+                Booking.Booking_Requests[txtbService.Text]);
+                pnlHideAddServices.Visible = true;
+                Booking.editRequest(requestNo, bookingId, Booking.Booking_Requests[txtbService.Text]
+                , quantity);
+                MessageBox.Show("Request updated!");
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch (System.FormatException ex)
+            {
+                MessageBox.Show("No changes were applied");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -514,16 +556,76 @@ namespace A2_Coursework
                     throw new CustomException("Select a service that exists in the booking");
                 }
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("An error occurred");
 
             }
 
+        }
+
+        private void txtbSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtbSearch.Text == "Enter booking ID")
+            {
+                txtbSearch.Text = "";
+            }
+        }
+
+        private void txtbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    int id = Convert.ToInt32(txtbSearch.Text);
+                    PopulateDataGrid(BookingDAL.GetBooking(id));
+                }
+                catch (CustomException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred");
+                    txtbSearch.Text = "Enter booking ID";
+
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(txtbSearch.Text);
+                PopulateDataGrid(BookingDAL.GetBooking(id));
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+                txtbSearch.Text = "Enter booking ID";
+
+            }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PopulateDataGrid();
+            txtbSearch.Text = "Enter booking ID";
         }
     }
 }

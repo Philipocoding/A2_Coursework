@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace A2_Coursework.Classes
 {
     internal static class Program
@@ -10,6 +12,7 @@ namespace A2_Coursework.Classes
         {
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            Debug.Print($"{ReportDAL.connectionString}");
             SetupDataDirectoryPath();
             StockDAL.AddStock();
             Application.Run(new MainMenu());

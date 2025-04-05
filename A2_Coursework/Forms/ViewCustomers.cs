@@ -28,7 +28,7 @@ namespace A2_Coursework
         {
             foreach (DataGridViewColumn col in DataGridCustomers.Columns)
             {
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             }
             DataGridCustomers.BorderStyle = BorderStyle.Fixed3D;
             DataGridCustomers.BackgroundColor = Color.White;
@@ -63,10 +63,17 @@ namespace A2_Coursework
                     , customer.Gender, customer.AddressOne, customer.AddressTwo, customer.Email);
             }
         }
+        private void PopulateDataGrid(Customer customer)
+        {
+            DataGridCustomers.Rows.Clear();
+            DataGridCustomers.Rows.Add(customer.CustomerID, customer.Firstname, customer.Surname, customer.DOB
+                , customer.Gender, customer.AddressOne, customer.AddressTwo, customer.Email);
+
+        }
 
         private void DataGridCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(DataGridCustomers.SelectedRows[0].Cells[0].Value is null)
+            if (DataGridCustomers.SelectedRows[0].Cells[0].Value is null)
             {
                 MessageBox.Show("Select a record with data!");
             }
@@ -84,7 +91,7 @@ namespace A2_Coursework
 
                 }
             }
-            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -111,10 +118,18 @@ namespace A2_Coursework
                 {
                     if (Validation.ValidGender(cmbGender.Text))
                     {
-                        int id = Convert.ToInt32(DataGridCustomers.SelectedRows[0].Cells["clmCustomerID"].Value);
+                        if (Validation.IsValidEmail(txtbEmail.Text))
+                        {
+                            int id = Convert.ToInt32(DataGridCustomers.SelectedRows[0].Cells["clmCustomerID"].Value);
 
-                        BookingDAL.EditCustomer(id, txtbFirstname.Text, txtbSurname.Text, dtPicketDOB.Text, cmbGender.Text, txtbAddressOne.Text,
-                            txtbAddressTwo.Text, txtbEmail.Text);
+                            BookingDAL.EditCustomer(id, txtbFirstname.Text, txtbSurname.Text, dtPicketDOB.Text, cmbGender.Text, txtbAddressOne.Text,
+                                txtbAddressTwo.Text, txtbEmail.Text);
+                        }
+                        else
+                        {
+                            throw new CustomException("Invalid email format");
+                        }
+
                     }
                     PopulateDataGrid();
                     MessageBox.Show("Updated");
@@ -129,7 +144,7 @@ namespace A2_Coursework
             {
                 MessageBox.Show("Customer must be 18 or older");
             }
-            
+
 
         }
 
@@ -140,39 +155,48 @@ namespace A2_Coursework
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            try
+            if (pnlEdit.Visible)
             {
-                if (DataGridCustomers.SelectedRows[0].Cells[0].Value is null)
+                pnlEdit.Visible = false;
+            }
+            else
+            {
+                try
                 {
-                    MessageBox.Show("Select a record with data!");
-                }
-                else
-                {
-                    if ((DataGridCustomers.SelectedRows.Count > 0) && (DataGridCustomers.SelectedRows.Count < 2))
+                    if (DataGridCustomers.SelectedRows[0].Cells[0].Value is null)
                     {
-                        pnlEdit.Visible = true;
+                        MessageBox.Show("Select a record with data!");
                     }
                     else
                     {
-                        MessageBox.Show("Select a record!");
+                        if ((DataGridCustomers.SelectedRows.Count > 0) && (DataGridCustomers.SelectedRows.Count < 2))
+                        {
+                            pnlEdit.Visible = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Select a record!");
+                        }
                     }
                 }
-            }
-            catch(CustomException ex)
-            {
+                catch (CustomException ex)
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An unexpected error occured! Have you selected a record?");
+
+                }
 
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("An unexpected error occured! Have you selected a record?");
 
-            }
 
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnDeleteCustomer_Click(object sender, EventArgs e)
@@ -205,11 +229,82 @@ namespace A2_Coursework
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("An error occurred.  Have you selected a record?");
             }
-           
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(txtbSearch.Text);
+                PopulateDataGrid(BookingDAL.GetCustomer(id));
+            }
+            catch (CustomException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred");
+                txtbSearch.Text = "Enter customer ID";
+
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PopulateDataGrid();
+            txtbSearch.Text = "Enter customer ID";
+        }
+
+        private void txtbSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtbSearch.Text == "Enter customer ID")
+            {
+                txtbSearch.Text = "";
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbFirstname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    int id = Convert.ToInt32(txtbSearch.Text);
+                    PopulateDataGrid(BookingDAL.GetCustomer(id));
+                }
+                catch (CustomException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred");
+                    txtbSearch.Text = "Enter customer ID";
+
+                }
+            }
+        }
+
+        private void txtbSearch_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="A2_Coursework.Properties.Resources" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAkKQADDgEAAAABAAABEIAAgQRUACAEQCCAAAhCgIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.Properties.ScheduleReport" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAIAAAAGAAABQgAACAAQQCQIAAAAIAAAAKBYAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.AddStaff" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACACAkABQAAACAAAACAAAAAAkAAAAACUAAAAA=</HashCode>
+      <FileName>Forms\AddStaff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.BookingSchedules" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAQIAIAADAIgBOhAACEAQQCggQBEAowAAAKAYIIAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.Home" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8YAAACAAAGQAEBAAAACIAAACAYAAAAAAQAAAAQAAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.MainMenu" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BaliohgACCgMARgJjACA0IIKIExzNGCgQBEgQZJZYAQ=</HashCode>
+      <FileName>Forms\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.NewBooking" Collapsed="true">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/2IdgeABMmIHaPxswJCXndQyG5Qgw8XAUAEHD/g6HDA=</HashCode>
+      <FileName>Forms\NewBooking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.NewCustomer" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAACAGAAABAAAACAAIACCIABAAgAAAAACUAACAA=</HashCode>
+      <FileName>Forms\NewCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.OrderStock" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAFgFAAAWkgABAwBACAAAmCggA4AABQAAAAAQAAAAQ=</HashCode>
+      <FileName>Forms\OrderStock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.Report1" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACAAABQAAACAAAACQEAAABIAAAAABUAIAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.Report2" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAACAAIBQAAACAAAACQgAggBIAAAAABUAMgIA=</HashCode>
+      <FileName>Forms\Report2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.ReportViewer" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\ReportViewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.Settings" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.StockIssues" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FBAAREAiKCgIIBAAAQCAADACAAI4IgAkICAAgQAEgEE=</HashCode>
+      <FileName>Forms\StockIssues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.ViewBookings" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8Y0CAEgiQSBAAhAAFACAAIgCCwAIgAAAQAAAGQMICAQ=</HashCode>
+      <FileName>Forms\ViewBookings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.ViewCustomers" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAgEACAHBBaBBAUACAEIACCgAIwBggAUAACQIIRQY=</HashCode>
+      <FileName>Forms\ViewCustomers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.ViewStaffMembers" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAREACADAkABQAAACAAIACAgAAAQIAACAACQIABAA=</HashCode>
+      <FileName>Forms\ViewStaffMembers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.ViewStockLevels" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGAAAhAAAACIAAEKgAAIAAJAgAAIAQSAAAA=</HashCode>
+      <FileName>Forms\ViewStockLevels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A2_Coursework.ConfirmForm" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACQAAAEAAACAAAACAAAAAACAAAAAAQAAAAA=</HashCode>
+      <FileName>ConfirmForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

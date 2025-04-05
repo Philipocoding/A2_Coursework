@@ -6,21 +6,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Configuration;
 
 namespace A2_Coursework.Classes
 {
     internal class ReportDAL
     {
-        //        Data to Include:
 
-        //Customer name/ID.
-
-        //Number of bookings per customer.
-
-        //Total spending per customer.
-
-        //Frequency of bookings (e.g., weekly, monthly).
-        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
+        //public static string connectionString = string.Format(
+        // ConfigurationManager.ConnectionStrings["CourseWorkConnectionString"].ConnectionStringDirectory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.FullName);
+        public static string connectionString = string.Format(
+        ConfigurationManager.
+        ConnectionStrings["CourseWorkConnectionString"].
+        ConnectionString,
+        Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.Parent!.FullName);
+        /// </summary>
+        /// <param name="CustomerID"></param>
+        /// <returns></returns>
         public static (Customer,List<Booking>, List<Service>) GetCustomerAnalysis(int CustomerID)
         {
             List<Booking> bookings = new();
@@ -58,7 +60,7 @@ namespace A2_Coursework.Classes
                             customer.Email = reader["Email"].ToString();
 
                             int bookingId = Convert.ToInt32(reader["BookingID"]);
-                            if (bookingIds.Add(bookingId)) // Adds only if not already in HashSet
+                            if (bookingIds.Add(bookingId))
                             {
                                 bookings.Add(new Booking
                                 {
@@ -84,6 +86,7 @@ namespace A2_Coursework.Classes
                 return (customer, bookings,services);
             }
         }
+       
 
         public static (int,int) GetMonthAnalysis()
         {
@@ -91,21 +94,21 @@ namespace A2_Coursework.Classes
             List<int> months = new();
             foreach (Booking booking in bookings)
             {
-                if (booking.BookingDate.Length >= 7) // Ensure the format is correct
+                if (booking.BookingDate.Length >= 7) 
                 {
-                    int month = Convert.ToInt32(booking.BookingDate.Substring(3, 2)); // Extract MM
+                    int month = Convert.ToInt32(booking.BookingDate.Substring(3, 2));
                     months.Add(month);
                 }
             }
             int mostFrequent = months
-        .GroupBy(month => month) // Group by month
-        .OrderByDescending(group => group.Count()) // Order by frequency
-        .First() // Get the group with the highest frequency
-        .Key; // Get the month value
+        .GroupBy(month => month) 
+        .OrderByDescending(group => group.Count()) 
+        .First()
+        .Key; 
             int LeastFrequent = months
-        .GroupBy(month => month) // Group by month
-        .OrderByDescending(group => group.Count()) // Order by frequency
-        .Last() // Get the group with the lowest  frequency
+        .GroupBy(month => month)
+        .OrderByDescending(group => group.Count())
+        .Last() 
         .Key;
 
 

@@ -61,20 +61,17 @@ namespace A2_Coursework
         void ApplyStyles()
         {
             StyleDataGridView(dataGridStock);
-            StyleDataGridView(DataGridStockIssues);
         }
         private void ViewStockLevels_Load(object sender, EventArgs e)
         {
             ApplyStyles();
             cmbStock.Items.Clear();
-            cmbStockIssue.Items.Clear();
             List<Stock> items = StockDAL.GetEquipmentInfo();
 
 
             foreach (Stock item in items)
             {
                 cmbStock.Items.Add(Stock.StockIds[item.StockID].StockName.ToString());
-                cmbStockIssue.Items.Add(Stock.StockIds[item.StockID].StockName.ToString());
                 if (!Stock.StockIds.ContainsKey(item.StockID))
                 {
                     Stock.StockIds.Add(item.StockID, item);
@@ -93,42 +90,7 @@ namespace A2_Coursework
 
         private void PopulatePendingIssues()
         {
-            int counter = 0;
-
-            DataGridStockIssues.Rows.Clear();
-            try
-            {
-                List<Stock> Issues = Stock.RetrieveStockIssues();
-                if (Issues.Count > 0)
-                {
-                    foreach (Stock item in Issues)
-                    {
-                        DateTime itemDate = DateTime.Parse(item.SolutionDate);
-                        if (item.IssueResolved == 0)
-                        {
-                            double cost = StockDAL.GetStockPrice(item.StockID);
-                            DataGridStockIssues.Rows.Add(item.StockID.ToString(), Stock.StockIds[item.StockID].StockName.ToString(),
-                                item.Quantity.ToString(), Stock.GetIssueID(Convert.ToInt32(item.IssueID)).ToString(), itemDate.ToString("dd/MM/yyyy"));
-                        }
-                        else { counter = counter + 1; }
-                    }
-                    if (counter == Issues.Count)
-                    {
-                        throw new CustomException("No pending isses!");
-
-                    }
-                }
-                else
-                {
-                    throw new CustomException("No pending issues!");
-
-                }
-
-            }
-            catch (CustomException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+           
         }
 
         private void populateDataGrids()
@@ -177,13 +139,7 @@ namespace A2_Coursework
                     }
                 }
             }
-            DataGridStockIssues.Rows.Clear();
-            foreach (Stock item in Stock.RetrieveStockIssues())
-            {
-                DataGridStockIssues.Rows.Add(item.StockID.ToString(), item.StockName,
-                    item.Quantity.ToString(), Stock.GetIssueID(Convert.ToInt32(item.IssueID)).ToString(), item.SolutionDate);
-
-            }
+            
         }
 
         private void btnAutoOrder_Click(object sender, EventArgs e)
@@ -204,7 +160,6 @@ namespace A2_Coursework
         {
             try
             {
-                pnlReorder.Visible = false;
                 int quantity = Convert.ToInt32(txtbQuantity.Text);
                 if((quantity<1) || (quantity > 100))
                 {
@@ -218,9 +173,12 @@ namespace A2_Coursework
                 }
                 StockDAL.AutoOrderStock(Stock.StockIDs[cmbStock.Text].StockID, reorderValue, quantity);
                 MessageBox.Show("Automatic reorder created");
+                populateDataGrids();
+                pnlReorder.Visible = false;
+
 
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
@@ -239,68 +197,17 @@ namespace A2_Coursework
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (pnlReportIssue.Visible)
-            {
-                pnlReportIssue.Visible = false;
-            }
-            else
-            {
-                pnlReportIssue.Visible = true;
-            }
+           
         }
 
         private void btnConfirmIssue_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int stockID = Stock.StockIDs[cmbStockIssue.Text].StockID;
-                int quantity = Convert.ToInt32(cmbQuantityIssue.Text);
-                string solutionDate = dtPickerSolutionDate.Value.ToString("dd/MM/yyyy");
-
-                if(quantity < 1)
-                {
-                    throw new CustomException("Not a valid quantity");
-                }
-                if (DateTime.Now.AddDays(2) < dtPickerSolutionDate.Value)
-                {
-                    StockDAL.StockIssue(stockID, quantity, Stock.GetIssueID(cmbIsueDescription.Text), solutionDate);
-                    MessageBox.Show("Issue reported!");
-                    populateDataGrids();
-                    pnlReportIssue.Visible = false;
-                }
-                else
-                {
-                    MessageBox.Show("It takes a minimum of 2 days to resolve issues");
-                }
-
-            }
-            catch (CustomException ex)
-            {
-                MessageBox.Show("Error: " + ex.Message.ToString());
-            }
-            catch(System.Collections.Generic.KeyNotFoundException ex)
-            {
-                MessageBox.Show("Not a valid stock item");
-            }
-            catch(System.FormatException ex)
-            {
-
-                MessageBox.Show("Invalid data entered!");
-            }
+            
         }
 
         private void STockIssueResolved_Click(object sender, EventArgs e)
         {
-            if (pnlIssueResolvedHide.Visible)
-            {
-                pnlIssueResolvedHide.Visible = false;
-
-            }
-            else
-            {
-                pnlIssueResolvedHide.Visible = true;
-
-            }
+            
         }
 
         private void btnPendingIssues_Click(object sender, EventArgs e)
@@ -316,58 +223,12 @@ namespace A2_Coursework
 
         private void btnReturned_Click(object sender, EventArgs e)
         {
-            if ((DataGridStockIssues.SelectedRows.Count > 0) && (DataGridStockIssues.SelectedRows.Count > 0))
-            {
-                if (DataGridStockIssues.SelectedRows[0].Cells[0].Value is null)
-                {
-                    MessageBox.Show("Select a rcord with data");
-
-                }
-                else
-                {
-                    StockDAL.StockIssueResolved(Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[0].Value),
-                    DataGridStockIssues.SelectedRows[0].Cells[4].Value.ToString());
-
-                    populateDataGrids();
-                    MessageBox.Show("Yay! Issue resolved. REFUND??");
-                    pnlIssueResolvedHide.Visible = false;
-                }
-                
-
-            }
-            else
-            {
-                MessageBox.Show("Select a record!");
-            }
+            
         }
 
         private void btnKept_Click(object sender, EventArgs e)
         {
-            if ((DataGridStockIssues.SelectedRows.Count > 0) && (DataGridStockIssues.SelectedRows.Count > 0))
-            {
-                if (DataGridStockIssues.SelectedRows[0].Cells[0].Value is null)
-                {
-                    MessageBox.Show("Select a rcord with data");
-
-                }
-                else
-                {
-                    StockDAL.StockIssueResolved(Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[0].Value),
-                    DataGridStockIssues.SelectedRows[0].Cells[4].Value.ToString());
-
-                    StockDAL.AddStock(Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[0].Value),
-                            Convert.ToInt32(DataGridStockIssues.SelectedRows[0].Cells[2].Value));
-                    populateDataGrids();
-                    MessageBox.Show("Yay! Issue resolved.  Stock levels have now been updated");
-                    pnlIssueResolvedHide.Visible = false;
-                }
-                
-
-            }
-            else
-            {
-                MessageBox.Show("Select a record!");
-            }
+            
         }
 
         private void pnlIssueResolvedHide_Paint(object sender, PaintEventArgs e)

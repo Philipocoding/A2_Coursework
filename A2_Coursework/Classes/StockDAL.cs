@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Configuration;
 
 namespace A2_Coursework.Classes
 {
     public class StockDAL
     {
         public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Philip\\Desktop\\A2_Coursework\\A2_Coursework\\Database.mdf;Integrated Security=True";
-
 
         public static void AutoOrderStock(int StockID, int reordervalue, int quantity)
         {
@@ -280,7 +280,7 @@ namespace A2_Coursework.Classes
                 }
             }
         }
-        public static void AddStock(int id, int quantity)//, string date)
+        public static void AddStock(int id, int quantity)
         {
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -295,8 +295,6 @@ namespace A2_Coursework.Classes
                             AddMoreStock.CommandText = "AddStock";
                             AddMoreStock.Parameters.Add(new SqlParameter("@StockID", id));
                             AddMoreStock.Parameters.Add(new SqlParameter("@Quantity", quantity));
-                           // AddMoreStock.Parameters.Add(new SqlParameter("@OrderDate", date));
-
 
                             AddMoreStock.ExecuteNonQuery();
                         }

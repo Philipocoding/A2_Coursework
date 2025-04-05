@@ -45,17 +45,21 @@
             label2 = new Label();
             Firstname = new Label();
             btnSave = new Button();
+            panel1 = new Panel();
             label1 = new Label();
             txtbSurname = new TextBox();
             txtbGender = new TextBox();
             txtbAge = new TextBox();
             txtbHourlyRate = new TextBox();
             txtbFirstname = new TextBox();
-            panel1 = new Panel();
             panel3 = new Panel();
             label7 = new Label();
             btnDeleteCustomer = new Button();
             btnEditStaffMember = new Button();
+            label9 = new Label();
+            btnSearch = new Button();
+            txtbSearch = new TextBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)DataGridStaff).BeginInit();
             pnlDetails.SuspendLayout();
             SuspendLayout();
@@ -64,7 +68,7 @@
             // 
             DataGridStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridStaff.Columns.AddRange(new DataGridViewColumn[] { clmStaffID, clmFirstname, clmSurname, clmGender, clmAge, clmHourlyRate, clmTeamNo });
-            DataGridStaff.Location = new Point(248, 107);
+            DataGridStaff.Location = new Point(249, 151);
             DataGridStaff.Name = "DataGridStaff";
             DataGridStaff.Size = new Size(745, 304);
             DataGridStaff.TabIndex = 0;
@@ -129,9 +133,9 @@
             pnlDetails.Controls.Add(txtbAge);
             pnlDetails.Controls.Add(txtbHourlyRate);
             pnlDetails.Controls.Add(txtbFirstname);
-            pnlDetails.Location = new Point(388, 474);
+            pnlDetails.Location = new Point(384, 518);
             pnlDetails.Name = "pnlDetails";
-            pnlDetails.Size = new Size(420, 386);
+            pnlDetails.Size = new Size(425, 386);
             pnlDetails.TabIndex = 17;
             pnlDetails.Visible = false;
             // 
@@ -179,7 +183,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 20F);
-            label6.Location = new Point(-11, 214);
+            label6.Location = new Point(-6, 214);
             label6.Name = "label6";
             label6.Size = new Size(149, 37);
             label6.TabIndex = 27;
@@ -219,6 +223,13 @@
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(258, 858);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(36, 221);
+            panel1.TabIndex = 21;
             // 
             // label1
             // 
@@ -268,13 +279,6 @@
             txtbFirstname.Size = new Size(273, 47);
             txtbFirstname.TabIndex = 17;
             // 
-            // panel1
-            // 
-            panel1.Location = new Point(610, 853);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(36, 221);
-            panel1.TabIndex = 21;
-            // 
             // panel3
             // 
             panel3.Location = new Point(1224, 780);
@@ -286,7 +290,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold);
-            label7.Location = new Point(497, 24);
+            label7.Location = new Point(489, 9);
             label7.Name = "label7";
             label7.Size = new Size(320, 65);
             label7.TabIndex = 32;
@@ -299,9 +303,9 @@
             btnDeleteCustomer.FlatStyle = FlatStyle.Flat;
             btnDeleteCustomer.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDeleteCustomer.ForeColor = Color.Black;
-            btnDeleteCustomer.Location = new Point(305, 417);
+            btnDeleteCustomer.Location = new Point(246, 461);
             btnDeleteCustomer.Name = "btnDeleteCustomer";
-            btnDeleteCustomer.Size = new Size(303, 51);
+            btnDeleteCustomer.Size = new Size(276, 51);
             btnDeleteCustomer.TabIndex = 34;
             btnDeleteCustomer.Text = "Delete staff member";
             btnDeleteCustomer.UseVisualStyleBackColor = false;
@@ -314,13 +318,65 @@
             btnEditStaffMember.FlatStyle = FlatStyle.Flat;
             btnEditStaffMember.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEditStaffMember.ForeColor = Color.Black;
-            btnEditStaffMember.Location = new Point(614, 417);
+            btnEditStaffMember.Location = new Point(756, 461);
             btnEditStaffMember.Name = "btnEditStaffMember";
-            btnEditStaffMember.Size = new Size(303, 51);
+            btnEditStaffMember.Size = new Size(238, 51);
             btnEditStaffMember.TabIndex = 33;
             btnEditStaffMember.Text = "Edit staff member";
             btnEditStaffMember.UseVisualStyleBackColor = false;
             btnEditStaffMember.Click += btnDeleteStaffMember_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 20F);
+            label9.Location = new Point(335, 106);
+            label9.Name = "label9";
+            label9.Size = new Size(95, 37);
+            label9.TabIndex = 37;
+            label9.Text = "Search";
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.FromArgb(85, 193, 255);
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = Color.Black;
+            btnSearch.Location = new Point(807, 100);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(109, 47);
+            btnSearch.TabIndex = 36;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtbSearch
+            // 
+            txtbSearch.Font = new Font("Segoe UI", 20F);
+            txtbSearch.Location = new Point(430, 102);
+            txtbSearch.Name = "txtbSearch";
+            txtbSearch.Size = new Size(371, 43);
+            txtbSearch.TabIndex = 35;
+            txtbSearch.Text = "Enter staff ID";
+            txtbSearch.MouseClick += txtbSearch_MouseClick;
+            txtbSearch.KeyDown += txtbSearch_KeyDown;
+            txtbSearch.KeyPress += txtbSearch_KeyPress;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(85, 193, 255);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(528, 461);
+            button1.Name = "button1";
+            button1.Size = new Size(222, 51);
+            button1.TabIndex = 38;
+            button1.Text = "View all staff";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // ViewStaffMembers
             // 
@@ -329,6 +385,10 @@
             AutoSize = true;
             BackColor = Color.FromArgb(109, 132, 156);
             ClientSize = new Size(1488, 880);
+            Controls.Add(button1);
+            Controls.Add(label9);
+            Controls.Add(btnSearch);
+            Controls.Add(txtbSearch);
             Controls.Add(btnDeleteCustomer);
             Controls.Add(btnEditStaffMember);
             Controls.Add(label7);
@@ -377,5 +437,9 @@
         private Button btnDeleteCustomer;
         private Button btnEditStaffMember;
         private ComboBox cmbTeamNo;
+        private Label label9;
+        private Button btnSearch;
+        private TextBox txtbSearch;
+        private Button button1;
     }
 }

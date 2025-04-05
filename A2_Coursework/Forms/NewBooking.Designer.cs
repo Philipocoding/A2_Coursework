@@ -53,21 +53,6 @@
             btnUnselect = new Button();
             lblCustSelected = new Label();
             ExistingCustomer = new CheckBox();
-            pnlAddCustomer = new Panel();
-            cmbGender_ = new ComboBox();
-            dtPickerDOB_ = new DateTimePicker();
-            Add = new Label();
-            txtbAddressTwo_ = new TextBox();
-            txtbEmail_ = new TextBox();
-            label6 = new Label();
-            txtbAddressOne_ = new TextBox();
-            label7 = new Label();
-            txtbSurname_ = new TextBox();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            txtbFirstname_ = new TextBox();
-            label11 = new Label();
             pnlBookingDetails = new Panel();
             InfoFive = new Label();
             InfoTen = new Label();
@@ -138,6 +123,21 @@
             label3 = new Label();
             btnKitchenApp = new Button();
             btnSubmit = new Button();
+            pnlAddCustomer = new Panel();
+            cmbGender_ = new ComboBox();
+            dtPickerDOB_ = new DateTimePicker();
+            Add = new Label();
+            txtbAddressTwo_ = new TextBox();
+            txtbEmail_ = new TextBox();
+            label6 = new Label();
+            txtbAddressOne_ = new TextBox();
+            label7 = new Label();
+            txtbSurname_ = new TextBox();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            txtbFirstname_ = new TextBox();
+            label11 = new Label();
             pnlDatabase = new Panel();
             panel2 = new Panel();
             btnNext = new Button();
@@ -146,7 +146,6 @@
             label30 = new Label();
             pnlCustomerDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).BeginInit();
-            pnlAddCustomer.SuspendLayout();
             pnlBookingDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcbInfoTen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pcbInfoNine).BeginInit();
@@ -169,6 +168,7 @@
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
             pnlPrices.SuspendLayout();
+            pnlAddCustomer.SuspendLayout();
             SuspendLayout();
             // 
             // btnWindows
@@ -177,7 +177,7 @@
             btnWindows.FlatStyle = FlatStyle.Flat;
             btnWindows.Font = new Font("Segoe UI", 18F);
             btnWindows.ForeColor = Color.Black;
-            btnWindows.Location = new Point(425, 121);
+            btnWindows.Location = new Point(442, 123);
             btnWindows.Name = "btnWindows";
             btnWindows.Size = new Size(329, 53);
             btnWindows.TabIndex = 0;
@@ -187,7 +187,7 @@
             // txtbCustomerID
             // 
             txtbCustomerID.Font = new Font("Segoe UI", 18F);
-            txtbCustomerID.Location = new Point(528, 92);
+            txtbCustomerID.Location = new Point(604, 96);
             txtbCustomerID.Name = "txtbCustomerID";
             txtbCustomerID.Size = new Size(93, 39);
             txtbCustomerID.TabIndex = 4;
@@ -197,7 +197,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(388, 97);
+            label1.Location = new Point(464, 101);
             label1.Name = "label1";
             label1.Size = new Size(134, 30);
             label1.TabIndex = 5;
@@ -208,7 +208,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(329, 38);
+            label2.Location = new Point(346, 40);
             label2.Name = "label2";
             label2.Size = new Size(73, 37);
             label2.TabIndex = 6;
@@ -220,7 +220,7 @@
             btnCarpets.FlatStyle = FlatStyle.Flat;
             btnCarpets.Font = new Font("Segoe UI", 18F);
             btnCarpets.ForeColor = Color.Black;
-            btnCarpets.Location = new Point(425, 430);
+            btnCarpets.Location = new Point(442, 432);
             btnCarpets.Name = "btnCarpets";
             btnCarpets.Size = new Size(329, 53);
             btnCarpets.TabIndex = 11;
@@ -233,7 +233,7 @@
             btnDusting.FlatStyle = FlatStyle.Flat;
             btnDusting.Font = new Font("Segoe UI", 18F);
             btnDusting.ForeColor = Color.Black;
-            btnDusting.Location = new Point(425, 275);
+            btnDusting.Location = new Point(442, 277);
             btnDusting.Name = "btnDusting";
             btnDusting.Size = new Size(329, 53);
             btnDusting.TabIndex = 13;
@@ -246,7 +246,7 @@
             btnDoors.FlatStyle = FlatStyle.Flat;
             btnDoors.Font = new Font("Segoe UI", 18F);
             btnDoors.ForeColor = Color.Black;
-            btnDoors.Location = new Point(425, 224);
+            btnDoors.Location = new Point(442, 226);
             btnDoors.Name = "btnDoors";
             btnDoors.Size = new Size(329, 53);
             btnDoors.TabIndex = 14;
@@ -259,7 +259,7 @@
             btnFloors.FlatStyle = FlatStyle.Flat;
             btnFloors.Font = new Font("Segoe UI", 18F);
             btnFloors.ForeColor = Color.Black;
-            btnFloors.Location = new Point(425, 172);
+            btnFloors.Location = new Point(442, 174);
             btnFloors.Name = "btnFloors";
             btnFloors.Size = new Size(329, 53);
             btnFloors.TabIndex = 15;
@@ -272,7 +272,7 @@
             btnBathrooms.FlatStyle = FlatStyle.Flat;
             btnBathrooms.Font = new Font("Segoe UI", 18F);
             btnBathrooms.ForeColor = Color.Black;
-            btnBathrooms.Location = new Point(425, 378);
+            btnBathrooms.Location = new Point(442, 380);
             btnBathrooms.Name = "btnBathrooms";
             btnBathrooms.Size = new Size(329, 53);
             btnBathrooms.TabIndex = 16;
@@ -286,7 +286,7 @@
             btnCurtains.FlatStyle = FlatStyle.Flat;
             btnCurtains.Font = new Font("Segoe UI", 18F);
             btnCurtains.ForeColor = Color.Black;
-            btnCurtains.Location = new Point(425, 482);
+            btnCurtains.Location = new Point(442, 484);
             btnCurtains.Name = "btnCurtains";
             btnCurtains.Size = new Size(329, 53);
             btnCurtains.TabIndex = 42;
@@ -297,7 +297,7 @@
             // 
             BookingDate.CalendarFont = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BookingDate.Font = new Font("Segoe UI", 22F);
-            BookingDate.Location = new Point(425, 32);
+            BookingDate.Location = new Point(442, 34);
             BookingDate.Name = "BookingDate";
             BookingDate.Size = new Size(329, 47);
             BookingDate.TabIndex = 47;
@@ -328,6 +328,7 @@
             DataGridCustomers.Location = new Point(0, 173);
             DataGridCustomers.Name = "DataGridCustomers";
             DataGridCustomers.ReadOnly = true;
+            DataGridCustomers.RowHeadersWidth = 20;
             DataGridCustomers.Size = new Size(1234, 296);
             DataGridCustomers.TabIndex = 0;
             DataGridCustomers.Visible = false;
@@ -391,13 +392,13 @@
             // label32
             // 
             label32.AutoSize = true;
-            label32.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label32.Font = new Font("Segoe UI Semibold", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label32.ForeColor = Color.Black;
-            label32.Location = new Point(388, 47);
+            label32.Location = new Point(350, 23);
             label32.Name = "label32";
-            label32.Size = new Size(285, 25);
+            label32.Size = new Size(544, 47);
             label32.TabIndex = 62;
-            label32.Text = "*Select a record or enter a user ID";
+            label32.Text = "Select a record or enter a user ID";
             // 
             // btnUnselect
             // 
@@ -406,7 +407,7 @@
             btnUnselect.FlatStyle = FlatStyle.Flat;
             btnUnselect.Font = new Font("Microsoft Sans Serif", 20F);
             btnUnselect.ForeColor = Color.White;
-            btnUnselect.Location = new Point(474, 475);
+            btnUnselect.Location = new Point(518, 508);
             btnUnselect.Name = "btnUnselect";
             btnUnselect.Size = new Size(164, 68);
             btnUnselect.TabIndex = 60;
@@ -438,163 +439,6 @@
             ExistingCustomer.Text = "Existing Customer";
             ExistingCustomer.UseVisualStyleBackColor = true;
             ExistingCustomer.CheckedChanged += ExistingCustomer_CheckedChanged;
-            // 
-            // pnlAddCustomer
-            // 
-            pnlAddCustomer.Controls.Add(cmbGender_);
-            pnlAddCustomer.Controls.Add(dtPickerDOB_);
-            pnlAddCustomer.Controls.Add(Add);
-            pnlAddCustomer.Controls.Add(txtbAddressTwo_);
-            pnlAddCustomer.Controls.Add(txtbEmail_);
-            pnlAddCustomer.Controls.Add(label6);
-            pnlAddCustomer.Controls.Add(txtbAddressOne_);
-            pnlAddCustomer.Controls.Add(label7);
-            pnlAddCustomer.Controls.Add(txtbSurname_);
-            pnlAddCustomer.Controls.Add(label8);
-            pnlAddCustomer.Controls.Add(label9);
-            pnlAddCustomer.Controls.Add(label10);
-            pnlAddCustomer.Controls.Add(txtbFirstname_);
-            pnlAddCustomer.Controls.Add(label11);
-            pnlAddCustomer.Location = new Point(1, 77);
-            pnlAddCustomer.Name = "pnlAddCustomer";
-            pnlAddCustomer.Size = new Size(941, 753);
-            pnlAddCustomer.TabIndex = 58;
-            // 
-            // cmbGender_
-            // 
-            cmbGender_.Font = new Font("Segoe UI", 20F);
-            cmbGender_.FormattingEnabled = true;
-            cmbGender_.Items.AddRange(new object[] { "Male", "Female", "Other" });
-            cmbGender_.Location = new Point(390, 201);
-            cmbGender_.Name = "cmbGender_";
-            cmbGender_.Size = new Size(326, 45);
-            cmbGender_.TabIndex = 32;
-            // 
-            // dtPickerDOB_
-            // 
-            dtPickerDOB_.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtPickerDOB_.Location = new Point(390, 141);
-            dtPickerDOB_.Name = "dtPickerDOB_";
-            dtPickerDOB_.Size = new Size(326, 50);
-            dtPickerDOB_.TabIndex = 22;
-            dtPickerDOB_.ValueChanged += dtPickerDOB__ValueChanged;
-            // 
-            // Add
-            // 
-            Add.AutoSize = true;
-            Add.Font = new Font("Segoe UI", 24F);
-            Add.ForeColor = Color.Black;
-            Add.Location = new Point(118, 315);
-            Add.Name = "Add";
-            Add.Size = new Size(257, 45);
-            Add.TabIndex = 31;
-            Add.Text = "Address line two";
-            // 
-            // txtbAddressTwo_
-            // 
-            txtbAddressTwo_.Font = new Font("Segoe UI", 24F);
-            txtbAddressTwo_.Location = new Point(390, 315);
-            txtbAddressTwo_.Name = "txtbAddressTwo_";
-            txtbAddressTwo_.Size = new Size(326, 50);
-            txtbAddressTwo_.TabIndex = 30;
-            // 
-            // txtbEmail_
-            // 
-            txtbEmail_.Font = new Font("Segoe UI", 24F);
-            txtbEmail_.Location = new Point(390, 371);
-            txtbEmail_.Name = "txtbEmail_";
-            txtbEmail_.Size = new Size(326, 50);
-            txtbEmail_.TabIndex = 29;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 24F);
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(279, 371);
-            label6.Name = "label6";
-            label6.Size = new Size(96, 45);
-            label6.TabIndex = 28;
-            label6.Text = "Email";
-            // 
-            // txtbAddressOne_
-            // 
-            txtbAddressOne_.Font = new Font("Segoe UI", 24F);
-            txtbAddressOne_.Location = new Point(390, 257);
-            txtbAddressOne_.Name = "txtbAddressOne_";
-            txtbAddressOne_.Size = new Size(326, 50);
-            txtbAddressOne_.TabIndex = 27;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 24F);
-            label7.ForeColor = Color.Black;
-            label7.Location = new Point(110, 260);
-            label7.Name = "label7";
-            label7.Size = new Size(258, 45);
-            label7.TabIndex = 26;
-            label7.Text = "Address line one";
-            // 
-            // txtbSurname_
-            // 
-            txtbSurname_.Font = new Font("Segoe UI", 24F);
-            txtbSurname_.Location = new Point(390, 85);
-            txtbSurname_.Name = "txtbSurname_";
-            txtbSurname_.Size = new Size(326, 50);
-            txtbSurname_.TabIndex = 25;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 24F);
-            label8.ForeColor = Color.Black;
-            label8.Location = new Point(251, 197);
-            label8.Name = "label8";
-            label8.Size = new Size(124, 45);
-            label8.TabIndex = 24;
-            label8.Text = "Gender";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 24F);
-            label9.ForeColor = Color.Black;
-            label9.Location = new Point(176, 141);
-            label9.Name = "label9";
-            label9.Size = new Size(199, 45);
-            label9.TabIndex = 23;
-            label9.Text = "Date of Birth";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 24F);
-            label10.ForeColor = Color.Black;
-            label10.Location = new Point(230, 85);
-            label10.Name = "label10";
-            label10.Size = new Size(145, 45);
-            label10.TabIndex = 21;
-            label10.Text = "Surname";
-            // 
-            // txtbFirstname_
-            // 
-            txtbFirstname_.Font = new Font("Segoe UI", 24F);
-            txtbFirstname_.Location = new Point(390, 29);
-            txtbFirstname_.Name = "txtbFirstname_";
-            txtbFirstname_.Size = new Size(326, 50);
-            txtbFirstname_.TabIndex = 20;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 24F);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(225, 29);
-            label11.Name = "label11";
-            label11.Size = new Size(159, 45);
-            label11.TabIndex = 19;
-            label11.Text = "Firstname";
             // 
             // pnlBookingDetails
             // 
@@ -655,7 +499,7 @@
             pnlBookingDetails.Controls.Add(btnCurtains);
             pnlBookingDetails.Controls.Add(btnBathrooms);
             pnlBookingDetails.ForeColor = Color.White;
-            pnlBookingDetails.Location = new Point(1, 77);
+            pnlBookingDetails.Location = new Point(4, 77);
             pnlBookingDetails.Name = "pnlBookingDetails";
             pnlBookingDetails.Size = new Size(1254, 743);
             pnlBookingDetails.TabIndex = 1;
@@ -666,7 +510,7 @@
             InfoFive.AutoSize = true;
             InfoFive.Font = new Font("Segoe UI", 12F);
             InfoFive.ForeColor = Color.White;
-            InfoFive.Location = new Point(37, 344);
+            InfoFive.Location = new Point(54, 346);
             InfoFive.Name = "InfoFive";
             InfoFive.Size = new Size(338, 21);
             InfoFive.TabIndex = 101;
@@ -678,7 +522,7 @@
             InfoTen.AutoSize = true;
             InfoTen.Font = new Font("Segoe UI", 12F);
             InfoTen.ForeColor = Color.White;
-            InfoTen.Location = new Point(30, 601);
+            InfoTen.Location = new Point(47, 603);
             InfoTen.Name = "InfoTen";
             InfoTen.Size = new Size(341, 21);
             InfoTen.TabIndex = 100;
@@ -690,7 +534,7 @@
             InfoNine.AutoSize = true;
             InfoNine.Font = new Font("Segoe UI", 12F);
             InfoNine.ForeColor = Color.White;
-            InfoNine.Location = new Point(0, 554);
+            InfoNine.Location = new Point(17, 556);
             InfoNine.Name = "InfoNine";
             InfoNine.Size = new Size(375, 21);
             InfoNine.TabIndex = 99;
@@ -702,7 +546,7 @@
             InfoEight.AutoSize = true;
             InfoEight.Font = new Font("Segoe UI", 12F);
             InfoEight.ForeColor = Color.White;
-            InfoEight.Location = new Point(32, 498);
+            InfoEight.Location = new Point(49, 500);
             InfoEight.Name = "InfoEight";
             InfoEight.Size = new Size(343, 21);
             InfoEight.TabIndex = 98;
@@ -714,7 +558,7 @@
             InfoSeven.AutoSize = true;
             InfoSeven.Font = new Font("Segoe UI", 12F);
             InfoSeven.ForeColor = Color.White;
-            InfoSeven.Location = new Point(11, 447);
+            InfoSeven.Location = new Point(28, 449);
             InfoSeven.Name = "InfoSeven";
             InfoSeven.Size = new Size(364, 21);
             InfoSeven.TabIndex = 97;
@@ -726,7 +570,7 @@
             InfoSix.AutoSize = true;
             InfoSix.Font = new Font("Segoe UI", 12F);
             InfoSix.ForeColor = Color.White;
-            InfoSix.Location = new Point(55, 393);
+            InfoSix.Location = new Point(72, 395);
             InfoSix.Name = "InfoSix";
             InfoSix.Size = new Size(320, 21);
             InfoSix.TabIndex = 96;
@@ -738,7 +582,7 @@
             InfoTwo.AutoSize = true;
             InfoTwo.Font = new Font("Segoe UI", 12F);
             InfoTwo.ForeColor = Color.White;
-            InfoTwo.Location = new Point(108, 186);
+            InfoTwo.Location = new Point(125, 188);
             InfoTwo.Name = "InfoTwo";
             InfoTwo.Size = new Size(267, 21);
             InfoTwo.TabIndex = 95;
@@ -750,7 +594,7 @@
             InfoThree.AutoSize = true;
             InfoThree.Font = new Font("Segoe UI", 12F);
             InfoThree.ForeColor = Color.White;
-            InfoThree.Location = new Point(57, 239);
+            InfoThree.Location = new Point(74, 241);
             InfoThree.Name = "InfoThree";
             InfoThree.Size = new Size(314, 21);
             InfoThree.TabIndex = 94;
@@ -762,7 +606,7 @@
             InfoFOur.AutoSize = true;
             InfoFOur.Font = new Font("Segoe UI", 12F);
             InfoFOur.ForeColor = Color.White;
-            InfoFOur.Location = new Point(65, 291);
+            InfoFOur.Location = new Point(82, 293);
             InfoFOur.Name = "InfoFOur";
             InfoFOur.Size = new Size(310, 21);
             InfoFOur.TabIndex = 93;
@@ -774,7 +618,7 @@
             InfoOne.AutoSize = true;
             InfoOne.Font = new Font("Segoe UI", 12F);
             InfoOne.ForeColor = Color.White;
-            InfoOne.Location = new Point(32, 136);
+            InfoOne.Location = new Point(49, 138);
             InfoOne.Name = "InfoOne";
             InfoOne.Size = new Size(343, 21);
             InfoOne.TabIndex = 83;
@@ -784,7 +628,7 @@
             // pcbInfoTen
             // 
             pcbInfoTen.Image = Properties.Resources.info__1_;
-            pcbInfoTen.Location = new Point(381, 598);
+            pcbInfoTen.Location = new Point(398, 600);
             pcbInfoTen.Name = "pcbInfoTen";
             pcbInfoTen.Size = new Size(40, 29);
             pcbInfoTen.SizeMode = PictureBoxSizeMode.Zoom;
@@ -795,7 +639,7 @@
             // pcbInfoNine
             // 
             pcbInfoNine.Image = Properties.Resources.info__1_;
-            pcbInfoNine.Location = new Point(381, 546);
+            pcbInfoNine.Location = new Point(398, 548);
             pcbInfoNine.Name = "pcbInfoNine";
             pcbInfoNine.Size = new Size(40, 29);
             pcbInfoNine.SizeMode = PictureBoxSizeMode.Zoom;
@@ -806,7 +650,7 @@
             // pcbInfoEight
             // 
             pcbInfoEight.Image = Properties.Resources.info__1_;
-            pcbInfoEight.Location = new Point(381, 492);
+            pcbInfoEight.Location = new Point(398, 494);
             pcbInfoEight.Name = "pcbInfoEight";
             pcbInfoEight.Size = new Size(40, 29);
             pcbInfoEight.SizeMode = PictureBoxSizeMode.Zoom;
@@ -817,7 +661,7 @@
             // pcbInfoSeven
             // 
             pcbInfoSeven.Image = Properties.Resources.info__1_;
-            pcbInfoSeven.Location = new Point(379, 445);
+            pcbInfoSeven.Location = new Point(396, 447);
             pcbInfoSeven.Name = "pcbInfoSeven";
             pcbInfoSeven.Size = new Size(40, 29);
             pcbInfoSeven.SizeMode = PictureBoxSizeMode.Zoom;
@@ -828,7 +672,7 @@
             // pcbInfoSix
             // 
             pcbInfoSix.Image = Properties.Resources.info__1_;
-            pcbInfoSix.Location = new Point(381, 390);
+            pcbInfoSix.Location = new Point(398, 392);
             pcbInfoSix.Name = "pcbInfoSix";
             pcbInfoSix.Size = new Size(40, 29);
             pcbInfoSix.SizeMode = PictureBoxSizeMode.Zoom;
@@ -839,7 +683,7 @@
             // pcbInfoFive
             // 
             pcbInfoFive.Image = Properties.Resources.info__1_;
-            pcbInfoFive.Location = new Point(381, 336);
+            pcbInfoFive.Location = new Point(398, 338);
             pcbInfoFive.Name = "pcbInfoFive";
             pcbInfoFive.Size = new Size(40, 29);
             pcbInfoFive.SizeMode = PictureBoxSizeMode.Zoom;
@@ -850,7 +694,7 @@
             // pcbInfoFour
             // 
             pcbInfoFour.Image = Properties.Resources.info__1_;
-            pcbInfoFour.Location = new Point(381, 288);
+            pcbInfoFour.Location = new Point(398, 290);
             pcbInfoFour.Name = "pcbInfoFour";
             pcbInfoFour.Size = new Size(40, 29);
             pcbInfoFour.SizeMode = PictureBoxSizeMode.Zoom;
@@ -861,7 +705,7 @@
             // pcbInfoThree
             // 
             pcbInfoThree.Image = Properties.Resources.info__1_;
-            pcbInfoThree.Location = new Point(381, 235);
+            pcbInfoThree.Location = new Point(398, 237);
             pcbInfoThree.Name = "pcbInfoThree";
             pcbInfoThree.Size = new Size(40, 29);
             pcbInfoThree.SizeMode = PictureBoxSizeMode.Zoom;
@@ -872,7 +716,7 @@
             // pcbInfoTwo
             // 
             pcbInfoTwo.Image = Properties.Resources.info__1_;
-            pcbInfoTwo.Location = new Point(379, 185);
+            pcbInfoTwo.Location = new Point(396, 187);
             pcbInfoTwo.Name = "pcbInfoTwo";
             pcbInfoTwo.Size = new Size(40, 29);
             pcbInfoTwo.SizeMode = PictureBoxSizeMode.Zoom;
@@ -883,7 +727,7 @@
             // pcbInfoOne
             // 
             pcbInfoOne.Image = Properties.Resources.info__1_;
-            pcbInfoOne.Location = new Point(381, 131);
+            pcbInfoOne.Location = new Point(398, 133);
             pcbInfoOne.Name = "pcbInfoOne";
             pcbInfoOne.Size = new Size(40, 29);
             pcbInfoOne.SizeMode = PictureBoxSizeMode.Zoom;
@@ -895,7 +739,7 @@
             // 
             lblQuantySIX.AutoSize = true;
             lblQuantySIX.Font = new Font("Segoe UI", 18F);
-            lblQuantySIX.Location = new Point(839, 390);
+            lblQuantySIX.Location = new Point(856, 392);
             lblQuantySIX.Name = "lblQuantySIX";
             lblQuantySIX.Size = new Size(27, 32);
             lblQuantySIX.TabIndex = 82;
@@ -905,7 +749,7 @@
             // 
             lblQtyFive.AutoSize = true;
             lblQtyFive.Font = new Font("Segoe UI", 18F);
-            lblQtyFive.Location = new Point(839, 336);
+            lblQtyFive.Location = new Point(856, 338);
             lblQtyFive.Name = "lblQtyFive";
             lblQtyFive.Size = new Size(27, 32);
             lblQtyFive.TabIndex = 81;
@@ -915,7 +759,7 @@
             // 
             lblQtyFour.AutoSize = true;
             lblQtyFour.Font = new Font("Segoe UI", 18F);
-            lblQtyFour.Location = new Point(839, 288);
+            lblQtyFour.Location = new Point(856, 290);
             lblQtyFour.Name = "lblQtyFour";
             lblQtyFour.Size = new Size(27, 32);
             lblQtyFour.TabIndex = 80;
@@ -925,7 +769,7 @@
             // 
             lblQtyThree.AutoSize = true;
             lblQtyThree.Font = new Font("Segoe UI", 18F);
-            lblQtyThree.Location = new Point(839, 234);
+            lblQtyThree.Location = new Point(856, 236);
             lblQtyThree.Name = "lblQtyThree";
             lblQtyThree.Size = new Size(27, 32);
             lblQtyThree.TabIndex = 79;
@@ -935,7 +779,7 @@
             // 
             lblQtyTen.AutoSize = true;
             lblQtyTen.Font = new Font("Segoe UI", 18F);
-            lblQtyTen.Location = new Point(839, 595);
+            lblQtyTen.Location = new Point(856, 597);
             lblQtyTen.Name = "lblQtyTen";
             lblQtyTen.Size = new Size(27, 32);
             lblQtyTen.TabIndex = 78;
@@ -945,7 +789,7 @@
             // 
             lblQtyNine.AutoSize = true;
             lblQtyNine.Font = new Font("Segoe UI", 18F);
-            lblQtyNine.Location = new Point(839, 543);
+            lblQtyNine.Location = new Point(856, 545);
             lblQtyNine.Name = "lblQtyNine";
             lblQtyNine.Size = new Size(27, 32);
             lblQtyNine.TabIndex = 77;
@@ -955,7 +799,7 @@
             // 
             lblQtyEight.AutoSize = true;
             lblQtyEight.Font = new Font("Segoe UI", 18F);
-            lblQtyEight.Location = new Point(839, 492);
+            lblQtyEight.Location = new Point(856, 494);
             lblQtyEight.Name = "lblQtyEight";
             lblQtyEight.Size = new Size(27, 32);
             lblQtyEight.TabIndex = 76;
@@ -965,7 +809,7 @@
             // 
             lblQtySeven.AutoSize = true;
             lblQtySeven.Font = new Font("Segoe UI", 18F);
-            lblQtySeven.Location = new Point(839, 440);
+            lblQtySeven.Location = new Point(856, 442);
             lblQtySeven.Name = "lblQtySeven";
             lblQtySeven.Size = new Size(27, 32);
             lblQtySeven.TabIndex = 75;
@@ -975,7 +819,7 @@
             // 
             lblQtyTwo.AutoSize = true;
             lblQtyTwo.Font = new Font("Segoe UI", 18F);
-            lblQtyTwo.Location = new Point(839, 185);
+            lblQtyTwo.Location = new Point(856, 187);
             lblQtyTwo.Name = "lblQtyTwo";
             lblQtyTwo.Size = new Size(27, 32);
             lblQtyTwo.TabIndex = 74;
@@ -983,7 +827,7 @@
             // 
             // trackBar10
             // 
-            trackBar10.Location = new Point(756, 601);
+            trackBar10.Location = new Point(773, 603);
             trackBar10.Maximum = 20;
             trackBar10.Name = "trackBar10";
             trackBar10.Size = new Size(87, 45);
@@ -995,7 +839,7 @@
             lblDateError.AutoSize = true;
             lblDateError.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblDateError.ForeColor = Color.White;
-            lblDateError.Location = new Point(461, 82);
+            lblDateError.Location = new Point(478, 84);
             lblDateError.Name = "lblDateError";
             lblDateError.Size = new Size(265, 21);
             lblDateError.TabIndex = 48;
@@ -1004,7 +848,7 @@
             // 
             // trackBar9
             // 
-            trackBar9.Location = new Point(756, 550);
+            trackBar9.Location = new Point(773, 552);
             trackBar9.Maximum = 20;
             trackBar9.Name = "trackBar9";
             trackBar9.Size = new Size(87, 45);
@@ -1015,7 +859,7 @@
             // 
             lblQtyOne.AutoSize = true;
             lblQtyOne.Font = new Font("Segoe UI", 18F);
-            lblQtyOne.Location = new Point(839, 136);
+            lblQtyOne.Location = new Point(856, 138);
             lblQtyOne.Name = "lblQtyOne";
             lblQtyOne.Size = new Size(27, 32);
             lblQtyOne.TabIndex = 71;
@@ -1023,7 +867,7 @@
             // 
             // trackBar8
             // 
-            trackBar8.Location = new Point(760, 342);
+            trackBar8.Location = new Point(777, 344);
             trackBar8.Maximum = 20;
             trackBar8.Name = "trackBar8";
             trackBar8.Size = new Size(83, 45);
@@ -1032,7 +876,7 @@
             // 
             // trackBar7
             // 
-            trackBar7.Location = new Point(760, 291);
+            trackBar7.Location = new Point(777, 293);
             trackBar7.Maximum = 20;
             trackBar7.Name = "trackBar7";
             trackBar7.Size = new Size(83, 45);
@@ -1041,7 +885,7 @@
             // 
             // trackBar6
             // 
-            trackBar6.Location = new Point(760, 239);
+            trackBar6.Location = new Point(777, 241);
             trackBar6.Maximum = 20;
             trackBar6.Name = "trackBar6";
             trackBar6.Size = new Size(83, 45);
@@ -1050,7 +894,7 @@
             // 
             // trackBar5
             // 
-            trackBar5.Location = new Point(760, 190);
+            trackBar5.Location = new Point(777, 192);
             trackBar5.Maximum = 20;
             trackBar5.Name = "trackBar5";
             trackBar5.Size = new Size(83, 45);
@@ -1059,7 +903,7 @@
             // 
             // trackBar4
             // 
-            trackBar4.Location = new Point(756, 395);
+            trackBar4.Location = new Point(773, 397);
             trackBar4.Maximum = 20;
             trackBar4.Name = "trackBar4";
             trackBar4.Size = new Size(87, 45);
@@ -1068,7 +912,7 @@
             // 
             // trackBar3
             // 
-            trackBar3.Location = new Point(756, 445);
+            trackBar3.Location = new Point(773, 447);
             trackBar3.Maximum = 20;
             trackBar3.Name = "trackBar3";
             trackBar3.Size = new Size(87, 45);
@@ -1077,7 +921,7 @@
             // 
             // trackBar1
             // 
-            trackBar1.Location = new Point(756, 498);
+            trackBar1.Location = new Point(773, 500);
             trackBar1.Maximum = 20;
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(87, 45);
@@ -1090,7 +934,7 @@
             btnFurniture.FlatStyle = FlatStyle.Flat;
             btnFurniture.Font = new Font("Segoe UI", 18F);
             btnFurniture.ForeColor = Color.Black;
-            btnFurniture.Location = new Point(425, 533);
+            btnFurniture.Location = new Point(442, 535);
             btnFurniture.Name = "btnFurniture";
             btnFurniture.Size = new Size(329, 53);
             btnFurniture.TabIndex = 62;
@@ -1099,7 +943,7 @@
             // 
             // trackBar2
             // 
-            trackBar2.Location = new Point(760, 139);
+            trackBar2.Location = new Point(777, 141);
             trackBar2.Maximum = 20;
             trackBar2.Name = "trackBar2";
             trackBar2.Size = new Size(83, 45);
@@ -1127,7 +971,7 @@
             btndeepClean.FlatStyle = FlatStyle.Flat;
             btndeepClean.Font = new Font("Segoe UI", 18F);
             btndeepClean.ForeColor = Color.Black;
-            btndeepClean.Location = new Point(425, 585);
+            btndeepClean.Location = new Point(442, 587);
             btndeepClean.Name = "btndeepClean";
             btndeepClean.Size = new Size(329, 53);
             btndeepClean.TabIndex = 60;
@@ -1411,7 +1255,7 @@
             btnKitchenApp.FlatStyle = FlatStyle.Flat;
             btnKitchenApp.Font = new Font("Segoe UI", 18F);
             btnKitchenApp.ForeColor = Color.Black;
-            btnKitchenApp.Location = new Point(425, 326);
+            btnKitchenApp.Location = new Point(442, 328);
             btnKitchenApp.Name = "btnKitchenApp";
             btnKitchenApp.Size = new Size(329, 53);
             btnKitchenApp.TabIndex = 58;
@@ -1425,13 +1269,170 @@
             btnSubmit.FlatStyle = FlatStyle.Flat;
             btnSubmit.Font = new Font("Segoe UI", 20F);
             btnSubmit.ForeColor = Color.White;
-            btnSubmit.Location = new Point(500, 653);
+            btnSubmit.Location = new Point(517, 655);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(190, 71);
             btnSubmit.TabIndex = 0;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
+            // 
+            // pnlAddCustomer
+            // 
+            pnlAddCustomer.Controls.Add(cmbGender_);
+            pnlAddCustomer.Controls.Add(dtPickerDOB_);
+            pnlAddCustomer.Controls.Add(Add);
+            pnlAddCustomer.Controls.Add(txtbAddressTwo_);
+            pnlAddCustomer.Controls.Add(txtbEmail_);
+            pnlAddCustomer.Controls.Add(label6);
+            pnlAddCustomer.Controls.Add(txtbAddressOne_);
+            pnlAddCustomer.Controls.Add(label7);
+            pnlAddCustomer.Controls.Add(txtbSurname_);
+            pnlAddCustomer.Controls.Add(label8);
+            pnlAddCustomer.Controls.Add(label9);
+            pnlAddCustomer.Controls.Add(label10);
+            pnlAddCustomer.Controls.Add(txtbFirstname_);
+            pnlAddCustomer.Controls.Add(label11);
+            pnlAddCustomer.Location = new Point(1, 77);
+            pnlAddCustomer.Name = "pnlAddCustomer";
+            pnlAddCustomer.Size = new Size(941, 753);
+            pnlAddCustomer.TabIndex = 58;
+            // 
+            // cmbGender_
+            // 
+            cmbGender_.Font = new Font("Segoe UI", 20F);
+            cmbGender_.FormattingEnabled = true;
+            cmbGender_.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            cmbGender_.Location = new Point(436, 204);
+            cmbGender_.Name = "cmbGender_";
+            cmbGender_.Size = new Size(326, 45);
+            cmbGender_.TabIndex = 32;
+            // 
+            // dtPickerDOB_
+            // 
+            dtPickerDOB_.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtPickerDOB_.Location = new Point(436, 144);
+            dtPickerDOB_.Name = "dtPickerDOB_";
+            dtPickerDOB_.Size = new Size(326, 50);
+            dtPickerDOB_.TabIndex = 22;
+            dtPickerDOB_.ValueChanged += dtPickerDOB__ValueChanged;
+            // 
+            // Add
+            // 
+            Add.AutoSize = true;
+            Add.Font = new Font("Segoe UI", 24F);
+            Add.ForeColor = Color.Black;
+            Add.Location = new Point(164, 318);
+            Add.Name = "Add";
+            Add.Size = new Size(257, 45);
+            Add.TabIndex = 31;
+            Add.Text = "Address line two";
+            // 
+            // txtbAddressTwo_
+            // 
+            txtbAddressTwo_.Font = new Font("Segoe UI", 24F);
+            txtbAddressTwo_.Location = new Point(436, 318);
+            txtbAddressTwo_.Name = "txtbAddressTwo_";
+            txtbAddressTwo_.Size = new Size(326, 50);
+            txtbAddressTwo_.TabIndex = 30;
+            // 
+            // txtbEmail_
+            // 
+            txtbEmail_.Font = new Font("Segoe UI", 24F);
+            txtbEmail_.Location = new Point(436, 374);
+            txtbEmail_.Name = "txtbEmail_";
+            txtbEmail_.Size = new Size(326, 50);
+            txtbEmail_.TabIndex = 29;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 24F);
+            label6.ForeColor = Color.Black;
+            label6.Location = new Point(325, 374);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 45);
+            label6.TabIndex = 28;
+            label6.Text = "Email";
+            // 
+            // txtbAddressOne_
+            // 
+            txtbAddressOne_.Font = new Font("Segoe UI", 24F);
+            txtbAddressOne_.Location = new Point(436, 260);
+            txtbAddressOne_.Name = "txtbAddressOne_";
+            txtbAddressOne_.Size = new Size(326, 50);
+            txtbAddressOne_.TabIndex = 27;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 24F);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(156, 263);
+            label7.Name = "label7";
+            label7.Size = new Size(258, 45);
+            label7.TabIndex = 26;
+            label7.Text = "Address line one";
+            // 
+            // txtbSurname_
+            // 
+            txtbSurname_.Font = new Font("Segoe UI", 24F);
+            txtbSurname_.Location = new Point(436, 88);
+            txtbSurname_.Name = "txtbSurname_";
+            txtbSurname_.Size = new Size(326, 50);
+            txtbSurname_.TabIndex = 25;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 24F);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(297, 200);
+            label8.Name = "label8";
+            label8.Size = new Size(124, 45);
+            label8.TabIndex = 24;
+            label8.Text = "Gender";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 24F);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(222, 144);
+            label9.Name = "label9";
+            label9.Size = new Size(199, 45);
+            label9.TabIndex = 23;
+            label9.Text = "Date of Birth";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 24F);
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(276, 88);
+            label10.Name = "label10";
+            label10.Size = new Size(145, 45);
+            label10.TabIndex = 21;
+            label10.Text = "Surname";
+            // 
+            // txtbFirstname_
+            // 
+            txtbFirstname_.Font = new Font("Segoe UI", 24F);
+            txtbFirstname_.Location = new Point(436, 32);
+            txtbFirstname_.Name = "txtbFirstname_";
+            txtbFirstname_.Size = new Size(326, 50);
+            txtbFirstname_.TabIndex = 20;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 24F);
+            label11.ForeColor = Color.Black;
+            label11.Location = new Point(271, 32);
+            label11.Name = "label11";
+            label11.Size = new Size(159, 45);
+            label11.TabIndex = 19;
+            label11.Text = "Firstname";
             // 
             // pnlDatabase
             // 
@@ -1490,7 +1491,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold);
             label30.ForeColor = Color.Black;
-            label30.Location = new Point(416, 9);
+            label30.Location = new Point(443, 9);
             label30.Name = "label30";
             label30.Size = new Size(323, 65);
             label30.TabIndex = 62;
@@ -1506,9 +1507,9 @@
             Controls.Add(pnlBookingDetails);
             Controls.Add(label30);
             Controls.Add(panel2);
-            Controls.Add(pnlAddCustomer);
             Controls.Add(panel1);
             Controls.Add(pnlDatabase);
+            Controls.Add(pnlAddCustomer);
             Controls.Add(pnlCustomerDetails);
             Controls.Add(btnBack);
             Controls.Add(btnNext);
@@ -1520,8 +1521,6 @@
             pnlCustomerDetails.ResumeLayout(false);
             pnlCustomerDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridCustomers).EndInit();
-            pnlAddCustomer.ResumeLayout(false);
-            pnlAddCustomer.PerformLayout();
             pnlBookingDetails.ResumeLayout(false);
             pnlBookingDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pcbInfoTen).EndInit();
@@ -1546,6 +1545,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
             pnlPrices.ResumeLayout(false);
             pnlPrices.PerformLayout();
+            pnlAddCustomer.ResumeLayout(false);
+            pnlAddCustomer.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
