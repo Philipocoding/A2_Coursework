@@ -22,7 +22,7 @@ namespace A2_Coursework.Classes
         public static string GetDatabaseConnectionString()
         {
             string appPath = AppDomain.CurrentDomain.BaseDirectory;
-            string dbPath = Path.Combine(appPath, "Database", "Database.mdf"); // Adjust subfolder
+            string dbPath = Path.Combine(appPath, "Database", "Database.mdf"); //Adjust subfolder
 
             if (!File.Exists(dbPath))
                 throw new FileNotFoundException($"Database not found at: {dbPath}");
